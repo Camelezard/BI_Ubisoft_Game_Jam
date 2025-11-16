@@ -75,7 +75,8 @@ public void PanelBack()
 
     public void SwapPause()
     {
-        SetPause(_isGamePaused = !_isGamePaused);
+        if (SceneManager.GetActiveScene().buildIndex  != 0) SetPause(_isGamePaused = !_isGamePaused);
+        else ShowMenu();
     }
 
     public void SetPause(bool pState = true)
