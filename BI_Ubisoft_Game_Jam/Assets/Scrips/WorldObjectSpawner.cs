@@ -18,7 +18,7 @@ public class WorldObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        InitWorld();
+        //InitWorld();
     }
 
     private void InitWorld()

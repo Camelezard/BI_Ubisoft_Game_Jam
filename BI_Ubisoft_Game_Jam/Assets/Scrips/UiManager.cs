@@ -19,13 +19,14 @@ public class UiManager : SingletonPersistent<UiManager>
     protected virtual void Start()
     {
         CheckShowPanel();
+        InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) SwapPause();
+        
     }
-
     public void QuitGame()
     {
         Application.Quit();
