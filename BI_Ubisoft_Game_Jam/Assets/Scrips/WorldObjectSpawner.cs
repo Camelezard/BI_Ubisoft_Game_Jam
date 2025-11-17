@@ -4,15 +4,15 @@ using UnityEngine.InputSystem.iOS;
 public class WorldObjectSpawner : MonoBehaviour
 {
     [Header("ObjectToSpaw")]
-    private House _HouseFactory;
-    private int _HouseNumber = 10;
+    [SerializeField] private House _HouseFactory;
+    [SerializeField] private int _HouseNumber = 10;
 
-    private Tornado _TornadoToSpawn;
-    private int _TornadoNumber = 3;
+    [SerializeField] private Tornado _TornadoToSpawn;
+    [SerializeField] private int _TornadoNumber = 3;
 
 
     [Header("SpawnRange")]
-    private float _SqareRange = 3;
+    [SerializeField] private float _SqareRange = 3;
 
 
 
