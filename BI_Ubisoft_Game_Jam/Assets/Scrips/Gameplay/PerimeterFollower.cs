@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Transform))]
 public class PerimeterFollower : MonoBehaviour
@@ -17,26 +18,44 @@ public class PerimeterFollower : MonoBehaviour
     private Transform[] _waypoints;
 
     [Header("Movement")]
-    [SerializeField] private float _speed = 5f;                  // unités / seconde le long du périmètre
-
-    // Internals
+    [SerializeField] private float _maxSpeed = 5f;
+    [SerializeField] private float _speedIncreasePerSecond = 5f;
+    [SerializeField] private float _speedDecreasePerSecond = 5f;
+    
     private List<Vector3> _pathPoints = new List<Vector3>();
     private float[] _segmentLengths;
     private float _totalLength;
     private float _currentDistance = 0f;
 
+    private float _velocity = 0f;
+
+    private InputAction _move;
+    private const string MOVE = "Move";
+    
     private void Start()
     {
+        _move = InputManager.instance.GetInputAction(MOVE);
         RebuildPath();
     }
 
     private void Update()
     {
         if (_pathPoints == null || _pathPoints.Count < 2) return;
-        
-        float lInput = Input.GetAxisRaw("Horizontal");
 
-        _currentDistance += lInput * _speed * Time.deltaTime;
+        float lInput = _move.ReadValue<float>();
+        
+        if(lInput != 0f)
+        {
+            _velocity += lInput * _speedIncreasePerSecond;
+            _velocity = Mathf.Clamp(_velocity, -_maxSpeed, _maxSpeed);   
+        }
+        else
+        {
+            _velocity = _velocity > 0f ? Mathf.Max(_velocity - _speedDecreasePerSecond * Time.deltaTime, 0f) :
+                Mathf.Min(_velocity + _speedDecreasePerSecond * Time.deltaTime, 0f);
+        }
+        
+        _currentDistance += _velocity * Time.deltaTime;
         
         if (_totalLength > 0f)
         {
