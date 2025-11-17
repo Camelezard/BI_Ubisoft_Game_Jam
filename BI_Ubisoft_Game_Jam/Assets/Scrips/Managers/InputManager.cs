@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     
-    //private InputSystem_Actions _playerControls;
+    private InputSystem_Actions _playerControls;
     
     private Dictionary<string, InputAction> _inputActions = new();
     
@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("InputManager already exists");
         }
         
-        //_playerControls = new InputSystem_Actions();
+        _playerControls = new InputSystem_Actions();
         InitializeInputActions();
     }
     
@@ -55,27 +55,27 @@ public class InputManager : MonoBehaviour
     
     private void EnableAllInputs(bool pEnable = true)
     {
-        // if (pEnable) _playerControls.Enable();
-        // else _playerControls.Disable();
+        if (pEnable) _playerControls.Enable();
+        else _playerControls.Disable();
     }
     
     private void InitializeInputActions()
     {
-        // int lMapCount = _playerControls.asset.actionMaps.Count;
+        int lMapCount = _playerControls.asset.actionMaps.Count;
         int lActionsCount;
         InputActionMap lMap;
         InputAction lAction;
         
-        // for (int i = 0; i < lMapCount; i++)
-        // {
-        //     lMap = _playerControls.asset.actionMaps[i];
-        //     lActionsCount = lMap.actions.Count;
-        //     for (int j = 0; j < lActionsCount; j++)
-        //     {
-        //         lAction = lMap.actions[j];
-        //         _inputActions.Add(lAction.name, lAction);
-        //     }
-        // }
+        for (int i = 0; i < lMapCount; i++)
+        {
+            lMap = _playerControls.asset.actionMaps[i];
+            lActionsCount = lMap.actions.Count;
+            for (int j = 0; j < lActionsCount; j++)
+            {
+                lAction = lMap.actions[j];
+                _inputActions.Add(lAction.name, lAction);
+            }
+        }
     }
     
     public InputAction GetInputAction(string pActionName)
