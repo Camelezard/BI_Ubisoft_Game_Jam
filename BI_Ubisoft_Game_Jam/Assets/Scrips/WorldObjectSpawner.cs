@@ -18,7 +18,7 @@ public class WorldObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        //InitWorld();
+        InitWorld();
     }
 
     private void InitWorld()
@@ -30,17 +30,26 @@ public class WorldObjectSpawner : MonoBehaviour
     private void SpawnStartTornados()
     {
         Tornado lTornado; 
+        
         for (int i = 0; i < _TornadoNumber; i++)
         {
             lTornado = Instantiate(_TornadoToSpawn);
+            lTornado.transform.position = GetRandomPosnPlande();
         }
     }
     private void SpawnStartHouses()
     {
         House lHouse; 
-        for (int i = 0; i < _TornadoNumber; i++)
+        for (int i = 0; i < _HouseNumber; i++)
         {
             lHouse = Instantiate(_HouseFactory);
+            lHouse.transform.position = GetRandomPosnPlande();
+
         }
+    }
+
+    private Vector3 GetRandomPosnPlande()
+    {
+        return new Vector3(Random.Range(-_SqareRange,_SqareRange),0,Random.Range(-_SqareRange,_SqareRange));
     }
 }
