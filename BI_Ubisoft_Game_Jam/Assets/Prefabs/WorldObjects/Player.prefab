@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8f769fedc26c44cb9f75047d825cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layer:
+  _cameraRayLayer:
     serializedVersion: 2
     m_Bits: 64
   testobject: {fileID: 0}
