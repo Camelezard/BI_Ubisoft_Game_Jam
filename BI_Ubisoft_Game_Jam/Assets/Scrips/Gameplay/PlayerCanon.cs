@@ -25,7 +25,7 @@ public class PlayerCanon : MonoBehaviour
         // lMousePos = _camera.ScreenToWorldPoint(lMousePos);
         // testobject.position = lMousePos;
         
-        if(Physics.Raycast(lRay, out RaycastHit lHit))
+        if(Physics.Raycast(lRay, out RaycastHit lHit, Mathf.Infinity, _cameraRayLayer))
         {
             testobject.position = lHit.point;
             // transform.rotation = Quaternion.LookRotation(

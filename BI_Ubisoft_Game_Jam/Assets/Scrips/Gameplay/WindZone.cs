@@ -8,7 +8,8 @@ public class WindZone : MonoBehaviour
     {
         if(pOther.TryGetComponent(out Tornado lTornado))
         {
-            print("tornade détectée : " + lTornado.name);
+            //print("tornade détectée : " + lTornado.name);
+            lTornado._Direction = (lTornado.transform.position - PerimeterFollower.instance.transform.position).normalized;
         }
     }
 }
