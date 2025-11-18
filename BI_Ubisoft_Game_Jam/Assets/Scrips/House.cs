@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class House : WorldObject
 {
-    public override void Start()
+    protected override void Die()
     {
-        
+        base.Die();
+        //WorldObjectSpawner.Instance.RemoveHouse(this);
     }
-
-    
 }

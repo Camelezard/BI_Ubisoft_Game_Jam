@@ -24,7 +24,7 @@ public class WorldObject : MonoBehaviour
 
     void UpdateUi()
     {
-        _HP_Field.text = m_HealtPoints.ToString();
+        if(_HP_Field) _HP_Field.text = m_HealtPoints.ToString();
     }
 
     public virtual void TakeDamage(float amount)
