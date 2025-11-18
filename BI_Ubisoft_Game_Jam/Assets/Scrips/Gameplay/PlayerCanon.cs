@@ -1,18 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCanon : MonoBehaviour
 {
     [SerializeField] private LayerMask _cameraRayLayer;
     [SerializeField] private float _rotationCap = 90f;
     [SerializeField] private float _maxRotationSpeed = 90f;
+    [SerializeField] private GameObject _windZone;
     
     public Transform testobject;
     
     private Camera _camera;
+    private InputAction _windZoneInput;
+    private const string WIND_ZONE_ACTION = "WindZone";
     
     private void Start()
     {
         _camera = Camera.main;
+        DisableWindZone();
+        _windZoneInput = InputManager.instance.GetInputAction(WIND_ZONE_ACTION);
+        _windZoneInput.performed += ctx => EnableWindZone();
+        _windZoneInput.canceled += ctx => DisableWindZone();
     }
     
     void Update()
@@ -40,5 +49,21 @@ public class PlayerCanon : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, 
                 Quaternion.LookRotation(lDirection, Vector3.up), _maxRotationSpeed * Time.deltaTime);
         }
+    }
+    
+    private void EnableWindZone()
+    {
+        _windZone.SetActive(true);
+    }
+    
+    private void DisableWindZone()
+    {
+        _windZone.SetActive(false);
+    }
+    
+    private void OnDestroy()
+    {
+        _windZoneInput.performed -= ctx => EnableWindZone();
+        _windZoneInput.canceled -= ctx => DisableWindZone();
     }
 }

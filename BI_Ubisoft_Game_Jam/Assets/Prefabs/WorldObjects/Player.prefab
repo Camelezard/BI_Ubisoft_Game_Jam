@@ -214,6 +214,7 @@ MonoBehaviour:
     m_Bits: 64
   _rotationCap: 90
   _maxRotationSpeed: 90
+  _windZone: {fileID: 4898323427440742084}
   testobject: {fileID: 0}
 --- !u!1 &4960643387955447680
 GameObject:
@@ -556,6 +557,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37a11a03dee8674f833a2a6b7ab4d53, type: 3}
+--- !u!1 &4898323427440742084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3457150858499719829, guid: a37a11a03dee8674f833a2a6b7ab4d53, type: 3}
+  m_PrefabInstance: {fileID: 7782241424644525137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9095929173789360491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1313687919333444922, guid: a37a11a03dee8674f833a2a6b7ab4d53, type: 3}
