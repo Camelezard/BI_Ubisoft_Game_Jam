@@ -187,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4729949732257652148, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}
       propertyPath: minDistanceBetweenHouses
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4729949732257652148, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}
       propertyPath: 'housePrefabs.Array.data[0]'
