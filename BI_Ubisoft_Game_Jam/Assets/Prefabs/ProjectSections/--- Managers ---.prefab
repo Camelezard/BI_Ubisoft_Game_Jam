@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0.6773712, y: 1.1434852, z: 0.77332836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5184979001167044575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7280885477926780743
@@ -44,3 +45,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621fa716b8ad1134d98a101586291bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8798270924855188660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5184979001167044575}
+  - component: {fileID: 1991656961400846088}
+  m_Layer: 0
+  m_Name: WaveManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5184979001167044575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798270924855188660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7294407132982804873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991656961400846088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798270924855188660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f9341cb485b7f4cbd04c7127fb50b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TornadoContainer: {fileID: 0}
+  waves:
+  - waveName: Wave 1
+    tornadoPrefabs:
+    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+    count: 3
+    spawnInterval: 0.1
+    timeBeforeNextWave: 5
+  - waveName: Wave 2
+    tornadoPrefabs:
+    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+    count: 5
+    spawnInterval: 0.1
+    timeBeforeNextWave: 5
+  - waveName: Wave 3
+    tornadoPrefabs:
+    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+    count: 100
+    spawnInterval: 1
+    timeBeforeNextWave: 10
+  loopWaves: 1
+  targetCenter: {fileID: 0}
+  spawnAreaSize: 80

@@ -7,4 +7,5 @@ public class House : WorldObject
         
     }
 
+    
 }

@@ -3,6 +3,10 @@ using UnityEngine.InputSystem.iOS;
 
 public class WorldObjectSpawner : MonoBehaviour
 {
+    [Header("Container")]
+    [SerializeField] private GameObject _TornadosContainer;
+    [SerializeField] private GameObject _HousesContainer;
+
     [Header("ObjectToSpaw")]
     [SerializeField] private House _HouseFactory;
     [SerializeField] private int _HouseNumber = 10;
@@ -34,6 +38,7 @@ public class WorldObjectSpawner : MonoBehaviour
         for (int i = 0; i < _TornadoNumber; i++)
         {
             lTornado = Instantiate(_TornadoToSpawn);
+            lTornado.transform.SetParent(_TornadosContainer.transform);
             lTornado.transform.position = GetRandomPosnPlande();
         }
     }
@@ -43,8 +48,8 @@ public class WorldObjectSpawner : MonoBehaviour
         for (int i = 0; i < _HouseNumber; i++)
         {
             lHouse = Instantiate(_HouseFactory);
+            lHouse.transform.SetParent(_HousesContainer.transform);
             lHouse.transform.position = GetRandomPosnPlande();
-
         }
     }
 
