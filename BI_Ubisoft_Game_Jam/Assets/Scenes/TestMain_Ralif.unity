@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: minDistanceBetweenHouses
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9219620122419506121, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: _maxSpeedIncreasePerSec
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
