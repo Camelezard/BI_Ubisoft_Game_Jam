@@ -544,10 +544,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2506873762185518210, guid: a37a11a03dee8674f833a2a6b7ab4d53, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 3457150858499719829, guid: a37a11a03dee8674f833a2a6b7ab4d53, type: 3}
       propertyPath: m_Name
       value: WindZone

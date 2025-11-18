@@ -422,10 +422,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: --- Game ---
       objectReference: {fileID: 0}
-    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
-      propertyPath: minDistanceBetweenHouses
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
