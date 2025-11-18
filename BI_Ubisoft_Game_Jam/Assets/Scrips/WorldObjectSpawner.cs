@@ -1,80 +1,76 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
+using System.Collections.Generic;
 
-public class GaussianCityGenerator : MonoBehaviour
+public class BuildingSpawner : MonoBehaviour
 {
-    [Header("City Settings")]
-    public int houseCount = 100;
-    public float cityCenterSize = 10f; 
-    public float minDistanceBetweenHouses = 2f;
+    [Header("Terrain Settings")]
+    public int width = 20;       // Largeur du plan
+    public int height = 20;      // Hauteur du plan
+    public float spacing = 2f;   // Espacement entre les bâtiments
 
-    [Header("Prefabs")]
-    public GameObject[] housePrefabs;
+    [Header("Noise Settings")]
+    public float scale = 0.2f;   // Échelle du Perlin Noise
 
-    private List<Vector3> placedHousesPos = new List<Vector3>();
+    [Header("Prefab Lists")]
+    public List<GameObject> grandPrefabs;   // Liste des grands bâtiments
+    public List<GameObject> moyenPrefabs;   // Liste des moyens
+    public List<GameObject> petitPrefabs;   // Liste des petits
+
+    [Header("Height Thresholds")]
+    public float petitThreshold = 0.3f;
+    public float moyenThreshold = 0.6f;
 
     void Start()
     {
-        GenerateCity();
+        SpawnBuildings();
     }
 
-    void GenerateCity()
+    void SpawnBuildings()
     {
-        int tries = 0;
+        float offsetX = (width - 1) * spacing / 2f;
+        float offsetZ = (height - 1) * spacing / 2f;
 
-        for (int i = 0; i < houseCount; i++)
+        float minNoiseMultiplier = 0.2f; 
+        float falloff = 2f; 
+
+        Vector2 center = new Vector2(offsetX, offsetZ); 
+
+        for (int x = 0; x < width; x++)
         {
-            bool placed = false;
-
-            while (!placed)
+            for (int z = 0; z < height; z++)
             {
-                tries++;
-                if (tries > houseCount * 10)
+                float noiseValue = Mathf.PerlinNoise(x * scale, z * scale);
+
+                float dx = x * spacing - center.x;
+                float dz = z * spacing - center.y;
+                float distance = Mathf.Sqrt(dx * dx + dz * dz);
+
+                float maxDistance = Mathf.Sqrt(offsetX * offsetX + offsetZ * offsetZ); 
+                float multiplier = Mathf.Lerp(1f, minNoiseMultiplier, Mathf.Pow(distance / maxDistance, falloff));
+
+                noiseValue *= multiplier;
+
+                GameObject prefabToSpawn = null;
+                if (noiseValue < petitThreshold && petitPrefabs.Count > 0)
                 {
-                    Debug.LogWarning("Trop de tentatives, stop placement.");
-                    return;
+                    prefabToSpawn = petitPrefabs[Random.Range(0, petitPrefabs.Count)];
+                }
+                else if (noiseValue < moyenThreshold && moyenPrefabs.Count > 0)
+                {
+                    prefabToSpawn = moyenPrefabs[Random.Range(0, moyenPrefabs.Count)];
+                }
+                else if (grandPrefabs.Count > 0)
+                {
+                    prefabToSpawn = grandPrefabs[Random.Range(0, grandPrefabs.Count)];
                 }
 
-                Vector3 pos = GenerateGaussianPosition();
-
-                if (IsValidPosition(pos))
+                if (prefabToSpawn != null)
                 {
-                    GameObject prefab = housePrefabs[Random.Range(0, housePrefabs.Length)];
-                    Instantiate(prefab, pos, Quaternion.identity);
-
-                    placedHousesPos.Add(pos);
-                    placed = true;
+                    Vector3 spawnPosition = new Vector3(x * spacing - offsetX, 0, z * spacing - offsetZ);
+                    Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
                 }
             }
         }
     }
 
-    Vector3 GenerateGaussianPosition()
-    {
-        float x = GaussianRandom(0f, cityCenterSize);
-        float z = GaussianRandom(0f, cityCenterSize);
-
-        return new Vector3(x, 0f, z);
-    }
-
-    float GaussianRandom(float mean, float stdDev)
-    {
-        float u1 = Random.value;
-        float u2 = Random.value;
-
-        float randStdNormal = Mathf.Sqrt(-2f * Mathf.Log(u1)) * Mathf.Sin(2f * Mathf.PI * u2);
-
-        return mean + stdDev * randStdNormal;
-    }
-
-    bool IsValidPosition(Vector3 pos)
-    {
-        foreach (var p in placedHousesPos)
-        {
-            if (Vector3.Distance(p, pos) < minDistanceBetweenHouses)
-                return false;
-        }
-        return true;
-    }
 }

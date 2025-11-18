@@ -555,27 +555,83 @@ PrefabInstance:
       value: --- Game ---
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: scale
+      value: 0.324
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: spacing
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: citySize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: gridSize
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: mapRadius
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: cityRadius
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: houseCount
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: minSpacing
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: noiseScale
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: clusterCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: buildingCount
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: clusterRadius
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: centerZoneSize
+      value: 0.685
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: cityCenterSize
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: middleZoneSize
+      value: 0.977
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: maxNoiseInfluence
+      value: 0.667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: minBuildingDistance
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: decorPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: grandPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
@@ -583,8 +639,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: moyenPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: petitPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: minDistanceBetweenHouses
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: outerBuildings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: centerBuildings.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: 'decorPrefabs.Array.data[0]'
@@ -592,6 +664,14 @@ PrefabInstance:
       objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: 'decorPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'grandPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'grandPrefabs.Array.data[1]'
       value: 
       objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
@@ -606,6 +686,90 @@ PrefabInstance:
       propertyPath: 'housePrefabs.Array.data[2]'
       value: 
       objectReference: {fileID: 6404982529828615640, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: middleBuildings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'moyenPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'moyenPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6404982529828615640, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'petitPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1575116308562814419, guid: 03ac658da54422a4fab1bf0c972592cf, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: suburbBuildings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: lowDensityPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'outerBuildings.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'outerBuildings.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'outerBuildings.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'centerBuildings.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1575116308562814419, guid: 03ac658da54422a4fab1bf0c972592cf, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'centerBuildings.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6404982529828615640, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: highDensityPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'middleBuildings.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'middleBuildings.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6404982529828615640, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: outskirtsBuildings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'suburbBuildings.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'lowDensityPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: mediumDensityPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'highDensityPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'outskirtsBuildings.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+    - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: 'mediumDensityPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4189269168832144775, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
