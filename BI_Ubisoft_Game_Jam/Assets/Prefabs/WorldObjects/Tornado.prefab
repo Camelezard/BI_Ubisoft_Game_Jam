@@ -50,7 +50,7 @@ MonoBehaviour:
   _TornadoSpeed: 10
   _TornadoDamamges: 10
   _TornadoWeight: 10
-  _TornadoStartLitime: 30
+  _TornadoStartLitime: 15
   _CanPassAWall: 1
   _ChooseTotalRendomDirection: 0
   _Direction: {x: 0, y: 0, z: 0}
