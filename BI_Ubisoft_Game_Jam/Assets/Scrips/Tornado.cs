@@ -72,12 +72,12 @@ public class Tornado : MonoBehaviour
                 StartCoroutine(EnableWallCollisionAfterDelay());
                 return;
             }
-
+            
             if (_CanPassAWall) return;
 
             Vector3 normal = collision.contacts[0].normal;
-            _Direction = Vector3.Reflect(_Direction, normal);
-            _Direction.y = 0f;
+            velocity = Vector3.Reflect(velocity, normal);
+            velocity.y = 0f;
         }
     }
 
