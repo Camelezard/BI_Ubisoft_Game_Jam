@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4225276611716365150}
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,14 @@ MonoBehaviour:
   _TornadoSpeed: 10
   _TornadoDamamges: 10
   _TornadoWeight: 10
+  _TornadoStartLitime: 30
+  _CanPassAWall: 1
+  _ChooseTotalRendomDirection: 0
+  _Direction: {x: 0, y: 0, z: 0}
+  _LayerToIgnior:
+    serializedVersion: 2
+    m_Bits: 256
+  _MeshCollider: {fileID: 0}
 --- !u!64 &1073194208220770048
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -147,14 +155,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 396489375955065489, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Name
       value: SM_Cyclone_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1087534903148596531, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 66cf66d7aad789744a3d63742f82e988, type: 2}
+    - target: {fileID: 7440356185111581067, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
