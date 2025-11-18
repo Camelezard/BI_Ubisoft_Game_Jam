@@ -1,55 +1,80 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
 
-public class WorldObjectSpawner : MonoBehaviour
+public class GaussianCityGenerator : MonoBehaviour
 {
-    [Header("ObjectToSpaw")]
-    [SerializeField] private House _HouseFactory;
-    [SerializeField] private int _HouseNumber = 10;
+    [Header("City Settings")]
+    public int houseCount = 100;
+    public float cityCenterSize = 10f; 
+    public float minDistanceBetweenHouses = 2f;
 
-    [SerializeField] private Tornado _TornadoToSpawn;
-    [SerializeField] private int _TornadoNumber = 3;
+    [Header("Prefabs")]
+    public GameObject[] housePrefabs;
 
-
-    [Header("SpawnRange")]
-    [SerializeField] private float _SqareRange = 3;
-
-
+    private List<Vector3> placedHousesPos = new List<Vector3>();
 
     void Start()
     {
-        InitWorld();
+        GenerateCity();
     }
 
-    private void InitWorld()
+    void GenerateCity()
     {
-        SpawnStartTornados();
-        SpawnStartHouses();
-    }
+        int tries = 0;
 
-    private void SpawnStartTornados()
-    {
-        Tornado lTornado; 
-        
-        for (int i = 0; i < _TornadoNumber; i++)
+        for (int i = 0; i < houseCount; i++)
         {
-            lTornado = Instantiate(_TornadoToSpawn);
-            lTornado.transform.position = GetRandomPosnPlande();
+            bool placed = false;
+
+            while (!placed)
+            {
+                tries++;
+                if (tries > houseCount * 10)
+                {
+                    Debug.LogWarning("Trop de tentatives, stop placement.");
+                    return;
+                }
+
+                Vector3 pos = GenerateGaussianPosition();
+
+                if (IsValidPosition(pos))
+                {
+                    GameObject prefab = housePrefabs[Random.Range(0, housePrefabs.Length)];
+                    Instantiate(prefab, pos, Quaternion.identity);
+
+                    placedHousesPos.Add(pos);
+                    placed = true;
+                }
+            }
         }
     }
-    private void SpawnStartHouses()
-    {
-        House lHouse; 
-        for (int i = 0; i < _HouseNumber; i++)
-        {
-            lHouse = Instantiate(_HouseFactory);
-            lHouse.transform.position = GetRandomPosnPlande();
 
-        }
+    Vector3 GenerateGaussianPosition()
+    {
+        float x = GaussianRandom(0f, cityCenterSize);
+        float z = GaussianRandom(0f, cityCenterSize);
+
+        return new Vector3(x, 0f, z);
     }
 
-    private Vector3 GetRandomPosnPlande()
+    float GaussianRandom(float mean, float stdDev)
     {
-        return new Vector3(Random.Range(-_SqareRange,_SqareRange),0,Random.Range(-_SqareRange,_SqareRange));
+        float u1 = Random.value;
+        float u2 = Random.value;
+
+        float randStdNormal = Mathf.Sqrt(-2f * Mathf.Log(u1)) * Mathf.Sin(2f * Mathf.PI * u2);
+
+        return mean + stdDev * randStdNormal;
+    }
+
+    bool IsValidPosition(Vector3 pos)
+    {
+        foreach (var p in placedHousesPos)
+        {
+            if (Vector3.Distance(p, pos) < minDistanceBetweenHouses)
+                return false;
+        }
+        return true;
     }
 }
