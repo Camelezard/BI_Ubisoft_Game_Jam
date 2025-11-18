@@ -32,6 +32,37 @@ public class PerimeterFollower : MonoBehaviour
     private InputAction _move;
     private const string MOVE = "Move";
     
+    #region singleton
+
+    private static PerimeterFollower _Instance;
+    public static PerimeterFollower instance
+    {
+        get
+        {
+            if (_Instance == null)
+            {
+                Debug.Log("no PerimeterFollower instance found");
+                return null;
+            }
+            return _Instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_Instance == null)
+        {
+            _Instance = this;
+        }
+        else if (_Instance != this)
+        {
+            Destroy(gameObject);
+            Debug.Log("PerimeterFollower already exists");
+        }
+    }
+    
+    #endregion
+    
     private void Start()
     {
         _move = InputManager.instance.GetInputAction(MOVE);
@@ -62,7 +93,7 @@ public class PerimeterFollower : MonoBehaviour
             _currentDistance = Mathf.Repeat(_currentDistance, _totalLength);
         }
     
-        transform.SetPositionAndRotation(GetPointAtDistance(_currentDistance), GetRotation(_currentDistance));
+        transform.SetPositionAndRotation(GetPointAtDistance(_currentDistance), GetRotationToFieldCenter());
     }
     
     private void RebuildPath()
@@ -150,6 +181,11 @@ public class PerimeterFollower : MonoBehaviour
         return Quaternion.LookRotation(-Vector3.Cross(_pathPoints[1] - _pathPoints[0], Vector3.up), Vector3.up);
     }
     #endregion
+    
+    private Quaternion GetRotationToFieldCenter()
+    {
+        return Quaternion.LookRotation(Vector3.ProjectOnPlane(_sourceObject.transform.position - transform.position, Vector3.up), Vector3.up);
+    }
 
     #region Builders
 
