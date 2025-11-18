@@ -42,7 +42,7 @@ public class PerimeterFollower : MonoBehaviour
     {
         if (_pathPoints == null || _pathPoints.Count < 2) return;
 
-        float lInput = _move.ReadValue<float>();
+        float lInput = -_move.ReadValue<float>();
         
         if(lInput != 0f)
         {
@@ -136,17 +136,18 @@ public class PerimeterFollower : MonoBehaviour
         
         pDistance = Mathf.Repeat(pDistance, _totalLength);
         float lDistanceCount = 0f;
+        Vector3 lSegmentStart, lSegmentEnd;
         for (int i = 0; i < _segmentLengths.Length; i++)
         {
             if (lDistanceCount + _segmentLengths[i] >= pDistance)
             {
-                Vector3 lSegmentStart = _pathPoints[i];
-                Vector3 lSegmentEnd = _pathPoints[(i + 1) % _pathPoints.Count];
-                return Quaternion.LookRotation((lSegmentEnd - lSegmentStart).normalized, Vector3.up);
+                lSegmentStart = _pathPoints[i];
+                lSegmentEnd = _pathPoints[(i + 1) % _pathPoints.Count];
+                return Quaternion.LookRotation(-Vector3.Cross(lSegmentEnd - lSegmentStart, Vector3.up), Vector3.up);
             }
             lDistanceCount += _segmentLengths[i];
         }
-        return Quaternion.LookRotation((_pathPoints[1] - _pathPoints[0]).normalized, Vector3.up);
+        return Quaternion.LookRotation(-Vector3.Cross(_pathPoints[1] - _pathPoints[0], Vector3.up), Vector3.up);
     }
     #endregion
 
@@ -157,7 +158,7 @@ public class PerimeterFollower : MonoBehaviour
         MeshFilter mf = planeObj.GetComponent<MeshFilter>();
         if (mf != null && mf.sharedMesh != null)
         {
-            // Try to recover corners from mesh bounds (works for standard plane and many meshes)
+            // Try to recover corners from mesh bounds
             Bounds b = mf.sharedMesh.bounds;
             Vector3[] cornersLocal = new Vector3[4]
             {
