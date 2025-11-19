@@ -1,21 +1,26 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 
 
 public class Tornado : MonoBehaviour
 {
-    [SerializeField] private float _TornadoSpeed = 10;
-    [SerializeField] private float _TornadoDamamges = 10;
-    [SerializeField] private float _TornadoWeight = 10;
-    [SerializeField] private float _TornadoStartLitime = 10;
-    private float _TornadoLitime = 10;
+    public float tornadoInitialSpeed = 10f;
+    public float tornadoMaxSpeed = 10f;
+    [SerializeField] private float _TornadoDamagePerSec = 10f;
+    [SerializeField] private float _TornadoWeight = 10f;
+    [SerializeField] private float _TornadoStartLifetime = 10f;
+    private float _TornadoLifetime = 10f;
     [SerializeField] public bool _CanPassAWall = true;
-    [SerializeField] public bool _ChooseTotalRendomDirection = false;
+    [SerializeField] public bool _ChooseTotalRandomDirection = false;
     public Vector3 _Direction;
+    public Vector3 velocity;
 
-    [SerializeField] private LayerMask _LayerToIgnior;
+    [SerializeField] private LayerMask _LayerToIgnore;
     [SerializeField] private MeshCollider _MeshCollider;
+
+    public TMP_Text _coefftext;
+    
     void Awake()
     {
         int tornadoLayer = LayerMask.NameToLayer("Tornados");
@@ -28,30 +33,32 @@ public class Tornado : MonoBehaviour
         InitLifetime();
 
         if(!_MeshCollider) _MeshCollider =  GetComponent<MeshCollider>();
+        velocity = _Direction * tornadoInitialSpeed;
     }
 
     private void Update()
     {
-        transform.position += _Direction * _TornadoSpeed * Time.deltaTime;
-
-        if (_TornadoLitime > 0) _TornadoLitime -= Time.deltaTime;
-        else EndLifTime();
+        // transform.position += _TornadoSpeed * Time.deltaTime * _Direction;
+        transform.position += velocity * Time.deltaTime;
+        
+        if (_TornadoLifetime > 0) _TornadoLifetime -= Time.deltaTime;
+        else EndLifeTime();
     }
 
-    private void EndLifTime()
+    private void EndLifeTime()
     {
         Destroy(gameObject);
     }
 
     private void InitLifetime()
     {
-        _TornadoLitime = _TornadoStartLitime;
+        _TornadoLifetime = _TornadoStartLifetime;
     }
 
     private void ChooseInitialDirection()
     {
         Vector2 _Circle = Random.insideUnitCircle.normalized;
-        if(_ChooseTotalRendomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
+        if(_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,12 +72,12 @@ public class Tornado : MonoBehaviour
                 StartCoroutine(EnableWallCollisionAfterDelay());
                 return;
             }
-
+            
             if (_CanPassAWall) return;
 
             Vector3 normal = collision.contacts[0].normal;
-            _Direction = Vector3.Reflect(_Direction, normal);
-            _Direction.y = 0f;
+            velocity = Vector3.Reflect(velocity, normal);
+            velocity.y = 0f;
         }
     }
 
@@ -88,8 +95,18 @@ public class Tornado : MonoBehaviour
         {
             if (l_House != null)
             {
-                l_House.TakeDamage(_TornadoDamamges * Time.deltaTime);
+                l_House.TakeDamage(_TornadoDamagePerSec * Time.deltaTime);
             }
         }
+    }
+    
+    public void AddVelocity(Vector3 pForce)
+    {
+        velocity += pForce;
+        if(velocity.magnitude > tornadoMaxSpeed)
+        {
+            Vector3 lVelocity = velocity.normalized * tornadoMaxSpeed;
+            velocity = lVelocity;
+        } 
     }
 }
