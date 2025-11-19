@@ -3,10 +3,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
+using System;
 public class UiManager : SingletonPersistent<UiManager>
 {
+    public static event Action OnVictory;
+    public static event Action OnDefeat;
+
     [Header("Panels")]
     [SerializeField] private GameObject _PanelContainer;
+    [SerializeField] private GameObject _PanelDefeat;
     [SerializeField] private GameObject _MenuPanel;
     [SerializeField] private GameObject _PausePanel;
     [SerializeField] private GameObject _CreditsPanel;
@@ -16,7 +21,8 @@ public class UiManager : SingletonPersistent<UiManager>
     private GameObject _ActifPanel = null;
     [SerializeField] private List<GameObject> _PreviusPanel = new List<GameObject>();
 
-    [SerializeField] Slider _destruction_Slider;
+    //[SerializeField] Slider _destruction_Slider;
+    [SerializeField] Slider _Wave_Slider;
     
     private bool _isGamePaused = false;
 
@@ -132,6 +138,21 @@ public void PanelBack()
         ChangePannel(_GameUi);
     }
 
+    public void ShowDefeat()
+    {
+        ChangePannel(_PanelDefeat);
+    }
+
+    public void UpdateDestroyUi(int number)
+    {
+        //if(_destruction_Slider) _destruction_Slider.value = pPercentage;
+    }
+    
+    public void UpdateWaveUi(float pPercentage)
+    {
+        if(_Wave_Slider) _Wave_Slider.value = pPercentage;
+    }
+
     //Load levels
     public void ReturnToMenu()
     {
@@ -145,5 +166,16 @@ public void PanelBack()
         SetPause(false);
         SceneManager.LoadScene(pLevelIndex);
         ShowGameUi();
+    }
+
+    public void TriggerDefeat()
+    {
+        OnDefeat?.Invoke();
+        
+    }
+
+    private void OnUiDefeat()
+    {
+        ShowDefeat();
     }
 }
