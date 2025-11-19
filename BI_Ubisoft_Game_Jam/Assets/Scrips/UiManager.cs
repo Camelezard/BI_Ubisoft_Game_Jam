@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 public class UiManager : SingletonPersistent<UiManager>
 {
     [Header("Panels")]
@@ -11,9 +12,12 @@ public class UiManager : SingletonPersistent<UiManager>
     [SerializeField] private GameObject _CreditsPanel;
     [SerializeField] private GameObject _SettingsPanel;
     [SerializeField] private GameObject _LevelSelector;
+    [SerializeField] private GameObject _GameUi;
     private GameObject _ActifPanel = null;
-    private List<GameObject> _PreviusPanel = new List<GameObject>();
+    [SerializeField] private List<GameObject> _PreviusPanel = new List<GameObject>();
 
+    [SerializeField] Slider _destruction_Slider;
+    
     private bool _isGamePaused = false;
 
     protected virtual void Start()
@@ -123,6 +127,11 @@ public void PanelBack()
         ChangePannel(_PausePanel);
     }
 
+        public void ShowGameUi()
+    {
+        ChangePannel(_GameUi);
+    }
+
     //Load levels
     public void ReturnToMenu()
     {
@@ -135,5 +144,6 @@ public void PanelBack()
         HideCurrnetPanel();
         SetPause(false);
         SceneManager.LoadScene(pLevelIndex);
+        ShowGameUi();
     }
 }
