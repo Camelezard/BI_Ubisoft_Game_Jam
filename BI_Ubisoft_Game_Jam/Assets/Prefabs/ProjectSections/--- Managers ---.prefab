@@ -92,23 +92,14 @@ MonoBehaviour:
   _TornadoContainer: {fileID: 0}
   waves:
   - waveName: Wave 1
-    tornadoPrefabs:
-    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
-    count: 3
-    spawnInterval: 0.1
-    timeBeforeNextWave: 5
+    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
+    timeBeforeNextWave: 15
   - waveName: Wave 2
-    tornadoPrefabs:
-    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
-    count: 5
-    spawnInterval: 0.1
-    timeBeforeNextWave: 5
+    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
+    timeBeforeNextWave: 15
   - waveName: Wave 3
-    tornadoPrefabs:
-    - {fileID: 1337112652538352724, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
-    count: 100
-    spawnInterval: 1
-    timeBeforeNextWave: 10
-  loopWaves: 1
+    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
+    timeBeforeNextWave: 15
+  loopWaves: 0
   targetCenter: {fileID: 0}
   spawnAreaSize: 80
