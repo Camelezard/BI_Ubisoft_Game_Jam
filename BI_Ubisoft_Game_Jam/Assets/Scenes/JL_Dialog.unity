@@ -307,7 +307,7 @@ MonoBehaviour:
   _backgroundPanel: {fileID: 493118644}
   _leftCharacterSprite: {fileID: 189497809}
   _rightCharacterSprite: {fileID: 24091411}
-  _dialogUIAppearTime: 0.3
+  _dialogUIAppearTime: 0.6
   _backgroundPanelAlpha: 0.39
   _dialogTextSpeed: 15
   _testDialog: {fileID: 11400000, guid: 09a2a635f44eb58409d5d7d823bf5eb4, type: 2}

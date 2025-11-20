@@ -16,4 +16,7 @@ MonoBehaviour:
     characterNames: 0
   rightCharacter:
     characterNames: 0
-  dialogList: []
+  dialogList:
+  - characterName: 0
+    dialog: Oh non feur quoicoubeh hihihihi pouet pouet bruit de barre de fer qui
+      tombe goofy cartoon sounds that's all folks !
