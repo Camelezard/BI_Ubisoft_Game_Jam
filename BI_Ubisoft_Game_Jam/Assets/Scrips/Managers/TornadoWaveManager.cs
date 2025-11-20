@@ -8,7 +8,6 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     public List<Tornado> tornadoPrefabs;
-    public bool spawnInWalls = false;
     public float spawnInterval = 0.5f;
 }
 
@@ -106,40 +105,12 @@ public class TornadoWaveManager : MonoBehaviour
 
         while (index < data.tornadoPrefabs.Count)
         {
-            // Utilise le spawn interval défini dans ton ScriptableObject !
             yield return new WaitForSecondsRealtime(data.spawnInterval);
 
             Tornado prefab = data.tornadoPrefabs[index];
             index++;
 
             Tornado tornado = Instantiate(prefab);
-
-            // Détermination de la position
-            Vector2 lCircle2D = Random.insideUnitCircle.normalized;
-            Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
-
-            Vector3 spawnPos;
-            Vector3 dir;
-
-            if (!data.spawnInWalls)
-            {
-                spawnPos = circle * spawnAreaSize;
-
-                dir = (targetCenter.position - spawnPos).normalized;
-                tornado._Direction = new Vector3(dir.x, 0, dir.z);
-            }
-            else
-            {
-                tornado.canPassAWall = false;
-
-                spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
-                //spawnPos = Vector3.zero;
-
-                dir = circle;
-                tornado._Direction = dir;
-            }
-
-            tornado.transform.position = spawnPos;
 
             // Direction
             if (tornado.TryGetComponent<Tornado>(out Tornado t))

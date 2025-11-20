@@ -13,6 +13,8 @@ public class Tornado : MonoBehaviour
     private float _TornadoLifetime = 10f;
     [SerializeField] public bool canPassAWall = true;
     [SerializeField] public bool _ChooseTotalRandomDirection = false;
+    [SerializeField] public bool _SpawnInWalls;
+    [SerializeField] public Transform target;
     public Vector3 _Direction;
     public Vector3 velocity;
 
@@ -20,7 +22,7 @@ public class Tornado : MonoBehaviour
     [SerializeField] private MeshCollider _MeshCollider;
 
     public TMP_Text _coefftext;
-    
+
     void Awake()
     {
         int tornadoLayer = LayerMask.NameToLayer("Tornados");
@@ -32,15 +34,43 @@ public class Tornado : MonoBehaviour
         ChooseInitialDirection();
         InitLifetime();
 
-        if(!_MeshCollider) _MeshCollider =  GetComponent<MeshCollider>();
+        if (!_MeshCollider) _MeshCollider = GetComponent<MeshCollider>();
         velocity = _Direction * tornadoInitialSpeed;
+
+        if (target == null)
+        {
+            target = HouseManager.Instance.RandomHouse().transform;
+        }
+
+        Vector2 lCircle2D = Random.insideUnitCircle.normalized;
+        Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
+
+        Vector3 spawnPos = Vector3.zero;
+        Vector3 dir;
+
+        if (!_SpawnInWalls)
+        {
+            spawnPos = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
+        }
+        else
+        {
+            spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
+            canPassAWall = false;
+        }
+
+        transform.position = spawnPos;
+
+        _Direction = (target.position - spawnPos).normalized;
+        velocity = _Direction * tornadoInitialSpeed;
+
+        InitLifetime();
     }
 
     private void Update()
     {
         // transform.position += _TornadoSpeed * Time.deltaTime * _Direction;
         transform.position += velocity * Time.deltaTime;
-        
+
         if (_TornadoLifetime > 0) _TornadoLifetime -= Time.deltaTime;
         else EndLifeTime();
     }
@@ -58,7 +88,7 @@ public class Tornado : MonoBehaviour
     private void ChooseInitialDirection()
     {
         Vector2 _Circle = Random.insideUnitCircle.normalized;
-        if(_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
+        if (_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -66,13 +96,13 @@ public class Tornado : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
             if (canPassAWall)
-            {   
+            {
                 _MeshCollider.isTrigger = true;
 
                 StartCoroutine(EnableWallCollisionAfterDelay());
                 return;
             }
-            
+
             if (canPassAWall) return;
 
             Vector3 normal = collision.contacts[0].normal;
@@ -81,10 +111,10 @@ public class Tornado : MonoBehaviour
         }
     }
 
-    private IEnumerator EnableWallCollisionAfterDelay() 
+    private IEnumerator EnableWallCollisionAfterDelay()
     {
         yield return new WaitForSeconds(5);
-        canPassAWall = false; 
+        canPassAWall = false;
         _MeshCollider.isTrigger = false;
     }
 
@@ -99,14 +129,14 @@ public class Tornado : MonoBehaviour
             }
         }
     }
-    
+
     public void AddVelocity(Vector3 pForce)
     {
         velocity += pForce;
-        if(velocity.magnitude > tornadoMaxSpeed)
+        if (velocity.magnitude > tornadoMaxSpeed)
         {
             Vector3 lVelocity = velocity.normalized * tornadoMaxSpeed;
             velocity = lVelocity;
-        } 
+        }
     }
 }

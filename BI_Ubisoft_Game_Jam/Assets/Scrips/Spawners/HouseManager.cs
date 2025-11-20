@@ -60,4 +60,13 @@ public class HouseManager : Singleton<HouseManager>
 
         UpdateDestroyPercentage();
     }
+
+    public House RandomHouse()
+    {
+        if (_InGameHouses.Count < 1) Debug.Log("No house in list");
+
+        int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count -1);
+
+        return _InGameHouses[lRandHouse];
+    }
 }

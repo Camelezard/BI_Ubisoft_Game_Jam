@@ -55,6 +55,8 @@ MonoBehaviour:
   _TornadoStartLifetime: 15
   canPassAWall: 1
   _ChooseTotalRandomDirection: 0
+  _SpawnInWalls: 1
+  target: {fileID: 0}
   _Direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   _LayerToIgnore:
