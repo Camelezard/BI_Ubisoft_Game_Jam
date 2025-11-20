@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -21,9 +20,18 @@ public class WaveTimeline : ScriptableObject
 
 }
 
+
+[System.Serializable]
+public class WaveDataRuntime
+{
+    public List<Tornado> tornadoPrefabs;
+    public float spawnInterval;
+}
+
 public class TornadoWaveManager : MonoBehaviour
 {
     [SerializeField] private WaveTimeline _TornadoTimeline;
+
     [Header("Container")]
     [SerializeField] private GameObject _TornadoContainer;
 
@@ -34,92 +42,99 @@ public class TornadoWaveManager : MonoBehaviour
     public Transform targetCenter;
     public float spawnAreaSize = 50f;
 
-    private float lWaveProgress = 0;
+    private float lWaveProgress = 0f;
+    private List<WaveDataRuntime> wavesRuntime;
 
-    //private float _WaveInProgress = false;
-
-    void Start()
+    private void Start()
     {
-        //StartCoroutine(WaveRoutine());
+        InitializeRuntimeWaves();
     }
 
-    void Update()
+    private void InitializeRuntimeWaves()
     {
-        if (Input.GetKeyDown(KeyCode.P)) StartCoroutine(LaunchWaveTimeline());
+        // Crée une copie runtime pour ne jamais toucher aux SO
+        wavesRuntime = new List<WaveDataRuntime>();
+        foreach (var wave in _TornadoTimeline.waves)
+        {
+            wavesRuntime.Add(new WaveDataRuntime
+            {
+                tornadoPrefabs = new List<Tornado>(wave.tornadoPrefabs),
+                spawnInterval = wave.spawnInterval
+            });
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StartCoroutine(LaunchWaveTimeline());
+        }
     }
 
     private IEnumerator LaunchWaveTimeline()
     {
-        //_WaveInProgress = true;
-
-        float elapsedTime = 0f;
-        float totalDuration = 0f;
-        lWaveProgress = 0;
-
-        int waveIndex = 0;
-
-        // Calculate total duration
-        foreach (WaveData tornadoWave in _TornadoTimeline.waves)
+        do
         {
-            totalDuration += _TornadoTimeline.timeBeforeNextWave;
-        }
+            float elapsedTime = 0f;
+            float totalDuration = _TornadoTimeline.timeBeforeNextWave * wavesRuntime.Count; // chaque wave a le même intervalle
+            lWaveProgress = 0f;
 
-        // Set first wave
-        WaveData currentWave = _TornadoTimeline.waves[waveIndex];
-        float nextWaveTime = _TornadoTimeline.timeBeforeNextWave;
+            int waveIndex = 0;
+            float nextWaveTime = _TornadoTimeline.timeBeforeNextWave;
 
-        print($"Current wave = {waveIndex + 1}");
+            // Lancer la première vague
+            StartCoroutine(LaunchAWave(wavesRuntime[waveIndex]));
+            print($"Current wave = {waveIndex + 1}");
 
-        while (elapsedTime < totalDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            lWaveProgress = elapsedTime / totalDuration;
-
-            UiManager.Instance.UpdateWaveUi(lWaveProgress);
-
-            // Check if it's time for the next wave
-            if (elapsedTime >= nextWaveTime)
+            while (elapsedTime < totalDuration)
             {
-                waveIndex++;
+                elapsedTime += Time.deltaTime;
+                lWaveProgress = elapsedTime / totalDuration;
 
-                if (waveIndex >= _TornadoTimeline.waves.Count)
-                    break;
+                if (UiManager.Instance != null)
+                    UiManager.Instance.UpdateWaveUi(lWaveProgress);
 
-                currentWave = _TornadoTimeline.waves[waveIndex];
-                nextWaveTime += _TornadoTimeline.timeBeforeNextWave;
+                // Passage à la vague suivante
+                if (elapsedTime >= nextWaveTime)
+                {
+                    waveIndex++;
+                    if (waveIndex < wavesRuntime.Count)
+                    {
+                        StartCoroutine(LaunchAWave(wavesRuntime[waveIndex]));
+                        nextWaveTime += _TornadoTimeline.timeBeforeNextWave;
+                        print($"Current wave = {waveIndex + 1} : next in {nextWaveTime}s");
+                    }
+                }
 
-                StartCoroutine(LunchAWave(currentWave));
-
-                print($"Current wave = {waveIndex + 1} : tornado to spawn = x : time to wait = {nextWaveTime}");
+                yield return null;
             }
 
-            yield return null;
-        }
+            print("WaveFinished");
 
-        print("WaveFinished");
+        } while (loopWaves);
     }
 
-    private IEnumerator LunchAWave(WaveData data)
+    private IEnumerator LaunchAWave(WaveDataRuntime data)
     {
-        int index = 0;
-
-        while (index < data.tornadoPrefabs.Count)
+        for (int i = 0; i < data.tornadoPrefabs.Count; i++)
         {
-            yield return new WaitForSecondsRealtime(data.spawnInterval);
+            Tornado prefab = data.tornadoPrefabs[i];
+            Tornado tornado = Instantiate(prefab, _TornadoContainer.transform);
 
-            Tornado prefab = data.tornadoPrefabs[index];
-            index++;
-
-            Tornado tornado = Instantiate(prefab);
-
-            // Direction
-            if (tornado.TryGetComponent<Tornado>(out Tornado t))
+            // Spawn aléatoire autour du centre
+            if (targetCenter != null)
             {
-
+                Vector3 randomPos = targetCenter.position + new Vector3(
+                    Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f),
+                    0f,
+                    Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f)
+                );
+                tornado.transform.position = randomPos;
             }
 
-            yield return null;
+            yield return new WaitForSecondsRealtime(data.spawnInterval);
         }
     }
-
 }
+

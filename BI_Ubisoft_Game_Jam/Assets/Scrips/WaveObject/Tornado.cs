@@ -1,95 +1,133 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 
 public class Tornado : MonoBehaviour
 {
+    [Header("Stats")]
     public float tornadoInitialSpeed = 10f;
     public float tornadoMaxSpeed = 10f;
-    [SerializeField] private float _TornadoDamagePerSec = 10f;
-    [SerializeField] private float _TornadoWeight = 10f;
-    [SerializeField] private float _TornadoStartLifetime = 10f;
-    private float _TornadoLifetime = 10f;
-    [SerializeField] public bool canPassAWall = true;
-    [SerializeField] public bool _ChooseTotalRandomDirection = false;
-    [SerializeField] public bool _SpawnInWalls;
-    [SerializeField] public Transform target;
-    public Vector3 _Direction;
-    public Vector3 velocity;
+    public float tornadoDamagePerSec = 10f;
+    public float startLifetime = 10f;
 
-    [SerializeField] private LayerMask _LayerToIgnore;
+    [Header("Behaviour Settings")]
+    public bool canPassAWall = true;
+    public bool randomInitialDirection = false;
+    public bool spawnInWalls = false;
+    public Vector3 target;
+
+    [Header("Runtime Data")]
+    public Vector3 direction;
+    private Vector3 velocity;
+
+    private float lifetime;
+    private bool tryToEnterWall = true;
+
+    [Header("Components")]
     [SerializeField] private MeshCollider _MeshCollider;
-
-    public TMP_Text _coefftext;
 
     void Awake()
     {
+        // Ignore collisions between tornados
         int tornadoLayer = LayerMask.NameToLayer("Tornados");
         Physics.IgnoreLayerCollision(tornadoLayer, tornadoLayer);
     }
 
     void Start()
     {
-        ChooseInitialDirection();
+        InitComponents();
+        InitTarget();
+        InitSpawnPosition();
+        InitDirection();
         InitLifetime();
+    }
 
+    void Update()
+    {
+        Move();
+        UpdateLifetime();
+        TryEnterWallCorrection();
+    }
+
+    // ------------------------------- INIT --------------------------------
+
+    private void InitComponents()
+    {
         if (!_MeshCollider) _MeshCollider = GetComponent<MeshCollider>();
-        velocity = _Direction * tornadoInitialSpeed;
+    }
 
+    private void InitTarget()
+    {
         if (target == null)
         {
-            target = HouseManager.Instance.RandomHouse().transform;
+            House lRandHouse = HouseManager.Instance.RandomHouse();
+
+            if (lRandHouse) target = lRandHouse.transform.position;
+            else target = Vector3.zero;
         }
+    }
 
-        Vector2 lCircle2D = Random.insideUnitCircle.normalized;
-        Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
-
-        Vector3 spawnPos = Vector3.zero;
-        Vector3 dir;
-
-        if (!_SpawnInWalls)
+    private void InitSpawnPosition()
+    {
+        if (!spawnInWalls)
         {
-            spawnPos = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
+            print(OutOfWallSpawnPosition.Instance.gameObject.name);
+            transform.position = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
         }
         else
         {
-            spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
+            transform.position = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
             canPassAWall = false;
+            tryToEnterWall = false;
+        }
+    }
+
+    private void InitDirection()
+    {
+        if (randomInitialDirection)
+        {
+            Vector2 rnd = Random.insideUnitCircle.normalized;
+            direction = new Vector3(rnd.x, 0, rnd.y);
+        }
+        else
+        {
+            direction = (target - transform.position).normalized;
+            direction.y = 0;
         }
 
-        transform.position = spawnPos;
-
-        _Direction = (target.position - spawnPos).normalized;
-        velocity = _Direction * tornadoInitialSpeed;
-
-        InitLifetime();
-    }
-
-    private void Update()
-    {
-        // transform.position += _TornadoSpeed * Time.deltaTime * _Direction;
-        transform.position += velocity * Time.deltaTime;
-
-        if (_TornadoLifetime > 0) _TornadoLifetime -= Time.deltaTime;
-        else EndLifeTime();
-    }
-
-    private void EndLifeTime()
-    {
-        Destroy(gameObject);
+        velocity = direction * tornadoInitialSpeed;
     }
 
     private void InitLifetime()
     {
-        _TornadoLifetime = _TornadoStartLifetime;
+        lifetime = startLifetime;
     }
 
-    private void ChooseInitialDirection()
+    // ------------------------------- UPDATE --------------------------------
+
+    private void Move()
     {
-        Vector2 _Circle = Random.insideUnitCircle.normalized;
-        if (_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
+        transform.position += velocity * Time.deltaTime;
     }
+
+    private void UpdateLifetime()
+    {
+        lifetime -= Time.deltaTime;
+        if (lifetime <= 0) Destroy(gameObject);
+    }
+
+    private void TryEnterWallCorrection()
+    {
+        // if (tryToEnterWall)
+        // {
+        //     velocity += direction * 0.01f;
+
+        //     if (velocity.magnitude > tornadoMaxSpeed)
+        //         velocity = velocity.normalized * tornadoMaxSpeed;
+        // }
+    }
+
+    // ---------------------------- COLLISIONS -------------------------------
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -97,46 +135,48 @@ public class Tornado : MonoBehaviour
         {
             if (canPassAWall)
             {
-                _MeshCollider.isTrigger = true;
+                Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true);
 
-                StartCoroutine(EnableWallCollisionAfterDelay());
-                return;
+                StartCoroutine(ReactivateWallColision(collision));
             }
-
-            if (canPassAWall) return;
-
-            Vector3 normal = collision.contacts[0].normal;
-            velocity = Vector3.Reflect(velocity, normal);
-            velocity.y = 0f;
+            else
+            {
+                Vector3 normal = collision.contacts[0].normal;
+                velocity = Vector3.Reflect(velocity, normal);
+                velocity.y = 0f;
+            }
         }
-    }
 
-    private IEnumerator EnableWallCollisionAfterDelay()
-    {
-        yield return new WaitForSeconds(5);
-        canPassAWall = false;
-        _MeshCollider.isTrigger = false;
+
     }
 
     private void OnTriggerStay(Collider other)
     {
-        House l_House = other.GetComponent<House>();
-        if (l_House)
+        House house = other.GetComponent<House>();
+        if (house != null)
         {
-            if (l_House != null)
-            {
-                l_House.TakeDamage(_TornadoDamagePerSec * Time.deltaTime);
-            }
+            house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
         }
     }
 
-    public void AddVelocity(Vector3 pForce)
+
+    public void AddVelocity(Vector3 force)
     {
-        velocity += pForce;
+        velocity += force;
+
         if (velocity.magnitude > tornadoMaxSpeed)
-        {
-            Vector3 lVelocity = velocity.normalized * tornadoMaxSpeed;
-            velocity = lVelocity;
-        }
+            velocity = velocity.normalized * tornadoMaxSpeed;
+    }
+
+    private IEnumerator ReactivateWallColision(Collision pCollision)
+    {
+        yield return new WaitForSeconds(1);
+
+        canPassAWall = false;
+        tryToEnterWall = false;
+
+        Physics.IgnoreCollision(pCollision.collider, _MeshCollider, false);
+
+        print("ggoe");
     }
 }

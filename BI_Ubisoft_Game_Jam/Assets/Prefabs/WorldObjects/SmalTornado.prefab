@@ -50,20 +50,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 10
   tornadoMaxSpeed: 20
-  _TornadoDamagePerSec: 5
-  _TornadoWeight: 10
-  _TornadoStartLifetime: 15
-  canPassAWall: 1
-  _ChooseTotalRandomDirection: 0
-  _SpawnInWalls: 1
+  tornadoDamagePerSec: 10
+  startLifetime: 10
+  canPassAWall: 0
+  randomInitialDirection: 0
+  spawnInWalls: 1
   target: {fileID: 0}
-  _Direction: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  _LayerToIgnore:
-    serializedVersion: 2
-    m_Bits: 256
+  direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
-  _coefftext: {fileID: 4576783769614831832}
 --- !u!64 &1073194208220770048
 MeshCollider:
   m_ObjectHideFlags: 0

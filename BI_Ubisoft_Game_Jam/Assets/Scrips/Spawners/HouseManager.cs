@@ -11,7 +11,7 @@ public class HouseManager : Singleton<HouseManager>
 
     private float _SmallDestroyPercentage = 0;
     private float _DestroyPercentage = 0;
-        
+
 
 
     private List<House> _InGameHouses = new List<House>();
@@ -33,7 +33,7 @@ public class HouseManager : Singleton<HouseManager>
         print(_SmallDestroyPercentage);
 
         //UiManager.Instance.UpdateDestroyUi(_SmallDestroyPercentage);
-        _DestroyPercentage = _SmallDestroyPercentage*100;
+        _DestroyPercentage = _SmallDestroyPercentage * 100;
 
         if (_DestroyPercentage > _MaxPercentageOfDestruction) UiManager.Instance.TriggerDefeat();
     }
@@ -63,10 +63,7 @@ public class HouseManager : Singleton<HouseManager>
 
     public House RandomHouse()
     {
-        if (_InGameHouses.Count < 1) Debug.Log("No house in list");
-
-        int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count -1);
-
+        int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count - 1);
         return _InGameHouses[lRandHouse];
     }
 }
