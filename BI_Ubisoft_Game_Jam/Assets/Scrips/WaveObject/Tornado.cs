@@ -176,7 +176,5 @@ public class Tornado : MonoBehaviour
         tryToEnterWall = false;
 
         Physics.IgnoreCollision(pCollision.collider, _MeshCollider, false);
-
-        print("ggoe");
     }
 }
