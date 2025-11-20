@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: testobject
       value: 
       objectReference: {fileID: 2142650037}
+    - target: {fileID: 6610959212483990180, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7219999612065260763, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: _sourceObject
       value: 
@@ -537,6 +541,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6694811280183540300, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939337513329912553, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7873198598466655061, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
@@ -1028,6 +1036,10 @@ PrefabInstance:
       propertyPath: targetCenter
       value: 
       objectReference: {fileID: 1681469969}
+    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
+      propertyPath: _TornadoTimeline
+      value: 
+      objectReference: {fileID: 11400000, guid: 05cc01845b8bf834cb5b1664195a3f59, type: 2}
     - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _TornadoContainer
       value: 

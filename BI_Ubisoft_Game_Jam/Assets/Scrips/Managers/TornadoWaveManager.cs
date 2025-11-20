@@ -12,28 +12,29 @@ public class TornadoData : ScriptableObject
     public float spawnInterval = 0.5f;
 }
 
-[System.Serializable]
-public class TornadoWave
+[CreateAssetMenu(fileName = "TornadoWave")]
+public class TornadoWave : ScriptableObject
 {
     public string waveName = "Wave";
-    public TornadoData tornadoSerializedObject;
+    //public TornadoData tornadoSerializedObject;
     public float timeBeforeNextWave = 2f;
+    public List<TornadoData> waves;
+
 }
 
 public class TornadoWaveManager : MonoBehaviour
 {
+    [SerializeField] private TornadoWave _TornadoTimeline;
     [Header("Container")]
     [SerializeField] private GameObject _TornadoContainer;
 
     [Header("Waves Configuration")]
-    public List<TornadoWave> waves;
     public bool loopWaves;
 
     [Header("Spawn Settings")]
     public Transform targetCenter;
     public float spawnAreaSize = 50f;
 
-    private int _CurrentWaveIndex = 0;
     private float lWaveProgress = 0;
 
     //private float _WaveInProgress = false;
@@ -59,14 +60,14 @@ public class TornadoWaveManager : MonoBehaviour
         int waveIndex = 0;
 
         // Calculate total duration
-        foreach (TornadoWave tornadoWave in waves)
+        foreach (TornadoData tornadoWave in _TornadoTimeline.waves)
         {
-            totalDuration += tornadoWave.timeBeforeNextWave;
+            totalDuration += _TornadoTimeline.timeBeforeNextWave;
         }
 
         // Set first wave
-        TornadoWave currentWave = waves[waveIndex];
-        float nextWaveTime = currentWave.timeBeforeNextWave;
+        TornadoData currentWave = _TornadoTimeline.waves[waveIndex];
+        float nextWaveTime = _TornadoTimeline.timeBeforeNextWave;
 
         print($"Current wave = {waveIndex + 1}");
 
@@ -82,11 +83,11 @@ public class TornadoWaveManager : MonoBehaviour
             {
                 waveIndex++;
 
-                if (waveIndex >= waves.Count)
+                if (waveIndex >= _TornadoTimeline.waves.Count)
                     break;
 
-                currentWave = waves[waveIndex];
-                nextWaveTime += currentWave.timeBeforeNextWave;
+                currentWave = _TornadoTimeline.waves[waveIndex];
+                nextWaveTime += _TornadoTimeline.timeBeforeNextWave;
 
                 StartCoroutine(LunchAWave(currentWave));
 
@@ -99,9 +100,8 @@ public class TornadoWaveManager : MonoBehaviour
         print("WaveFinished");
     }
 
-    private IEnumerator LunchAWave(TornadoWave pWave)
+    private IEnumerator LunchAWave(TornadoData data)
     {
-        TornadoData data = pWave.tornadoSerializedObject;
         int index = 0;
 
         while (index < data.tornadoPrefabs.Count)
