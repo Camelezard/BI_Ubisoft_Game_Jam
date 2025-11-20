@@ -4,27 +4,27 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "TornadoData")]
-public class TornadoData : ScriptableObject
+[CreateAssetMenu(fileName = "WaveData")]
+public class WaveData : ScriptableObject
 {
     public List<Tornado> tornadoPrefabs;
     public bool spawnInWalls = false;
     public float spawnInterval = 0.5f;
 }
 
-[CreateAssetMenu(fileName = "TornadoWave")]
-public class TornadoWave : ScriptableObject
+[CreateAssetMenu(fileName = "WaveTimeline")]
+public class WaveTimeline : ScriptableObject
 {
     public string waveName = "Wave";
     //public TornadoData tornadoSerializedObject;
     public float timeBeforeNextWave = 2f;
-    public List<TornadoData> waves;
+    public List<WaveData> waves;
 
 }
 
 public class TornadoWaveManager : MonoBehaviour
 {
-    [SerializeField] private TornadoWave _TornadoTimeline;
+    [SerializeField] private WaveTimeline _TornadoTimeline;
     [Header("Container")]
     [SerializeField] private GameObject _TornadoContainer;
 
@@ -60,13 +60,13 @@ public class TornadoWaveManager : MonoBehaviour
         int waveIndex = 0;
 
         // Calculate total duration
-        foreach (TornadoData tornadoWave in _TornadoTimeline.waves)
+        foreach (WaveData tornadoWave in _TornadoTimeline.waves)
         {
             totalDuration += _TornadoTimeline.timeBeforeNextWave;
         }
 
         // Set first wave
-        TornadoData currentWave = _TornadoTimeline.waves[waveIndex];
+        WaveData currentWave = _TornadoTimeline.waves[waveIndex];
         float nextWaveTime = _TornadoTimeline.timeBeforeNextWave;
 
         print($"Current wave = {waveIndex + 1}");
@@ -100,7 +100,7 @@ public class TornadoWaveManager : MonoBehaviour
         print("WaveFinished");
     }
 
-    private IEnumerator LunchAWave(TornadoData data)
+    private IEnumerator LunchAWave(WaveData data)
     {
         int index = 0;
 
