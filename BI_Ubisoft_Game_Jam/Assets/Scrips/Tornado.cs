@@ -11,7 +11,7 @@ public class Tornado : MonoBehaviour
     [SerializeField] private float _TornadoWeight = 10f;
     [SerializeField] private float _TornadoStartLifetime = 10f;
     private float _TornadoLifetime = 10f;
-    [SerializeField] public bool _CanPassAWall = true;
+    [SerializeField] public bool canPassAWall = true;
     [SerializeField] public bool _ChooseTotalRandomDirection = false;
     public Vector3 _Direction;
     public Vector3 velocity;
@@ -65,7 +65,7 @@ public class Tornado : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
-            if (_CanPassAWall)
+            if (canPassAWall)
             {   
                 _MeshCollider.isTrigger = true;
 
@@ -73,7 +73,7 @@ public class Tornado : MonoBehaviour
                 return;
             }
             
-            if (_CanPassAWall) return;
+            if (canPassAWall) return;
 
             Vector3 normal = collision.contacts[0].normal;
             velocity = Vector3.Reflect(velocity, normal);
@@ -84,7 +84,7 @@ public class Tornado : MonoBehaviour
     private IEnumerator EnableWallCollisionAfterDelay() 
     {
         yield return new WaitForSeconds(5);
-        _CanPassAWall = false; 
+        canPassAWall = false; 
         _MeshCollider.isTrigger = false;
     }
 

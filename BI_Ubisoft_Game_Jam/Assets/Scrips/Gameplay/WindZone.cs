@@ -19,7 +19,7 @@ public class WindZone : MonoBehaviour
     private void RemoveNullTornados()
     {
         int lCount = _tornadosInRange.Count;
-        for (int i = 0; i < lCount; i++)
+        for (int i = lCount - 1; i >= 0; i--)
         {
             if (_tornadosInRange[i] == null) _tornadosInRange.RemoveAt(i);
         }
@@ -33,7 +33,15 @@ public class WindZone : MonoBehaviour
         for (int i = 0; i < lCount; i++)
         {
             lTornado = _tornadosInRange[i];
-            lCoeff = 1f - Vector3.Distance(transform.position, lTornado.transform.position) / Vector3.Distance(transform.position, _coneTip.position);
+            lCoeff = 1f - Vector3.Distance(Vector3.ProjectOnPlane(transform.position, Vector3.up), 
+                Vector3.ProjectOnPlane(lTornado.transform.position, Vector3.up)) / Vector3.Distance(transform.position, _coneTip.position);
+                
+            if(lCoeff < 0f)
+            {
+                // print("lCoeff inférieur à zero : " + lCoeff);
+                continue;
+            }
+            
             lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
                 * lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
 

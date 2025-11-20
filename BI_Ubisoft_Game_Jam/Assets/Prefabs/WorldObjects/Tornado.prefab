@@ -52,7 +52,7 @@ MonoBehaviour:
   tornadoMaxSpeed: 20
   _TornadoDamagePerSec: 10
   _TornadoWeight: 10
-  _TornadoStartLifetime: 30
+  _TornadoStartLifetime: 15
   _CanPassAWall: 1
   _ChooseTotalRandomDirection: 0
   _Direction: {x: 0, y: 0, z: 0}

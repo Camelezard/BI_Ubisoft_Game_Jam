@@ -212,8 +212,8 @@ MonoBehaviour:
   _cameraRayLayer:
     serializedVersion: 2
     m_Bits: 64
-  _rotationCap: 90
-  _maxRotationSpeed: 90
+  _rotationCap: 360
+  _maxRotationSpeed: 180
   _windZone: {fileID: 4898323427440742084}
   testobject: {fileID: 0}
 --- !u!1 &4960643387955447680
