@@ -55,7 +55,6 @@ public class HouseManager : Singleton<HouseManager>
         if (_InGameHouses.Contains(pHouse) && !_DestroyHouse.Contains(pHouse))
         {
             _DestroyHouse.Add(pHouse);
-            print(pHouse);
         }
         else print("imposible d'ajouter house");
 
