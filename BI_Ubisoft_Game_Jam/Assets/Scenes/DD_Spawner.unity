@@ -362,6 +362,10 @@ PrefabInstance:
       propertyPath: _sourceObject
       value: 
       objectReference: {fileID: 2143103805}
+    - target: {fileID: 3977885577519987747, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: _TornadoSpawnerContainer
+      value: 
+      objectReference: {fileID: 1400390915}
     - target: {fileID: 4313542046717150619, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -405,6 +409,14 @@ PrefabInstance:
     - target: {fileID: 5637437072928226986, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: m_Name
       value: --- Game ---
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921077871858044665, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: testobject
+      value: 
+      objectReference: {fileID: 1178606938}
+    - target: {fileID: 7219999612065260763, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: _sourceObject
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -811,6 +823,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400390915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5680885334049752108, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+  m_PrefabInstance: {fileID: 212805469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1513716198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4602914057701196852, guid: d46362acc7b45ca47b26ff6474817982, type: 3}

@@ -115,8 +115,8 @@ public class TornadoWaveManager : MonoBehaviour
             Tornado tornado = Instantiate(prefab);
 
             // Détermination de la position
-            Vector2 circle2D = Random.insideUnitCircle.normalized;
-            Vector3 circle = new Vector3(circle2D.x, 0, circle2D.y);
+            Vector2 lCircle2D = Random.insideUnitCircle.normalized;
+            Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
 
             Vector3 spawnPos;
             Vector3 dir;
@@ -132,7 +132,8 @@ public class TornadoWaveManager : MonoBehaviour
             {
                 tornado.canPassAWall = false;
 
-                spawnPos = Vector3.zero;
+                spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
+                //spawnPos = Vector3.zero;
 
                 dir = circle;
                 tornado._Direction = dir;

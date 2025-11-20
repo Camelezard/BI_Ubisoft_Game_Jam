@@ -185,10 +185,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: loopWaves
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: targetCenter
       value: 
       objectReference: {fileID: 581691256}
@@ -196,34 +192,6 @@ PrefabInstance:
       propertyPath: _TornadoContainer
       value: 
       objectReference: {fileID: 1988770555}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[2].count
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[0].spawnInterval
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[1].spawnInterval
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[2].spawnInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[0].timeBeforeNextWave
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[1].timeBeforeNextWave
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991656961400846088, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
-      propertyPath: waves.Array.data[2].timeBeforeNextWave
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 5174459580104177802, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: m_Name
       value: --- Managers --- (1)
@@ -398,6 +366,10 @@ PrefabInstance:
       propertyPath: _sourceObject
       value: 
       objectReference: {fileID: 2143103805}
+    - target: {fileID: 3977885577519987747, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: _TornadoSpawnerContainer
+      value: 
+      objectReference: {fileID: 1988770555}
     - target: {fileID: 4313542046717150619, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -442,6 +414,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: --- Game ---
       objectReference: {fileID: 0}
+    - target: {fileID: 5921077871858044665, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: testobject
+      value: 
+      objectReference: {fileID: 1178606938}
+    - target: {fileID: 7219999612065260763, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: _sourceObject
+      value: 
+      objectReference: {fileID: 2143103805}
     - target: {fileID: 7949169253273083673, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: m_Enabled
       value: 0
