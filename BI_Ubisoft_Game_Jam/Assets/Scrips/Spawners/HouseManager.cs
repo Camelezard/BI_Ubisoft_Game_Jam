@@ -38,7 +38,7 @@ public class HouseManager : Singleton<HouseManager>
         if (_DestroyPercentage > _MaxPercentageOfDestruction) UiManager.Instance.TriggerDefeat();
     }
 
-    public void RepairingHouseInList(House pHouse)
+    public void AddHouseInList(House pHouse)
     {
         if (!_InGameHouses.Contains(pHouse))
         {
@@ -52,13 +52,15 @@ public class HouseManager : Singleton<HouseManager>
 
     public void DestroyHouseInList(House pHouse)
     {
-        if (_InGameHouses.Contains(pHouse) && !_DestroyHouse.Contains(pHouse))
-        {
-            _DestroyHouse.Add(pHouse);
-        }
-        else print("imposible d'ajouter house");
 
-        UpdateDestroyPercentage();
+        if (_InGameHouses.Contains(pHouse))
+        {
+            _InGameHouses.Remove(pHouse);
+        }
+        else
+        {
+            Debug.Log("pas ed maison dans la list");
+        }
     }
 
     public House RandomHouse()

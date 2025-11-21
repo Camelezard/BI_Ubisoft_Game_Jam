@@ -3,51 +3,53 @@ using UnityEngine;
 public class Cell
 {
     public Vector2Int gridPos;
-    public GameObject content;
+    public House content;
 }
 
-[ExecuteAlways]
 public class Grid : MonoBehaviour
 {
+    [SerializeField] public House _HousPrefab;
     [Header("Grid Settings")]
     public int width = 10;
     public int height = 10;
     public float cellSize = 1f;
 
-    private Cell[,] grid;
+    private Cell[,] _Grid;
 
     private void OnValidate()
     {
         GenerateGrid();
     }
 
-    [SerializeField] public GameObject prefab;
+    void Start()
+    {
+
+        ConstructHome(new Vector2Int (3,4));
+        ConstructHome(new Vector2Int (4,3));
+        ConstructHome(new Vector2Int (4,4)); 
+        ConstructHome(new Vector2Int (4,5)); 
+        ConstructHome(new Vector2Int (5,4));
+    }
+
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePos = GetMouseWorldPosition();
-            Vector2Int cell = WorldToCell(mousePos);
-
-            if (IsCellFree(cell.x, cell.y))
-            {
-                GameObject obj = Instantiate(prefab);
-                PlaceObject(obj, cell.x, cell.y);
-            }
+            ConstructHome(GetMouseWorldPosition());
         }
     }
 
 
     private void GenerateGrid()
     {
-        grid = new Cell[width, height];
+        _Grid = new Cell[width, height];
 
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                grid[x, y] = new Cell
+                _Grid[x, y] = new Cell
                 {
                     gridPos = new Vector2Int(x, y),
                     content = null
@@ -60,16 +62,16 @@ public class Grid : MonoBehaviour
 
     private Vector3 GetGridOrigin()
     {
-        float offsetX = (width * cellSize) * 0.5f;
-        float offsetY = (height * cellSize) * 0.5f;
+        float lOffsetX = (width * cellSize) * 0.5f;
+        float lOffsetY = (height * cellSize) * 0.5f;
 
-        return transform.position - new Vector3(offsetX, 0, offsetY);
+        return transform.position - new Vector3(lOffsetX, 0, lOffsetY);
     }
 
     public Vector3 CellToWorld(int x, int y)
     {
-        Vector3 origin = GetGridOrigin();
-        return origin + new Vector3(x * cellSize + cellSize * 0.5f, 0f, y * cellSize + cellSize * 0.5f);
+        Vector3 lOrigin = GetGridOrigin();
+        return lOrigin + new Vector3(x * cellSize + cellSize * 0.5f, 0f, y * cellSize + cellSize * 0.5f);
     }
 
     public Vector2Int WorldToCell(Vector3 worldPos)
@@ -85,12 +87,12 @@ public class Grid : MonoBehaviour
 
     public static Vector3 GetMouseWorldPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane ground = new Plane(Vector3.up, Vector3.zero); 
+        Ray lRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane lGround = new Plane(Vector3.up, Vector3.zero);
 
-        if (ground.Raycast(ray, out float distance))
+        if (lGround.Raycast(lRay, out float distance))
         {
-            return ray.GetPoint(distance);
+            return lRay.GetPoint(distance);
         }
 
         return Vector3.zero;
@@ -105,15 +107,40 @@ public class Grid : MonoBehaviour
     public bool IsCellFree(int x, int y)
     {
         if (!IsInsideGrid(x, y)) return false;
-        return grid[x, y].content == null;
+        return _Grid[x, y].content == null;
     }
 
-    public bool PlaceObject(GameObject obj, int x, int y)
+    private void ConstructHome(Vector3 pCellPos)
+    {
+        House _House;
+        Vector2Int lCellInGridPos = WorldToCell(pCellPos);
+
+        if (IsCellFree(lCellInGridPos.x, lCellInGridPos.y))
+        {
+            _House = Instantiate(_HousPrefab);
+            HouseManager.Instance.AddHouseInList(_House);
+            PlaceHouse(_House, lCellInGridPos.x, lCellInGridPos.y);
+        }
+    }
+
+    private void ConstructHome(Vector2Int pCellPos)
+    {
+        House _House;
+        if (IsCellFree(pCellPos.x, pCellPos.y))
+        {
+
+            _House = Instantiate(_HousPrefab);
+            HouseManager.Instance.AddHouseInList(_House);
+            PlaceHouse(_House, pCellPos.x, pCellPos.y);
+        }
+    }
+
+    public bool PlaceHouse(House _House, int x, int y)
     {
         if (!IsCellFree(x, y)) return false;
 
-        obj.transform.position = CellToWorld(x, y);
-        grid[x, y].content = obj;
+        _House.transform.position = CellToWorld(x, y);
+        _Grid[x, y].content = _House;
         return true;
     }
 
@@ -121,16 +148,17 @@ public class Grid : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (grid == null) return;
+        if (_Grid == null) return;
 
+        Vector3 lPos;
         Gizmos.color = Color.yellow;
 
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                Vector3 pos = CellToWorld(x, y);
-                Gizmos.DrawWireCube(pos, Vector3.one * cellSize);
+                lPos = CellToWorld(x, y);
+                Gizmos.DrawWireCube(lPos, Vector3.one * cellSize);
             }
         }
 

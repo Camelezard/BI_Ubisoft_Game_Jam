@@ -89,17 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f9341cb485b7f4cbd04c7127fb50b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TornadoContainer: {fileID: 0}
-  waves:
-  - waveName: Wave 1
-    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextWave: 2
-  - waveName: Wave 2
-    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextWave: 5
-  - waveName: Wave 3
-    tornadoSerializedObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextWave: 7
-  loopWaves: 0
+  _tornadoTimeline: {fileID: 11400000, guid: 8871c2677c8a4084ab7eb4bee9de8c11, type: 2}
+  _tornadoContainer: {fileID: 0}
   targetCenter: {fileID: 0}
   spawnAreaSize: 80
