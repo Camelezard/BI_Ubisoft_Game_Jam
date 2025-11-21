@@ -47,7 +47,13 @@ public class UiManager : SingletonPersistent<UiManager>
         foreach (Transform child in _PanelContainer.transform)
         {
             GameObject lCheckedPanel = child.gameObject;
-
+            
+            if(lCheckedPanel.TryGetComponent(out DialogManager lDialogManager))
+            {
+                lDialogManager.gameObject.SetActive(true);
+                continue;
+            }
+            
             if (_ActifPanel == null && lCheckedPanel.activeInHierarchy)
             {
                 _ActifPanel = lCheckedPanel;
