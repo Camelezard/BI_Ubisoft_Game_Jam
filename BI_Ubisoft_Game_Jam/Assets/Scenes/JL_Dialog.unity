@@ -310,6 +310,8 @@ MonoBehaviour:
   _dialogUIAppearTime: 0.6
   _backgroundPanelAlpha: 0.39
   _dialogTextSpeed: 15
+  _sethSprite: {fileID: 21300000, guid: 9e0c7b4a05c66b841864934d46fbae9b, type: 3}
+  _osirisSprite: {fileID: 21300000, guid: 7670ee41f7b82814899b0b7dcd9700a6, type: 3}
   _testDialog: {fileID: 11400000, guid: 09a2a635f44eb58409d5d7d823bf5eb4, type: 2}
 --- !u!1001 &86530926
 PrefabInstance:

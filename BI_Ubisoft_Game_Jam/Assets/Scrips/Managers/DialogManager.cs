@@ -18,12 +18,17 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private float _backgroundPanelAlpha = 0.39f;
     [SerializeField] private int _dialogTextSpeed = 15;
     
+    [Header("Resources")]
+    [SerializeField] private Sprite _sethSprite;
+    [SerializeField] private Sprite _osirisSprite;
+    
     [SerializeField] private DialogSO _testDialog;
     
     private Coroutine _coroutineDialogUI;
     private Coroutine _coroutineDialogText;
     private DialogSO _currentDialogSO;
     private int _dialogIndex = -1;
+    private bool _currentDialogOver = false;
     
     private const string DIALOG_FORWARD = "DialogForward";
     private InputAction _dialogForward;
@@ -65,6 +70,7 @@ public class DialogManager : MonoBehaviour
         _dialogBoxText.text = string.Empty;
         LaunchDialogSO(_testDialog);
         _dialogForward = InputManager.instance.GetInputAction(DIALOG_FORWARD);
+        _dialogForward.performed += ctx => OnDialogForward();
     }
     
     public void LaunchDialogSO(DialogSO pDialog)
@@ -76,11 +82,17 @@ public class DialogManager : MonoBehaviour
         }
         
         _currentDialogSO = pDialog;
-        _dialogNameLeftText.text = pDialog.leftCharacter.ToString();
-        _dialogNameRightText.text = pDialog.rightCharacter.ToString();
+        ManageCharacterObjects();
         
         EraseCoroutine(_coroutineDialogUI);
         _coroutineDialogUI = StartCoroutine(DialogUIAppear());
+    }
+    
+    private void EndDialogSO()
+    {
+        EraseCoroutine(_coroutineDialogUI);
+        _coroutineDialogUI = StartCoroutine(DialogUIDisappear());
+        _currentDialogSO = null;
     }
     
     private IEnumerator DialogUIAppear()
@@ -104,6 +116,22 @@ public class DialogManager : MonoBehaviour
         yield return null;
     }
     
+    private IEnumerator DialogUIDisappear()
+    {
+        float lElapsedTime = 0f;
+        
+        while (lElapsedTime < _dialogUIAppearTime)
+        {
+            lElapsedTime += Time.deltaTime;
+            _container.alpha = 1f - lElapsedTime / _dialogUIAppearTime;
+            yield return new WaitForEndOfFrame();
+        }
+        
+        _container.alpha = 0f;
+        
+        yield return null;
+    }
+    
     private IEnumerator DialogTextAppear()
     {
         if(_dialogTextSpeed <= 0f)
@@ -113,6 +141,7 @@ public class DialogManager : MonoBehaviour
             yield return null;
         }
         
+        _currentDialogOver = false;
         _dialogIndex++;
         float lElapsedTime = 0f;
         int lTotalTextLength = _currentDialogSO.dialogList[_dialogIndex].dialog.Length;
@@ -135,12 +164,79 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         
+        _currentDialogOver = true;
+        
         yield return null;
+    }
+    
+    private void OnDialogForward()
+    {
+        if(_currentDialogSO == null ||_coroutineDialogText == null) return;
+        EraseCoroutine(_coroutineDialogText);
+        if(!_currentDialogOver)
+        {
+            _dialogBoxText.text = _currentDialogSO.dialogList[_dialogIndex].dialog;
+            _currentDialogOver = true;
+        }
+        else
+        {
+            if(_dialogIndex < _currentDialogSO.dialogList.Count - 1) _coroutineDialogText = StartCoroutine(DialogTextAppear());
+            else EndDialogSO();
+        }
+    }
+    
+    private void ManageCharacterObjects()
+    {
+        if(_currentDialogSO.leftCharacter != CharacterNames.None)
+        {
+            _dialogNameLeftText.transform.parent.gameObject.SetActive(true);
+            _dialogNameLeftText.text = _currentDialogSO.leftCharacter.ToString();
+            _leftCharacterSprite.gameObject.SetActive(true);
+            SetCharacterSprite(_leftCharacterSprite, _currentDialogSO.leftCharacter);
+        }
+        else
+        {
+            _leftCharacterSprite.gameObject.SetActive(false);
+            _dialogNameLeftText.transform.parent.gameObject.SetActive(false);
+        }
+        
+        if(_currentDialogSO.rightCharacter != CharacterNames.None)
+        {
+            _rightCharacterSprite.gameObject.SetActive(true);
+            _dialogNameRightText.transform.parent.gameObject.SetActive(true);
+            _dialogNameRightText.text = _currentDialogSO.rightCharacter.ToString();
+            SetCharacterSprite(_rightCharacterSprite, _currentDialogSO.rightCharacter);
+        }
+        else
+        {
+            _rightCharacterSprite.gameObject.SetActive(false);
+            _dialogNameRightText.transform.parent.gameObject.SetActive(false);
+        }
+    }
+    
+    private void SetCharacterSprite(Image pImage, CharacterNames pName)
+    {
+        switch (pName)
+        {
+            case CharacterNames.Seth :
+                pImage.sprite = _sethSprite;
+                break;
+            case CharacterNames.Osiris :
+                pImage.sprite = _osirisSprite;
+                break;
+            default:
+                break;
+        }
     }
     
     private void EraseCoroutine(Coroutine pCoroutine)
     {
         if(pCoroutine != null) StopCoroutine(pCoroutine);
         pCoroutine = null;
+    }
+    
+    private void OnDestroy()
+    {
+        _dialogForward.performed -= ctx => OnDialogForward();
     }
 }
