@@ -1,9 +1,15 @@
 using UnityEngine;
 
+public enum CharacterSide
+{
+    leftCharacter,
+    rightCharacter
+}
+
 [System.Serializable]
 public class DialogBox
 {
-    public CharacterNames characterName;
+    public CharacterSide characterSide;
     
     [TextArea] public string dialog;
 }
