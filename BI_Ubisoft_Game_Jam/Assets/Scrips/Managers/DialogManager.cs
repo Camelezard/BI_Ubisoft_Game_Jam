@@ -23,7 +23,7 @@ public class DialogManager : MonoBehaviour
     [Header("Game Feel")]
     [SerializeField] private Color _baseCharColor;
     [SerializeField] private Color _notTalkingCharColor;
-    [SerializeField] private float _talkingScaleIncrease = 1.1f;
+    [SerializeField, Range(1f, 1.5f)] private float _talkingScaleIncrease = 1.1f;
     [SerializeField] private float _talkingScaleIncreaseTime = 0.3f;
     
     [Header("Resources")]
