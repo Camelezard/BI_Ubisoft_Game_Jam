@@ -9,7 +9,9 @@ public class DialogManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private CanvasGroup _container;
     [SerializeField] private TMP_Text _dialogNameLeftText;
-    [SerializeField] private TMP_Text _dialogNameRightText; 
+    [SerializeField] private TMP_Text _dialogNameRightText;
+    [SerializeField] private Image _dialogNameLeft;
+    [SerializeField] private Image _dialogNameRight;
     [SerializeField] private TMP_Text _dialogBoxText;
     [SerializeField] private Image _backgroundPanel, _leftCharacterSprite, _rightCharacterSprite;
     
@@ -17,6 +19,12 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private float _dialogUIAppearTime = 0.3f;
     [SerializeField] private float _backgroundPanelAlpha = 0.39f;
     [SerializeField] private int _dialogTextSpeed = 15;
+    
+    [Header("Game Feel")]
+    [SerializeField] private Color _baseCharColor;
+    [SerializeField] private Color _notTalkingCharColor;
+    [SerializeField] private float _talkingScaleIncrease = 1.1f;
+    [SerializeField] private float _talkingScaleIncreaseTime = 0.3f;
     
     [Header("Resources")]
     [SerializeField] private Sprite _sethSprite;
@@ -26,6 +34,7 @@ public class DialogManager : MonoBehaviour
     
     private Coroutine _coroutineDialogUI;
     private Coroutine _coroutineDialogText;
+    private Coroutine _coroutineCharacterTalk;
     private DialogSO _currentDialogSO;
     private int _dialogIndex = -1;
     private bool _currentDialogOver = false;
@@ -68,9 +77,8 @@ public class DialogManager : MonoBehaviour
     {
         _container.alpha = 0f;
         _dialogBoxText.text = string.Empty;
-        LaunchDialogSO(_testDialog);
         _dialogForward = InputManager.instance.GetInputAction(DIALOG_FORWARD);
-        _dialogForward.performed += ctx => OnDialogForward();
+        // LaunchDialogSO(_testDialog);
     }
     
     public void LaunchDialogSO(DialogSO pDialog)
@@ -80,6 +88,8 @@ public class DialogManager : MonoBehaviour
             Debug.LogError("DialogSO null reference");
             return;
         }
+        
+        _dialogForward.performed += ctx => OnDialogForward();
         
         _currentDialogSO = pDialog;
         ManageCharacterObjects();
@@ -93,11 +103,18 @@ public class DialogManager : MonoBehaviour
         EraseCoroutine(_coroutineDialogUI);
         _coroutineDialogUI = StartCoroutine(DialogUIDisappear());
         _currentDialogSO = null;
+        
+        _dialogForward.performed -= ctx => OnDialogForward();
     }
     
     private IEnumerator DialogUIAppear()
     {
         float lElapsedTime = 0f;
+        
+        ResizeCharacterSprites();
+        
+        EraseCoroutine(_coroutineCharacterTalk);
+        _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
         
         while (lElapsedTime < _dialogUIAppearTime)
         {
@@ -149,6 +166,9 @@ public class DialogManager : MonoBehaviour
         int lTextLength;
         string lCurrentText;
         
+        EraseCoroutine(_coroutineCharacterTalk);
+        _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
+        
         while (lElapsedTime < lTotalTime)
         {
             lElapsedTime += Time.deltaTime;
@@ -167,6 +187,38 @@ public class DialogManager : MonoBehaviour
         _currentDialogOver = true;
         
         yield return null;
+    }
+    
+    private IEnumerator CharacterTalkVisualCoroutine()
+    {
+        float lElapsedTime = 0f;
+        int lDialogIndex = _dialogIndex < 0 ? 0 : _dialogIndex;
+        Image lIncreasingSprite = _currentDialogSO.dialogList[lDialogIndex].characterSide == CharacterSide.leftCharacter ? _leftCharacterSprite : _rightCharacterSprite;
+        Image lDecreasingSprite = _currentDialogSO.dialogList[lDialogIndex].characterSide == CharacterSide.leftCharacter ? _rightCharacterSprite : _leftCharacterSprite;
+        
+        Image lIncreasingName = _currentDialogSO.dialogList[lDialogIndex].characterSide == CharacterSide.leftCharacter ? _dialogNameLeft : _dialogNameRight;
+        Image lDecreasingName = _currentDialogSO.dialogList[lDialogIndex].characterSide == CharacterSide.leftCharacter ? _dialogNameRight : _dialogNameLeft;
+        
+        float lRatio;
+        Vector3 lIncreasingSpriteBaseScale = lIncreasingSprite.transform.localScale;
+        Vector3 lDecreasingSpriteBaseScale = lDecreasingSprite.transform.localScale;
+        Color lIncreasingSpriteBaseColor = lIncreasingSprite.color;
+        Color lDecreasingSpriteBaseColor = lDecreasingSprite.color;
+        
+        while (lElapsedTime < _talkingScaleIncreaseTime)
+        {
+            lElapsedTime += Time.deltaTime;
+            
+            lRatio = lElapsedTime / _talkingScaleIncreaseTime;
+            lIncreasingSprite.transform.localScale = Vector3.Lerp(lIncreasingSpriteBaseScale, Vector3.one * _talkingScaleIncrease, lRatio);
+            lIncreasingSprite.color = lIncreasingName.color = Color.Lerp(lIncreasingSpriteBaseColor, _baseCharColor, lRatio);
+            
+            lDecreasingSprite.transform.localScale = Vector3.Lerp(lDecreasingSpriteBaseScale, Vector3.one, lRatio);
+            lDecreasingSprite.color = lDecreasingName.color = Color.Lerp(lDecreasingSpriteBaseColor, _notTalkingCharColor, lRatio);
+            
+            yield return new WaitForEndOfFrame();
+        }
+        
     }
     
     private void OnDialogForward()
@@ -212,6 +264,12 @@ public class DialogManager : MonoBehaviour
             _rightCharacterSprite.gameObject.SetActive(false);
             _dialogNameRightText.transform.parent.gameObject.SetActive(false);
         }
+    }
+    
+    private void ResizeCharacterSprites()
+    {
+        _leftCharacterSprite.transform.localScale = _rightCharacterSprite.transform.localScale = Vector3.one;
+        _leftCharacterSprite.color = _rightCharacterSprite.color = _dialogNameLeft.color = _dialogNameRight.color = _baseCharColor;
     }
     
     private void SetCharacterSprite(Image pImage, CharacterNames pName)

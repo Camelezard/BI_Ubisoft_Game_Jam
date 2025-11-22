@@ -13,17 +13,20 @@ MonoBehaviour:
   m_Name: DialogSOTest
   m_EditorClassIdentifier: 
   leftCharacter: 0
-  rightCharacter: 2
+  rightCharacter: 1
   dialogList:
-  - characterName: 0
+  - characterSide: 0
     dialog: Oh non feur quoicoubeh hihihihi pouet pouet bruit de barre de fer qui
       tombe goofy cartoon sounds that's all folks !
-  - characterName: 1
+  - characterSide: 1
     dialog: thiofgjktr reti gjeroih jer er jrtoi eri er ierj iotrhj eroi  eri jergi
       jee  erjoregj eroi j ergi jergio j er jergoizejpzkg  epggkergprkg k
-  - characterName: 0
+  - characterSide: 0
     dialog: ' erij reiog j ergize poize  ezfvbnujren iougo ien ozi ,reo  ezpgkreigo
       j,reog in zegi njrtoi erng ozrg n,oz,  o noeig ,eog inzrg o'
-  - characterName: 1
+  - characterSide: 1
     dialog: 'zorigj, pzoer , zepog k,rpogh erk,gop erhntriohn trohiler rogi j,ergpom
       re,gpi zegin ,rtihgoenrgoire rh jtohiet,h io zeg nzori gnroi  rgn oiregn reigo '
+  - characterSide: 1
+    dialog: grtfodkezlzgreht ethtiob j,er v' tgnrtuhib ngerbyuerbg vhb rbef yurebguyg
+      rezgb rueigb eriugbreiugbreguregheruighreugihrtguirehgiuregh
