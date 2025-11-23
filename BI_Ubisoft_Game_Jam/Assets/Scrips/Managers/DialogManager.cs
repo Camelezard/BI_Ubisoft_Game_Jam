@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -42,6 +43,8 @@ public class DialogManager : MonoBehaviour
     private const string DIALOG_FORWARD = "DialogForward";
     private InputAction _dialogForward;
     
+    public static event Action OnDialogOver;
+    
     #region singleton
 
     private static DialogManager _Instance;
@@ -69,6 +72,7 @@ public class DialogManager : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("DialogManager already exists");
         }
+        _dialogForward = InputManager.instance.GetInputAction(DIALOG_FORWARD);
     }
     
     #endregion
@@ -77,7 +81,7 @@ public class DialogManager : MonoBehaviour
     {
         _container.alpha = 0f;
         _dialogBoxText.text = string.Empty;
-        _dialogForward = InputManager.instance.GetInputAction(DIALOG_FORWARD);
+        // _dialogForward = InputManager.instance.GetInputAction(DIALOG_FORWARD);
         // LaunchDialogSO(_testDialog);
     }
     
@@ -145,6 +149,7 @@ public class DialogManager : MonoBehaviour
         }
         
         _container.alpha = 0f;
+        OnDialogOver?.Invoke();
         
         yield return null;
     }
