@@ -58,25 +58,35 @@ public class Tornado : MonoBehaviour
 
     private void InitTarget()
     {
-        if (target == null)
-        {
-            House lRandHouse = HouseManager.Instance.RandomHouse();
 
-            if (lRandHouse) target = lRandHouse.transform.position;
-            else target = Vector3.zero;
+        House lRandHouse = HouseManager.Instance.RandomHouse();
+        print($"rand hous = {lRandHouse}");
+
+        if (lRandHouse)
+        {
+            Vector2 lRandPosInGrid = new Vector2(lRandHouse.gameObject.transform.position.x, lRandHouse.gameObject.transform.position.z);
+            target = new Vector3(lRandPosInGrid.x, 0, lRandPosInGrid.y);
         }
+        else
+        {
+            Debug.LogWarning($"RandomHouseTargetFail");
+            target = Vector3.one;
+        }
+
     }
 
     private void InitSpawnPosition()
     {
         if (!spawnInWalls)
         {
-            print(OutOfWallSpawnPosition.Instance.gameObject.name);
             transform.position = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
         }
         else
         {
-            transform.position = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
+            Vector2 lRandPos = Grid.Instance.GetRandomPosInFreeCells();
+
+            transform.position = new Vector3(lRandPos.x, 0, lRandPos.y);
+
             canPassAWall = false;
             tryToEnterWall = false;
         }
@@ -86,8 +96,8 @@ public class Tornado : MonoBehaviour
     {
         if (randomInitialDirection)
         {
-            Vector2 rnd = Random.insideUnitCircle.normalized;
-            direction = new Vector3(rnd.x, 0, rnd.y);
+            Vector2 lRandPos = Random.insideUnitCircle.normalized;
+            direction = new Vector3(lRandPos.x, 0, lRandPos.y);
         }
         else
         {

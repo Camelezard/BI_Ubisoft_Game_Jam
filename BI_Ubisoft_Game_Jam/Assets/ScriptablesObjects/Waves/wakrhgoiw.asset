@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
   - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
   - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
-  spawnInWalls: 1
-  spawnInterval: 0.1
+  spawnInterval: 0.5
+  timeBeforeNextWave: 2

@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Cell
 {
     public Vector2Int gridPos;
     public House content;
+    public Vector3 worldPos;
 }
 
-public class Grid : MonoBehaviour
+public class Grid : Singleton<Grid>
 {
     [SerializeField] public House _HousPrefab;
     [Header("Grid Settings")]
@@ -24,11 +26,11 @@ public class Grid : MonoBehaviour
     void Start()
     {
 
-        ConstructHome(new Vector2Int (3,4));
-        ConstructHome(new Vector2Int (4,3));
-        ConstructHome(new Vector2Int (4,4)); 
-        ConstructHome(new Vector2Int (4,5)); 
-        ConstructHome(new Vector2Int (5,4));
+        // ConstructHome(new Vector2Int(3, 4));
+        // ConstructHome(new Vector2Int(4, 3));
+        // ConstructHome(new Vector2Int(4, 4));
+        // ConstructHome(new Vector2Int(4, 5));
+        // ConstructHome(new Vector2Int(5, 4));
     }
 
 
@@ -52,7 +54,8 @@ public class Grid : MonoBehaviour
                 _Grid[x, y] = new Cell
                 {
                     gridPos = new Vector2Int(x, y),
-                    content = null
+                    content = null,
+                    worldPos = CellToWorld(x,y)
                 };
             }
         }
@@ -164,5 +167,41 @@ public class Grid : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.2f);
+    }
+
+    public Vector2 GetRandomPosInFreeCells()
+    {
+        List<Cell> cells = new List<Cell>();
+        Vector3 lPos;
+        Cell lCell;
+        Cell lRanCell;
+        int lRandListIndex = 0;
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                lCell = _Grid[x, y];
+                if (lCell.content == null)
+                {
+                    cells.Add(lCell);
+                }
+
+                lPos = CellToWorld(x, y);
+            }
+        }
+
+        lRandListIndex = Random.Range(0, cells.Count -1);
+        lRanCell = cells[lRandListIndex];
+
+        //print ("total in cell = " + cells.Count);
+
+        foreach (Cell cell in cells)
+        {
+            Debug.DrawLine(cell.worldPos, cell.worldPos + Vector3.up,Color.red,1);
+        } 
+
+        Vector2 lFialRandPos = new Vector2 (lRanCell.worldPos.x, lRanCell.worldPos.z);
+        return lFialRandPos;
     }
 }
