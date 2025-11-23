@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: TestWave
+  m_Name: WaveData
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   tornadoPrefabs:
   - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
   - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
   spawnInWalls: 0
   spawnInterval: 0.1
