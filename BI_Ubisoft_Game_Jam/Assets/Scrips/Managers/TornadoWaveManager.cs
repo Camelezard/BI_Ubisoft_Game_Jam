@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TornadoWaveManager : MonoBehaviour
+public class TornadoWaveManager : Singleton<TornadoWaveManager>
 {
+    public static event Action OnWaveEnd;
+
     [SerializeField] private WaveTimeline _tornadoTimeline;
 
     [Header("Container")]
@@ -23,22 +24,24 @@ public class TornadoWaveManager : MonoBehaviour
             if (waveCoroutine != null)
                 StopCoroutine(waveCoroutine);
 
-            waveCoroutine = StartCoroutine(LaunchWaveTimeline());
+            waveCoroutine = StartCoroutine(LaunchWaveTimeline(_tornadoTimeline));
         }
     }
 
-    private IEnumerator LaunchWaveTimeline()
+    public IEnumerator LaunchWaveTimeline(WaveTimeline pTmeline)
     {
         float _Elapsed;
         float _WaveFraction;
         float _Progress;
 
-        for (int waveIndex = 0; waveIndex < _tornadoTimeline.waves.Count; waveIndex++)
+        Debug.Log($"timelin Started with -{pTmeline.name}- prefab");
+
+        for (int waveIndex = 0; waveIndex < pTmeline.waves.Count; waveIndex++)
         {
-            WaveData _WaveData = _tornadoTimeline.waves[waveIndex];
+            WaveData _WaveData = pTmeline.waves[waveIndex];
 
             _Elapsed = 0f;
-            _WaveFraction = 1f / _tornadoTimeline.waves.Count;
+            _WaveFraction = 1f / pTmeline.waves.Count;
 
             while (_Elapsed < _WaveData.timeBeforeNextWave + 0.1f)
             {
@@ -50,9 +53,11 @@ public class TornadoWaveManager : MonoBehaviour
 
             yield return LaunchAWave(_WaveData);
         }
+
+        OnWaveEnd.Invoke();
     }
 
-    private IEnumerator LaunchAWave(WaveData pData)
+    public IEnumerator LaunchAWave(WaveData pData)
     {
         for (int i = 0; i < pData.tornadoPrefabs.Count; i++)
         {
@@ -60,7 +65,7 @@ public class TornadoWaveManager : MonoBehaviour
 
             if (targetCenter != null)
             {
-                Vector2 _RandCircle = Random.insideUnitCircle * spawnAreaSize;
+                Vector2 _RandCircle = UnityEngine.Random.insideUnitCircle * spawnAreaSize;
                 _Instance.transform.position = targetCenter.position + new Vector3(_RandCircle.x, 0f, _RandCircle.y);
             }
 
