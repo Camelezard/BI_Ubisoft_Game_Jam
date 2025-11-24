@@ -53,7 +53,7 @@ MonoBehaviour:
   _TornadoDamagePerSec: 10
   _TornadoWeight: 10
   _TornadoStartLifetime: 15
-  _CanPassAWall: 1
+  canPassAWall: 1
   _ChooseTotalRandomDirection: 0
   _Direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -298,6 +298,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6335836103136658240}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -352,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 1087534903148596531, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 66cf66d7aad789744a3d63742f82e988, type: 2}
+      objectReference: {fileID: 2100000, guid: 070c56dd18471fe44b4fe8ca7e626844, type: 2}
     - target: {fileID: 7440356185111581067, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
