@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_NewUnlitShader
+  m_Shader: {fileID: 4800000, guid: 25c7991d4af53394f8d4f31829314cf5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: d77870ba6926c9140b140fef44dd9ec8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 1
+    - _BaseAlpha: 0.45
+    - _Debug: 0
+    - _Distortion: 0
+    - _EdgeSoft: 1
+    - _EmissionMult: 3
+    - _GustAmount: 0.3
+    - _LF_Speed: 0.5
+    - _NoiseBias: 0.1
+    - _NoiseContrast: 1
+    - _NoiseFloor: 0.4
+    - _NoiseScale: 15
+    - _NoiseSpeed: 0.3
+    - _Radius: 50
+    - _VertexDisp: 0.02
+    m_Colors:
+    - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OuterColor: {r: 1, g: 0.066037595, b: 0.08196146, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
