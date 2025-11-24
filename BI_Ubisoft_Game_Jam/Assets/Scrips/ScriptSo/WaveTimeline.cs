@@ -5,5 +5,5 @@ using UnityEngine;
 public class WaveTimeline : ScriptableObject
 {
     public string waveName = "Wave";
-    public List<WaveData> waves;
+    public List<TornadoWave> waves;
 }

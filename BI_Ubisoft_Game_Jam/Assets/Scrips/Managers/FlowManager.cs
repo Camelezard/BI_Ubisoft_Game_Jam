@@ -95,7 +95,7 @@ public class FlowManager : MonoBehaviour
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
-                TornadoWaveManager.Instance.LaunchWaveTimeline(lEvent.eventObject as WaveTimeline);
+                TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoWave);
                 break;
             default:
                 break;

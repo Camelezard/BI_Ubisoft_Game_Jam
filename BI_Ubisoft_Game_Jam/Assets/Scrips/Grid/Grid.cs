@@ -16,6 +16,9 @@ public class Grid : Singleton<Grid>
     public int height = 10;
     public float cellSize = 1f;
 
+    private bool _CanBuild = false;
+    private bool _IsHouseSelected = false;
+
     private Cell[,] _Grid;
 
     private void OnValidate()
@@ -25,12 +28,13 @@ public class Grid : Singleton<Grid>
 
     void Start()
     {
+        ConstructHome(new Vector2Int(3, 4));
+        ConstructHome(new Vector2Int(4, 3));
+        ConstructHome(new Vector2Int(4, 4));
+        ConstructHome(new Vector2Int(4, 5));
+        ConstructHome(new Vector2Int(5, 4));
 
-        // ConstructHome(new Vector2Int(3, 4));
-        // ConstructHome(new Vector2Int(4, 3));
-        // ConstructHome(new Vector2Int(4, 4));
-        // ConstructHome(new Vector2Int(4, 5));
-        // ConstructHome(new Vector2Int(5, 4));
+        DialogManager.OnDialogOver += OnDialogueOver;
     }
 
 
@@ -55,13 +59,17 @@ public class Grid : Singleton<Grid>
                 {
                     gridPos = new Vector2Int(x, y),
                     content = null,
-                    worldPos = CellToWorld(x,y)
+                    worldPos = CellToWorld(x, y)
                 };
             }
         }
     }
 
-
+    public void ChangSelectHouse(House pNewPrefab)
+    {
+        _HousPrefab = pNewPrefab;
+        _IsHouseSelected = true;
+    }
 
     private Vector3 GetGridOrigin()
     {
@@ -113,28 +121,42 @@ public class Grid : Singleton<Grid>
         return _Grid[x, y].content == null;
     }
 
+    // ------------------------Construction--------------------------
+    private void OnDialogueOver()
+    {
+        _CanBuild = true;
+    }
+
     private void ConstructHome(Vector3 pCellPos)
     {
+        if (!_CanBuild || !_IsHouseSelected) return;
+
         House _House;
         Vector2Int lCellInGridPos = WorldToCell(pCellPos);
 
-        if (IsCellFree(lCellInGridPos.x, lCellInGridPos.y))
+        if (IsCellFree(lCellInGridPos.x, lCellInGridPos.y) && ShopManager.Instance.Buy())
         {
             _House = Instantiate(_HousPrefab);
             HouseManager.Instance.AddHouseInList(_House);
             PlaceHouse(_House, lCellInGridPos.x, lCellInGridPos.y);
         }
+
+        _IsHouseSelected = false;
     }
 
     private void ConstructHome(Vector2Int pCellPos)
     {
-        House _House;
-        if (IsCellFree(pCellPos.x, pCellPos.y))
+        if (ShopManager.Instance.Buy())
         {
 
-            _House = Instantiate(_HousPrefab);
-            HouseManager.Instance.AddHouseInList(_House);
-            PlaceHouse(_House, pCellPos.x, pCellPos.y);
+            House _House;
+            if (IsCellFree(pCellPos.x, pCellPos.y))
+            {
+
+                _House = Instantiate(_HousPrefab);
+                HouseManager.Instance.AddHouseInList(_House);
+                PlaceHouse(_House, pCellPos.x, pCellPos.y);
+            }
         }
     }
 
@@ -191,17 +213,22 @@ public class Grid : Singleton<Grid>
             }
         }
 
-        lRandListIndex = Random.Range(0, cells.Count -1);
+        lRandListIndex = Random.Range(0, cells.Count - 1);
         lRanCell = cells[lRandListIndex];
 
         //print ("total in cell = " + cells.Count);
 
         foreach (Cell cell in cells)
         {
-            Debug.DrawLine(cell.worldPos, cell.worldPos + Vector3.up,Color.red,1);
-        } 
+            Debug.DrawLine(cell.worldPos, cell.worldPos + Vector3.up, Color.red, 1);
+        }
 
-        Vector2 lFialRandPos = new Vector2 (lRanCell.worldPos.x, lRanCell.worldPos.z);
+        Vector2 lFialRandPos = new Vector2(lRanCell.worldPos.x, lRanCell.worldPos.z);
         return lFialRandPos;
+    }
+
+    void OnDestroy()
+    {
+        DialogManager.OnDialogOver += OnDialogueOver;
     }
 }
