@@ -122,7 +122,7 @@ public class DialogManager : MonoBehaviour
         
         while (lElapsedTime < _dialogUIAppearTime)
         {
-            lElapsedTime += Time.deltaTime;
+            lElapsedTime += Time.unscaledDeltaTime;
             _container.alpha = lElapsedTime / _dialogUIAppearTime;
             yield return new WaitForEndOfFrame();
         }
@@ -143,7 +143,7 @@ public class DialogManager : MonoBehaviour
         
         while (lElapsedTime < _dialogUIAppearTime)
         {
-            lElapsedTime += Time.deltaTime;
+            lElapsedTime += Time.unscaledDeltaTime;
             _container.alpha = 1f - lElapsedTime / _dialogUIAppearTime;
             yield return new WaitForEndOfFrame();
         }
@@ -176,7 +176,7 @@ public class DialogManager : MonoBehaviour
         
         while (lElapsedTime < lTotalTime)
         {
-            lElapsedTime += Time.deltaTime;
+            lElapsedTime += Time.unscaledDeltaTime;
             lTextLength = Mathf.FloorToInt(lTotalTextLength * (lElapsedTime / lTotalTime));
             lCurrentText = string.Empty;
             
@@ -212,7 +212,7 @@ public class DialogManager : MonoBehaviour
         
         while (lElapsedTime < _talkingScaleIncreaseTime)
         {
-            lElapsedTime += Time.deltaTime;
+            lElapsedTime += Time.unscaledDeltaTime;
             
             lRatio = lElapsedTime / _talkingScaleIncreaseTime;
             lIncreasingSprite.transform.localScale = Vector3.Lerp(lIncreasingSpriteBaseScale, Vector3.one * _talkingScaleIncrease, lRatio);

@@ -53,6 +53,7 @@ public class PlayerCanon : MonoBehaviour
     
     private void EnableWindZone()
     {
+        if(Time.timeScale == 0f) return;
         _windZone.SetActive(true);
     }
     

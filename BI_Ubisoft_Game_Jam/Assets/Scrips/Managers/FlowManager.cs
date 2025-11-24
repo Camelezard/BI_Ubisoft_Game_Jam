@@ -92,10 +92,12 @@ public class FlowManager : MonoBehaviour
             case DIALOG_SO:
                 // print("c'est un dialog");
                 DialogManager.instance.LaunchDialogSO(lEvent.eventObject as DialogSO);
+                Time.timeScale = 0f;
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
                 TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoData);
+                Time.timeScale = 1f;
                 break;
             default:
                 break;
@@ -108,7 +110,7 @@ public class FlowManager : MonoBehaviour
         
         while (lElapsedTime < _eventList[_currentEventIndex].timeBeforeNextEvent)
         {
-            lElapsedTime += Time.deltaTime;
+            lElapsedTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
         
