@@ -96,6 +96,7 @@ public class FlowManager : MonoBehaviour
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
+                //iyhttg
                 TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoData);
                 Time.timeScale = 1f;
                 break;
