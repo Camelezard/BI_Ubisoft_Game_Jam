@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   tornadoPrefabs:
+<<<<<<<< HEAD:BI_Ubisoft_Game_Jam/Assets/ScriptablesObjects/Waves/TestWave.asset
   - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
   - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
-  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
   spawnInWalls: 0
+========
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+  - {fileID: 4225276611716365150, guid: d1ee232f221e3a445888ea8891da7fda, type: 3}
+>>>>>>>> 697802ee4caedacda7e523c97ee92424c6400d2d:BI_Ubisoft_Game_Jam/Assets/ScriptablesObjects/Waves/WaveData.asset
   spawnInterval: 0.1

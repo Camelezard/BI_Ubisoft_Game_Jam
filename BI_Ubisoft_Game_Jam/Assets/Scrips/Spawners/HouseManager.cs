@@ -11,34 +11,35 @@ public class HouseManager : Singleton<HouseManager>
 
     private float _SmallDestroyPercentage = 0;
     private float _DestroyPercentage = 0;
-        
+
 
 
     private List<House> _InGameHouses = new List<House>();
     private List<House> _DestroyHouse = new List<House>();
 
-    void Start()
+
+    protected override void Awake()
     {
+        base.Awake();
+        
         if (!_HouseContainer) _HouseContainer = GameObject.Find("HouseContainer");
         _InGameHouses = _HouseContainer.GetComponentsInChildren<House>().ToList();
         _DestroyHouse.Clear();
-
-        UpdateDestroyPercentage();
     }
 
     public void UpdateDestroyPercentage()
     {
         _SmallDestroyPercentage = (1f - (_InGameHouses.Count - _DestroyHouse.Count) / (float)_InGameHouses.Count) * 100;
 
-        print(_SmallDestroyPercentage);
+        //print(_SmallDestroyPercentage);
 
         //UiManager.Instance.UpdateDestroyUi(_SmallDestroyPercentage);
-        _DestroyPercentage = _SmallDestroyPercentage*100;
+        _DestroyPercentage = _SmallDestroyPercentage * 100;
 
         if (_DestroyPercentage > _MaxPercentageOfDestruction) UiManager.Instance.TriggerDefeat();
     }
 
-    public void RepairingHouseInList(House pHouse)
+    public void AddHouseInList(House pHouse)
     {
         if (!_InGameHouses.Contains(pHouse))
         {
@@ -52,12 +53,27 @@ public class HouseManager : Singleton<HouseManager>
 
     public void DestroyHouseInList(House pHouse)
     {
-        if (_InGameHouses.Contains(pHouse) && !_DestroyHouse.Contains(pHouse))
-        {
-            _DestroyHouse.Add(pHouse);
-        }
-        else print("imposible d'ajouter house");
 
-        UpdateDestroyPercentage();
+        if (_InGameHouses.Contains(pHouse))
+        {
+            _InGameHouses.Remove(pHouse);
+        }
+        else
+        { 
+            Debug.Log("no houses in _InGameHouses");
+        }
+
+    }
+
+    public House RandomHouse()
+    { 
+        if (_InGameHouses.Count == 0) 
+        {
+            Debug.LogWarning("no houses in _InGameHouses");
+            return null;
+        }
+
+        int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count - 1);
+        return _InGameHouses[lRandHouse];
     }
 }

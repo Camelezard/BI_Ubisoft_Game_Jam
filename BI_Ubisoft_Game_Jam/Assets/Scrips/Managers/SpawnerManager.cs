@@ -14,7 +14,6 @@ public class SpawnerManager : Singleton<SpawnerManager>
     private void InitTornadoSpasnerList()
     {
         _TornadoSpasnerList = new List<TornadoSpawner>(_TornadoSpawnerContainer.GetComponentsInChildren<TornadoSpawner>());
-        print(_TornadoSpasnerList.Count);
     }
 
     public Vector3 ChoseRandomPositinInSpawnwers()

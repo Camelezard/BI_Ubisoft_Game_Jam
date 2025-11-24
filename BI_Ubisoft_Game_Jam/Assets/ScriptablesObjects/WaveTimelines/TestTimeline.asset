@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestTimeline
   m_EditorClassIdentifier: Assembly-CSharp::WaveTimeline
   waveName: Wave
-  timeBeforeNextWave: 1
   waves:
+  - {fileID: 11400000, guid: 71797a341bdb1584bbbe6c1255492b4c, type: 2}
   - {fileID: 11400000, guid: 71797a341bdb1584bbbe6c1255492b4c, type: 2}
   - {fileID: 11400000, guid: 71797a341bdb1584bbbe6c1255492b4c, type: 2}
