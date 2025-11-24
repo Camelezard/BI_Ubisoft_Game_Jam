@@ -326,7 +326,7 @@ PrefabInstance:
     - target: {fileID: -689380170085935910, guid: eccfefa7cb100d14e96d4187d23125fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a98c2d70e8a65d7418ec26ee956884fd, type: 2}
+      objectReference: {fileID: 2100000, guid: fa7ac2b065f01dd4f8c3ca655998672f, type: 2}
     - target: {fileID: 919132149155446097, guid: eccfefa7cb100d14e96d4187d23125fa, type: 3}
       propertyPath: m_Name
       value: SM_2x4m_LargeHouse_01
@@ -334,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 3908062779468806338, guid: eccfefa7cb100d14e96d4187d23125fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a98c2d70e8a65d7418ec26ee956884fd, type: 2}
+      objectReference: {fileID: 2100000, guid: 098f3188828d5354a9d287f2e8e9d8a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
