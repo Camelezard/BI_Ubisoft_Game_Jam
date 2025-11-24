@@ -5,15 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "TornadoData")]
-public class TornadoData : ScriptableObject
-{
-    public List<Tornado> tornadoPrefabs;
-    public bool spawnInWalls = false;
-    public float spawnInterval = 0.5f;
-    public float waveDuration = 2f;
-}
-
 [System.Serializable]
 public class TornadoWave
 {
