@@ -469,29 +469,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4031387109266621154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74f9341cb485b7f4cbd04c7127fb50b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TornadoContainer: {fileID: 0}
-  waves:
-  - waveName: 
-    tornadoSerializedObject: {fileID: 0}
-    timeBeforeNextWave: 0
-  - waveName: 
-    tornadoSerializedObject: {fileID: 0}
-    timeBeforeNextWave: 0
-  - waveName: 
-    tornadoSerializedObject: {fileID: 0}
-    timeBeforeNextWave: 0
-  - waveName: 
-    tornadoSerializedObject: {fileID: 0}
-    timeBeforeNextWave: 0
-  - waveName: 
-    tornadoSerializedObject: {fileID: 0}
-    timeBeforeNextWave: 0
-  loopWaves: 0
+  _tornadoTimeline: {fileID: 0}
+  _tornadoContainer: {fileID: 0}
   targetCenter: {fileID: 0}
   spawnAreaSize: 50
 --- !u!114 &2118833209700675784
