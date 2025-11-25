@@ -10,12 +10,14 @@ public class Tornado : MonoBehaviour
     public float tornadoDamagePerSec = 10f;
     public float startLifetime = 10f;
     [Range(0, 100)]
-    public float probabilityToFocusHom = 10f;
+    public float probabilityToFocusHome = 10f;
+    public float maxDistanceFromCenter = 50f;
 
     [Header("Behaviour Settings")]
     public bool canPassAWall = true;
     public bool randomInitialDirection = false;
     public bool spawnInWalls = false;
+    public bool devienSolide = false;
     public Vector3 target;
 
     [Header("Runtime Data")]
@@ -48,6 +50,7 @@ public class Tornado : MonoBehaviour
     {
         Move();
         UpdateLifetime();
+        CheckDistanceFromCenter();
     }
 
     // ------------------------------- INIT --------------------------------
@@ -61,7 +64,7 @@ public class Tornado : MonoBehaviour
     {
 
         House lRandHouse = HouseManager.Instance.RandomHouse();
-        print($"rand hous = {lRandHouse}");
+        //        print($"rand hous = {lRandHouse}");
 
         if (ChoosToFocusHome())
         {
@@ -135,7 +138,7 @@ public class Tornado : MonoBehaviour
     {
         float lRand = Random.Range(0, 100);
 
-        if (lRand >= probabilityToFocusHom) return true;
+        if (lRand < probabilityToFocusHome) return true;
 
         return false;
     }
@@ -150,7 +153,7 @@ public class Tornado : MonoBehaviour
             {
                 Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true);
 
-                StartCoroutine(ReactivateWallColision(collision));
+                if (devienSolide) StartCoroutine(ReactivateWallColision(collision));
             }
             else
             {
@@ -189,5 +192,26 @@ public class Tornado : MonoBehaviour
         tryToEnterWall = false;
 
         Physics.IgnoreCollision(pCollision.collider, _MeshCollider, false);
+    }
+
+    private void CheckDistanceFromCenter()
+    {
+        float distance = Vector3.Distance(transform.position, Vector3.zero);
+
+        if (distance > maxDistanceFromCenter)
+        {
+            RedirectToNewTarget();
+        }
+    }
+
+    private void RedirectToNewTarget()
+    {
+        House lRandHouse = HouseManager.Instance.RandomHouse();
+        Vector3 newTarget = new Vector3(lRandHouse.transform.position.x,0,lRandHouse.transform.position.z);
+
+        direction = (newTarget - transform.position).normalized;
+        direction.y = 0f;
+
+        velocity = direction * tornadoInitialSpeed;
     }
 }

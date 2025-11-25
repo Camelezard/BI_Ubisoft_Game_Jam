@@ -12,6 +12,7 @@ public class UiManager : SingletonPersistent<UiManager>
     [Header("Panels")]
     [SerializeField] private GameObject _PanelContainer;
     [SerializeField] private GameObject _PanelDefeat;
+    [SerializeField] private GameObject _PanelWin;
     [SerializeField] private GameObject _MenuPanel;
     [SerializeField] private GameObject _PausePanel;
     [SerializeField] private GameObject _CreditsPanel;
@@ -23,20 +24,17 @@ public class UiManager : SingletonPersistent<UiManager>
 
     //[SerializeField] Slider _destruction_Slider;
     [SerializeField] Slider _Wave_Slider;
-    
+
     private bool _isGamePaused = false;
 
     protected virtual void Start()
     {
         CheckShowPanel();
+        OnDefeat += Defeat;
+        OnVictory += Defeat;
         InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) SwapPause();
-        
-    }
     public void QuitGame()
     {
         Application.Quit();
@@ -47,13 +45,13 @@ public class UiManager : SingletonPersistent<UiManager>
         foreach (Transform child in _PanelContainer.transform)
         {
             GameObject lCheckedPanel = child.gameObject;
-            
-            if(lCheckedPanel.TryGetComponent(out DialogManager lDialogManager))
+
+            if (lCheckedPanel.TryGetComponent(out DialogManager lDialogManager))
             {
                 lDialogManager.gameObject.SetActive(true);
                 continue;
             }
-            
+
             if (_ActifPanel == null && lCheckedPanel.activeInHierarchy)
             {
                 _ActifPanel = lCheckedPanel;
@@ -80,19 +78,21 @@ public class UiManager : SingletonPersistent<UiManager>
         }
     }
 
-public void PanelBack()
-{
-    if (_PreviusPanel.Count > 0)
+    public void PanelBack()
     {
-        GameObject lastPanel = _PreviusPanel.Last();
-        _PreviusPanel.RemoveAt(_PreviusPanel.Count - 1);
-        ChangePannel(lastPanel, false);
+        if (_PreviusPanel.Count > 0)
+        {
+            GameObject lastPanel = _PreviusPanel.Last();
+            _PreviusPanel.RemoveAt(_PreviusPanel.Count - 1);
+            ChangePannel(lastPanel, false);
+        }
     }
-}
 
     public void SwapPause()
     {
-        if (SceneManager.GetActiveScene().buildIndex  != 0) SetPause(_isGamePaused = !_isGamePaused);
+        print("pause");
+
+        if (SceneManager.GetActiveScene().buildIndex != 0) SetPause(_isGamePaused = !_isGamePaused);
         else ShowMenu();
     }
 
@@ -139,7 +139,7 @@ public void PanelBack()
         ChangePannel(_PausePanel);
     }
 
-        public void ShowGameUi()
+    public void ShowGameUi()
     {
         ChangePannel(_GameUi);
     }
@@ -147,16 +147,22 @@ public void PanelBack()
     public void ShowDefeat()
     {
         ChangePannel(_PanelDefeat);
+        print("Show Defeat");
     }
 
+
+    public void ShowWin()
+    {
+        ChangePannel(_PanelWin);
+    }
     public void UpdateDestroyUi(int number)
     {
         //if(_destruction_Slider) _destruction_Slider.value = pPercentage;
     }
-    
+
     public void UpdateWaveUi(float pPercentage)
     {
-        if(_Wave_Slider) _Wave_Slider.value = pPercentage;
+        if (_Wave_Slider) _Wave_Slider.value = pPercentage;
     }
 
     //Load levels
@@ -164,6 +170,23 @@ public void PanelBack()
     {
         LoadGameLevel(0);
         ShowMenu();
+    }
+
+    public void Win()
+    {
+        ShowWin();
+        Time.timeScale = 0;
+    }
+    public void Defeat()
+    {
+        ShowDefeat();
+        Time.timeScale = 0;
+    }
+
+    public void Victory()
+    {
+        ShowWin();
+        Time.timeScale = 0;
     }
 
     public void LoadGameLevel(int pLevelIndex)
@@ -177,11 +200,23 @@ public void PanelBack()
     public void TriggerDefeat()
     {
         OnDefeat?.Invoke();
-        
     }
 
     private void OnUiDefeat()
     {
         ShowDefeat();
+    }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        ShowMenu();
     }
 }

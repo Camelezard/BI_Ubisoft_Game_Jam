@@ -7,6 +7,7 @@ public class HouseManager : Singleton<HouseManager>
 {
     [SerializeField] private GameObject _HouseContainer;
     [SerializeField] private GameObject _IconHousePrefab;
+    [SerializeField] private GameObject _IconDestroyHousePrefab;
     [SerializeField] private LayoutGroupAutoReduction _IconContainer;
     [Range(0, 100)]
     [SerializeField] private float _MaxPercentageOfDestruction = 70;
@@ -19,12 +20,12 @@ public class HouseManager : Singleton<HouseManager>
     private List<House> _InGameHouses = new List<House>();
     private List<House> _DestroyHouse = new List<House>();
     private List<GameObject> _HouseIconImage = new List<GameObject>();
- 
+
 
     protected override void Awake()
     {
         base.Awake();
-        
+
         if (!_HouseContainer) _HouseContainer = GameObject.Find("HouseContainer");
         _InGameHouses = _HouseContainer.GetComponentsInChildren<House>().ToList();
         _DestroyHouse.Clear();
@@ -32,14 +33,17 @@ public class HouseManager : Singleton<HouseManager>
 
     public void UpdateDestroyPercentage()
     {
-        _SmallDestroyPercentage = (1f - (_InGameHouses.Count - _DestroyHouse.Count) / (float)_InGameHouses.Count) * 100;
+        int totalCurrent = _InGameHouses.Count + _DestroyHouse.Count;
 
-        //print(_SmallDestroyPercentage);
+        if (totalCurrent == 0)
+            totalCurrent = 1;
 
-        //UiManager.Instance.UpdateDestroyUi(_SmallDestroyPercentage);
-        _DestroyPercentage = _SmallDestroyPercentage * 100;
+        _DestroyPercentage = ((float)_DestroyHouse.Count / (float)totalCurrent) * 100f;
 
-        if (_DestroyPercentage > _MaxPercentageOfDestruction) UiManager.Instance.TriggerDefeat();
+        if (_DestroyPercentage > _MaxPercentageOfDestruction)
+        {
+            UiManager.Instance.TriggerDefeat();
+        }
     }
 
     public void AddHouseInList(House pHouse)
@@ -47,9 +51,9 @@ public class HouseManager : Singleton<HouseManager>
         if (!_InGameHouses.Contains(pHouse))
         {
             _InGameHouses.Add(pHouse);
-            _DestroyHouse.Remove(pHouse);
+            //_DestroyHouse.Remove(pHouse);
 
-            GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity,_IconContainer.gameObject.transform);
+            GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
             _HouseIconImage.Add(lHomeIcone);
         }
         else print("imposible de retirer house");
@@ -62,7 +66,6 @@ public class HouseManager : Singleton<HouseManager>
 
         if (_InGameHouses.Contains(pHouse))
         {
-            _InGameHouses.Remove(pHouse);
             GameObject lHomeIcone = _HouseIconImage[0];
 
             if (lHomeIcone)
@@ -70,17 +73,22 @@ public class HouseManager : Singleton<HouseManager>
                 Destroy(lHomeIcone);
                 _HouseIconImage.Remove(lHomeIcone);
             }
+            lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
+            _HouseIconImage.Add(lHomeIcone);
+
+            _DestroyHouse.Add(pHouse);
+            _InGameHouses.Remove(pHouse);
         }
         else
-        { 
-            Debug.Log("no houses in _InGameHouses");
+        {
+            //Debug.Log("no houses in _InGameHouses");
         }
-
+        UpdateDestroyPercentage();
     }
 
     public House RandomHouse()
-    { 
-        if (_InGameHouses.Count == 0) 
+    {
+        if (_InGameHouses.Count == 0)
         {
             Debug.LogWarning("no houses in _InGameHouses");
             return null;

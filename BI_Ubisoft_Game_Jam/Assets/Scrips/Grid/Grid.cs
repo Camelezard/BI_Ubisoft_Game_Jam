@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class Cell
 {
@@ -16,6 +17,7 @@ public class Grid : Singleton<Grid>
     [SerializeField] public House _HousLargStartPrefab;
     [SerializeField] public House _HousMediumStartPrefab;
     [SerializeField] public House _HousSmallStartPrefab;
+    [SerializeField] public GameObject _HouseCOntainer;
     [Header("Grid Settings")]
     public int width = 10;
     public int height = 10;
@@ -80,7 +82,7 @@ public class Grid : Singleton<Grid>
 
         if (_HousePeview == null)
         {
-            _HousePeview = Instantiate(pNewPrefab);
+            _HousePeview = Instantiate(pNewPrefab,Vector3.zero,quaternion.identity,_HouseCOntainer.gameObject.transform);
             _IsHouseSelected = true;
             return;
         }
@@ -283,7 +285,7 @@ private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForc
             }
         }
 
-        lRandListIndex = Random.Range(0, cells.Count - 1);
+        lRandListIndex = UnityEngine.Random.Range(0, cells.Count - 1);
         lRanCell = cells[lRandListIndex];
 
         //print ("total in cell = " + cells.Count);

@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 94467afe20095b44aab9669ce73b99fd
   - enabled: 1
+    path: Assets/Scenes/DD_Merge.unity
+    guid: 94b32fb9e6cae5f47a2743028d526b33
+  - enabled: 0
     path: Assets/Scenes/DD_Spawner.unity
     guid: d45657e14967a0c44b29b9491074ccf5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestMain_Ralif.unity
     guid: 1c6fc1ec7ce6b7c448a9e10eea80efc6
   m_configObjects:
