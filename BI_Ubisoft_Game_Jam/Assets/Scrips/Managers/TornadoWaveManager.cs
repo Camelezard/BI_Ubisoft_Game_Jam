@@ -234,7 +234,7 @@ public class TornadoWaveManager : MonoBehaviour
                 _TornadoContainer.transform
             );
 
-            tornado._Direction = direction;
+            tornado.direction = direction;
         }
     }
 
