@@ -4,5 +4,5 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     public int price = 100;
-    
+    public Sprite icon;
 }

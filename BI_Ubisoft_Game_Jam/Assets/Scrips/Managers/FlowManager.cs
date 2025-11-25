@@ -26,7 +26,8 @@ public class FlowManager : MonoBehaviour
     public bool IsPlaying{get => _isPlaying;}
     
     private const string DIALOG_SO = "DialogSO",
-                        TORNADO_DATA = "TornadoData";
+                        TORNADO_DATA = "TornadoData",
+                        SHOP_SO = "ShopSO";
                         
     public static event Action<ShopSO> OnShopLoad;
     
@@ -73,6 +74,7 @@ public class FlowManager : MonoBehaviour
         if(_launchFlowOnStart) LaunchNextFlowEvent();
         DialogManager.OnDialogOver += OnEventEnd;
         TornadoWaveManager.OnWaveEnd += OnEventEnd;
+        NextWaveButton.OnNextWaveButton += OnEventEnd;
     }
     
     private void LaunchNextFlowEvent()
@@ -99,6 +101,7 @@ public class FlowManager : MonoBehaviour
                 DialogManager.instance.LaunchDialogSO(lEvent.eventObject as DialogSO);
                 Time.timeScale = 0f;
                 _isPlaying = false;
+                ManageShop();
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
@@ -106,6 +109,13 @@ public class FlowManager : MonoBehaviour
                 TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoData);
                 Time.timeScale = 1f;
                 _isPlaying = true;
+                ManageShop();
+                break;
+            case SHOP_SO :
+                Time.timeScale = 0f;
+                _isPlaying = false;
+                ManageShop(true);
+                OnShopLoad?.Invoke(lEvent.eventObject as ShopSO);
                 break;
             default:
                 break;
@@ -130,9 +140,15 @@ public class FlowManager : MonoBehaviour
         StartCoroutine(NextEventCoroutine());
     }
     
+    private void ManageShop(bool pActive = false)
+    {
+        ShopManager.Instance.gameObject.SetActive(pActive);
+    }
+    
     private void OnDestroy()
     {
         DialogManager.OnDialogOver -= OnEventEnd;
         TornadoWaveManager.OnWaveEnd -= OnEventEnd;
+        NextWaveButton.OnNextWaveButton -= OnEventEnd;
     }
 }

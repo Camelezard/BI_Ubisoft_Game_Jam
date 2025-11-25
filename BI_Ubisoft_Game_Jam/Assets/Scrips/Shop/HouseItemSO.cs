@@ -4,5 +4,4 @@ using UnityEngine;
 public class HouseItemSO : ShopItemSO
 {
     public House housePrefab;
-    public Sprite houseIcon;
 }

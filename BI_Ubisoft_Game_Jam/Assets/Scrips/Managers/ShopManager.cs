@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,7 @@ public class ShopManager : Singleton<ShopManager>
     [SerializeField] private Transform _houseItemContainer;
     [SerializeField] private Transform _playerItemContainer;
     [SerializeField] private GameObject _houseShopButtonPrefab;
+    [SerializeField] private GameObject _playerShopButtonPrefab;
     
     [SerializeField] private List<GameObject> _ShopSection;
     [SerializeField] private GameObject _ActifSection = null;
@@ -32,6 +31,8 @@ public class ShopManager : Singleton<ShopManager>
         OnMonnyChange.Invoke();
         
         LoadShopSO(_testShopSO);
+        
+        gameObject.SetActive(false);
     }
     
     private void LoadShopSO(ShopSO pShopSO)
@@ -42,6 +43,12 @@ public class ShopManager : Singleton<ShopManager>
             Destroy(_houseItemContainer.GetChild(i).gameObject);
         }
         
+        lCount = _playerItemContainer.childCount;
+        for (int i = lCount - 1; i >= 0; i--)
+        {
+            Destroy(_playerItemContainer.GetChild(i).gameObject);
+        }
+        
         lCount = pShopSO.houseList.Count;
         HouseShopButton lHouseButton;
         for (int i = 0; i < lCount; i++)
@@ -49,6 +56,15 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton = Instantiate(_houseShopButtonPrefab).GetComponent<HouseShopButton>();
             lHouseButton.transform.SetParent(_houseItemContainer);
             lHouseButton.SetHousePrefab(pShopSO.houseList[i]);
+        }
+        
+        lCount = pShopSO.playerUpgradesList.Count;
+        PlayerShopButton lPlayerButton;
+        for (int i = 0; i < lCount; i++)
+        {
+            lPlayerButton = Instantiate(_playerShopButtonPrefab).GetComponent<PlayerShopButton>();
+            lPlayerButton.transform.SetParent(_playerItemContainer);
+            lPlayerButton.SetPlayerUpgradeSO(pShopSO.playerUpgradesList[i]);
         }
     }
 
@@ -78,6 +94,18 @@ public class ShopManager : Singleton<ShopManager>
         }
         return false;
     }
+    
+    public bool Buy(int pCost)
+    {
+        if(pCost <= _Curency)
+        {
+            _Curency -= pCost;
+            OnMonnyChange.Invoke();
+            return true;
+        }
+        return false;
+    }
+    
     private void UpdateMonyUi()
     {
         _CurencyText.text = $"{_Curency} $";

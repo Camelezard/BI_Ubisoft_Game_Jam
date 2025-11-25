@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HouseShopButton : MonoBehaviour
 {
     [SerializeField] private House _TargetPrefab;
-    [SerializeField] private Image _buttonSprite;
+    [SerializeField] protected Image _buttonSprite;
     [SerializeField] private Text priceText;
     [SerializeField] private int _InitialPrice;
     private int _Price;
@@ -14,7 +14,7 @@ public class HouseShopButton : MonoBehaviour
         ChangePriceCost(_InitialPrice);
     }
 
-    public void OnButtonPressed()
+    public virtual void OnButtonPressed()
     {
         if(ShopManager.Instance.CheckMonny(_Price))
         {
@@ -26,7 +26,7 @@ public class HouseShopButton : MonoBehaviour
     public void SetHousePrefab(HouseItemSO pHouse)
     {
         _TargetPrefab = pHouse.housePrefab;
-        _buttonSprite.sprite = pHouse.houseIcon;
+        _buttonSprite.sprite = pHouse.icon;
     }
 
     public void ChangePriceCost(int pPrice)
