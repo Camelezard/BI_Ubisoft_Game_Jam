@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2296ecb685e55428b500a09a2d82fa, type: 3}
   m_Name: DialogSOTest
   m_EditorClassIdentifier: 
-  leftCharacter: 0
-  rightCharacter: 1
+  leftCharacter: 1
+  rightCharacter: 0
   dialogList:
   - characterSide: 0
     dialog: Oh non feur quoicoubeh hihihihi pouet pouet bruit de barre de fer qui
