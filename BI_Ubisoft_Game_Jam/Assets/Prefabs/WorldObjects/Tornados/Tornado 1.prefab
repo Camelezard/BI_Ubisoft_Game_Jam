@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
   m_Layer: 8
-  m_Name: Tornado
+  m_Name: Tornado 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,18 +50,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 10
   tornadoMaxSpeed: 20
-  _TornadoDamagePerSec: 10
-  _TornadoWeight: 10
-  _TornadoStartLifetime: 15
-  _CanPassAWall: 1
-  _ChooseTotalRandomDirection: 0
-  _Direction: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  _LayerToIgnore:
-    serializedVersion: 2
-    m_Bits: 256
+  tornadoDamagePerSec: 10
+  startLifetime: 30
+  probabilityToFocusHom: 50
+  canPassAWall: 1
+  randomInitialDirection: 0
+  spawnInWalls: 0
+  target: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
-  _coefftext: {fileID: 4576783769614831832}
 --- !u!64 &1073194208220770048
 MeshCollider:
   m_ObjectHideFlags: 0

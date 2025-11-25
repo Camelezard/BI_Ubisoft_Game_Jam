@@ -12,13 +12,14 @@ public class ShopButton : MonoBehaviour
     {
         ChangePriceCost(_InitialPrice);
     }
+
     public void OnButtonPressed()
     {
         if(ShopManager.Instance.CheckMonny(_Price))
         {
             Grid.Instance.ChangSelectHouse(_TargetPrefab);
         }
-        
+        //print("pressed");
     }
 
     public void ChangePriceCost(int pPrice)

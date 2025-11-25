@@ -17,17 +17,17 @@ public class SpawnerManager : Singleton<SpawnerManager>
         print(_TornadoSpasnerList.Count);
     }
 
-    public Vector3 ChoseRandomPositinInSpawnwers()
-    {
-        if(_TornadoSpasnerList.Count == 0) 
-        {
-            Debug.Log ($"pas de tormnadospawner detecter");
-            return Vector3.zero;
-        }
+//     public Vector3 ChooseRandomPositionInSpawners()
+//     {
+//         if (_TornadoSpasnerList.Count == 0)
+//         {
+//             Debug.LogWarning("Pas de TornadoSpawner détecté !");
+//             return Vector3.zero;
+//         }
 
-        int randomIndex = Random.Range(0, _TornadoSpasnerList.Count - 1);
+//         int randomIndex = Random.Range(0, _TornadoSpasnerList.Count);
+//         TornadoSpawner randomSpawner = _TornadoSpasnerList[randomIndex];
 
-        TornadoSpawner lRandTornadoSpawner = _TornadoSpasnerList[randomIndex];
-        return lRandTornadoSpawner.GetRandomPosInRange();
-    }
-}
+//         return randomSpawner.GetRandomPosInRange();
+//     }
+ }

@@ -42,8 +42,8 @@ public class WindZone : MonoBehaviour
                 continue;
             }
             
-            lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
-                * lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
+             lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
+                 * lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
 
             // lTornado._coefftext.text = lCoeff.ToString("F2");
         }
@@ -54,7 +54,7 @@ public class WindZone : MonoBehaviour
         if(pOther.TryGetComponent(out Tornado lTornado))
         {
             //print("tornade détectée : " + lTornado.name);
-            lTornado._Direction = (lTornado.transform.position - PerimeterFollower.instance.transform.position).normalized;
+            lTornado.direction = (lTornado.transform.position - PerimeterFollower.instance.transform.position).normalized;
             _tornadosInRange.Add(lTornado);
         }
     }

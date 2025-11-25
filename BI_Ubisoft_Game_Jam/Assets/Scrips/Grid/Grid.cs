@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class Cell
 {
@@ -10,7 +12,12 @@ public class Cell
 
 public class Grid : Singleton<Grid>
 {
-    [SerializeField] public House _HousPrefab;
+
+    public House _HousePeview { get; private set; } = null;
+    [SerializeField] public House _HousLargStartPrefab;
+    [SerializeField] public House _HousMediumStartPrefab;
+    [SerializeField] public House _HousSmallStartPrefab;
+    [SerializeField] public GameObject _HouseCOntainer;
     [Header("Grid Settings")]
     public int width = 10;
     public int height = 10;
@@ -28,11 +35,11 @@ public class Grid : Singleton<Grid>
 
     void Start()
     {
-        ConstructHome(new Vector2Int(3, 4));
-        ConstructHome(new Vector2Int(4, 3));
-        ConstructHome(new Vector2Int(4, 4));
-        ConstructHome(new Vector2Int(4, 5));
-        ConstructHome(new Vector2Int(5, 4));
+        ConstructHome(new Vector2Int(4, 5), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(5, 4), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(5, 5), _HousLargStartPrefab, true);
+        ConstructHome(new Vector2Int(5, 6), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(6, 5), _HousMediumStartPrefab, true);
 
         DialogManager.OnDialogOver += OnDialogueOver;
     }
@@ -40,9 +47,13 @@ public class Grid : Singleton<Grid>
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_CanBuild && _IsHouseSelected)
         {
-            ConstructHome(GetMouseWorldPosition());
+            Previsualisation();
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                ConstructHome(GetMouseWorldPosition());
+            }
         }
     }
 
@@ -67,7 +78,23 @@ public class Grid : Singleton<Grid>
 
     public void ChangSelectHouse(House pNewPrefab)
     {
-        _HousPrefab = pNewPrefab;
+        if (!_CanBuild) return;
+
+        if (_HousePeview == null)
+        {
+            _HousePeview = Instantiate(pNewPrefab,Vector3.zero,quaternion.identity,_HouseCOntainer.gameObject.transform);
+            _IsHouseSelected = true;
+            return;
+        }
+
+        if (_HousePeview.name.Contains(pNewPrefab.name))
+        {
+            AvortConstruction();
+            return;
+        }
+
+        AvortConstruction();
+        _HousePeview = Instantiate(pNewPrefab);
         _IsHouseSelected = true;
     }
 
@@ -127,38 +154,57 @@ public class Grid : Singleton<Grid>
         _CanBuild = true;
     }
 
+    private void Previsualisation()
+    {
+        Vector2Int lCellInGridPos = WorldToCell(GetMouseWorldPosition());
+        _HousePeview.transform.position = CellToWorld(lCellInGridPos.x, lCellInGridPos.y);
+
+        bool inside = IsInsideGrid(lCellInGridPos.x, lCellInGridPos.y);
+        SetPreviewTransparency(_HousePeview, inside ? .5f : 0.0f);
+
+    }
+
+
+
+
+    private void AvortConstruction()
+    {
+        if (_HousePeview == null) return;
+
+        Destroy(_HousePeview.gameObject);
+        _HousePeview = null;
+        _IsHouseSelected = false;
+    }
+
     private void ConstructHome(Vector3 pCellPos)
     {
         if (!_CanBuild || !_IsHouseSelected) return;
 
-        House _House;
+
         Vector2Int lCellInGridPos = WorldToCell(pCellPos);
 
         if (IsCellFree(lCellInGridPos.x, lCellInGridPos.y) && ShopManager.Instance.Buy())
         {
-            _House = Instantiate(_HousPrefab);
-            HouseManager.Instance.AddHouseInList(_House);
-            PlaceHouse(_House, lCellInGridPos.x, lCellInGridPos.y);
-        }
 
-        _IsHouseSelected = false;
+            HouseManager.Instance.AddHouseInList(_HousePeview);
+            PlaceHouse(_HousePeview, lCellInGridPos.x, lCellInGridPos.y);
+            _IsHouseSelected = false;
+        }
     }
 
-    private void ConstructHome(Vector2Int pCellPos)
+private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForceConstruct = false)
+{
+    if (pForceConstruct || ShopManager.Instance.Buy())
     {
-        if (ShopManager.Instance.Buy())
+        if (IsCellFree(pCellPos.x, pCellPos.y))
         {
+            House houseToPlace = pPrefab ? Instantiate(pPrefab) : _HousePeview;
 
-            House _House;
-            if (IsCellFree(pCellPos.x, pCellPos.y))
-            {
-
-                _House = Instantiate(_HousPrefab);
-                HouseManager.Instance.AddHouseInList(_House);
-                PlaceHouse(_House, pCellPos.x, pCellPos.y);
-            }
+            HouseManager.Instance.AddHouseInList(houseToPlace);
+            PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
         }
     }
+}
 
     public bool PlaceHouse(House _House, int x, int y)
     {
@@ -166,6 +212,8 @@ public class Grid : Singleton<Grid>
 
         _House.transform.position = CellToWorld(x, y);
         _Grid[x, y].content = _House;
+
+        _HousePeview = null;
         return true;
     }
 
@@ -191,6 +239,30 @@ public class Grid : Singleton<Grid>
         Gizmos.DrawSphere(transform.position, 0.2f);
     }
 
+    private void SetPreviewTransparency(House house, float alpha)
+    {
+        Renderer[] renderers = house.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer rend in renderers)
+        {
+            foreach (Material mat in rend.materials)
+            {
+                Color c = mat.color;
+                c.a = alpha;
+                mat.color = c;
+
+                if (alpha < 1f)
+                    mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                else
+                    mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            }
+        }
+    }
+
+    public Vector3 GetRandom3DPosInFreeCells()
+    {
+        return new Vector3(GetRandomPosInFreeCells().x, 0, GetRandomPosInFreeCells().y);
+    }
     public Vector2 GetRandomPosInFreeCells()
     {
         List<Cell> cells = new List<Cell>();
@@ -213,7 +285,7 @@ public class Grid : Singleton<Grid>
             }
         }
 
-        lRandListIndex = Random.Range(0, cells.Count - 1);
+        lRandListIndex = UnityEngine.Random.Range(0, cells.Count - 1);
         lRanCell = cells[lRandListIndex];
 
         //print ("total in cell = " + cells.Count);
