@@ -50,4 +50,5 @@ public class ShopManager : Singleton<ShopManager>
     {
         _CurencyText.text = $"{_Curency} $";
     }
+
 }

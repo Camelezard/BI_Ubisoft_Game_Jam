@@ -6,6 +6,8 @@ using UnityEngine;
 public class HouseManager : Singleton<HouseManager>
 {
     [SerializeField] private GameObject _HouseContainer;
+    [SerializeField] private GameObject _IconHousePrefab;
+    [SerializeField] private LayoutGroupAutoReduction _IconContainer;
     [Range(0, 100)]
     [SerializeField] private float _MaxPercentageOfDestruction = 70;
 
@@ -16,7 +18,8 @@ public class HouseManager : Singleton<HouseManager>
 
     private List<House> _InGameHouses = new List<House>();
     private List<House> _DestroyHouse = new List<House>();
-
+    private List<GameObject> _HouseIconImage = new List<GameObject>();
+ 
 
     protected override void Awake()
     {
@@ -45,6 +48,9 @@ public class HouseManager : Singleton<HouseManager>
         {
             _InGameHouses.Add(pHouse);
             _DestroyHouse.Remove(pHouse);
+
+            GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity,_IconContainer.gameObject.transform);
+            _HouseIconImage.Add(lHomeIcone);
         }
         else print("imposible de retirer house");
 
@@ -57,6 +63,13 @@ public class HouseManager : Singleton<HouseManager>
         if (_InGameHouses.Contains(pHouse))
         {
             _InGameHouses.Remove(pHouse);
+            GameObject lHomeIcone = _HouseIconImage[0];
+
+            if (lHomeIcone)
+            {
+                Destroy(lHomeIcone);
+                _HouseIconImage.Remove(lHomeIcone);
+            }
         }
         else
         { 

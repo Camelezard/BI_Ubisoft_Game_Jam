@@ -61,6 +61,12 @@ public class Tornado : MonoBehaviour
         if(_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
     }
 
+        private void ChooseInitialPosition()
+    {
+        Vector2 _Circle = Random.insideUnitCircle.normalized;
+        if(_ChooseTotalRandomDirection) _Direction = new Vector3(_Circle.x, 0, _Circle.y);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))

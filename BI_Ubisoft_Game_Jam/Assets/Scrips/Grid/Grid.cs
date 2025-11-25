@@ -28,11 +28,11 @@ public class Grid : Singleton<Grid>
 
     void Start()
     {
-        ConstructHome(new Vector2Int(3, 4));
-        ConstructHome(new Vector2Int(4, 3));
-        ConstructHome(new Vector2Int(4, 4));
-        ConstructHome(new Vector2Int(4, 5));
-        ConstructHome(new Vector2Int(5, 4));
+        ConstructHome(new Vector2Int(4, 5),true);
+        ConstructHome(new Vector2Int(5, 4),true);
+        ConstructHome(new Vector2Int(5, 5),true);
+        ConstructHome(new Vector2Int(5, 6),true);
+        ConstructHome(new Vector2Int(6, 5),true);
 
         DialogManager.OnDialogOver += OnDialogueOver;
     }
@@ -144,9 +144,9 @@ public class Grid : Singleton<Grid>
         _IsHouseSelected = false;
     }
 
-    private void ConstructHome(Vector2Int pCellPos)
+    private void ConstructHome(Vector2Int pCellPos, bool pForceConstruct = false)
     {
-        if (ShopManager.Instance.Buy())
+        if (pForceConstruct || ShopManager.Instance.Buy())
         {
 
             House _House;
@@ -191,6 +191,10 @@ public class Grid : Singleton<Grid>
         Gizmos.DrawSphere(transform.position, 0.2f);
     }
 
+    public Vector3 GetRandom3DPosInFreeCells()
+    {
+       return new Vector3( GetRandomPosInFreeCells().x,0,GetRandomPosInFreeCells().y);
+    }
     public Vector2 GetRandomPosInFreeCells()
     {
         List<Cell> cells = new List<Cell>();

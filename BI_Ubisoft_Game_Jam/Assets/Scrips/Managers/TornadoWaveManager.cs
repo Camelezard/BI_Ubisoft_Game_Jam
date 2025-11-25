@@ -28,13 +28,13 @@ public class TornadoWaveManager : MonoBehaviour
 
     private int _CurrentWaveIndex = 0;
     private float lWaveProgress = 0;
-    
+
     public static event Action OnWaveEnd;
-    
+
     //private float _WaveInProgress = false;
-    
+
     #region singleton
-    
+
     private static TornadoWaveManager _Instance;
     public static TornadoWaveManager instance
     {
@@ -48,7 +48,7 @@ public class TornadoWaveManager : MonoBehaviour
             return _Instance;
         }
     }
-    
+
     private void Awake()
     {
         if (_Instance == null)
@@ -61,7 +61,7 @@ public class TornadoWaveManager : MonoBehaviour
             Debug.Log("TornadoWaveManager already exists");
         }
     }
-    
+
     #endregion
 
     void Start()
@@ -113,12 +113,12 @@ public class TornadoWaveManager : MonoBehaviour
 
                 currentWave = waves[waveIndex];
                 nextWaveTime += currentWave.waveDuration;
-                
-                StartCoroutine(LaunchWave(currentWave));
+
+                //StartCoroutine(LaunchWave(currentWave));
 
                 print($"Current wave = {waveIndex + 1} : tornado to spawn = x : time to wait = {nextWaveTime}");
-                
-                
+
+
             }
 
             yield return null;
@@ -126,129 +126,115 @@ public class TornadoWaveManager : MonoBehaviour
 
         print("WaveFinished");
     }
-    
+
     public void LaunchWaveEvent(TornadoData pWave)
     {
         StartCoroutine(LaunchWaveTimeline(pWave));
     }
-    
+
     private IEnumerator LaunchWaveTimeline(TornadoData pWave)
     {
         float lElapsedTime = 0f;
         StartCoroutine(LaunchWave(pWave));
-        
+
         while (lElapsedTime < pWave.waveDuration)
         {
             lElapsedTime += Time.deltaTime;
             UiManager.Instance.UpdateWaveUi(lElapsedTime / pWave.waveDuration);
             yield return new WaitForEndOfFrame();
         }
-    
+
         OnWaveEnd?.Invoke();
-    
+
         yield return null;
     }
 
+    // private IEnumerator LaunchWave(TornadoData pWave)
+    // {
+    //     TornadoData data = pWave;
+    //     int index = 0;
+
+    //     while (index < data.tornadoPrefabs.Count)
+    //     {
+    //         // Utilise le spawn interval défini dans ton ScriptableObject !
+    //         yield return new WaitForSecondsRealtime(data.spawnInterval);
+
+    //         Tornado prefab = data.tornadoPrefabs[index];
+    //         index++;
+
+    //         Tornado tornado = Instantiate(prefab);
+
+    //         // Détermination de la position
+    //         Vector2 lCircle2D = UnityEngine.Random.insideUnitCircle.normalized;
+    //         Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
+
+    //         Vector3 spawnPos;
+    //         Vector3 dir;
+
+    //         if (!data.spawnInWalls)
+    //         {
+    //             spawnPos = circle * spawnAreaSize;
+
+    //             dir = (targetCenter.position - spawnPos).normalized;
+    //             tornado._Direction = new Vector3(dir.x, 0, dir.z);
+    //         }
+    //         else
+    //         {
+    //             tornado.canPassAWall = false;
+
+    //             spawnPos = SpawnerManager.Instance.ChooseRandomPositionInSpawners();
+    //             //spawnPos = Vector3.zero;
+
+    //             dir = circle;
+    //             tornado._Direction = dir;
+    //         }
+
+    //         tornado.transform.position = spawnPos;
+
+    //         // Direction
+    //         if (tornado.TryGetComponent<Tornado>(out Tornado t))
+    //         {
+
+    //         }
+
+    //         yield return null;
+    //     }
+    // }
     private IEnumerator LaunchWave(TornadoData pWave)
     {
-        TornadoData data = pWave;
-        int index = 0;
-
-        while (index < data.tornadoPrefabs.Count)
+        for (int i = 0; i < pWave.tornadoPrefabs.Count; i++)
         {
-            // Utilise le spawn interval défini dans ton ScriptableObject !
-            yield return new WaitForSecondsRealtime(data.spawnInterval);
-
-            Tornado prefab = data.tornadoPrefabs[index];
-            index++;
-
-            Tornado tornado = Instantiate(prefab);
-
-            // Détermination de la position
-            Vector2 lCircle2D = UnityEngine.Random.insideUnitCircle.normalized;
-            Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
+            yield return new WaitForSecondsRealtime(pWave.spawnInterval);
 
             Vector3 spawnPos;
-            Vector3 dir;
+            Vector3 direction;
 
-            if (!data.spawnInWalls)
+            if (!pWave.spawnInWalls)
             {
+                Vector2 lCircle2D = UnityEngine.Random.insideUnitCircle.normalized;
+                Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
+
                 spawnPos = circle * spawnAreaSize;
 
-                dir = (targetCenter.position - spawnPos).normalized;
-                tornado._Direction = new Vector3(dir.x, 0, dir.z);
+                direction = (targetCenter.position - spawnPos).normalized;
+                direction.y = 0;
             }
             else
             {
-                tornado.canPassAWall = false;
+                spawnPos = Grid.Instance.GetRandom3DPosInFreeCells();
 
-                spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
-                //spawnPos = Vector3.zero;
-
-                dir = circle;
-                tornado._Direction = dir;
+                Vector2 lCircle2D = UnityEngine.Random.insideUnitCircle.normalized;
+                direction = new Vector3(lCircle2D.x, 0, lCircle2D.y);
             }
 
-            tornado.transform.position = spawnPos;
+            Tornado tornado = Instantiate(
+                pWave.tornadoPrefabs[i],
+                spawnPos,
+                Quaternion.identity,
+                _TornadoContainer.transform
+            );
 
-            // Direction
-            if (tornado.TryGetComponent<Tornado>(out Tornado t))
-            {
-
-            }
-
-            yield return null;
-        }
-    }
-    private IEnumerator LaunchWave(TornadoWave pWave)
-    {
-        TornadoData data = pWave.tornadoSerializedObject;
-        int index = 0;
-
-        while (index < data.tornadoPrefabs.Count)
-        {
-            // Utilise le spawn interval défini dans ton ScriptableObject !
-            yield return new WaitForSecondsRealtime(data.spawnInterval);
-
-            Tornado prefab = data.tornadoPrefabs[index];
-            index++;
-
-            Tornado tornado = Instantiate(prefab);
-
-            // Détermination de la position
-            Vector2 lCircle2D = UnityEngine.Random.insideUnitCircle.normalized;
-            Vector3 circle = new Vector3(lCircle2D.x, 0, lCircle2D.y);
-
-            Vector3 spawnPos;
-            Vector3 dir;
-            
-            if (!data.spawnInWalls)
-            {
-                spawnPos = circle * spawnAreaSize;
-
-                dir = (targetCenter.position - spawnPos).normalized;
-                tornado._Direction = new Vector3(dir.x, 0, dir.z);
-            }
-            else
-            {
-                tornado.canPassAWall = false;
-
-                spawnPos = SpawnerManager.Instance.ChoseRandomPositinInSpawnwers();
-                //spawnPos = Vector3.zero;
-
-                dir = circle;
-                tornado._Direction = dir;
-            }
-
-            tornado.transform.position = spawnPos;
-
-            // Direction
-            if (tornado.TryGetComponent<Tornado>(out Tornado t))
-            {
-
-            }
-
-            yield return null;
+            tornado._Direction = direction;
         }
     }
 
