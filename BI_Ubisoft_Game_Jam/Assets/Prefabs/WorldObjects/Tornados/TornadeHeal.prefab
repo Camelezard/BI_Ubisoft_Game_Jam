@@ -60,6 +60,7 @@ MonoBehaviour:
   spawnInWalls: 1
   devienSolide: 0
   folowPlayer: 0
+  heal: 1
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}

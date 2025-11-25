@@ -7,7 +7,7 @@ public class HouseManager : Singleton<HouseManager>
 {
     [SerializeField] private GameObject _HouseContainer;
     [SerializeField] private GameObject _IconHousePrefab;
-    [SerializeField] private GameObject _IconDestroyHousePrefab;
+    // [SerializeField] private GameObject _IconDestroyHousePrefab;
     [SerializeField] private LayoutGroupAutoReduction _IconContainer;
     [Range(0, 100)]
     [SerializeField] private float _MaxPercentageOfDestruction = 70;
@@ -53,8 +53,7 @@ public class HouseManager : Singleton<HouseManager>
             _InGameHouses.Add(pHouse);
             //_DestroyHouse.Remove(pHouse);
 
-            GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
-            _HouseIconImage.Add(lHomeIcone);
+
         }
         else print("imposible de retirer house");
 
@@ -68,12 +67,7 @@ public class HouseManager : Singleton<HouseManager>
         {
             GameObject lHomeIcone = _HouseIconImage[0];
 
-            if (lHomeIcone)
-            {
-                Destroy(lHomeIcone);
-                _HouseIconImage.Remove(lHomeIcone);
-            }
-            lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
+            //lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
             _HouseIconImage.Add(lHomeIcone);
 
             _DestroyHouse.Add(pHouse);
@@ -96,5 +90,14 @@ public class HouseManager : Singleton<HouseManager>
 
         int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count - 1);
         return _InGameHouses[lRandHouse];
+    }
+
+    private void UpdateLifeContainer(int pHp)
+    {
+        if(_IconContainer.GetComponentInChildren<GameObject>.ToList() < pHp)
+
+
+
+        _HouseIconImage.Add(lHomeIcone);
     }
 }

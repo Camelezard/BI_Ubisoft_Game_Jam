@@ -145,7 +145,10 @@ public class Grid : Singleton<Grid>
     public bool IsCellFree(int x, int y)
     {
         if (!IsInsideGrid(x, y)) return false;
-        return _Grid[x, y].content == null;
+        
+        House lHouse = _Grid[x, y].content;
+        if (lHouse == null || lHouse.isDestroy) return true;
+        else return false;
     }
 
     // ------------------------Construction--------------------------
@@ -163,9 +166,6 @@ public class Grid : Singleton<Grid>
         SetPreviewTransparency(_HousePeview, inside ? .5f : 0.0f);
 
     }
-
-
-
 
     private void AvortConstruction()
     {

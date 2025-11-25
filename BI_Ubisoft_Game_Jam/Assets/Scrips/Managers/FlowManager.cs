@@ -73,7 +73,7 @@ public class FlowManager : MonoBehaviour
         TornadoWaveManager.OnWaveEnd += OnEventEnd;
     }
     
-    private void LaunchNextFlowEvent()
+    public void LaunchNextFlowEvent()
     {
         _currentEventIndex++;
         if (_currentEventIndex > _eventList.Count - 1)
