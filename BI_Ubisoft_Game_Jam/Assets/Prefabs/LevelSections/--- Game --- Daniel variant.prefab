@@ -143,6 +143,7 @@ MonoBehaviour:
   _HousLargStartPrefab: {fileID: -6241411342096151726, guid: 03ac658da54422a4fab1bf0c972592cf, type: 3}
   _HousMediumStartPrefab: {fileID: 2546092113185964622, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
   _HousSmallStartPrefab: {fileID: 3904510331153495450, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+  _HouseCOntainer: {fileID: 1166986687862882127}
   width: 11
   height: 11
   cellSize: 8.47
@@ -254,6 +255,10 @@ PrefabInstance:
       propertyPath: _IconHousePrefab
       value: 
       objectReference: {fileID: 315956946999129456, guid: 6bc72941f2e28be4481c26ac85465a94, type: 3}
+    - target: {fileID: 8380054356821741577, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}
+      propertyPath: _IconDestroyHousePrefab
+      value: 
+      objectReference: {fileID: 315956946999129456, guid: 07f98742545843c46b1018941efea487, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 277880425392222825, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}
@@ -300,6 +305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TornadoSpawnerContainer: {fileID: 7140997379515928478}
+--- !u!1 &1166986687862882127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4595025518025932258, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}
+  m_PrefabInstance: {fileID: 3455729214738088621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1455293836125908363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4307421884284071718, guid: 5622e75f01837aa48ad6d7973c2b56a7, type: 3}

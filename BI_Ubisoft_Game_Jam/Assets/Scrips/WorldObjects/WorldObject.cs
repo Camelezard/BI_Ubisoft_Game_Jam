@@ -10,7 +10,7 @@ public class WorldObject : MonoBehaviour
     [Header("Life Paraeter")]
     [SerializeField] protected float m_HealtPoints = 20;
 
-    [SerializeField] protected Text _HP_Field;
+    [SerializeField] private Text _HP_Field;
 
     public virtual void Start()
     {

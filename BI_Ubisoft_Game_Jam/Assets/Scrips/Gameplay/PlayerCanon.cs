@@ -9,12 +9,17 @@ public class PlayerCanon : Singleton<PlayerCanon>
     [SerializeField] private float _maxRotationSpeed = 90f;
     [SerializeField] private GameObject _windZone;
     
+    private WindZone _windZoneScript;
+    
     public Transform testobject;
     
     private Camera _camera;
     private InputAction _windZoneInput;
     private const string WIND_ZONE_ACTION = "WindZone";
     private FlowManager _flowManager;
+    
+    private InputAction _windZoneAspirateInput;
+    private const string WIND_ZONE_ASPIRATE_ACTION = "WindZoneAspirate";
     
     private void Start()
     {
@@ -24,6 +29,11 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneInput.performed += ctx => EnableWindZone();
         _windZoneInput.canceled += ctx => DisableWindZone();
         _flowManager = FlowManager.instance;
+        
+        _windZoneScript = WindZone.instance;
+        _windZoneAspirateInput = InputManager.instance.GetInputAction(WIND_ZONE_ASPIRATE_ACTION);
+        _windZoneAspirateInput.performed += ctx => OnAspirateButtonPerformed();
+        _windZoneAspirateInput.canceled += ctx => OnAspirateButtonCanceled();
     }
     
     void Update()
@@ -55,7 +65,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     private void EnableWindZone()
     {
-        if(!_flowManager.IsPlaying) return;
+        if(!_flowManager.IsPlaying || Time.timeScale == 0f) return;
         _windZone.SetActive(true);
     }
     
@@ -64,9 +74,32 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZone.SetActive(false);
     }
     
+    public void SetRotationSpeed(float pCoeff)
+    {
+        _maxRotationSpeed *= pCoeff;
+    }
+    
+    private void OnAspirateButtonPerformed()
+    {
+        if(_windZoneScript._canAspirate)
+        {
+            EnableWindZone();
+            _windZoneScript._aspirate = true;
+        }
+        else _windZoneScript._aspirate = false;
+    }
+    
+    private void OnAspirateButtonCanceled()
+    {
+        if(!_windZoneInput.inProgress) DisableWindZone();
+        _windZoneScript._aspirate = false;
+    }
+    
     private void OnDestroy()
     {
         _windZoneInput.performed -= ctx => EnableWindZone();
         _windZoneInput.canceled -= ctx => DisableWindZone();
+        _windZoneAspirateInput.performed -= ctx => OnAspirateButtonPerformed();
+        _windZoneAspirateInput.canceled -= ctx => OnAspirateButtonCanceled();
     }
 }

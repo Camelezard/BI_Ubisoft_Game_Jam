@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: BasicWave
   m_EditorClassIdentifier: Assembly-CSharp::TornadoData
   tornadoPrefabs:
+  - {fileID: 4225276611716365150, guid: 3f0fbdcc4e9d9b245a0bc828830be437, type: 3}
   - {fileID: 4225276611716365150, guid: e102d0d04e496e847ad54bf983ae7cb4, type: 3}
-  - {fileID: 4225276611716365150, guid: e102d0d04e496e847ad54bf983ae7cb4, type: 3}
-  - {fileID: 4225276611716365150, guid: e102d0d04e496e847ad54bf983ae7cb4, type: 3}
-  - {fileID: 4225276611716365150, guid: e102d0d04e496e847ad54bf983ae7cb4, type: 3}
-  spawnInWalls: 0
+  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+  - {fileID: 4225276611716365150, guid: 99028d58cf757444f91d447cef176231, type: 3}
+  - {fileID: 4225276611716365150, guid: b97e3f5c66f9efd468e30ba77597dd16, type: 3}
+  spawnInWalls: 1
   spawnInterval: 0.1
   waveDuration: 2

@@ -35,11 +35,12 @@ public class Grid : Singleton<Grid>
 
     void Start()
     {
-        ConstructHome(new Vector2Int(4, 5), _HousMediumStartPrefab, true);
-        ConstructHome(new Vector2Int(5, 4), _HousMediumStartPrefab, true);
-        ConstructHome(new Vector2Int(5, 5), _HousLargStartPrefab, true);
-        ConstructHome(new Vector2Int(5, 6), _HousMediumStartPrefab, true);
-        ConstructHome(new Vector2Int(6, 5), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(2, 8), _HousSmallStartPrefab, true);
+        ConstructHome(new Vector2Int(8, 7), _HousSmallStartPrefab, true);
+        ConstructHome(new Vector2Int(5, 5), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(3, 3), _HousSmallStartPrefab, true);
+        ConstructHome(new Vector2Int(8, 2), _HousSmallStartPrefab, true);
+        
 
         DialogManager.OnDialogOver += OnDialogueOver;
     }
@@ -145,10 +146,7 @@ public class Grid : Singleton<Grid>
     public bool IsCellFree(int x, int y)
     {
         if (!IsInsideGrid(x, y)) return false;
-        
-        House lHouse = _Grid[x, y].content;
-        if (lHouse == null || lHouse.isDestroy) return true;
-        else return false;
+        return _Grid[x, y].content == null;
     }
 
     // ------------------------Construction--------------------------
@@ -166,6 +164,9 @@ public class Grid : Singleton<Grid>
         SetPreviewTransparency(_HousePeview, inside ? .5f : 0.0f);
 
     }
+
+
+
 
     private void AvortConstruction()
     {
