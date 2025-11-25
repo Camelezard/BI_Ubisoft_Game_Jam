@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCanon : MonoBehaviour
+public class PlayerCanon : Singleton<PlayerCanon>
 {
     [SerializeField] private LayerMask _cameraRayLayer;
     [SerializeField] private float _rotationCap = 90f;
