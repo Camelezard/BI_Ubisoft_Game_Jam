@@ -22,6 +22,9 @@ public class FlowManager : MonoBehaviour
     
     private int _currentEventIndex = -1;
     
+    private bool _isPlaying = false;
+    public bool IsPlaying{get => _isPlaying;}
+    
     private const string DIALOG_SO = "DialogSO",
                         TORNADO_DATA = "TornadoData";
     
@@ -93,12 +96,14 @@ public class FlowManager : MonoBehaviour
                 // print("c'est un dialog");
                 DialogManager.instance.LaunchDialogSO(lEvent.eventObject as DialogSO);
                 Time.timeScale = 0f;
+                _isPlaying = false;
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
                 //iyhttg
                 TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoData);
                 Time.timeScale = 1f;
+                _isPlaying = true;
                 break;
             default:
                 break;

@@ -14,6 +14,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     private Camera _camera;
     private InputAction _windZoneInput;
     private const string WIND_ZONE_ACTION = "WindZone";
+    private FlowManager _flowManager;
     
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneInput = InputManager.instance.GetInputAction(WIND_ZONE_ACTION);
         _windZoneInput.performed += ctx => EnableWindZone();
         _windZoneInput.canceled += ctx => DisableWindZone();
+        _flowManager = FlowManager.instance;
     }
     
     void Update()
@@ -53,7 +55,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     private void EnableWindZone()
     {
-        if(Time.timeScale == 0f) return;
+        if(!_flowManager.IsPlaying) return;
         _windZone.SetActive(true);
     }
     
