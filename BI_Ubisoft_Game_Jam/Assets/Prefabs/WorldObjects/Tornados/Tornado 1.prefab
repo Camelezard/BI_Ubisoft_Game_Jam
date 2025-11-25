@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.6666665, y: 10, z: 6.6666665}
+  m_LocalScale: {x: 5, y: 7.5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2359790109596203696}
@@ -85,7 +85,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -5076798556035486163, guid: 3ba9723ae6c99db4fba7deee6e5ee452, type: 3}
+  m_Mesh: {fileID: -5076798556035486163, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
 --- !u!54 &5603592075457957063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 0.98772043
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,10 +343,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 66cf66d7aad789744a3d63742f82e988, type: 2}
     - target: {fileID: 396489375955065489, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
