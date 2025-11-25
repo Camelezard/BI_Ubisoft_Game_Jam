@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5722679589390728998}
   - component: {fileID: 8324030755650712881}
   m_Layer: 5
-  m_Name: ShopButton2
+  m_Name: HouseShopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TargetPrefab: {fileID: 3904510331153495450, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
+  _buttonSprite: {fileID: 8152357649338646983}
   priceText: {fileID: 6479768024226079347}
   _InitialPrice: 100
 --- !u!1 &4423364187271046973

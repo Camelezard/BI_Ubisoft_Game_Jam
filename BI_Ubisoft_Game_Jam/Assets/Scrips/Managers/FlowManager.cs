@@ -27,6 +27,8 @@ public class FlowManager : MonoBehaviour
     
     private const string DIALOG_SO = "DialogSO",
                         TORNADO_DATA = "TornadoData";
+                        
+    public static event Action<ShopSO> OnShopLoad;
     
     #region singleton
     

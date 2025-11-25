@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopButton : MonoBehaviour
+public class HouseShopButton : MonoBehaviour
 {
     [SerializeField] private House _TargetPrefab;
+    [SerializeField] private Image _buttonSprite;
     [SerializeField] private Text priceText;
     [SerializeField] private int _InitialPrice;
     private int _Price;
@@ -20,6 +21,12 @@ public class ShopButton : MonoBehaviour
             Grid.Instance.ChangSelectHouse(_TargetPrefab);
         }
         //print("pressed");
+    }
+    
+    public void SetHousePrefab(HouseItemSO pHouse)
+    {
+        _TargetPrefab = pHouse.housePrefab;
+        _buttonSprite.sprite = pHouse.houseIcon;
     }
 
     public void ChangePriceCost(int pPrice)

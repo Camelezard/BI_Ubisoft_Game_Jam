@@ -55,7 +55,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     private void EnableWindZone()
     {
-        if(!_flowManager.IsPlaying) return;
+        if(!_flowManager.IsPlaying || Time.timeScale == 0f) return;
         _windZone.SetActive(true);
     }
     
