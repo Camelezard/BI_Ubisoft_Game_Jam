@@ -21,16 +21,19 @@ public class ShopManager : Singleton<ShopManager>
     
     [SerializeField] private ShopSO _testShopSO;
     
-    public void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _InitStartCurnecy();
-
+        
         OnMonnyChange += UpdateMonyUi;
         FlowManager.OnShopLoad += LoadShopSO;
-
+        
         OnMonnyChange.Invoke();
         
         LoadShopSO(_testShopSO);
+        
         
         gameObject.SetActive(false);
     }
