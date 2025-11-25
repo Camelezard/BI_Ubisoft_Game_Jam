@@ -94,10 +94,10 @@ public class HouseManager : Singleton<HouseManager>
 
     private void UpdateLifeContainer(int pHp)
     {
-        if(_IconContainer.GetComponentInChildren<GameObject>.ToList() < pHp)
+        //if(_IconContainer.GetComponentInChildren<GameObject>.ToList() < pHp)
 
 
 
-        _HouseIconImage.Add(lHomeIcone);
+        //_HouseIconImage.Add(lHomeIcone);
     }
 }
