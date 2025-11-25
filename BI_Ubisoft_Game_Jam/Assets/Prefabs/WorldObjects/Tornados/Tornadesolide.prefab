@@ -48,14 +48,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17f842128027aa40a939cd0e2af609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoInitialSpeed: 5
+  tornadoInitialSpeed: 7
   tornadoMaxSpeed: 20
   tornadoDamagePerSec: 10
   startLifetime: 30
-  probabilityToFocusHom: 50
+  probabilityToFocusHome: 10
+  maxDistanceFromCenter: 50
+  redirectSpeed: 1
   canPassAWall: 0
   randomInitialDirection: 0
   spawnInWalls: 1
+  devienSolide: 0
+  folowPlayer: 0
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}

@@ -12,12 +12,15 @@ public class Tornado : MonoBehaviour
     [Range(0, 100)]
     public float probabilityToFocusHome = 10f;
     public float maxDistanceFromCenter = 50f;
+    public float redirectSpeed = 1f;
 
     [Header("Behaviour Settings")]
     public bool canPassAWall = true;
     public bool randomInitialDirection = false;
     public bool spawnInWalls = false;
     public bool devienSolide = false;
+    public bool folowPlayer = false;
+    public bool heal = false;
     public Vector3 target;
 
     [Header("Runtime Data")]
@@ -50,7 +53,8 @@ public class Tornado : MonoBehaviour
     {
         Move();
         UpdateLifetime();
-        CheckDistanceFromCenter();
+        //CheckDistanceFromCenter();
+        UpdateDirection();
     }
 
     // ------------------------------- INIT --------------------------------
@@ -65,7 +69,6 @@ public class Tornado : MonoBehaviour
 
         House lRandHouse = HouseManager.Instance.RandomHouse();
         //        print($"rand hous = {lRandHouse}");
-
         if (ChoosToFocusHome())
         {
             Vector2 lRandPosInGrid = new Vector2(lRandHouse.gameObject.transform.position.x, lRandHouse.gameObject.transform.position.z);
@@ -171,7 +174,14 @@ public class Tornado : MonoBehaviour
         House house = other.GetComponent<House>();
         if (house != null)
         {
-            house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
+            if (!heal)
+            {
+                house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
+            }
+            else
+            {
+                house.TakeHealPoints(tornadoDamagePerSec * Time.deltaTime);
+            }
         }
     }
 
@@ -194,24 +204,37 @@ public class Tornado : MonoBehaviour
         Physics.IgnoreCollision(pCollision.collider, _MeshCollider, false);
     }
 
-    private void CheckDistanceFromCenter()
+    private bool CheckDistanceFromCenter()
     {
         float distance = Vector3.Distance(transform.position, Vector3.zero);
 
         if (distance > maxDistanceFromCenter)
         {
-            RedirectToNewTarget();
+            return true;
         }
+        return false;
     }
 
-    private void RedirectToNewTarget()
+    private void UpdateDirection()
     {
-        House lRandHouse = HouseManager.Instance.RandomHouse();
-        Vector3 newTarget = new Vector3(lRandHouse.transform.position.x,0,lRandHouse.transform.position.z);
+        Vector3 desiredDirection;
 
-        direction = (newTarget - transform.position).normalized;
+        if (folowPlayer)
+        {
+            desiredDirection = (PlayerCanon.Instance.transform.position - transform.position).normalized;
+        }
+        else
+        {
+            if (!CheckDistanceFromCenter()) return;
+            desiredDirection = (target - transform.position).normalized;
+        }
+
+        desiredDirection.y = 0f;
+
+        direction = Vector3.RotateTowards(direction, desiredDirection, redirectSpeed * Time.deltaTime, 0f);
+        direction.Normalize();
         direction.y = 0f;
 
-        velocity = direction * tornadoInitialSpeed;
+        velocity = direction * velocity.magnitude;
     }
 }
