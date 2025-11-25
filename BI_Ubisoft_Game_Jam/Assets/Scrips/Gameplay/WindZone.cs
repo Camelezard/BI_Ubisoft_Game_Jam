@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class WindZone : MonoBehaviour
 {
@@ -9,42 +8,6 @@ public class WindZone : MonoBehaviour
     [SerializeField] private float _maxSpeedIncreasePerSec = 10f;
 
     private List<Tornado> _tornadosInRange = new(){};
-    
-    [HideInInspector] public bool _aspirate = false;
-    [HideInInspector] public bool _canAspirate = false;
-    
-    #region singleton
-    
-    private static WindZone _Instance;
-    public static WindZone instance
-    {
-        get
-        {
-            if (_Instance == null)
-            {
-                Debug.Log("no WindZone instance found");
-                return null;
-            }
-            return _Instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (_Instance == null)
-        {
-            _Instance = this;
-        }
-        else if (_Instance != this)
-        {
-            Destroy(gameObject);
-            Debug.Log("WindZone already exists");
-        }
-        _canAspirate = false;
-    }
-    
-    #endregion
-    
     
     private void Update()
     {
@@ -71,28 +34,18 @@ public class WindZone : MonoBehaviour
         {
             lTornado = _tornadosInRange[i];
             lCoeff = 1f - Vector3.Distance(Vector3.ProjectOnPlane(transform.position, Vector3.up), 
-                    Vector3.ProjectOnPlane(lTornado.transform.position, Vector3.up)) / Vector3.Distance(transform.position, _coneTip.position);
-                    
+                Vector3.ProjectOnPlane(lTornado.transform.position, Vector3.up)) / Vector3.Distance(transform.position, _coneTip.position);
+                
             if(lCoeff < 0f)
             {
                 // print("lCoeff inférieur à zero : " + lCoeff);
                 continue;
             }
             
-            if(!_aspirate)
-            {
-                
-                lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
-                    * lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
-                
-                // lTornado._coefftext.text = lCoeff.ToString("F2");
-            }
-            else
-            {
-                lCoeff = 1f - lCoeff;
-                lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
-                    * -lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
-            }
+             lTornado.AddVelocity(Time.deltaTime * _maxSpeedIncreasePerSec 
+                 * lCoeff * Vector3.ProjectOnPlane((lTornado.transform.position - transform.position).normalized, Vector3.up));
+
+            // lTornado._coefftext.text = lCoeff.ToString("F2");
         }
     }
     
@@ -112,24 +65,5 @@ public class WindZone : MonoBehaviour
         {
             _tornadosInRange.Remove(lTornado);
         }
-    }
-    
-    public void SetWidth(float lCoeff)
-    {
-        Vector3 lScale = transform.localScale;
-        lScale.y *= lCoeff;
-        transform.localScale = lScale;
-    }
-    
-    public void SetLength(float lCoeff)
-    {
-        Vector3 lScale = transform.localScale;
-        lScale.z *= lCoeff;
-        transform.localScale = lScale;
-    }
-    
-    public void SetStrength(float pCoeff)
-    {
-        _maxSpeedIncreasePerSec *= pCoeff;
     }
 }

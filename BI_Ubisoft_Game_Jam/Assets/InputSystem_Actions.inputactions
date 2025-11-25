@@ -95,15 +95,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "WindZoneAspirate",
-                    "type": "Button",
-                    "id": "3960c3fb-16a5-4c45-b6fd-05814cf0185c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -445,17 +436,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "WindZone",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6944b30-b5bf-4ce2-a990-7e42813bbe5a",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WindZoneAspirate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

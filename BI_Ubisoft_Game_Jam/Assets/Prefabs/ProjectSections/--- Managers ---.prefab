@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 5184979001167044575}
   - {fileID: 4432912113035399163}
+  - {fileID: 3862031149795852714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7280885477926780743
@@ -46,6 +47,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621fa716b8ad1134d98a101586291bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6772379295541589383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3862031149795852714}
+  - component: {fileID: 6109356357874009966}
+  m_Layer: 0
+  m_Name: ShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3862031149795852714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772379295541589383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7294407132982804873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6109356357874009966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772379295541589383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba317ba13f97db48bd16c4ff3c582bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _StartCurency: 700
+  _CurencyText: {fileID: 0}
 --- !u!1 &7479016675127168071
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eventList:
   - eventObject: {fileID: 11400000, guid: 09a2a635f44eb58409d5d7d823bf5eb4, type: 2}
-    timeBeforeNextEvent: 1
+    timeBeforeNextEvent: 3
   - eventObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextEvent: 0
+    timeBeforeNextEvent: 1
   _launchFlowOnStart: 1
   _firstEventIndex: 0
 --- !u!1 &8798270924855188660

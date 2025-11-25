@@ -26,10 +26,7 @@ public class FlowManager : MonoBehaviour
     public bool IsPlaying{get => _isPlaying;}
     
     private const string DIALOG_SO = "DialogSO",
-                        TORNADO_DATA = "TornadoData",
-                        SHOP_SO = "ShopSO";
-                        
-    public static event Action<ShopSO> OnShopLoad;
+                        TORNADO_DATA = "TornadoData";
     
     #region singleton
     
@@ -74,10 +71,9 @@ public class FlowManager : MonoBehaviour
         if(_launchFlowOnStart) LaunchNextFlowEvent();
         DialogManager.OnDialogOver += OnEventEnd;
         TornadoWaveManager.OnWaveEnd += OnEventEnd;
-        NextWaveButton.OnNextWaveButton += OnEventEnd;
     }
     
-    private void LaunchNextFlowEvent()
+    public void LaunchNextFlowEvent()
     {
         _currentEventIndex++;
         if (_currentEventIndex > _eventList.Count - 1)
@@ -101,8 +97,6 @@ public class FlowManager : MonoBehaviour
                 DialogManager.instance.LaunchDialogSO(lEvent.eventObject as DialogSO);
                 Time.timeScale = 0f;
                 _isPlaying = false;
-                ManageShop();
-                ManageHUD();
                 break;
             case TORNADO_DATA:
                 // print("c'est une tornadodata");
@@ -110,15 +104,6 @@ public class FlowManager : MonoBehaviour
                 TornadoWaveManager.instance.LaunchWaveEvent(lEvent.eventObject as TornadoData);
                 Time.timeScale = 1f;
                 _isPlaying = true;
-                ManageShop();
-                ManageHUD(true);
-                break;
-            case SHOP_SO :
-                Time.timeScale = 0f;
-                _isPlaying = false;
-                ManageShop(true);
-                ManageHUD();
-                OnShopLoad?.Invoke(lEvent.eventObject as ShopSO);
                 break;
             default:
                 break;
@@ -143,20 +128,9 @@ public class FlowManager : MonoBehaviour
         StartCoroutine(NextEventCoroutine());
     }
     
-    private void ManageShop(bool pActive = false)
-    {
-        ShopManager.Instance.gameObject.SetActive(pActive);
-    }
-    
-    private void ManageHUD(bool pActive = false)
-    {
-        HUD.instance.gameObject.SetActive(pActive);
-    }
-    
     private void OnDestroy()
     {
         DialogManager.OnDialogOver -= OnEventEnd;
         TornadoWaveManager.OnWaveEnd -= OnEventEnd;
-        NextWaveButton.OnNextWaveButton -= OnEventEnd;
     }
 }

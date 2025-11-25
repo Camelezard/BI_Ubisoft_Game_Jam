@@ -33,7 +33,7 @@ public class PerimeterFollower : MonoBehaviour
     private const string MOVE = "Move";
     
     #region singleton
-    
+
     private static PerimeterFollower _Instance;
     public static PerimeterFollower instance
     {
@@ -224,12 +224,7 @@ public class PerimeterFollower : MonoBehaviour
     }
 
     #endregion
-    
-    public void SetSpeed(float lCoeff)
-    {
-        _maxSpeed *= lCoeff;
-    }
-    
+
     #region Editor Gizmos
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
