@@ -61,6 +61,7 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton.SetHousePrefab(pShopSO.houseList[i]);
             lHouseButton.itemName = pShopSO.houseList[i].itemName;
             lHouseButton.itemDesc = pShopSO.houseList[i].itemDescription;
+            lHouseButton.ChangePriceCost(pShopSO.houseList[i].price);
         }
         
         lCount = pShopSO.playerUpgradesList.Count;
