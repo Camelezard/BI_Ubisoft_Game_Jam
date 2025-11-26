@@ -154,8 +154,8 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 3652522158379918967}
-  corp: {fileID: 603029592202253541}
-  ruine: {fileID: 3935361537484081096}
+  corp: {fileID: 3935361537484081096}
+  ruine: {fileID: 603029592202253541}
   _DestroyFallAmont: 2
   goldGainOnWaveEnd: 3
 --- !u!65 &2081414153517415872
