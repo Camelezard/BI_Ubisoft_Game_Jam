@@ -133,7 +133,7 @@ MonoBehaviour:
   _HP_Field: {fileID: 783398298836814902}
   corp: {fileID: 8359433385706782697}
   ruine: {fileID: 5340218054848561862}
-  _DestroyFallAmont: 7
+  _DestroyFallAmont: 4
   goldGainOnWaveEnd: 7
 --- !u!65 &8044962107543345885
 BoxCollider:
