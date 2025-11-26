@@ -231,30 +231,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &762738400 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4924627511255818961, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
-  m_PrefabInstance: {fileID: 1941103003413871426}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &762738403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762738400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecdeed4e8e0e5f8428fd4abfe214317c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWind:
-    Guid:
-      Data1: -2092279103
-      Data2: 1323661963
-      Data3: -501764717
-      Data4: -181755091
-    Path: event:/SFX/PLAYER/player_blowing
 --- !u!1001 &701895075235513223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,7 +283,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4365642031186635446, guid: a3d19bdb23b058d4d8ac4d988c197341, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -387,10 +364,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4924627511255818961, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 762738403}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
 --- !u!1001 &2055878173602297979
 PrefabInstance:

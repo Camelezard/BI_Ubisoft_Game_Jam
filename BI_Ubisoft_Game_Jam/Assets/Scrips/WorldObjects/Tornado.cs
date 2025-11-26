@@ -177,14 +177,14 @@ public class Tornado : MonoBehaviour
             if (!heal)
             {
                 house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
+                if (!house.isDestroyed) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.takeDamages);  //FMOD
             }
             else
             {
-                house.TakeHealPoints(tornadoDamagePerSec * Time.deltaTime);
+                house.TakeHealPoints(tornadoDamagePerSec * Time.deltaTime);  
             }
             house.HouseShake();
         }
-        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.takeDamages);  //FMOD
     }
 
 

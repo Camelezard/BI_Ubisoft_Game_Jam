@@ -5,7 +5,7 @@ using Unity.Mathematics;
 
 public class House : WorldObject
 {
-    
+
     [SerializeField] GameObject corp = null;
     [SerializeField] GameObject ruine = null;
     [SerializeField] float _DestroyFallAmont = 7f;
@@ -28,15 +28,17 @@ public class House : WorldObject
         base.Die();
         HouseManager.Instance.DestroyHouseInList(this);
 
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseDestroy);
+
         ShowDestroyAspect();
     }
 
     private void ShowDestroyAspect()
     {
-        if(corp) corp.transform.position += Vector3.down * _DestroyFallAmont;
+        if (corp) corp.transform.position += Vector3.down * _DestroyFallAmont;
 
-        if(ruine) ruine.SetActive(false);
-        
+        if (ruine) ruine.SetActive(false);
+
         isDestroyed = true;
     }
 
@@ -48,7 +50,7 @@ public class House : WorldObject
 
     private IEnumerator Shake()
     {
-        
+
         if (IsShaking || isDestroyed) yield break;
         print("shake");
 
@@ -61,21 +63,21 @@ public class House : WorldObject
         float lElapsTime = 0;
         float lPercentage = 0;
 
-        while(lPercentage < 1)
+        while (lPercentage < 1)
         {
             lPos = corp.transform.position;
             lElapsTime += Time.deltaTime;
-            lPercentage = math.clamp(lPos.magnitude, 0,1);
+            lPercentage = math.clamp(lPos.magnitude, 0, 1);
 
 
             randCercle = UnityEngine.Random.insideUnitCircle;
-            randPos = pHomePos + new Vector3(randCercle.x,0,randCercle.y);
+            randPos = pHomePos + new Vector3(randCercle.x, 0, randCercle.y);
             if (!isDestroyed) corp.transform.position = Vector3.Lerp(randPos, lPos, lPercentage);
             else yield return null;
 
-            if (Vector3.Distance (randPos, lPos) != 0)
+            if (Vector3.Distance(randPos, lPos) != 0)
 
-            yield return null;
+                yield return null;
         }
 
         IsShaking = false;
