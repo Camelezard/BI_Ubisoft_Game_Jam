@@ -117,8 +117,11 @@ public class DialogManager : MonoBehaviour
         
         ResizeCharacterSprites();
         
+        _dialogIndex = -1;
+        
         EraseCoroutine(_coroutineCharacterTalk);
         _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
+        _dialogBoxText.text = string.Empty;
         
         while (lElapsedTime < _dialogUIAppearTime)
         {
@@ -129,7 +132,7 @@ public class DialogManager : MonoBehaviour
         
         _container.alpha = 1f;
         
-        _dialogIndex = -1;
+        // _dialogIndex = -1;
         
         EraseCoroutine(_coroutineDialogText);
         _coroutineDialogText = StartCoroutine(DialogTextAppear());

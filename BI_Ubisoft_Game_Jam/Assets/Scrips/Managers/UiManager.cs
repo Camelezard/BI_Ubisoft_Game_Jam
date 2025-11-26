@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
 using System;
-public class UiManager : SingletonPersistent<UiManager>
+public class UiManager : Singleton<UiManager>
 {
     public static event Action OnVictory;
     public static event Action OnDefeat;
@@ -32,7 +32,7 @@ public class UiManager : SingletonPersistent<UiManager>
         CheckShowPanel();
         OnDefeat += Defeat;
         OnVictory += Defeat;
-        InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
+        if(InputManager.instance != null) InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
     }
 
     public void QuitGame()
@@ -149,7 +149,7 @@ public class UiManager : SingletonPersistent<UiManager>
         ChangePannel(_PanelDefeat);
         print("Show Defeat");
     }
-
+    
 
     public void ShowWin()
     {
