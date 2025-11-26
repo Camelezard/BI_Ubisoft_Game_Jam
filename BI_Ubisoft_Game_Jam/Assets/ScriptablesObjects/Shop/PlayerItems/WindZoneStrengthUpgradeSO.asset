@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
-  m_Name: WindWidthPlayerUpgradeSO 2
+  m_Name: WindZoneStrengthUpgradeSO
   m_EditorClassIdentifier: 
   price: 1
-  icon: {fileID: 21300000, guid: e4b0e5331b8f6fc4c8fbb023299f3f48, type: 3}
-  itemName: Wind Zone Width
-  itemDescription: ruhigh er rehuig htr i ghuirt gtriu
-  upgradeType: 3
+  icon: {fileID: 21300000, guid: 4a0ae9d7112f4c6469fac9e79d7cd5de, type: 3}
+  itemName: Wind Zone Strength
+  itemDescription: wind zone strength +20%
+  upgradeType: 4
   coeffValue: 1.2

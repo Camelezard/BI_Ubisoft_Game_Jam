@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
-  m_Name: SpeedPlayerUpgradeSO
+  m_Name: WindWidthPlayerUpgradeSO
   m_EditorClassIdentifier: 
   price: 1
-  icon: {fileID: 21300000, guid: 6dc0c68b1cf484f439ee9dd4c2757745, type: 3}
-  itemName: Speed Boost
-  itemDescription: speed boost +20%
-  upgradeType: 0
+  icon: {fileID: 21300000, guid: b17cd14564e282c448e5fa09c3b1f5a8, type: 3}
+  itemName: Wind Zone Width
+  itemDescription: wind zone width +20%
+  upgradeType: 3
   coeffValue: 1.2
