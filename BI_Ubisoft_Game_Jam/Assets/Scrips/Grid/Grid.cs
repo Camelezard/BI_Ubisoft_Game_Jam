@@ -40,7 +40,7 @@ public class Grid : Singleton<Grid>
         ConstructHome(new Vector2Int(5, 5), _HousMediumStartPrefab, true);
         ConstructHome(new Vector2Int(3, 3), _HousSmallStartPrefab, true);
         ConstructHome(new Vector2Int(8, 2), _HousSmallStartPrefab, true);
-        
+
 
         DialogManager.OnDialogOver += OnDialogueOver;
     }
@@ -83,7 +83,7 @@ public class Grid : Singleton<Grid>
 
         if (_HousePeview == null)
         {
-            _HousePeview = Instantiate(pNewPrefab,Vector3.zero,quaternion.identity,_HouseCOntainer.gameObject.transform);
+            _HousePeview = Instantiate(pNewPrefab, Vector3.zero, quaternion.identity, _HouseCOntainer.gameObject.transform);
             _IsHouseSelected = true;
             return;
         }
@@ -148,11 +148,11 @@ public class Grid : Singleton<Grid>
         if (!IsInsideGrid(x, y)) return false;
 
         House lHouse = _Grid[x, y].content;
-        if(lHouse == null || lHouse.is_Destroy)
+        if (lHouse == null || lHouse.is_Destroy)
         {
-            return true;   
+            return true;
         }
-        return  false;
+        return false;
     }
 
     // ------------------------Construction--------------------------
@@ -199,27 +199,29 @@ public class Grid : Singleton<Grid>
         }
     }
 
-private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForceConstruct = false)
-{
-    if (pForceConstruct || ShopManager.Instance.Buy())
+    private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForceConstruct = false)
     {
-        if (IsCellFree(pCellPos.x, pCellPos.y))
+        if (pForceConstruct || ShopManager.Instance.Buy())
         {
             House houseToPlace = pPrefab ? Instantiate(pPrefab) : _HousePeview;
             houseToPlace.transform.SetParent(_HouseCOntainer.transform);
 
-            HouseManager.Instance.AddHouseInList(houseToPlace);
-            PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
+                HouseManager.Instance.AddHouseInList(houseToPlace);
+                PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
+            }
         }
-    }
-}
+    
 
     public bool PlaceHouse(House _House, int x, int y)
     {
         if (!IsCellFree(x, y)) return false;
 
         House lPreviusHouse = _Grid[x, y].content;
-        if(lPreviusHouse != null) Destroy(lPreviusHouse.gameObject);
+        if (lPreviusHouse != null)
+        {
+            //Destroy(lPreviusHouse.gameObject);
+            HouseManager.Instance.RepareHouse(lPreviusHouse);
+        }
 
         _House.transform.position = CellToWorld(x, y);
         _Grid[x, y].content = _House;

@@ -69,10 +69,7 @@ public class HouseManager : Singleton<HouseManager>
         if (!_InGameHouses.Contains(pHouse))
         {
             _InGameHouses.Add(pHouse);
-            //_DestroyHouse.Remove(pHouse);
-
-            //GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
-            //_HouseIconImage.Add(lHomeIcone);
+            
         }
         else print("imposible de retirer house");
 
@@ -84,16 +81,6 @@ public class HouseManager : Singleton<HouseManager>
 
         if (_InGameHouses.Contains(pHouse))
         {
-            //GameObject lHomeIcone = _HouseIconImage[0];
-
-            // if (lHomeIcone)
-            // {
-            //     Destroy(lHomeIcone);
-            //     _HouseIconImage.Remove(lHomeIcone);
-            // }
-            //lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
-            //_HouseIconImage.Add(lHomeIcone);\
-
 
 
 
@@ -151,5 +138,14 @@ public class HouseManager : Singleton<HouseManager>
                 _HouseIconImage.Add(go);
             }
         }
+    }
+
+    public void RepareHouse(House pPreviusHouse)
+    {
+        if (_DestroyHouse.Contains(pPreviusHouse))
+        {
+            _DestroyHouse.Remove(pPreviusHouse);
+        }
+        else Debug.Log("no house to reper");
     }
 }
