@@ -1,8 +1,20 @@
 using FMODUnity;
 using UnityEngine;
+using FMOD.Studio;
 
 public class SoundManager : Singleton<SoundManager>
 {
+    //public EventReference fmodEmitter = new EventReference();
+
+    
+    // [SerializeField] string DefeatMusic;
+    // [SerializeField] string WinMusic;
+    [Header("music")]
+    [SerializeField] public EventReference winMusic;
+    [SerializeField] public EventReference levelMusic;
+    [SerializeField] public EventReference MenuMusic;
+    [SerializeField] public EventReference loseMusic;
+
     [Header("Player")]
     [SerializeField] public EventReference playerWind;
     [SerializeField] public EventReference playerMoove;
@@ -26,8 +38,49 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] public EventReference loseSond;
     [SerializeField] public EventReference winSond;
 
-    public void Test()
-    {
+    private EventInstance musicInstance;
 
+    void Start()
+    {
+        PlayMusic(winMusic); 
+    }
+
+    private void PlayMusic(EventReference musicEvent)
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release(); 
+        }
+
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        musicInstance.start();
+    }
+
+    public void ChangeMenuMusic()
+    {
+        PlayMusic(MenuMusic);
+    }
+    public void ChangeLevelMusic()
+    {
+        PlayMusic(levelMusic);
+    }
+    public void ChangeWinMusic()
+    {
+        PlayMusic(winMusic);
+    }
+
+    public void ChangeDefeatMusic()
+    {
+        PlayMusic(loseMusic);
+    }
+
+    public void StopMusic()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
     }
 }

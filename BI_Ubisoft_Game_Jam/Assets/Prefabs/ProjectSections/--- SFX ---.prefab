@@ -171,7 +171,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5853195330343514572, guid: cefbf47fe9c991c428405eff66d6beb9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -234,8 +235,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: WinMusic
+      value: event:/MUSIC/Music_Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: DefeatMusic
+      value: event:/MUSIC/Music_Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: winSond.Path
-      value: event:/SFX/UI/clic
+      value: event:/MUSIC/Jingle_Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Winmusic.Path
+      value: event:/MUSIC/Music_Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseMony.Path
@@ -243,11 +256,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseSond.Path
-      value: event:/SFX/UI/clic
+      value: event:/MUSIC/Jingle_Lose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winMusic.Path
+      value: event:/MUSIC/Jingle_Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: MenuMusic.Path
+      value: event:/MUSIC/Music_Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseHeal.Path
       value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMusic.Path
+      value: event:/MUSIC/Jingle_Lose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Loosemusic.Path
+      value: event:/MUSIC/Music_Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: levelMusic.Path
+      value: event:/MUSIC/Music_Level
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: reciveMony.Path
@@ -271,19 +304,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: winSond.Guid.Data1
-      value: -1028084090
+      value: -525826390
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: winSond.Guid.Data2
-      value: 1268229186
+      value: 1258048406
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: winSond.Guid.Data3
-      value: 1814614427
+      value: 1956262833
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: winSond.Guid.Data4
-      value: 148345280
+      value: -1066891254
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Winmusic.Guid.Data1
+      value: 92172790
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Winmusic.Guid.Data2
+      value: 1232159181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Winmusic.Guid.Data3
+      value: 449109931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Winmusic.Guid.Data4
+      value: 965852698
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseConstruct.Path
@@ -307,19 +356,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseSond.Guid.Data1
-      value: -1028084090
+      value: -382677455
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseSond.Guid.Data2
-      value: 1268229186
+      value: 1075154040
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseSond.Guid.Data3
-      value: 1814614427
+      value: -1828510289
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseSond.Guid.Data4
-      value: 148345280
+      value: 766407044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winMusic.Guid.Data1
+      value: -525826390
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winMusic.Guid.Data2
+      value: 1258048406
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winMusic.Guid.Data3
+      value: 1956262833
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winMusic.Guid.Data4
+      value: -1066891254
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: MenuMusic.Guid.Data1
+      value: 92172790
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: MenuMusic.Guid.Data2
+      value: 1232159181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: MenuMusic.Guid.Data3
+      value: 449109931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: MenuMusic.Guid.Data4
+      value: 965852698
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseHeal.Guid.Data1
@@ -338,8 +419,56 @@ PrefabInstance:
       value: 148345280
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMusic.Guid.Data1
+      value: -382677455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMusic.Guid.Data2
+      value: 1075154040
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMusic.Guid.Data3
+      value: -1828510289
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMusic.Guid.Data4
+      value: 766407044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Loosemusic.Guid.Data1
+      value: 92172790
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Loosemusic.Guid.Data2
+      value: 1232159181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Loosemusic.Guid.Data3
+      value: 449109931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: Loosemusic.Guid.Data4
+      value: 965852698
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseTakeDamages.Path
       value: event:/SFX/ENVIRO/house_taking_damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: levelMusic.Guid.Data1
+      value: 1444972811
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: levelMusic.Guid.Data2
+      value: 1189242516
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: levelMusic.Guid.Data3
+      value: -493959774
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: levelMusic.Guid.Data4
+      value: -230884246
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: reciveMony.Guid.Data1

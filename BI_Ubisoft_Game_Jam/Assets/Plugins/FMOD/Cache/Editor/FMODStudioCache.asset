@@ -117,7 +117,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638997916119331070
+  lastModified: 638997981589529422
   FileSizes: []
   Exists: 1
 --- !u!114 &-2887022602211062950
@@ -138,6 +138,33 @@ MonoBehaviour:
   lastModified: 638997960261933307
   FileSizes: []
   Exists: 1
+--- !u!114 &-1671741909735813150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MUSIC/Jingle_Win
+  m_EditorClassIdentifier: 
+  Path: event:/MUSIC/Jingle_Win
+  Guid:
+    Data1: -525826390
+    Data2: 1258048406
+    Data3: 1956262833
+    Data4: -1066891254
+  Banks:
+  - {fileID: -5001393984448276188}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 705
 --- !u!114 &-98338772179700662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +218,8 @@ MonoBehaviour:
   - {fileID: -6008177100511059398}
   - {fileID: 6317501415388983217}
   - {fileID: 5546351883987726145}
+  - {fileID: 5009400640186211201}
+  - {fileID: -1671741909735813150}
   EditorParameters:
   - {fileID: -6355868600192848901}
   MasterBanks:
@@ -198,7 +227,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 306545090815606343}
   cacheVersion: 131857
-  cacheTime: 638997960261933307
+  cacheTime: 638997981589529422
   SerializableEventsDict:
   - key: event:/MUSIC/Music_Level
     index: 0
@@ -214,6 +243,10 @@ MonoBehaviour:
     index: 5
   - key: event:/SFX/UI/clic
     index: 6
+  - key: event:/MUSIC/Jingle_Lose
+    index: 7
+  - key: event:/MUSIC/Jingle_Win
+    index: 8
 --- !u!114 &140490033101358676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,10 +289,10 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638997960261912984
+  lastModified: 638997981589213955
   FileSizes:
   - Name: 
-    Value: 1246
+    Value: 1346
   Exists: 1
 --- !u!114 &2572604544158816083
 MonoBehaviour:
@@ -306,6 +339,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1684
+--- !u!114 &5009400640186211201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MUSIC/Jingle_Lose
+  m_EditorClassIdentifier: 
+  Path: event:/MUSIC/Jingle_Lose
+  Guid:
+    Data1: -382677455
+    Data2: 1075154040
+    Data3: -1828510289
+    Data4: 766407044
+  Banks:
+  - {fileID: -5001393984448276188}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 705
 --- !u!114 &5546351883987726145
 MonoBehaviour:
   m_ObjectHideFlags: 0
