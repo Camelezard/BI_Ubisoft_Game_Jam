@@ -67,7 +67,8 @@ public class BuildingSpawner : MonoBehaviour
                 if (prefabToSpawn != null)
                 {
                     Vector3 spawnPosition = new Vector3(x * spacing - offsetX, 0, z * spacing - offsetZ);
-                    Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+                    GameObject lHouse = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+                    lHouse.transform.SetParent(Grid.Instance._HouseCOntainer.transform);
                 }
             }
         }

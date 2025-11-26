@@ -154,6 +154,7 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 3652522158379918967}
+  goldGainOnWaveEnd: 3
 --- !u!65 &2081414153517415872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -611,6 +612,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
+--- !u!1 &3935361537484081096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4034240065906401211, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
+  m_PrefabInstance: {fileID: 99441485086627955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7340567912321039786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7259703777307928025, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
@@ -701,6 +707,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+--- !u!1 &603029592202253541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+  m_PrefabInstance: {fileID: 6146210708753505554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5441321848340683340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218250927010170718, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}

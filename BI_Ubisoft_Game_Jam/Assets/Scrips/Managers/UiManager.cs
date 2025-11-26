@@ -200,6 +200,7 @@ public class UiManager : Singleton<UiManager>
     public void TriggerDefeat()
     {
         OnDefeat?.Invoke();
+        Debug.Log("TriggerDefeat");
     }
 
     private void OnUiDefeat()

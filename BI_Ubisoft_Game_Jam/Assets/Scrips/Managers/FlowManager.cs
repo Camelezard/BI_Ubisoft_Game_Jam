@@ -82,6 +82,7 @@ public class FlowManager : MonoBehaviour
         _currentEventIndex++;
         if (_currentEventIndex > _eventList.Count - 1)
         {
+            UiManager.Instance.Victory();
             Debug.Log("Fin des événements du FlowManager");
             return;
         }
@@ -146,6 +147,16 @@ public class FlowManager : MonoBehaviour
     private void ManageShop(bool pActive = false)
     {
         ShopManager.Instance.gameObject.SetActive(pActive);
+        
+        if(pActive)
+        {
+            House lHouseScript;
+            foreach (Transform lHouse in Grid.Instance._HouseCOntainer.transform)
+            {
+                lHouseScript = lHouse.GetComponent<House>();
+                ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+            }
+        }
     }
     
     private void ManageHUD(bool pActive = false)
