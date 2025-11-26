@@ -117,6 +117,12 @@ public class ShopManager : Singleton<ShopManager>
     {
         _CurencyText.text = $"{_Curency} $";
     }
+    
+    public void AddCurrency(int pAmount)
+    {
+        _Curency += pAmount;
+        OnMonnyChange?.Invoke();
+    }
 
     public void ChangeSection(GameObject pSection )
     {

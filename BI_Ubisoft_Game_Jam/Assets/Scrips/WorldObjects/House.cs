@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class House : WorldObject
 {
+    
     [SerializeField] GameObject corp = null;
     [SerializeField] GameObject ruine = null;
     [SerializeField] float _DestroyFallAmont = 7f;
+    [Header("Gold")] public int goldGainOnWaveEnd;
     protected override void Die()
     {
         base.Die();

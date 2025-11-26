@@ -93,7 +93,7 @@ public class Grid : Singleton<Grid>
             AvortConstruction();
             return;
         }
-
+        
         AvortConstruction();
         _HousePeview = Instantiate(pNewPrefab);
         _IsHouseSelected = true;
@@ -206,6 +206,7 @@ private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForc
         if (IsCellFree(pCellPos.x, pCellPos.y))
         {
             House houseToPlace = pPrefab ? Instantiate(pPrefab) : _HousePeview;
+            houseToPlace.transform.SetParent(_HouseCOntainer.transform);
 
             HouseManager.Instance.AddHouseInList(houseToPlace);
             PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
