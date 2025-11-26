@@ -59,6 +59,8 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton = Instantiate(_houseShopButtonPrefab).GetComponent<HouseShopButton>();
             lHouseButton.transform.SetParent(_houseItemContainer);
             lHouseButton.SetHousePrefab(pShopSO.houseList[i]);
+            lHouseButton.itemName = pShopSO.houseList[i].itemName;
+            lHouseButton.itemDesc = pShopSO.houseList[i].itemDescription;
         }
         
         lCount = pShopSO.playerUpgradesList.Count;
@@ -68,6 +70,8 @@ public class ShopManager : Singleton<ShopManager>
             lPlayerButton = Instantiate(_playerShopButtonPrefab).GetComponent<PlayerShopButton>();
             lPlayerButton.transform.SetParent(_playerItemContainer);
             lPlayerButton.SetPlayerUpgradeSO(pShopSO.playerUpgradesList[i]);
+            lPlayerButton.itemName = pShopSO.playerUpgradesList[i].itemName;
+            lPlayerButton.itemDesc = pShopSO.playerUpgradesList[i].itemDescription;
         }
     }
 

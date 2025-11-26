@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 100
   icon: {fileID: 21300000, guid: d821f52c34c889441bb3fa19dea7a5ae, type: 3}
+  itemName: High House
+  itemDescription: "grunviu\xE9'zenfozefnou grnfid"
   housePrefab: {fileID: -6241411342096151726, guid: 7f23401487a25ee4f98442c1a0ca656b, type: 3}
