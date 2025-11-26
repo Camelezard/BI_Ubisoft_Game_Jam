@@ -35,11 +35,9 @@ public class Grid : Singleton<Grid>
 
     void Start()
     {
-        ConstructHome(new Vector2Int(2, 8), _HousSmallStartPrefab, true);
-        ConstructHome(new Vector2Int(8, 7), _HousSmallStartPrefab, true);
-        ConstructHome(new Vector2Int(5, 5), _HousMediumStartPrefab, true);
+        ConstructHome(new Vector2Int(4, 8), _HousSmallStartPrefab, true);
         ConstructHome(new Vector2Int(3, 3), _HousSmallStartPrefab, true);
-        ConstructHome(new Vector2Int(8, 2), _HousSmallStartPrefab, true);
+        ConstructHome(new Vector2Int(7, 5), _HousSmallStartPrefab, true);
 
 
         DialogManager.OnDialogOver += OnDialogueOver;

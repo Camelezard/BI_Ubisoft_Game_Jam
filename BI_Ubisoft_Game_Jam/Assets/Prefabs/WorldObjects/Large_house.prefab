@@ -229,14 +229,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f82e6fda578af43aed4904e87466c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpawnHealtPoints: 40
+  m_SpawnHealtPoints: 200
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 9147908775647294221}
   corp: {fileID: 7749583688848372227}
   ruine: {fileID: 6909263830304761960}
   _DestroyFallAmont: 5
-  goldGainOnWaveEnd: 12
+  goldGainOnWaveEnd: 200
 --- !u!65 &3123963560866285265
 BoxCollider:
   m_ObjectHideFlags: 0
