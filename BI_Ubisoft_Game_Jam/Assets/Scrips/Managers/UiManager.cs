@@ -146,14 +146,17 @@ public class UiManager : Singleton<UiManager>
 
     public void ShowDefeat()
     {
-        ChangePannel(_PanelDefeat);
-        print("Show Defeat");
+        SceneManager.LoadScene(2);
+
+        //ChangePannel(_PanelDefeat);
+        //print("Show Defeat");
     }
     
 
     public void ShowWin()
     {
-        ChangePannel(_PanelWin);
+        //ChangePannel(_PanelWin);
+        SceneManager.LoadScene(3);
     }
     public void UpdateDestroyUi(int number)
     {
@@ -181,12 +184,14 @@ public class UiManager : Singleton<UiManager>
     {
         ShowDefeat();
         Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
     }
 
     public void Victory()
     {
         ShowWin();
         Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
     }
 
     public void LoadGameLevel(int pLevelIndex)
@@ -201,6 +206,7 @@ public class UiManager : Singleton<UiManager>
     {
         OnDefeat?.Invoke();
         Debug.Log("TriggerDefeat");
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
     }
 
     private void OnUiDefeat()

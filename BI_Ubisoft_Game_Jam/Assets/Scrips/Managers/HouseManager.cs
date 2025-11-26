@@ -162,7 +162,5 @@ public class HouseManager : Singleton<HouseManager>
             Debug.Log("No house to repair");
         }
 
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseDestroy);
-
     }
 }
