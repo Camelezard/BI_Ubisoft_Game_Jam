@@ -146,6 +146,16 @@ public class FlowManager : MonoBehaviour
     private void ManageShop(bool pActive = false)
     {
         ShopManager.Instance.gameObject.SetActive(pActive);
+        
+        if(pActive)
+        {
+            House lHouseScript;
+            foreach (Transform lHouse in Grid.Instance._HouseCOntainer.transform)
+            {
+                lHouseScript = lHouse.GetComponent<House>();
+                ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+            }
+        }
     }
     
     private void ManageHUD(bool pActive = false)
