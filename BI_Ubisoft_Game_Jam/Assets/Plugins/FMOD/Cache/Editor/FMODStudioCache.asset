@@ -24,6 +24,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-6008177100511059398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ENVIRO/house_building
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ENVIRO/house_building
+  Guid:
+    Data1: 954816988
+    Data2: 1208954382
+    Data3: 36006565
+    Data4: 438054343
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1767
 --- !u!114 &-5982656501574610424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +120,24 @@ MonoBehaviour:
   lastModified: 638997916119331070
   FileSizes: []
   Exists: 1
+--- !u!114 &-2887022602211062950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638997924827053462
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-98338772179700662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,9 +182,14 @@ MonoBehaviour:
   - {fileID: 306545090815606343}
   - {fileID: 2572604544158816083}
   - {fileID: -5001393984448276188}
+  - {fileID: -2887022602211062950}
   EditorEvents:
   - {fileID: -98338772179700662}
   - {fileID: -5709271525973285214}
+  - {fileID: 2925792150695994148}
+  - {fileID: 140490033101358676}
+  - {fileID: -6008177100511059398}
+  - {fileID: 6317501415388983217}
   EditorParameters:
   - {fileID: -6355868600192848901}
   MasterBanks:
@@ -147,12 +197,47 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 306545090815606343}
   cacheVersion: 131857
-  cacheTime: 638997916119331070
+  cacheTime: 638997924827053462
   SerializableEventsDict:
   - key: event:/MUSIC/Music_Level
     index: 0
   - key: event:/MUSIC/Music_Menu
     index: 1
+  - key: event:/SFX/ENVIRO/house_broken
+    index: 2
+  - key: event:/SFX/PLAYER/player_blowing
+    index: 3
+  - key: event:/SFX/ENVIRO/house_building
+    index: 4
+  - key: event:/SFX/ENVIRO/house_taking_damage
+    index: 5
+--- !u!114 &140490033101358676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/PLAYER/player_blowing
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/PLAYER/player_blowing
+  Guid:
+    Data1: -2092279103
+    Data2: 1323661963
+    Data3: -501764717
+    Data4: -181755091
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 918
 --- !u!114 &306545090815606343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,10 +253,10 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638997916119265550
+  lastModified: 638997924827033524
   FileSizes:
   - Name: 
-    Value: 926
+    Value: 1208
   Exists: 1
 --- !u!114 &2572604544158816083
 MonoBehaviour:
@@ -191,3 +276,57 @@ MonoBehaviour:
   lastModified: 638997916119265550
   FileSizes: []
   Exists: 1
+--- !u!114 &2925792150695994148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ENVIRO/house_broken
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ENVIRO/house_broken
+  Guid:
+    Data1: 1834386435
+    Data2: 1261681831
+    Data3: -423170122
+    Data4: 1794361122
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1684
+--- !u!114 &6317501415388983217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ENVIRO/house_taking_damage
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ENVIRO/house_taking_damage
+  Guid:
+    Data1: 1797598200
+    Data2: 1143810440
+    Data3: 552986524
+    Data4: 1609464645
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1085

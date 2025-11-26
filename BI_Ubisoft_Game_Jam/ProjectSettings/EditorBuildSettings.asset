@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 94467afe20095b44aab9669ce73b99fd
+  - enabled: 1
+    path: Assets/Scenes/DD copie GoldLevel.unity
+    guid: aeba5db23fdc5d6418f73aeb7b136548
   - enabled: 0
     path: Assets/Scenes/DD_Merge.unity
     guid: 94b32fb9e6cae5f47a2743028d526b33
@@ -17,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMain_Ralif.unity
     guid: 1c6fc1ec7ce6b7c448a9e10eea80efc6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GoldLevel.unity
     guid: 1fe3de66fafcb8242926bde5e6e7e4e9
   m_configObjects:
