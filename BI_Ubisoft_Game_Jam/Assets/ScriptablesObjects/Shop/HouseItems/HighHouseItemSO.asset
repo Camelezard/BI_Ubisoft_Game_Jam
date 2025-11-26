@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18729be60081c444a977e5c2ae14ce89, type: 3}
   m_Name: HighHouseItemSO
   m_EditorClassIdentifier: 
-  price: 100
+  price: 450
   icon: {fileID: 21300000, guid: d821f52c34c889441bb3fa19dea7a5ae, type: 3}
   itemName: High House
   itemDescription: "grunviu\xE9'zenfozefnou grnfid"

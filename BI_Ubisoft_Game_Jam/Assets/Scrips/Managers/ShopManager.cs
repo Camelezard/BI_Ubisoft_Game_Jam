@@ -32,7 +32,7 @@ public class ShopManager : Singleton<ShopManager>
         
         OnMonnyChange.Invoke();
         
-        LoadShopSO(_testShopSO);
+        // LoadShopSO(_testShopSO);
         
         
         gameObject.SetActive(false);
@@ -61,6 +61,7 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton.SetHousePrefab(pShopSO.houseList[i]);
             lHouseButton.itemName = pShopSO.houseList[i].itemName;
             lHouseButton.itemDesc = pShopSO.houseList[i].itemDescription;
+            lHouseButton.ChangePriceCost(pShopSO.houseList[i].price);
         }
         
         lCount = pShopSO.playerUpgradesList.Count;
@@ -72,6 +73,7 @@ public class ShopManager : Singleton<ShopManager>
             lPlayerButton.SetPlayerUpgradeSO(pShopSO.playerUpgradesList[i]);
             lPlayerButton.itemName = pShopSO.playerUpgradesList[i].itemName;
             lPlayerButton.itemDesc = pShopSO.playerUpgradesList[i].itemDescription;
+            lPlayerButton.ChangePriceCost(pShopSO.playerUpgradesList[i].price);
         }
     }
 

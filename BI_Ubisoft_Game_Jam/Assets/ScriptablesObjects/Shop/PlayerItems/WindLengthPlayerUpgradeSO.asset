@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
-  m_Name: AspiratePlayerUpgradeSO 3
+  m_Name: WindLengthPlayerUpgradeSO
   m_EditorClassIdentifier: 
   price: 1
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  itemName: Aspirate On Right Click
-  itemDescription: zretrytulo_ikjhg  yt ht
-  upgradeType: 5
+  icon: {fileID: 21300000, guid: 2ab0b6a8361ede847a4692652b5712fa, type: 3}
+  itemName: Wind Zone Length
+  itemDescription: wind zone length +20%
+  upgradeType: 2
   coeffValue: 1.2

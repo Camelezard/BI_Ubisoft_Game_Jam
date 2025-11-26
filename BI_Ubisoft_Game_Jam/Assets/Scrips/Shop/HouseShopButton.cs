@@ -12,12 +12,12 @@ public class HouseShopButton : MonoBehaviour
     
     [HideInInspector] public string itemName, itemDesc;
     
-    public static event Action<string, string> OnItemHover;
+    public static event Action<string, string, int> OnItemHover;
     public static event Action OnItemHoverEnd;
 
     void Start()
     {
-        ChangePriceCost(_InitialPrice);
+        // ChangePriceCost(_InitialPrice);
     }
 
     public virtual void OnButtonPressed()
@@ -34,17 +34,17 @@ public class HouseShopButton : MonoBehaviour
         _TargetPrefab = pHouse.housePrefab;
         _buttonSprite.sprite = pHouse.icon;
     }
-
+    
     public void ChangePriceCost(int pPrice)
     {
         _Price = pPrice;
-
+        
         priceText.text = $"{_Price} $";
     }
     
     public void OnHover()
     {
-        OnItemHover?.Invoke(itemName, itemDesc);
+        OnItemHover?.Invoke(itemName, itemDesc, _Price);
     }
     
     public void OnHoverEnd()

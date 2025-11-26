@@ -36,6 +36,8 @@ public class House : WorldObject
         if(corp) corp.transform.position += Vector3.down * _DestroyFallAmont;
 
         if(ruine) ruine.SetActive(false);
+        
+        _isDestroyed = true;
     }
 
     public void HouseShake()
