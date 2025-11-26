@@ -146,7 +146,13 @@ public class Grid : Singleton<Grid>
     public bool IsCellFree(int x, int y)
     {
         if (!IsInsideGrid(x, y)) return false;
-        return _Grid[x, y].content == null;
+
+        House lHouse = _Grid[x, y].content;
+        if(lHouse == null || lHouse.is_Destroy)
+        {
+            return true;   
+        }
+        return  false;
     }
 
     // ------------------------Construction--------------------------
@@ -210,6 +216,9 @@ private void ConstructHome(Vector2Int pCellPos, House pPrefab = null, bool pForc
     public bool PlaceHouse(House _House, int x, int y)
     {
         if (!IsCellFree(x, y)) return false;
+
+        House lPreviusHouse = _Grid[x, y].content;
+        if(lPreviusHouse != null) Destroy(lPreviusHouse.gameObject);
 
         _House.transform.position = CellToWorld(x, y);
         _Grid[x, y].content = _House;
