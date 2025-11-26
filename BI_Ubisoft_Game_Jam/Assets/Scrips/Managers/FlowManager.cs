@@ -154,7 +154,7 @@ public class FlowManager : MonoBehaviour
             foreach (Transform lHouse in Grid.Instance._HouseCOntainer.transform)
             {
                 lHouseScript = lHouse.GetComponent<House>();
-                if(!lHouseScript.IsDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+                if(!lHouseScript.isDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
             }
         }
     }

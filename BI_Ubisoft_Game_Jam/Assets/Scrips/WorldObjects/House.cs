@@ -37,7 +37,7 @@ public class House : WorldObject
 
         if(ruine) ruine.SetActive(false);
         
-        _isDestroyed = true;
+        isDestroyed = true;
     }
 
     public void HouseShake()
@@ -49,7 +49,7 @@ public class House : WorldObject
     private IEnumerator Shake()
     {
         
-        if (IsShaking || is_Destroy) yield break;
+        if (IsShaking || isDestroyed) yield break;
         print("shake");
 
 
@@ -70,7 +70,7 @@ public class House : WorldObject
 
             randCercle = UnityEngine.Random.insideUnitCircle;
             randPos = pHomePos + new Vector3(randCercle.x,0,randCercle.y);
-            if (!is_Destroy) corp.transform.position = Vector3.Lerp(randPos, lPos, lPercentage);
+            if (!isDestroyed) corp.transform.position = Vector3.Lerp(randPos, lPos, lPercentage);
             else yield return null;
 
             if (Vector3.Distance (randPos, lPos) != 0)
