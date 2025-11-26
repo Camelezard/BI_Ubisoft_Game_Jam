@@ -234,6 +234,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winSond.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMony.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseSond.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseHeal.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: reciveMony.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: takeDamages.Path
       value: event:/SFX/ENVIRO/house_taking_damage
       objectReference: {fileID: 0}
@@ -242,8 +262,104 @@ PrefabInstance:
       value: event:/SFX/ENVIRO/house_broken
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoAppear.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoBounce.Path
+      value: event:/SFX/UI/clic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winSond.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winSond.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winSond.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: winSond.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseConstruct.Path
       value: event:/SFX/ENVIRO/house_building
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMony.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMony.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMony.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseMony.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseSond.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseSond.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseSond.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: loseSond.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseHeal.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseHeal.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseHeal.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseHeal.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseTakeDamages.Path
+      value: event:/SFX/ENVIRO/house_taking_damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: reciveMony.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: reciveMony.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: reciveMony.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: reciveMony.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoDisappear.Path
+      value: event:/SFX/UI/clic
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: takeDamages.Guid.Data1
@@ -278,6 +394,38 @@ PrefabInstance:
       value: 1794361122
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoAppear.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoAppear.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoAppear.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoAppear.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoBounce.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoBounce.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoBounce.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoBounce.Guid.Data4
+      value: 148345280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseConstruct.Guid.Data1
       value: 954816988
       objectReference: {fileID: 0}
@@ -292,6 +440,38 @@ PrefabInstance:
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseConstruct.Guid.Data4
       value: 438054343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseTakeDamages.Guid.Data1
+      value: 1797598200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseTakeDamages.Guid.Data2
+      value: 1143810440
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseTakeDamages.Guid.Data3
+      value: 552986524
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: houseTakeDamages.Guid.Data4
+      value: 1609464645
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoDisappear.Guid.Data1
+      value: -1028084090
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoDisappear.Guid.Data2
+      value: 1268229186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoDisappear.Guid.Data3
+      value: 1814614427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: torandoDisappear.Guid.Data4
+      value: 148345280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
