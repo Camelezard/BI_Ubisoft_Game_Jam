@@ -45,7 +45,7 @@ Material:
     - _Radius: 50
     - _VertexDisp: 0.02
     m_Colors:
-    - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OuterColor: {r: 1, g: 0.066037595, b: 0.08196146, a: 1}
+    - _InnerColor: {r: 0.30704862, g: 0.6591443, b: 0.8490566, a: 1}
+    - _OuterColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

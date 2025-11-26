@@ -154,8 +154,6 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 3652522158379918967}
-  _Corp: {fileID: 3935361537484081096}
-  _Ruins: {fileID: 603029592202253541}
 --- !u!65 &2081414153517415872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -175,8 +173,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.602137, y: 2.6267881, z: 1.7041061}
-  m_Center: {x: 0.031802338, y: 1.3133941, z: 0.0053484044}
+  m_Size: {x: 2.2759547, y: 2.5082712, z: 2.3178947}
+  m_Center: {x: -0.27683532, y: 1.2541356, z: -0.28034276}
 --- !u!1 &6844318534525568225
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,11 +611,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
---- !u!1 &3935361537484081096 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4034240065906401211, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
-  m_PrefabInstance: {fileID: 99441485086627955}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7340567912321039786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7259703777307928025, guid: cc89beb487b37a94e8129acadf2bffb8, type: 3}
@@ -708,11 +701,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
---- !u!1 &603029592202253541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
-  m_PrefabInstance: {fileID: 6146210708753505554}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5441321848340683340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218250927010170718, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}

@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 2546092113185964622}
   - component: {fileID: 3123963560866285265}
   m_Layer: 0
-  m_Name: Large_House
+  m_Name: Large_house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,8 +233,6 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 9147908775647294221}
-  _Corp: {fileID: 0}
-  _Ruins: {fileID: 6909263830304761960}
 --- !u!65 &3123963560866285265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -254,8 +252,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6669611, y: 8, z: 1.685407}
-  m_Center: {x: 0.02660054, y: 4, z: -0.019369423}
+  m_Size: {x: 2.505356, y: 9.008051, z: 2.3229454}
+  m_Center: {x: -0.04531777, y: 4.031502, z: 0.11983597}
 --- !u!1001 &213776892748292511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,11 +338,6 @@ PrefabInstance:
 --- !u!4 &2035542938635577025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218250927010170718, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
-  m_PrefabInstance: {fileID: 213776892748292511}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6909263830304761960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
   m_PrefabInstance: {fileID: 213776892748292511}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2595039736656816687

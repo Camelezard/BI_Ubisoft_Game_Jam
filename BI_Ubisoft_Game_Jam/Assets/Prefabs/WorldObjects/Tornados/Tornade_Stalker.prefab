@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
   m_Layer: 8
-  m_Name: Tornade traversante
+  m_Name: Tornade_Stalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,14 +52,14 @@ MonoBehaviour:
   tornadoMaxSpeed: 50
   tornadoDamagePerSec: 10
   startLifetime: 30
-  probabilityToFocusHome: 100
+  probabilityToFocusHome: 0
   maxDistanceFromCenter: 90
   redirectSpeed: 5
   canPassAWall: 1
   randomInitialDirection: 0
   spawnInWalls: 0
   devienSolide: 0
-  folowPlayer: 0
+  folowPlayer: 1
   heal: 0
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
@@ -339,6 +339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 246021fb0a0fd42409f68d207bd22ec2, type: 2}
     - target: {fileID: 396489375955065489, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -354,7 +358,7 @@ PrefabInstance:
     - target: {fileID: 1087534903148596531, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: fa7ac2b065f01dd4f8c3ca655998672f, type: 2}
+      objectReference: {fileID: 2100000, guid: a98c2d70e8a65d7418ec26ee956884fd, type: 2}
     - target: {fileID: 7440356185111581067, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8

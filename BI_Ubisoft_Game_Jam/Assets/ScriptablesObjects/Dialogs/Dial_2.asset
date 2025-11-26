@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
-  m_Name: AspiratePlayerUpgradeSO 3
+  m_Script: {fileID: 11500000, guid: dd2296ecb685e55428b500a09a2d82fa, type: 3}
+  m_Name: Dial_2
   m_EditorClassIdentifier: 
-  price: 1
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  upgradeType: 5
-  coeffValue: 1.2
+  leftCharacter: 1
+  rightCharacter: 2
+  dialogList:
+  - characterSide: 0
+    dialog: Blablabla Blablabla Blablabla
+  - characterSide: 0
+    dialog: Blablabla Blablabla Blablabla

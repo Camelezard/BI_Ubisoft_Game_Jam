@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1614918196363736665}
   - component: {fileID: -6241411342096151726}
-  - component: {fileID: 6264194980076279609}
   - component: {fileID: 8044962107543345885}
   m_Layer: 0
   m_Name: Medium_House
@@ -132,29 +131,6 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 783398298836814902}
-  _Corp: {fileID: 0}
-  _Ruins: {fileID: 5340218054848561862}
---- !u!65 &6264194980076279609
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575116308562814419}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.64970255, y: 7.864831, z: 1.5984845}
-  m_Center: {x: 0.52671754, y: 3.9324155, z: -1.9911139}
 --- !u!65 &8044962107543345885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -174,8 +150,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6695383, y: 8.855618, z: 1.7938186}
-  m_Center: {x: -0.0017641783, y: 4.427809, z: -0.1030907}
+  m_Size: {x: 2.595738, y: 12.343638, z: 3.9678464}
+  m_Center: {x: -0.0017647346, y: 3.4227853, z: -0.2871349}
 --- !u!1 &6670447100806884465
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,11 +338,6 @@ PrefabInstance:
 --- !u!4 &702936864713657455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218250927010170718, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
-  m_PrefabInstance: {fileID: 1660027458811300657}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5340218054848561862 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
   m_PrefabInstance: {fileID: 1660027458811300657}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1661044870426957230

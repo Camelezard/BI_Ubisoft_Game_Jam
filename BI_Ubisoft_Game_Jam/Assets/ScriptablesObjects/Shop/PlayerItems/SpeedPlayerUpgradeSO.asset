@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
   m_Name: SpeedPlayerUpgradeSO
   m_EditorClassIdentifier: 
-  price: 100
+  price: 1
   icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   upgradeType: 0
   coeffValue: 1.2

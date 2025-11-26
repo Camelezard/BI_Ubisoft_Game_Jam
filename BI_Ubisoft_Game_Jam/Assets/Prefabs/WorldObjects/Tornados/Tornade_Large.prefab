@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
   m_Layer: 8
-  m_Name: Tornade big
+  m_Name: Tornade_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   tornadoMaxSpeed: 50
   tornadoDamagePerSec: 10
   startLifetime: 30
-  probabilityToFocusHome: 25
+  probabilityToFocusHome: 40
   maxDistanceFromCenter: 90
   redirectSpeed: 5
   canPassAWall: 1
@@ -339,6 +339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a2bb674ff45d624cbdfdab79e9ec883, type: 2}
     - target: {fileID: 396489375955065489, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
