@@ -69,7 +69,7 @@ public class HouseManager : Singleton<HouseManager>
         if (!_InGameHouses.Contains(pHouse))
         {
             _InGameHouses.Add(pHouse);
-            
+
         }
         else print("imposible de retirer house");
 
@@ -147,5 +147,19 @@ public class HouseManager : Singleton<HouseManager>
             _DestroyHouse.Remove(pPreviusHouse);
         }
         else Debug.Log("no house to reper");
+    }
+
+    public void DestroyHouse(House pPreviousHouse)
+    {
+        if (_DestroyHouse.Contains(pPreviousHouse))
+        {
+            _DestroyHouse.Remove(pPreviousHouse);
+
+            Destroy(pPreviousHouse.gameObject);
+        }
+        else
+        {
+            Debug.Log("No house to repair");
+        }
     }
 }

@@ -32,7 +32,7 @@ public class OutOfWallSpawnPosition : Singleton<OutOfWallSpawnPosition>
 
     public Vector3 RndomPosOnCircle()
     {
-        Vector2 lCircle2D = Random.insideUnitCircle;
+        Vector2 lCircle2D = Random.insideUnitCircle.normalized;
 
         return transform.position + new Vector3(lCircle2D.x, 0, lCircle2D.y).normalized * radius;
 
