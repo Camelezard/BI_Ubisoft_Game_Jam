@@ -131,6 +131,9 @@ MonoBehaviour:
   m_SpawnSize: 1
   m_HealtPoints: 20
   _HP_Field: {fileID: 783398298836814902}
+  corp: {fileID: 8359433385706782697}
+  ruine: {fileID: 5340218054848561862}
+  _DestroyFallAmont: 4
 --- !u!65 &8044962107543345885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -338,6 +341,11 @@ PrefabInstance:
 --- !u!4 &702936864713657455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218250927010170718, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
+  m_PrefabInstance: {fileID: 1660027458811300657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5340218054848561862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6707511497405745655, guid: e8fdff8739c4f9d4e9de4baaa2e5130c, type: 3}
   m_PrefabInstance: {fileID: 1660027458811300657}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1661044870426957230
@@ -577,6 +585,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07488d3cb3b5a9f428ae65403770addc, type: 3}
+--- !u!1 &8359433385706782697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7138095310435215943, guid: 07488d3cb3b5a9f428ae65403770addc, type: 3}
+  m_PrefabInstance: {fileID: 1661044870426957230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9022992898302965446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7653071238506537832, guid: 07488d3cb3b5a9f428ae65403770addc, type: 3}

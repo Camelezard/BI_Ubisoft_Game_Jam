@@ -40,10 +40,28 @@ public class HouseManager : Singleton<HouseManager>
 
         _DestroyPercentage = ((float)_DestroyHouse.Count / (float)totalCurrent) * 100f;
 
+        AdjustHouses(GetRemainingHousesBeforeDefeat());
+
         if (_DestroyPercentage > _MaxPercentageOfDestruction)
         {
             UiManager.Instance.TriggerDefeat();
         }
+    }
+
+    public int GetRemainingHousesBeforeDefeat()
+    {
+        int totalCurrent = _InGameHouses.Count + _DestroyHouse.Count;
+
+        if (totalCurrent == 0)
+            return 0;
+
+        float maxDestroyedAllowed = (totalCurrent * _MaxPercentageOfDestruction) / 100f;
+
+        int maxDestroyedInt = Mathf.FloorToInt(maxDestroyedAllowed);
+
+        int remaining = maxDestroyedInt - _DestroyHouse.Count + 1;
+
+        return Mathf.Max(remaining, 0);
     }
 
     public void AddHouseInList(House pHouse)
@@ -53,8 +71,8 @@ public class HouseManager : Singleton<HouseManager>
             _InGameHouses.Add(pHouse);
             //_DestroyHouse.Remove(pHouse);
 
-            GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
-            _HouseIconImage.Add(lHomeIcone);
+            //GameObject lHomeIcone = Instantiate(_IconHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
+            //_HouseIconImage.Add(lHomeIcone);
         }
         else print("imposible de retirer house");
 
@@ -66,15 +84,18 @@ public class HouseManager : Singleton<HouseManager>
 
         if (_InGameHouses.Contains(pHouse))
         {
-            GameObject lHomeIcone = _HouseIconImage[0];
+            //GameObject lHomeIcone = _HouseIconImage[0];
 
-            if (lHomeIcone)
-            {
-                Destroy(lHomeIcone);
-                _HouseIconImage.Remove(lHomeIcone);
-            }
-            lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
-            _HouseIconImage.Add(lHomeIcone);
+            // if (lHomeIcone)
+            // {
+            //     Destroy(lHomeIcone);
+            //     _HouseIconImage.Remove(lHomeIcone);
+            // }
+            //lHomeIcone = Instantiate(_IconDestroyHousePrefab, Vector3.zero, Quaternion.identity, _IconContainer.gameObject.transform);
+            //_HouseIconImage.Add(lHomeIcone);\
+
+
+
 
             _DestroyHouse.Add(pHouse);
             _InGameHouses.Remove(pHouse);
@@ -96,5 +117,39 @@ public class HouseManager : Singleton<HouseManager>
 
         int lRandHouse = UnityEngine.Random.Range(0, _InGameHouses.Count - 1);
         return _InGameHouses[lRandHouse];
+    }
+
+    public void AdjustHouses(int pNumber)
+    {
+        int currentCount = _HouseIconImage.Count;
+
+        if (currentCount > pNumber)
+        {
+            int toRemove = currentCount - pNumber;
+
+            for (int i = 0; i < toRemove; i++)
+            {
+                GameObject go = _HouseIconImage[_HouseIconImage.Count - 1];
+                _HouseIconImage.RemoveAt(_HouseIconImage.Count - 1);
+                Destroy(go);
+            }
+        }
+
+        else if (currentCount < pNumber)
+        {
+            int toAdd = pNumber - currentCount;
+
+            for (int i = 0; i < toAdd; i++)
+            {
+                GameObject go = Instantiate(
+                    _IconHousePrefab,
+                    Vector3.zero,
+                    Quaternion.identity,
+                    _IconContainer.transform
+                );
+
+                _HouseIconImage.Add(go);
+            }
+        }
     }
 }

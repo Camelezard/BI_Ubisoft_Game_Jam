@@ -82,6 +82,7 @@ public class FlowManager : MonoBehaviour
         _currentEventIndex++;
         if (_currentEventIndex > _eventList.Count - 1)
         {
+            UiManager.Instance.Victory();
             Debug.Log("Fin des événements du FlowManager");
             return;
         }
