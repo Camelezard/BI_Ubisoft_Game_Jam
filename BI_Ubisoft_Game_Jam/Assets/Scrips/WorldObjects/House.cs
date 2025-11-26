@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class House : WorldObject
 {
+    [Header("Gold")] public int goldGainOnWaveEnd;
+    
     [SerializeField] GameObject corp = null;
     [SerializeField] GameObject ruine = null;
     [SerializeField] float _DestroyFallAmont = 7f;
