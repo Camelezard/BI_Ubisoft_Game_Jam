@@ -12,7 +12,7 @@ public class HouseShopButton : MonoBehaviour
     
     [HideInInspector] public string itemName, itemDesc;
     
-    public static event Action<string, string> OnItemHover;
+    public static event Action<string, string, int> OnItemHover;
     public static event Action OnItemHoverEnd;
 
     void Start()
@@ -44,7 +44,7 @@ public class HouseShopButton : MonoBehaviour
     
     public void OnHover()
     {
-        OnItemHover?.Invoke(itemName, itemDesc);
+        OnItemHover?.Invoke(itemName, itemDesc, _Price);
     }
     
     public void OnHoverEnd()
