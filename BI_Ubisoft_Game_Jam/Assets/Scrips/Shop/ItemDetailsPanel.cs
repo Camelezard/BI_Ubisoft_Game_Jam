@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class ItemDetailsPanel : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _nameText, _descText;
+    [SerializeField] private TMP_Text _nameText, _descText, _moneyText;
     
     CanvasGroup _canvasGroup;
     
@@ -17,11 +17,12 @@ public class ItemDetailsPanel : MonoBehaviour
         HouseShopButton.OnItemHoverEnd += OnItemHoverEnd;
     }
     
-    private void OnItemHover(string pName, string pDesc)
+    private void OnItemHover(string pName, string pDesc, int pPrice)
     {
         _canvasGroup.alpha = 1f;
         _nameText.text = pName;
         _descText.text = pDesc;
+        _moneyText.text = pPrice.ToString();
     }
     
     private void OnItemHoverEnd()

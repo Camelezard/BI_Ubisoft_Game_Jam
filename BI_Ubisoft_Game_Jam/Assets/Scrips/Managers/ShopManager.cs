@@ -62,7 +62,6 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton.itemName = pShopSO.houseList[i].itemName;
             lHouseButton.itemDesc = pShopSO.houseList[i].itemDescription;
             lHouseButton.ChangePriceCost(pShopSO.houseList[i].price);
-            print(pShopSO.houseList[i].price);
         }
         
         lCount = pShopSO.playerUpgradesList.Count;
@@ -74,6 +73,7 @@ public class ShopManager : Singleton<ShopManager>
             lPlayerButton.SetPlayerUpgradeSO(pShopSO.playerUpgradesList[i]);
             lPlayerButton.itemName = pShopSO.playerUpgradesList[i].itemName;
             lPlayerButton.itemDesc = pShopSO.playerUpgradesList[i].itemDescription;
+            lPlayerButton.ChangePriceCost(pShopSO.playerUpgradesList[i].price);
         }
     }
 
