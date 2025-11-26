@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,11 @@ public class HouseShopButton : MonoBehaviour
     [SerializeField] private Text priceText;
     [SerializeField] private int _InitialPrice;
     private int _Price;
+    
+    [HideInInspector] public string itemName, itemDesc;
+    
+    public static event Action<string, string> OnItemHover;
+    public static event Action OnItemHoverEnd;
 
     void Start()
     {
@@ -34,6 +40,16 @@ public class HouseShopButton : MonoBehaviour
         _Price = pPrice;
 
         priceText.text = $"{_Price} $";
+    }
+    
+    public void OnHover()
+    {
+        OnItemHover?.Invoke(itemName, itemDesc);
+    }
+    
+    public void OnHoverEnd()
+    {
+        OnItemHoverEnd?.Invoke();
     }
 }
 

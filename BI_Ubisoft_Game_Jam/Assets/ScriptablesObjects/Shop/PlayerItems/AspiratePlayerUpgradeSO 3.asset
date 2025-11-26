@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 1
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: Aspirate On Right Click
+  itemDescription: zretrytulo_ikjhg  yt ht
   upgradeType: 5
   coeffValue: 1.2

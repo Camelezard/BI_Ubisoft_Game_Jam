@@ -24,6 +24,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShopButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 747087636460257228}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 747087636460257228}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHoverEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerShopButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489429177128213480, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerShopButton, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5722679589390728998, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -156,3 +180,5 @@ MonoBehaviour:
   _buttonSprite: {fileID: 3230311764291813006}
   priceText: {fileID: 295658497600265530}
   _InitialPrice: 100
+  itemName: 
+  itemDesc: 
