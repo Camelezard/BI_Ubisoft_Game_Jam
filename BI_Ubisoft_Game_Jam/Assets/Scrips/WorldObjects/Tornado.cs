@@ -177,6 +177,7 @@ public class Tornado : MonoBehaviour
             if (!heal)
             {
                 house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
+                house.HouseShake();
             }
             else
             {
