@@ -1,0 +1,229 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Linq;
+using UnityEngine.UI;
+using System;
+public class UiManager : Singleton<UiManager>
+{
+    public static event Action OnVictory;
+    public static event Action OnDefeat;
+
+    [Header("Panels")]
+    [SerializeField] private GameObject _PanelContainer;
+    [SerializeField] private GameObject _PanelDefeat;
+    [SerializeField] private GameObject _PanelWin;
+    [SerializeField] private GameObject _MenuPanel;
+    [SerializeField] private GameObject _PausePanel;
+    [SerializeField] private GameObject _CreditsPanel;
+    [SerializeField] private GameObject _SettingsPanel;
+    [SerializeField] private GameObject _LevelSelector;
+    [SerializeField] private GameObject _GameUi;
+    private GameObject _ActifPanel = null;
+    [SerializeField] private List<GameObject> _PreviusPanel = new List<GameObject>();
+
+    //[SerializeField] Slider _destruction_Slider;
+    [SerializeField] Slider _Wave_Slider;
+
+    private bool _isGamePaused = false;
+
+    protected virtual void Start()
+    {
+        CheckShowPanel();
+        OnDefeat += Defeat;
+        OnVictory += Defeat;
+        if(InputManager.instance != null) InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void CheckShowPanel()
+    {
+        foreach (Transform child in _PanelContainer.transform)
+        {
+            GameObject lCheckedPanel = child.gameObject;
+
+            if (lCheckedPanel.TryGetComponent(out DialogManager lDialogManager))
+            {
+                lDialogManager.gameObject.SetActive(true);
+                continue;
+            }
+
+            if (_ActifPanel == null && lCheckedPanel.activeInHierarchy)
+            {
+                _ActifPanel = lCheckedPanel;
+            }
+            else
+            {
+                lCheckedPanel.SetActive(false);
+            }
+        }
+
+        if (_ActifPanel == null) _ActifPanel = _MenuPanel;
+        _ActifPanel.SetActive(true);
+    }
+
+    private void ChangePannel(GameObject pNewPanel, bool pRememberPanel = true)
+    {
+        if (_ActifPanel != pNewPanel)
+        {
+            _ActifPanel.SetActive(false);
+            if (pRememberPanel) _PreviusPanel.Add(_ActifPanel);
+
+            _ActifPanel = pNewPanel;
+            _ActifPanel.SetActive(true);
+        }
+    }
+
+    public void PanelBack()
+    {
+        if (_PreviusPanel.Count > 0)
+        {
+            GameObject lastPanel = _PreviusPanel.Last();
+            _PreviusPanel.RemoveAt(_PreviusPanel.Count - 1);
+            ChangePannel(lastPanel, false);
+        }
+    }
+
+    public void SwapPause()
+    {
+        print("pause");
+
+        if (SceneManager.GetActiveScene().buildIndex != 0) SetPause(_isGamePaused = !_isGamePaused);
+        else ShowMenu();
+    }
+
+    public void SetPause(bool pState = true)
+    {
+        _isGamePaused = pState;
+        Time.timeScale = pState ? 0f : 1f;
+
+        if (pState)
+        {
+            _PausePanel.SetActive(true);
+            _ActifPanel = _PausePanel;
+        }
+        else
+        {
+            HideCurrnetPanel();
+        }
+    }
+
+
+    // Show Panels
+    public void HideCurrnetPanel()
+    {
+        _ActifPanel.SetActive(false);
+    }
+
+    public void ShowMenu()
+    {
+        ChangePannel(_MenuPanel);
+    }
+
+    public void ShowSettings()
+    {
+        ChangePannel(_SettingsPanel);
+    }
+
+    public void ShowCredits()
+    {
+        ChangePannel(_CreditsPanel);
+    }
+
+    public void ShowPause()
+    {
+        ChangePannel(_PausePanel);
+    }
+
+    public void ShowGameUi()
+    {
+        ChangePannel(_GameUi);
+    }
+
+    public void ShowDefeat()
+    {
+        SceneManager.LoadScene(2);
+
+        //ChangePannel(_PanelDefeat);
+        //print("Show Defeat");
+    }
+    
+
+    public void ShowWin()
+    {
+        //ChangePannel(_PanelWin);
+        SceneManager.LoadScene(3);
+    }
+    public void UpdateDestroyUi(int number)
+    {
+        //if(_destruction_Slider) _destruction_Slider.value = pPercentage;
+    }
+
+    public void UpdateWaveUi(float pPercentage)
+    {
+        if (_Wave_Slider) _Wave_Slider.value = pPercentage;
+    }
+
+    //Load levels
+    public void ReturnToMenu()
+    {
+        LoadGameLevel(0);
+        ShowMenu();
+    }
+
+    public void Win()
+    {
+        ShowWin();
+        Time.timeScale = 0;
+    }
+    public void Defeat()
+    {
+        ShowDefeat();
+        Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
+    }
+
+    public void Victory()
+    {
+        ShowWin();
+        Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+    }
+
+    public void LoadGameLevel(int pLevelIndex)
+    {
+        HideCurrnetPanel();
+        SetPause(false);
+        SceneManager.LoadScene(pLevelIndex);
+        ShowGameUi();
+    }
+
+    public void TriggerDefeat()
+    {
+        OnDefeat?.Invoke();
+        Debug.Log("TriggerDefeat");
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+    }
+
+    private void OnUiDefeat()
+    {
+        ShowDefeat();
+    }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        ShowMenu();
+    }
+}
