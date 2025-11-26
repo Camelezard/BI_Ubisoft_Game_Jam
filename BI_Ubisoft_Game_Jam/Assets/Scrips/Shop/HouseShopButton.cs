@@ -17,7 +17,7 @@ public class HouseShopButton : MonoBehaviour
 
     void Start()
     {
-        ChangePriceCost(_InitialPrice);
+        // ChangePriceCost(_InitialPrice);
     }
 
     public virtual void OnButtonPressed()
@@ -34,11 +34,11 @@ public class HouseShopButton : MonoBehaviour
         _TargetPrefab = pHouse.housePrefab;
         _buttonSprite.sprite = pHouse.icon;
     }
-
+    
     public void ChangePriceCost(int pPrice)
     {
         _Price = pPrice;
-
+        
         priceText.text = $"{_Price} $";
     }
     
