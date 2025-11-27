@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 
@@ -24,6 +25,8 @@ public class Tornado : MonoBehaviour
     public bool obstructView = false;
     public Vector3 target;
     public float playerDetectionRadius = 2f;
+    public float apearDuration = 4f;
+    private bool isapparing = true;
 
     [Header("Runtime Data")]
     public Vector3 direction;
@@ -49,8 +52,9 @@ public class Tornado : MonoBehaviour
         InitComponents();
         InitTarget();
         InitSpawnPosition();
-        InitDirection();
+
         InitLifetime();
+        InitApparition();
     }
 
     void Update()
@@ -60,7 +64,7 @@ public class Tornado : MonoBehaviour
         //CheckDistanceFromCenter();
         UpdateDirection();
 
-        if(obstructView )checkDistAtPlayer();
+        if (obstructView) checkDistAtPlayer();
     }
 
     void checkDistAtPlayer()
@@ -149,9 +153,37 @@ public class Tornado : MonoBehaviour
 
     private void InitLifetime()
     {
-        lifetime = startLifetime;
+        lifetime = startLifetime + apearDuration;
     }
 
+    private void InitApparition()
+    {
+        StartCoroutine(apparition());
+    }
+
+    private IEnumerator apparition()
+    {
+        isapparing = true;
+        float elapsedTime = 0;
+        float ratio = 0;
+
+        Transform[] visualObjects = gameObject.GetComponentsInChildren<Transform>().Where(t => t != transform).ToArray();
+
+        while (elapsedTime <= apearDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            ratio = elapsedTime / apearDuration;
+
+            foreach (Transform child in visualObjects) child.transform.localScale = Vector3.one * ratio;
+            yield return null;
+        }
+
+        InitDirection();
+
+        isapparing = false;
+
+        yield return null;
+    }
 
     private void Move()
     {
@@ -204,7 +236,7 @@ public class Tornado : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         House house = other.GetComponent<House>();
-        if (house != null)
+        if (house != null && !isapparing)
         {
             if (!heal)
             {
