@@ -101,7 +101,6 @@ public class TornadoWaveManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             lWaveProgress = elapsedTime / totalDuration;
 
-            UiManager.Instance.UpdateWaveUi(lWaveProgress);
 
             // Check if it's time for the next wave
             if (elapsedTime >= nextWaveTime)
@@ -133,22 +132,26 @@ public class TornadoWaveManager : MonoBehaviour
         StartCoroutine(LaunchWaveTimeline(pWave));
     }
 
-    private IEnumerator LaunchWaveTimeline(TornadoData pWave)
-    {
-        float lElapsedTime = 0f;
-        StartCoroutine(LaunchWave(pWave));
+private IEnumerator LaunchWaveTimeline(TornadoData pWave)
+{
+    float lElapsedTime = 0f;
+    StartCoroutine(LaunchWave(pWave));
 
-        while (lElapsedTime < pWave.waveDuration)
+    while (lElapsedTime < pWave.sliderDuration)
+    {
+        if (pWave.startSlider)
         {
-            lElapsedTime += Time.deltaTime;
-            UiManager.Instance.UpdateWaveUi(lElapsedTime / pWave.waveDuration);
-            yield return new WaitForEndOfFrame();
+            float ratio = lElapsedTime / pWave.sliderDuration;
+            print(ratio);
+            UiManager.Instance.UpdateWaveUi(ratio);
         }
 
-        OnWaveEnd?.Invoke();
-
+        lElapsedTime += Time.deltaTime;
         yield return null;
     }
+
+    OnWaveEnd?.Invoke();
+}
 
     // private IEnumerator LaunchWave(TornadoData pWave)
     // {
