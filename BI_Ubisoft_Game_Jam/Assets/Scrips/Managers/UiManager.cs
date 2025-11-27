@@ -174,6 +174,19 @@ public class UiManager : Singleton<UiManager>
         if (_Wave_Slider) _Wave_Slider.value = pPercentage;
     }
 
+    public IEnumerator LunshSlider(float pSliderTime)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < pSliderTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            UpdateWaveUi(elapsedTime / pSliderTime);
+            yield return null;
+        }
+    }
+
     //Load levels
     public void ReturnToMenu()
     {

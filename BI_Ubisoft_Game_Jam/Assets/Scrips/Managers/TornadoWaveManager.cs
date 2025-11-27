@@ -132,26 +132,27 @@ public class TornadoWaveManager : MonoBehaviour
         StartCoroutine(LaunchWaveTimeline(pWave));
     }
 
-private IEnumerator LaunchWaveTimeline(TornadoData pWave)
-{
-    float lElapsedTime = 0f;
-    StartCoroutine(LaunchWave(pWave));
-
-    while (lElapsedTime < pWave.sliderDuration)
+    private IEnumerator LaunchWaveTimeline(TornadoData pWave)
     {
-        if (pWave.startSlider)
+        float lElapsedTime = 0f;
+        StartCoroutine(LaunchWave(pWave));
+
+        if (pWave.startSlider) StartCoroutine(UiManager.Instance.LunshSlider(pWave.sliderDuration));
+
+        while (lElapsedTime < pWave.waveDuration)
         {
-            float ratio = lElapsedTime / pWave.sliderDuration;
-//            print(ratio);
-            UiManager.Instance.UpdateWaveUi(ratio);
+
+            {
+                //float ratio = lElapsedTime / pWave.waveDuration;
+                //UiManager.Instance.UpdateWaveUi(ratio);
+            }
+
+            lElapsedTime += Time.deltaTime;
+            yield return null;
         }
 
-        lElapsedTime += Time.deltaTime;
-        yield return null;
+        OnWaveEnd?.Invoke();
     }
-
-    OnWaveEnd?.Invoke();
-}
 
     // private IEnumerator LaunchWave(TornadoData pWave)
     // {
