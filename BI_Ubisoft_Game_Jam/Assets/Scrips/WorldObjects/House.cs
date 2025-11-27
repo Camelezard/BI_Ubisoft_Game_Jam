@@ -19,7 +19,7 @@ public class House : WorldObject
 
     public override void Start()
     {
-        pHomePos = corp.transform.position;
+        pHomePos = corp.transform.localPosition;
         base.Start();
     }
 
@@ -56,10 +56,10 @@ public class House : WorldObject
         Vector2 randCircle = UnityEngine.Random.insideUnitCircle * 1f;
         Vector3 targetPos = pHomePos + new Vector3(randCircle.x, 0, randCircle.y);
 
-        while (Vector3.Distance(targetPos, corp.transform.position) > 0.1f && !isDestroyed)
+        while (Vector3.Distance(targetPos, corp.transform.localPosition) > 0.1f && !isDestroyed)
         {
-            corp.transform.position = Vector3.MoveTowards(
-                corp.transform.position,
+            corp.transform.localPosition = Vector3.MoveTowards(
+                corp.transform.localPosition,
                 targetPos,
                 shakeSpeed * Time.deltaTime
             );
@@ -67,7 +67,7 @@ public class House : WorldObject
             yield return null;
         }
 
-        corp.transform.position = pHomePos;
+        corp.transform.localPosition = pHomePos;
 
         IsShaking = false;
     }
