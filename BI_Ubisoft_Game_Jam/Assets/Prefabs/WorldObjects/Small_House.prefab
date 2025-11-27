@@ -157,7 +157,7 @@ MonoBehaviour:
   corp: {fileID: 3935361537484081096}
   ruine: {fileID: 603029592202253541}
   _DestroyFallAmont: 2
-  goldGainOnWaveEnd: 300
+  goldGainOnWaveEnd: 100
 --- !u!65 &2081414153517415872
 BoxCollider:
   m_ObjectHideFlags: 0
