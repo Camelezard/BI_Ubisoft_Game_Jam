@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a3333382be9119488a29d6a5934cacb, type: 3}
-  m_Name: Solide Test Wave 1
+  m_Name: Large Tornade Test Wave
   m_EditorClassIdentifier: Assembly-CSharp::TornadoData
   tornadoPrefabs:
-  - {fileID: 4225276611716365150, guid: feb9a3a64ee825f428d1ed3e2e4b6a3a, type: 3}
-  - {fileID: 4225276611716365150, guid: 3f0fbdcc4e9d9b245a0bc828830be437, type: 3}
+  - {fileID: 4225276611716365150, guid: 99028d58cf757444f91d447cef176231, type: 3}
   spawnInWalls: 0
   spawnInterval: 0.5
   waveDuration: 2

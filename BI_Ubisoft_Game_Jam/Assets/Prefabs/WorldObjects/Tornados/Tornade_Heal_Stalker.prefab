@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
   m_Layer: 8
-  m_Name: Tornade_Traversante
+  m_Name: Tornade_Heal_Stalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 2359790109596203696}
   - {fileID: 3372268529517101766}
-  - {fileID: 837724480282597560}
+  - {fileID: 2635706581468750148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4225276611716365150
@@ -50,18 +50,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 25
-  tornadoMaxSpeed: 35
+  tornadoMaxSpeed: 30
   tornadoDamagePerSec: 10
-  startLifetime: 10
-  probabilityToFocusHome: 100
-  maxDistanceFromCenter: 80
+  startLifetime: 30
+  probabilityToFocusHome: 0
+  maxDistanceFromCenter: 90
   redirectSpeed: 5
   canPassAWall: 1
   randomInitialDirection: 0
   spawnInWalls: 0
   devienSolide: 0
-  folowPlayer: 0
-  heal: 0
+  folowPlayer: 1
+  heal: 1
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
@@ -343,7 +343,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 03049c520426ce84fb34bce94c8fae96, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ba9b1f08f2fa7443b120b1d4870121a, type: 2}
     - target: {fileID: 396489375955065489, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -359,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 1087534903148596531, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: fa7ac2b065f01dd4f8c3ca655998672f, type: 2}
+      objectReference: {fileID: 2100000, guid: f8cd59ee4880c5f42a338f605eb37023, type: 2}
     - target: {fileID: 7440356185111581067, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -374,7 +374,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f9695ec06ead0945b02e3cee229c5bc, type: 3}
   m_PrefabInstance: {fileID: 2825184026762632539}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4959505076596522495
+--- !u!1001 &7773330901378139139
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -383,32 +383,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 6335836103136658240}
     m_Modifications:
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65278
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 65021
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 0.93710685
+      value: 0.36759046
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.9056448
+      value: 0.69182384
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
-      value: 0.38604084
+      value: 0.16751702
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.a
-      value: 0.45882353
+      value: 0.2509804
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
-      value: 0.899371
+      value: 0.4879611
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.g
-      value: 0.8244432
+      value: 0.91194963
       objectReference: {fileID: 0}
     - target: {fileID: 3029499502394638678, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.r
-      value: 0.6024088
+      value: 0.09463618
       objectReference: {fileID: 0}
     - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_LocalScale.x
@@ -458,10 +466,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6996173255855055108, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_Name
       value: TornadoParticlesTest
@@ -471,8 +475,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
---- !u!4 &837724480282597560 stripped
+--- !u!4 &2635706581468750148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
-  m_PrefabInstance: {fileID: 4959505076596522495}
+  m_PrefabInstance: {fileID: 7773330901378139139}
   m_PrefabAsset: {fileID: 0}
