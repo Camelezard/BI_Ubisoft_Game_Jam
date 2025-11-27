@@ -15,5 +15,6 @@ MonoBehaviour:
   price: 450
   icon: {fileID: 21300000, guid: d821f52c34c889441bb3fa19dea7a5ae, type: 3}
   itemName: Medium Structure
-  itemDescription: "PV : 150 / + 150 monnaies apr\xE8s phase de combat"
+  itemDescription: "PV : 150                                  + 150 monnaies apr\xE8s
+    phase de combat"
   housePrefab: {fileID: -6241411342096151726, guid: 7f23401487a25ee4f98442c1a0ca656b, type: 3}
