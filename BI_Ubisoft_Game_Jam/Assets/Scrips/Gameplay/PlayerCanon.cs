@@ -9,6 +9,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
     [SerializeField] private float _maxRotationSpeed = 90f;
     [SerializeField] private GameObject _windZone;
     
+    private float _initialSpeed;
+    
     private WindZone _windZoneScript;
     
     public Transform testobject;
@@ -34,6 +36,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneAspirateInput = InputManager.instance.GetInputAction(WIND_ZONE_ASPIRATE_ACTION);
         _windZoneAspirateInput.performed += ctx => OnAspirateButtonPerformed();
         _windZoneAspirateInput.canceled += ctx => OnAspirateButtonCanceled();
+        
+        _initialSpeed = _maxRotationSpeed;
     }
     
     void Update()
@@ -76,7 +80,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     public void SetRotationSpeed(float pCoeff)
     {
-        _maxRotationSpeed *= pCoeff;
+        // _maxRotationSpeed *= pCoeff;
+        _maxRotationSpeed += _initialSpeed * (pCoeff - 1f);
     }
     
     private void OnAspirateButtonPerformed()

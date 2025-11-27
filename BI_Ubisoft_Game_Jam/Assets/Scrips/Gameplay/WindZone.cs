@@ -7,6 +7,9 @@ public class WindZone : MonoBehaviour
     [SerializeField] private LayerMask _tornadoLayer;
     [SerializeField] private Transform _coneTip;
     [SerializeField] private float _maxSpeedIncreasePerSec = 10f;
+    
+    private Vector3 _initialScale;
+    private float _initialSpeed;
 
     private List<Tornado> _tornadosInRange = new(){};
     
@@ -41,6 +44,8 @@ public class WindZone : MonoBehaviour
             Debug.Log("WindZone already exists");
         }
         _canAspirate = false;
+        _initialScale = transform.localScale;
+        _initialSpeed = _maxSpeedIncreasePerSec;
     }
     
     #endregion
@@ -114,22 +119,25 @@ public class WindZone : MonoBehaviour
         }
     }
     
-    public void SetWidth(float lCoeff)
+    public void SetWidth(float pCoeff)
     {
         Vector3 lScale = transform.localScale;
-        lScale.y *= lCoeff;
+        // lScale.y *= lCoeff;
+        lScale.y += _initialScale.y * (pCoeff - 1f);
         transform.localScale = lScale;
     }
     
-    public void SetLength(float lCoeff)
+    public void SetLength(float pCoeff)
     {
         Vector3 lScale = transform.localScale;
-        lScale.z *= lCoeff;
+        // lScale.z *= lCoeff;
+        lScale.z += _initialScale.z * (pCoeff - 1f);
         transform.localScale = lScale;
     }
     
     public void SetStrength(float pCoeff)
     {
-        _maxSpeedIncreasePerSec *= pCoeff;
+        // _maxSpeedIncreasePerSec *= pCoeff;
+        _maxSpeedIncreasePerSec += _initialSpeed * (pCoeff - 1f);
     }
 }
