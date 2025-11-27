@@ -120,7 +120,7 @@ public class DialogManager : MonoBehaviour
         
         ResizeCharacterSprites();
         
-        _dialogIndex = -1;
+        // _dialogIndex = -1;
         
         EraseCoroutine(_coroutineCharacterTalk);
         _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
@@ -155,6 +155,7 @@ public class DialogManager : MonoBehaviour
         }
         
         _container.alpha = 0f;
+        _dialogIndex = -1;
         OnDialogOver?.Invoke();
         
         yield return null;

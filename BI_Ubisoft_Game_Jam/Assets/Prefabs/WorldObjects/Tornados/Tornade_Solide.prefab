@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17f842128027aa40a939cd0e2af609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoInitialSpeed: 7
-  tornadoMaxSpeed: 14
+  tornadoInitialSpeed: 15
+  tornadoMaxSpeed: 25
   tornadoDamagePerSec: 20
   startLifetime: 10
   probabilityToFocusHome: 100
