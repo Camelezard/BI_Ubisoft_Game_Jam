@@ -16,6 +16,12 @@ MonoBehaviour:
   rightCharacter: 0
   dialogList:
   - characterSide: 1
-    dialog: "Ahh, il est assez perceverant ton protecteur. Mais ne vous inqu\xEAtez
+    dialog: "Ahh, il est assez perceverant ton defendeur. Mais ne vous inqu\xEAtez
       pas, je vais revenir avec plus de force."
+  - characterSide: 0
+    dialog: "Bien jou\xE9, on a gagn\xE9 le combat mais pas la guerre. Il faut se
+      pr\xE9parer en construisant plus de structures."
+  - characterSide: 0
+    dialog: "Plus on a de structures plus on gagne de l'argent, et avec l'argent
+      on pourra acheter plus de structures et des am\xE9liorations du canon."
   description: "R\xE9ponse de Seth face au premier combat"
