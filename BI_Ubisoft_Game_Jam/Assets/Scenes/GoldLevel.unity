@@ -529,6 +529,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 143329555093074351, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      propertyPath: _dialogTextSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 829655373765880298, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -924,28 +928,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[0].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: 45c5e158a8460b94d9b13daa72cf1ba0, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ef213288327ae541b86fc4e9ec52f24, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[1].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: a494b6397dafe1f4cbc06336dec27bee, type: 2}
+      objectReference: {fileID: 11400000, guid: d5409eef8f24b36478d212fdd2a5cc1d, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[2].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: b89fdb5087c123048853579d12ae8389, type: 2}
+      objectReference: {fileID: 11400000, guid: ea708f9462a86584e9fa6293905373c9, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[3].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: 37040f886efa95942b96d42ec8de0b42, type: 2}
+      objectReference: {fileID: 11400000, guid: 192bc5fcb18e1f048b8631c7a8119ff6, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[4].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: 01118df17dd12624d8bd0944dc66dbb1, type: 2}
+      objectReference: {fileID: 11400000, guid: fa9d966eeb76689429d28c7b8033570b, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[5].eventObject
       value: 
@@ -960,19 +964,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[1].timeBeforeNextEvent
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[2].timeBeforeNextEvent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[3].timeBeforeNextEvent
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[4].timeBeforeNextEvent
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[5].timeBeforeNextEvent
