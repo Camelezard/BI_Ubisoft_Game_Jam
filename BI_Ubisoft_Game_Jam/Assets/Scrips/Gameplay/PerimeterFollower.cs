@@ -22,6 +22,8 @@ public class PerimeterFollower : MonoBehaviour
     [SerializeField] private float _speedIncreasePerSecond = 5f;
     [SerializeField] private float _speedDecreasePerSecond = 5f;
     
+    private float _initialSpeed;
+    
     private List<Vector3> _pathPoints = new List<Vector3>();
     private float[] _segmentLengths;
     private float _totalLength;
@@ -59,6 +61,7 @@ public class PerimeterFollower : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("PerimeterFollower already exists");
         }
+        _initialSpeed = _maxSpeed;
     }
     
     #endregion
@@ -225,9 +228,10 @@ public class PerimeterFollower : MonoBehaviour
 
     #endregion
     
-    public void SetSpeed(float lCoeff)
+    public void SetSpeed(float pCoeff)
     {
-        _maxSpeed *= lCoeff;
+        // _maxSpeed *= lCoeff;
+        _maxSpeed += _initialSpeed * (pCoeff - 1f);
     }
     
     #region Editor Gizmos
