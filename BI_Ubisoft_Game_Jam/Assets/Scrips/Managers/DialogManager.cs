@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
@@ -93,7 +94,7 @@ public class DialogManager : MonoBehaviour
             return;
         }
         
-        _dialogForward.performed += ctx => OnDialogForward();
+        _dialogForward.performed += OnDialogForward;
         
         _currentDialogSO = pDialog;
         ManageCharacterObjects();
@@ -108,10 +109,8 @@ public class DialogManager : MonoBehaviour
     private void EndDialogSO()
     {
         EraseCoroutine(_coroutineDialogUI);
+        _dialogForward.performed -=  OnDialogForward;
         _coroutineDialogUI = StartCoroutine(DialogUIDisappear());
-        _currentDialogSO = null;
-        
-        _dialogForward.performed -= ctx => OnDialogForward();
     }
     
     private IEnumerator DialogUIAppear()
@@ -121,6 +120,7 @@ public class DialogManager : MonoBehaviour
         ResizeCharacterSprites();
         
         // _dialogIndex = -1;
+        print("appear. dialog index : " + _dialogIndex);
         
         EraseCoroutine(_coroutineCharacterTalk);
         _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
@@ -156,6 +156,8 @@ public class DialogManager : MonoBehaviour
         
         _container.alpha = 0f;
         _dialogIndex = -1;
+        _currentDialogSO = null;
+        //I 
         OnDialogOver?.Invoke();
         
         yield return null;
@@ -173,32 +175,46 @@ public class DialogManager : MonoBehaviour
         _currentDialogOver = false;
         _dialogIndex++;
         float lElapsedTime = 0f;
-        int lTotalTextLength = _currentDialogSO.dialogList[_dialogIndex].dialog.Length;
-        float lTotalTime = lTotalTextLength / _dialogTextSpeed;
-        lTotalTime = lTotalTime >= 1f ? lTotalTime : 1f;
-        int lTextLength;
-        string lCurrentText;
+        // print("index : " + _dialogIndex);
+        // print("dialogListLength - 1 : " + (_currentDialogSO.dialogList.Count - 1));
         
-        EraseCoroutine(_coroutineCharacterTalk);
-        _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
-        
-        while (lElapsedTime < lTotalTime)
+        if(_dialogIndex > _currentDialogSO.dialogList.Count - 1)
         {
-            lElapsedTime += Time.unscaledDeltaTime;
-            lTextLength = Mathf.FloorToInt(lTotalTextLength * (lElapsedTime / lTotalTime));
-            lCurrentText = string.Empty;
-            
-            for (int i = 0; i < lTextLength; i++)
-            {
-                // if(i > lTotalTextLength - 1) continue;
-                lCurrentText += _currentDialogSO.dialogList[_dialogIndex].dialog[i];
-                _dialogBoxText.text = lCurrentText;
-            }
-            
-            yield return new WaitForEndOfFrame();
+            //_dialogBoxText.text = _currentDialogSO.dialogList[_dialogIndex].dialog;
+            _currentDialogOver = true;
+            EraseCoroutine(_coroutineDialogText);
+            yield return null;
         }
         
-        _currentDialogOver = true;
+        else
+        {
+            int lTotalTextLength = _currentDialogSO.dialogList[_dialogIndex].dialog.Length;
+            float lTotalTime = lTotalTextLength / _dialogTextSpeed;
+            lTotalTime = lTotalTime >= 1f ? lTotalTime : 1f;
+            int lTextLength;
+            string lCurrentText;
+            
+            EraseCoroutine(_coroutineCharacterTalk);
+            _coroutineCharacterTalk = StartCoroutine(CharacterTalkVisualCoroutine());
+            
+            while (lElapsedTime < lTotalTime)
+            {
+                lElapsedTime += Time.unscaledDeltaTime;
+                lTextLength = Mathf.FloorToInt(lTotalTextLength * (lElapsedTime / lTotalTime));
+                lCurrentText = string.Empty;
+                
+                for (int i = 0; i < lTextLength; i++)
+                {
+                    // if(i > lTotalTextLength - 1) continue;
+                    lCurrentText += _currentDialogSO.dialogList[_dialogIndex].dialog[i];
+                    _dialogBoxText.text = lCurrentText;
+                }
+                
+                yield return new WaitForEndOfFrame();
+            }
+            
+            _currentDialogOver = true;
+        }
         
         yield return null;
     }
@@ -235,7 +251,7 @@ public class DialogManager : MonoBehaviour
         
     }
     
-    private void OnDialogForward()
+    private void OnDialogForward(InputAction.CallbackContext pCtx)
     {
         if(_currentDialogSO == null ||_coroutineDialogText == null) return;
         EraseCoroutine(_coroutineDialogText);
@@ -309,6 +325,6 @@ public class DialogManager : MonoBehaviour
     
     private void OnDestroy()
     {
-        _dialogForward.performed -= ctx => OnDialogForward();
+        _dialogForward.performed -= OnDialogForward;
     }
 }
