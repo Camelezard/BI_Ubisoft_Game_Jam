@@ -225,6 +225,8 @@ public class Grid : Singleton<Grid>
         _Grid[x, y].content = _House;
 
         _HousePeview = null;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
+
         return true;
     }
 

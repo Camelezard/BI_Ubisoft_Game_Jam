@@ -146,14 +146,17 @@ public class UiManager : Singleton<UiManager>
 
     public void ShowDefeat()
     {
+        //SceneManager.LoadScene(2);
+
         ChangePannel(_PanelDefeat);
-        print("Show Defeat");
+        //print("Show Defeat");
     }
     
 
     public void ShowWin()
     {
         ChangePannel(_PanelWin);
+        //SceneManager.LoadScene(3);
     }
     public void UpdateDestroyUi(int number)
     {
@@ -169,24 +172,35 @@ public class UiManager : Singleton<UiManager>
     public void ReturnToMenu()
     {
         LoadGameLevel(0);
+        SoundManager.Instance.ChangeMenuMusic();
+        //SoundManager.chan
         ShowMenu();
     }
 
     public void Win()
     {
         ShowWin();
+
         Time.timeScale = 0;
     }
     public void Defeat()
     {
         ShowDefeat();
         Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseMusic);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
+        SoundManager.Instance.ChangeDefeatMusic();
     }
 
     public void Victory()
     {
         ShowWin();
         Time.timeScale = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winMusic);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
+        SoundManager.Instance.ChangeWinMusic();
     }
 
     public void LoadGameLevel(int pLevelIndex)
@@ -194,6 +208,7 @@ public class UiManager : Singleton<UiManager>
         HideCurrnetPanel();
         SetPause(false);
         SceneManager.LoadScene(pLevelIndex);
+        SoundManager.Instance.ChangeLevelMusic();
         ShowGameUi();
     }
 
@@ -201,6 +216,7 @@ public class UiManager : Singleton<UiManager>
     {
         OnDefeat?.Invoke();
         Debug.Log("TriggerDefeat");
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
     }
 
     private void OnUiDefeat()
@@ -213,6 +229,7 @@ public class UiManager : Singleton<UiManager>
         Time.timeScale = 1;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.Instance.ChangeLevelMusic();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

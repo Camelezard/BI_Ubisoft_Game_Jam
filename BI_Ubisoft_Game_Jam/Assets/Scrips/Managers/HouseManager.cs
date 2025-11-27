@@ -161,5 +161,6 @@ public class HouseManager : Singleton<HouseManager>
         {
             Debug.Log("No house to repair");
         }
+
     }
 }

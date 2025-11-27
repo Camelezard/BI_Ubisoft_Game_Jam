@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{1073d85f-790a-48eb-842b-d2ee86fa744f}">
+		<property name="name">
+			<value>PhaseSwitch</value>
+		</property>
+		<relationship name="folder">
+			<destination>{59e42800-ddc1-446b-9ae1-744d5bcc13f5}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{2f84341b-0b03-4352-ad58-63a5067d1783}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{2f84341b-0b03-4352-ad58-63a5067d1783}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

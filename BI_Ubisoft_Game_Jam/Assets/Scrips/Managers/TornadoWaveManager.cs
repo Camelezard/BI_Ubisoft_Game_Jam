@@ -129,6 +129,7 @@ public class TornadoWaveManager : MonoBehaviour
 
     public void LaunchWaveEvent(TornadoData pWave)
     {
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 1);   //  FMOD
         StartCoroutine(LaunchWaveTimeline(pWave));
     }
 

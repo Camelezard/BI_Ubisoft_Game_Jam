@@ -1,3 +1,4 @@
+using FMOD;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -67,6 +68,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
     {
         if(!_flowManager.IsPlaying || Time.timeScale == 0f) return;
         _windZone.SetActive(true);
+
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.playerWind);   //  FMOD
     }
     
     private void DisableWindZone()
