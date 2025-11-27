@@ -100,6 +100,9 @@ public class DialogManager : MonoBehaviour
         
         EraseCoroutine(_coroutineDialogUI);
         _coroutineDialogUI = StartCoroutine(DialogUIAppear());
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);   //  FMOD
+
     }
     
     private void EndDialogSO()

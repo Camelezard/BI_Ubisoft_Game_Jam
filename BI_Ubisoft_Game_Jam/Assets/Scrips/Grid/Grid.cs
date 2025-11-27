@@ -146,7 +146,7 @@ public class Grid : Singleton<Grid>
         if (!IsInsideGrid(x, y)) return false;
 
         House lHouse = _Grid[x, y].content;
-        if (lHouse == null || lHouse.is_Destroy)
+        if (lHouse == null || lHouse.isDestroyed)
         {
             return true;
         }
@@ -217,14 +217,16 @@ public class Grid : Singleton<Grid>
         House lPreviusHouse = _Grid[x, y].content;
         if (lPreviusHouse != null)
         {
-            //Destroy(lPreviusHouse.gameObject);
-            HouseManager.Instance.RepareHouse(lPreviusHouse);
+            //HouseManager.Instance.RepareHouse(lPreviusHouse);
+            HouseManager.Instance.DestroyHouse(lPreviusHouse);
         }
 
         _House.transform.position = CellToWorld(x, y);
         _Grid[x, y].content = _House;
 
         _HousePeview = null;
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
+
         return true;
     }
 

@@ -13,26 +13,26 @@ public class FlowEvent
 public class FlowManager : MonoBehaviour
 {
     [SerializeField] private List<FlowEvent> _eventList = new();
-    
+
     [Header("Testing")]
     [SerializeField] private bool _launchFlowOnStart = true;
-    
+
     [Tooltip("If you want to start the flow at a different index than first event.")]
     [SerializeField] private int _firstEventIndex = 0;
-    
+
     private int _currentEventIndex = -1;
-    
+
     private bool _isPlaying = false;
-    public bool IsPlaying{get => _isPlaying;}
-    
+    public bool IsPlaying { get => _isPlaying; }
+
     private const string DIALOG_SO = "DialogSO",
                         TORNADO_DATA = "TornadoData",
                         SHOP_SO = "ShopSO";
-                        
+
     public static event Action<ShopSO> OnShopLoad;
-    
+
     #region singleton
-    
+
     private static FlowManager _Instance;
     public static FlowManager instance
     {
@@ -46,7 +46,7 @@ public class FlowManager : MonoBehaviour
             return _Instance;
         }
     }
-    
+
     private void Awake()
     {
         if (_Instance == null)
@@ -59,24 +59,24 @@ public class FlowManager : MonoBehaviour
             Debug.Log("FlowManager already exists");
         }
     }
-    
+
     #endregion
-    
+
     void Start()
     {
         // for (int i = 0; i < _eventList.Count; i++)
         // {
         //     print(_eventList[i].eventObject.GetType());
         // }
-        
-        if(_firstEventIndex > 0) _currentEventIndex = _firstEventIndex - 1;
-        if(_firstEventIndex < -1) _firstEventIndex = -1;
-        if(_launchFlowOnStart) LaunchNextFlowEvent();
+
+        if (_firstEventIndex > 0) _currentEventIndex = _firstEventIndex - 1;
+        if (_firstEventIndex < -1) _firstEventIndex = -1;
+        if (_launchFlowOnStart) LaunchNextFlowEvent();
         DialogManager.OnDialogOver += OnEventEnd;
         TornadoWaveManager.OnWaveEnd += OnEventEnd;
         NextWaveButton.OnNextWaveButton += OnEventEnd;
     }
-    
+
     private void LaunchNextFlowEvent()
     {
         _currentEventIndex++;
@@ -86,15 +86,15 @@ public class FlowManager : MonoBehaviour
             Debug.Log("Fin des événements du FlowManager");
             return;
         }
-        
+
         FlowEvent lEvent = _eventList[_currentEventIndex];
-        
+
         if (lEvent.eventObject == null)
         {
             Debug.LogError("SO vide dans la liste d'event du FlowManager, index " + _currentEventIndex);
             return;
         }
-        
+
         switch (lEvent.eventObject.GetType().ToString())
         {
             case DIALOG_SO:
@@ -114,7 +114,7 @@ public class FlowManager : MonoBehaviour
                 ManageShop();
                 ManageHUD(true);
                 break;
-            case SHOP_SO :
+            case SHOP_SO:
                 Time.timeScale = 0f;
                 _isPlaying = false;
                 ManageShop(true);
@@ -125,45 +125,46 @@ public class FlowManager : MonoBehaviour
                 break;
         }
     }
-    
+
     private IEnumerator NextEventCoroutine()
     {
         float lElapsedTime = 0f;
-        
+
         while (lElapsedTime < _eventList[_currentEventIndex].timeBeforeNextEvent)
         {
             lElapsedTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
-        
+
         LaunchNextFlowEvent();
     }
-    
+
     private void OnEventEnd()
     {
         StartCoroutine(NextEventCoroutine());
     }
-    
+
     private void ManageShop(bool pActive = false)
     {
         ShopManager.Instance.gameObject.SetActive(pActive);
-        
-        if(pActive)
+
+        if (pActive)
         {
             House lHouseScript;
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);   //  FMOD
             foreach (Transform lHouse in Grid.Instance._HouseCOntainer.transform)
             {
                 lHouseScript = lHouse.GetComponent<House>();
-                if(!lHouseScript.IsDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+                if (!lHouseScript.isDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
             }
         }
     }
-    
+
     private void ManageHUD(bool pActive = false)
     {
         HUD.instance.gameObject.SetActive(pActive);
     }
-    
+
     private void OnDestroy()
     {
         DialogManager.OnDialogOver -= OnEventEnd;

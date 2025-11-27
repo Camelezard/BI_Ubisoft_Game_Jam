@@ -42,6 +42,8 @@ public class Tornado : MonoBehaviour
 
     void Start()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoAppear);
+
         InitComponents();
         InitTarget();
         InitSpawnPosition();
@@ -134,7 +136,12 @@ public class Tornado : MonoBehaviour
     private void UpdateLifetime()
     {
         lifetime -= Time.deltaTime;
-        if (lifetime <= 0) Destroy(gameObject);
+        if (lifetime <= 0)
+        {
+            Destroy(gameObject);
+            FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoDisappear);
+
+        }
     }
 
     private bool ChoosToFocusHome()
@@ -177,11 +184,13 @@ public class Tornado : MonoBehaviour
             if (!heal)
             {
                 house.TakeDamage(tornadoDamagePerSec * Time.deltaTime);
+                if (!house.isDestroyed) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseTakeDamages);  //FMOD
             }
             else
             {
                 house.TakeHealPoints(tornadoDamagePerSec * Time.deltaTime);
             }
+            house.HouseShake();
         }
     }
 

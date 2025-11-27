@@ -117,7 +117,7 @@ public class ShopManager : Singleton<ShopManager>
     
     private void UpdateMonyUi()
     {
-        _CurencyText.text = $"{_Curency} $";
+        _CurencyText.text = $"{_Curency}";
     }
     
     public void AddCurrency(int pAmount)

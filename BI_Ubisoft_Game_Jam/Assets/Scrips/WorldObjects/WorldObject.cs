@@ -11,7 +11,7 @@ public class WorldObject : MonoBehaviour
     [SerializeField] protected float m_HealtPoints = 20;
 
     [SerializeField] private Text _HP_Field;
-    public bool is_Destroy { get; private set; } = false;
+    public bool isDestroyed { get; protected set; } = false;
 
     public virtual void Start()
     {
@@ -33,7 +33,7 @@ public class WorldObject : MonoBehaviour
         m_HealtPoints -= amount;
         UpdateUi();
 
-        if (m_HealtPoints <= 0f && !is_Destroy)
+        if (m_HealtPoints <= 0f && !isDestroyed)
         {
             Die();
         }
@@ -49,6 +49,6 @@ public class WorldObject : MonoBehaviour
     {
         //Destroy(gameObject);
 
-        is_Destroy = true;
+        isDestroyed = true;
     }
 }

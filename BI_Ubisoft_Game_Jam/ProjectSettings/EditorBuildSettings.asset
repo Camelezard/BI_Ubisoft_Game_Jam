@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 94467afe20095b44aab9669ce73b99fd
+  - enabled: 1
+    path: Assets/Scenes/GoldLevel.unity
+    guid: 1fe3de66fafcb8242926bde5e6e7e4e9
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: f7ae54dc6dc7ec347b38dc8ee2c49969
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 084000b39703cea439c0444b81fd7206
+  - enabled: 0
+    path: Assets/Scenes/DD copie GoldLevel.unity
+    guid: aeba5db23fdc5d6418f73aeb7b136548
   - enabled: 0
     path: Assets/Scenes/DD_Merge.unity
     guid: 94b32fb9e6cae5f47a2743028d526b33
@@ -17,9 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMain_Ralif.unity
     guid: 1c6fc1ec7ce6b7c448a9e10eea80efc6
-  - enabled: 1
-    path: Assets/Scenes/GoldLevel.unity
-    guid: 1fe3de66fafcb8242926bde5e6e7e4e9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
