@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +31,8 @@ public class WorldObject : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        m_HealtPoints -= amount;
+         m_HealtPoints -= amount;
+        math.clamp(m_HealtPoints, 0 , m_SpawnHealtPoints);
         UpdateUi();
 
         if (m_HealtPoints <= 0f && !isDestroyed)

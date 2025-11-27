@@ -12,7 +12,7 @@ public class House : WorldObject
     [Header("Gold")] public int goldGainOnWaveEnd;
 
     private float _shakeSpeed = 1;
-
+    [SerializeField] float shakeSpeed = 30f;
     private Vector3 pHomePos;
 
     private bool IsShaking = false;
@@ -50,35 +50,24 @@ public class House : WorldObject
 
     private IEnumerator Shake()
     {
-
         if (IsShaking || isDestroyed) yield break;
-        print("shake");
-
-
         IsShaking = true;
 
-        Vector2 randCercle;
-        Vector3 randPos;
-        Vector3 lPos;
-        float lElapsTime = 0;
-        float lPercentage = 0;
+        Vector2 randCircle = UnityEngine.Random.insideUnitCircle * 1f;
+        Vector3 targetPos = pHomePos + new Vector3(randCircle.x, 0, randCircle.y);
 
-        while (lPercentage < 1)
+        while (Vector3.Distance(targetPos, corp.transform.position) > 0.1f && !isDestroyed)
         {
-            lPos = corp.transform.position;
-            lElapsTime += Time.deltaTime;
-            lPercentage = math.clamp(lPos.magnitude, 0, 1);
+            corp.transform.position = Vector3.MoveTowards(
+                corp.transform.position,
+                targetPos,
+                shakeSpeed * Time.deltaTime
+            );
 
-
-            randCercle = UnityEngine.Random.insideUnitCircle;
-            randPos = pHomePos + new Vector3(randCercle.x, 0, randCercle.y);
-            if (!isDestroyed) corp.transform.position = Vector3.Lerp(randPos, lPos, lPercentage);
-            else yield return null;
-
-            if (Vector3.Distance(randPos, lPos) != 0)
-
-                yield return null;
+            yield return null;
         }
+
+        corp.transform.position = pHomePos;
 
         IsShaking = false;
     }
