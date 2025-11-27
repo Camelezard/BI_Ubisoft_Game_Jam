@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2296ecb685e55428b500a09a2d82fa, type: 3}
+  m_Name: Dial_1.2
+  m_EditorClassIdentifier: 
+  leftCharacter: 1
+  rightCharacter: 0
+  dialogList:
+  - characterSide: 0
+    dialog: Le voila, Seth le dieu de la destruction
+  - characterSide: 1
+    dialog: "Haha, toi et ton protecteur vous allez pas m'arr\xEAter. Je vais invoquer
+      toute la puissance des tornades"
+  description: Une discussion entre Osiris et Seth
