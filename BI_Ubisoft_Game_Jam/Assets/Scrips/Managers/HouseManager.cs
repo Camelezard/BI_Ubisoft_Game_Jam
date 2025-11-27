@@ -17,7 +17,7 @@ public class HouseManager : Singleton<HouseManager>
 
 
 
-    private List<House> _InGameHouses = new List<House>();
+    public List<House> _InGameHouses = new List<House>();
     private List<House> _DestroyHouse = new List<House>();
     private List<GameObject> _HouseIconImage = new List<GameObject>();
 

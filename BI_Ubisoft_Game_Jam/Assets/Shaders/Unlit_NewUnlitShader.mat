@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
+    - _Alpha: 2
     - _BaseAlpha: 0.45
     - _Debug: 0
     - _Distortion: 0
@@ -41,11 +41,11 @@ Material:
     - _NoiseContrast: 1
     - _NoiseFloor: 0.4
     - _NoiseScale: 15
-    - _NoiseSpeed: 0.3
+    - _NoiseSpeed: 1
     - _Radius: 50
     - _VertexDisp: 0.02
     m_Colors:
-    - _InnerColor: {r: 0.30704862, g: 0.6591443, b: 0.8490566, a: 1}
+    - _InnerColor: {r: 0.827044, g: 0.9684425, b: 1, a: 1}
     - _OuterColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

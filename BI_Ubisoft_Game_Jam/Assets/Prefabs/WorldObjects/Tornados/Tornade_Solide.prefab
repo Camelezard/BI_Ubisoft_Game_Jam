@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4225276611716365150}
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
+  - component: {fileID: 3467196246494447560}
   m_Layer: 8
   m_Name: Tornade_Solide
   m_TagString: Untagged
@@ -51,10 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 15
   tornadoMaxSpeed: 50
-  tornadoDamagePerSec: 20
+  tornadoDamagePerSec: 25
   startLifetime: 10
-  probabilityToFocusHome: 100
-  maxDistanceFromCenter: 50
+  probabilityToFocusHome: 65
+  maxDistanceFromCenter: 10
   redirectSpeed: 1
   canPassAWall: 0
   randomInitialDirection: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
   obstructView: 0
   target: {x: 0, y: 0, z: 0}
   playerDetectionRadius: 2
+  apearDuration: 1
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
 --- !u!64 &1073194208220770048
@@ -115,7 +117,30 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!136 &3467196246494447560
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337112652538352724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &8853952554989608216
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +412,10 @@ PrefabInstance:
     - target: {fileID: 1856082257141797062, guid: 2cab42eac4d2bd9429d60b4a33e41974, type: 3}
       propertyPath: m_Name
       value: TornadoParticule_Solide
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856082257141797062, guid: 2cab42eac4d2bd9429d60b4a33e41974, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4010108117494731909, guid: 2cab42eac4d2bd9429d60b4a33e41974, type: 3}
       propertyPath: m_LocalScale.x
