@@ -1,12 +1,13 @@
 using FMODUnity;
 using UnityEngine;
 using FMOD.Studio;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : Singleton<SoundManager>
 {
     //public EventReference fmodEmitter = new EventReference();
 
-    
+
     // [SerializeField] string DefeatMusic;
     // [SerializeField] string WinMusic;
     [Header("music")]
@@ -40,9 +41,11 @@ public class SoundManager : Singleton<SoundManager>
 
     private EventInstance musicInstance;
 
-    void Start()
+    protected override void Awake()
     {
-        PlayMusic(winMusic); 
+        base.Awake();
+        PlayMusic(winMusic);
+        if (SceneManager.GetActiveScene().buildIndex == 0) ChangeMenuMusic();
     }
 
     private void PlayMusic(EventReference musicEvent)
@@ -50,7 +53,7 @@ public class SoundManager : Singleton<SoundManager>
         if (musicInstance.isValid())
         {
             musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicInstance.release(); 
+            musicInstance.release();
         }
 
         musicInstance = RuntimeManager.CreateInstance(musicEvent);

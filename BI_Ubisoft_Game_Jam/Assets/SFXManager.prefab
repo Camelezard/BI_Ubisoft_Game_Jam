@@ -44,6 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecdeed4e8e0e5f8428fd4abfe214317c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winMusic:
+    Guid:
+      Data1: 92172790
+      Data2: 1232159181
+      Data3: 449109931
+      Data4: 965852698
+    Path: event:/MUSIC/Music_Menu
+  levelMusic:
+    Guid:
+      Data1: 1444972811
+      Data2: 1189242516
+      Data3: -493959774
+      Data4: -230884246
+    Path: event:/MUSIC/Music_Level
+  MenuMusic:
+    Guid:
+      Data1: 92172790
+      Data2: 1232159181
+      Data3: 449109931
+      Data4: 965852698
+    Path: event:/MUSIC/Music_Menu
+  loseMusic:
+    Guid:
+      Data1: 92172790
+      Data2: 1232159181
+      Data3: 449109931
+      Data4: 965852698
+    Path: event:/MUSIC/Music_Menu
   playerWind:
     Guid:
       Data1: -2092279103
@@ -51,24 +79,87 @@ MonoBehaviour:
       Data3: -501764717
       Data4: -181755091
     Path: event:/SFX/PLAYER/player_blowing
+  playerMoove:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   houseConstruct:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 954816988
+      Data2: 1208954382
+      Data3: 36006565
+      Data4: 438054343
+    Path: event:/SFX/ENVIRO/house_building
   houseDestroy:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  takeDamages:
+      Data1: 1834386435
+      Data2: 1261681831
+      Data3: -423170122
+      Data4: 1794361122
+    Path: event:/SFX/ENVIRO/house_broken
+  houseTakeDamages:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1797598200
+      Data2: 1143810440
+      Data3: 552986524
+      Data4: 1609464645
+    Path: event:/SFX/ENVIRO/house_taking_damage
+  houseHeal:
+    Guid:
+      Data1: 1797598200
+      Data2: 1143810440
+      Data3: 552986524
+      Data4: 1609464645
+    Path: event:/SFX/ENVIRO/house_taking_damage
+  torandoBounce:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  torandoAppear:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  torandoDisappear:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  loseMony:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  reciveMony:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  loseSond:
+    Guid:
+      Data1: -382677455
+      Data2: 1075154040
+      Data3: -1828510289
+      Data4: 766407044
+    Path: event:/MUSIC/Jingle_Lose
+  winSond:
+    Guid:
+      Data1: -525826390
+      Data2: 1258048406
+      Data3: 1956262833
+      Data4: -1066891254
+    Path: event:/MUSIC/Jingle_Win
