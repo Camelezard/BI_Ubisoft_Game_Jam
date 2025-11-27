@@ -189,6 +189,7 @@ public class DialogManager : MonoBehaviour
             
             for (int i = 0; i < lTextLength; i++)
             {
+                if(i > lTotalTextLength - 1) continue;
                 lCurrentText += _currentDialogSO.dialogList[_dialogIndex].dialog[i];
                 _dialogBoxText.text = lCurrentText;
             }
