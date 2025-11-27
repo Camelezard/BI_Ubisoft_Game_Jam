@@ -142,7 +142,7 @@ private IEnumerator LaunchWaveTimeline(TornadoData pWave)
         if (pWave.startSlider)
         {
             float ratio = lElapsedTime / pWave.sliderDuration;
-            print(ratio);
+//            print(ratio);
             UiManager.Instance.UpdateWaveUi(ratio);
         }
 

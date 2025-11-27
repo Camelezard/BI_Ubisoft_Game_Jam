@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 public class UiManager : Singleton<UiManager>
 {
     public static event Action OnVictory;
@@ -25,6 +26,11 @@ public class UiManager : Singleton<UiManager>
     //[SerializeField] Slider _destruction_Slider;
     [SerializeField] Slider _Wave_Slider;
 
+    [Header("imageGenante")]
+    [SerializeField] private List<Image> warningImages;
+    [SerializeField] private float fadeSpeed = 2f;
+    [SerializeField] private float disappearDelay = 1f;
+
     private bool _isGamePaused = false;
 
     protected virtual void Start()
@@ -32,7 +38,7 @@ public class UiManager : Singleton<UiManager>
         CheckShowPanel();
         OnDefeat += Defeat;
         OnVictory += Defeat;
-        if(InputManager.instance != null) InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
+        if (InputManager.instance != null) InputManager.instance.GetInputAction("Pause").performed += ctx => SwapPause();
     }
 
     public void QuitGame()
@@ -151,7 +157,7 @@ public class UiManager : Singleton<UiManager>
         ChangePannel(_PanelDefeat);
         //print("Show Defeat");
     }
-    
+
 
     public void ShowWin()
     {
@@ -237,4 +243,52 @@ public class UiManager : Singleton<UiManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
         ShowMenu();
     }
+
+    public IEnumerator FadeInObstructionImages()
+    {
+        bool allVisible = false;
+        while (!allVisible)
+        {
+            allVisible = true;
+
+            foreach (Image img in warningImages)
+            {
+                float alpha = img.color.a;
+                alpha += Time.deltaTime * fadeSpeed;
+                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+
+                if (alpha < 1f) allVisible = false;
+            }
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOutAfterObstructionDelay()
+    {
+        float timer = 0f;
+        while (timer < disappearDelay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        bool allInvisible = false;
+        while (!allInvisible)
+        {
+            allInvisible = true;
+
+            foreach (Image img in warningImages)
+            {
+                float alpha = img.color.a;
+                alpha -= Time.deltaTime * fadeSpeed;
+                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+
+                if (alpha > 0f) allInvisible = false;
+            }
+
+            yield return null;
+        }
+    }
+
 }

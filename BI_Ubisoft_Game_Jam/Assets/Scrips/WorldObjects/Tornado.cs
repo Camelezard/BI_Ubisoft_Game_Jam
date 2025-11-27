@@ -21,7 +21,9 @@ public class Tornado : MonoBehaviour
     public bool devienSolide = false;
     public bool folowPlayer = false;
     public bool heal = false;
+    public bool obstructView = false;
     public Vector3 target;
+    public float playerDetectionRadius = 2f;
 
     [Header("Runtime Data")]
     public Vector3 direction;
@@ -57,6 +59,29 @@ public class Tornado : MonoBehaviour
         UpdateLifetime();
         //CheckDistanceFromCenter();
         UpdateDirection();
+
+        if(obstructView )checkDistAtPlayer();
+    }
+
+    void checkDistAtPlayer()
+    {
+        float sqrDistance = Vector3.Distance(PlayerCanon.Instance.transform.position, transform.position);
+
+        //print(sqrDistance);
+        if (sqrDistance < playerDetectionRadius)
+        {
+            //print("close" + sqrDistance);
+
+            if (!playerInside)
+                OnPlayerClose();
+        }
+        else
+        {
+            //print("far" + sqrDistance);
+
+            if (playerInside)
+                OnPlayerFar();
+        }
     }
 
     // ------------------------------- INIT --------------------------------
@@ -246,4 +271,33 @@ public class Tornado : MonoBehaviour
 
         velocity = direction * velocity.magnitude;
     }
+
+
+
+    private Coroutine fadeCoroutine;
+    private bool playerInside = false;
+
+
+
+    private void OnPlayerClose()
+    {
+        playerInside = true;
+
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        fadeCoroutine = StartCoroutine(UiManager.Instance.FadeInObstructionImages());
+    }
+
+    private void OnPlayerFar()
+    {
+        playerInside = false;
+
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        fadeCoroutine = StartCoroutine(UiManager.Instance.FadeOutAfterObstructionDelay());
+    }
+
+
 }
