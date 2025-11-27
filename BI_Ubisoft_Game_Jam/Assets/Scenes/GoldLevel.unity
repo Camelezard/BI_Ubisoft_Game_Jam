@@ -649,6 +649,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4599981348171074036, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4890923593801161427, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: _StartCurency
       value: 0
@@ -929,7 +933,7 @@ PrefabInstance:
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[1].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: b5bd4bf75fa4c004d988f5a32730d954, type: 2}
+      objectReference: {fileID: 11400000, guid: a494b6397dafe1f4cbc06336dec27bee, type: 2}
     - target: {fileID: 4254628615422379709, guid: 7303a30d6477e424196d04bc43ab4d0e, type: 3}
       propertyPath: _eventList.Array.data[2].eventObject
       value: 

@@ -50,10 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 7
-  tornadoMaxSpeed: 15
+  tornadoMaxSpeed: 14
   tornadoDamagePerSec: 10
-  startLifetime: 20
-  probabilityToFocusHome: 60
+  startLifetime: 10
+  probabilityToFocusHome: 100
   maxDistanceFromCenter: 50
   redirectSpeed: 1
   canPassAWall: 0

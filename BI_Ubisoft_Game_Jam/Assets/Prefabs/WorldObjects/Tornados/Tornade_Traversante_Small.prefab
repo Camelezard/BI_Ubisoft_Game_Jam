@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4225276611716365150}
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
+  - component: {fileID: 5118297066461639287}
   m_Layer: 8
-  m_Name: Tornade_Traversante
+  m_Name: Tornade_Traversante_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 7.5, z: 5}
+  m_LocalScale: {x: 3, y: 4.5, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2359790109596203696}
@@ -49,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17f842128027aa40a939cd0e2af609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoInitialSpeed: 25
-  tornadoMaxSpeed: 35
-  tornadoDamagePerSec: 10
+  tornadoInitialSpeed: 50
+  tornadoMaxSpeed: 70
+  tornadoDamagePerSec: 5
   startLifetime: 10
   probabilityToFocusHome: 100
   maxDistanceFromCenter: 80
@@ -114,6 +115,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &5118297066461639287
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337112652538352724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 2.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.23, z: 0}
 --- !u!1 &8853952554989608216
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,11 +436,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5833333
       objectReference: {fileID: 0}
     - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_LocalPosition.x
@@ -460,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725062963542140231, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6996173255855055108, guid: 3dccf0cf1488f094bbed5cd3263e3021, type: 3}
       propertyPath: m_Name
