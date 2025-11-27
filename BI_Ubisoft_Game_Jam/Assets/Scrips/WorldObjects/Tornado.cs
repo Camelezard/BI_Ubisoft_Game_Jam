@@ -24,6 +24,8 @@ public class Tornado : MonoBehaviour
     public bool obstructView = false;
     public Vector3 target;
     public float playerDetectionRadius = 2f;
+    public float apearDuration = 4f;
+    private bool isapparing = true;
 
     [Header("Runtime Data")]
     public Vector3 direction;
@@ -49,8 +51,9 @@ public class Tornado : MonoBehaviour
         InitComponents();
         InitTarget();
         InitSpawnPosition();
-        InitDirection();
+        
         InitLifetime();
+        InitApparition();
     }
 
     void Update()
@@ -149,9 +152,34 @@ public class Tornado : MonoBehaviour
 
     private void InitLifetime()
     {
-        lifetime = startLifetime;
+        lifetime = startLifetime + apearDuration;
     }
 
+    private void InitApparition()
+    {
+        StartCoroutine(apparition());
+    }
+
+    private IEnumerator apparition()
+    {
+        isapparing = true;  
+        float elapsedTime = 0;
+        float ratio = 0;
+
+        while (elapsedTime <= apearDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            ratio =  elapsedTime / apearDuration;
+
+            transform.localScale = Vector3.one * ratio;
+            yield return null;
+        }
+
+        transform.localScale = Vector3.one;
+        InitDirection();
+
+        isapparing = false;
+    }
 
     private void Move()
     {
@@ -204,7 +232,7 @@ public class Tornado : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         House house = other.GetComponent<House>();
-        if (house != null)
+        if (house != null && !isapparing)
         {
             if (!heal)
             {
