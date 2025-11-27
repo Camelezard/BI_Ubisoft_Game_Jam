@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4d03de75-9e1e-434f-916c-d00fd8c4757a}">
+		<property name="assetPath">
+			<value>Osiris_Voice-007.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.5721875000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e364a702-b0a8-4e74-baa2-6f40a0cf17a0}</destination>
+		</relationship>
+	</object>
+</objects>
