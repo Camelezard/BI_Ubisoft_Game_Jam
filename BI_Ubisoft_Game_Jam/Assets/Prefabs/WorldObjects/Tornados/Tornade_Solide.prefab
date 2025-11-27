@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tornadoInitialSpeed: 15
-  tornadoMaxSpeed: 25
+  tornadoMaxSpeed: 50
   tornadoDamagePerSec: 20
   startLifetime: 10
   probabilityToFocusHome: 100
@@ -62,7 +62,9 @@ MonoBehaviour:
   devienSolide: 0
   folowPlayer: 0
   heal: 0
+  obstructView: 0
   target: {x: 0, y: 0, z: 0}
+  playerDetectionRadius: 2
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
 --- !u!64 &1073194208220770048
