@@ -175,6 +175,7 @@ public class DialogManager : MonoBehaviour
         float lElapsedTime = 0f;
         int lTotalTextLength = _currentDialogSO.dialogList[_dialogIndex].dialog.Length;
         float lTotalTime = lTotalTextLength / _dialogTextSpeed;
+        lTotalTime = lTotalTime >= 1f ? lTotalTime : 1f;
         int lTextLength;
         string lCurrentText;
         
@@ -189,7 +190,7 @@ public class DialogManager : MonoBehaviour
             
             for (int i = 0; i < lTextLength; i++)
             {
-                if(i > lTotalTextLength - 1) continue;
+                // if(i > lTotalTextLength - 1) continue;
                 lCurrentText += _currentDialogSO.dialogList[_dialogIndex].dialog[i];
                 _dialogBoxText.text = lCurrentText;
             }
