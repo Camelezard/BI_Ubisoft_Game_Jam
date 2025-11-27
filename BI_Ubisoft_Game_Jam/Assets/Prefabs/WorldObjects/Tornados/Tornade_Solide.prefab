@@ -413,6 +413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TornadoParticule_Solide
       objectReference: {fileID: 0}
+    - target: {fileID: 1856082257141797062, guid: 2cab42eac4d2bd9429d60b4a33e41974, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4010108117494731909, guid: 2cab42eac4d2bd9429d60b4a33e41974, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2

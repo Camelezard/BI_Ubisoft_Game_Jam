@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 
@@ -51,7 +52,7 @@ public class Tornado : MonoBehaviour
         InitComponents();
         InitTarget();
         InitSpawnPosition();
-        
+
         InitLifetime();
         InitApparition();
     }
@@ -63,7 +64,7 @@ public class Tornado : MonoBehaviour
         //CheckDistanceFromCenter();
         UpdateDirection();
 
-        if(obstructView )checkDistAtPlayer();
+        if (obstructView) checkDistAtPlayer();
     }
 
     void checkDistAtPlayer()
@@ -162,23 +163,26 @@ public class Tornado : MonoBehaviour
 
     private IEnumerator apparition()
     {
-        isapparing = true;  
+        isapparing = true;
         float elapsedTime = 0;
         float ratio = 0;
+
+        Transform[] visualObjects = gameObject.GetComponentsInChildren<Transform>().Where(t => t != transform).ToArray();
 
         while (elapsedTime <= apearDuration)
         {
             elapsedTime += Time.deltaTime;
-            ratio =  elapsedTime / apearDuration;
+            ratio = elapsedTime / apearDuration;
 
-            transform.localScale = Vector3.one * ratio;
+            foreach (Transform child in visualObjects) child.transform.localScale = Vector3.one * ratio;
             yield return null;
         }
 
-        transform.localScale = Vector3.one;
         InitDirection();
 
         isapparing = false;
+
+        yield return null;
     }
 
     private void Move()
