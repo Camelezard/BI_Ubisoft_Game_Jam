@@ -152,7 +152,7 @@ public class FlowManager : MonoBehaviour
         {
             House lHouseScript;
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);   //  FMOD
-            foreach (Transform lHouse in Grid.Instance._HouseCOntainer.transform)
+            foreach (House lHouse in HouseManager.Instance._InGameHouses)
             {
                 lHouseScript = lHouse.GetComponent<House>();
                 if (!lHouseScript.isDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
