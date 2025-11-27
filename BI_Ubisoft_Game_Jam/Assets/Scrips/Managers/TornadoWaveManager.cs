@@ -140,8 +140,12 @@ public class TornadoWaveManager : MonoBehaviour
 
         while (lElapsedTime < pWave.waveDuration)
         {
-            lElapsedTime += Time.deltaTime;
-            UiManager.Instance.UpdateWaveUi(lElapsedTime / pWave.waveDuration);
+            if (pWave.startTimelineSlider == true)
+            {
+                lElapsedTime += Time.deltaTime;
+                UiManager.Instance.UpdateWaveUi(lElapsedTime / pWave.waveDuration);
+            }
+            //UiManager.Instance.UpdateWaveUi(lElapsedTime / pWave.waveDuration);
             yield return new WaitForEndOfFrame();
         }
 
