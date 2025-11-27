@@ -15,5 +15,6 @@ MonoBehaviour:
   price: 300
   icon: {fileID: 21300000, guid: dcdad6d15a967784e92debcfdfa1b3c7, type: 3}
   itemName: Small House
-  itemDescription: "PV : 100 / + 100 monnaies apr\xE8s phase de combat"
+  itemDescription: "PV : 100                                  + 100 monnaies apr\xE8s
+    phase de combat"
   housePrefab: {fileID: 3904510331153495450, guid: d46362acc7b45ca47b26ff6474817982, type: 3}
