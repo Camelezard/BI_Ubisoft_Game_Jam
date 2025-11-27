@@ -18,3 +18,5 @@ MonoBehaviour:
   spawnInWalls: 0
   spawnInterval: 0.5
   waveDuration: 2
+  startSlider: 1
+  sliderDuration: 20

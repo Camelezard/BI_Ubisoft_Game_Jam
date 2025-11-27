@@ -8,4 +8,8 @@ public class TornadoData : ScriptableObject
     public bool spawnInWalls = false;
     public float spawnInterval = 0.5f;
     public float waveDuration = 2f;
+
+    public bool startSlider = false;
+    public float sliderDuration = 10;
+
 }
