@@ -257,51 +257,53 @@ public class UiManager : Singleton<UiManager>
         ShowMenu();
     }
 
-    public IEnumerator FadeInObstructionImages()
+public IEnumerator FadeInObstructionImages()
+{
+    bool allVisible = false;
+    while (!allVisible)
     {
-        bool allVisible = false;
-        while (!allVisible)
+        allVisible = true;
+
+        foreach (Image img in warningImages)
         {
-            allVisible = true;
+            float alpha = img.color.a;
+            alpha += Time.deltaTime * fadeSpeed;
+            alpha = Mathf.Clamp01(alpha);
+            img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 
-            foreach (Image img in warningImages)
-            {
-                float alpha = img.color.a;
-                alpha += Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
-
-                if (alpha < 1f) allVisible = false;
-            }
-
-            yield return null;
+            if (alpha < 0.99f) allVisible = false; 
         }
+
+        yield return null;
+    }
+}
+
+public IEnumerator FadeOutAfterObstructionDelay()
+{
+    float timer = 0f;
+    while (timer < disappearDelay)
+    {
+        timer += Time.deltaTime;
+        yield return null;
     }
 
-    public IEnumerator FadeOutAfterObstructionDelay()
+    bool allInvisible = false;
+    while (!allInvisible)
     {
-        float timer = 0f;
-        while (timer < disappearDelay)
+        allInvisible = true;
+
+        foreach (Image img in warningImages)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            float alpha = img.color.a;
+            alpha -= Time.deltaTime * fadeSpeed;
+            alpha = Mathf.Clamp01(alpha);
+            img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+
+            if (alpha > 0.01f) allInvisible = false; 
         }
 
-        bool allInvisible = false;
-        while (!allInvisible)
-        {
-            allInvisible = true;
-
-            foreach (Image img in warningImages)
-            {
-                float alpha = img.color.a;
-                alpha -= Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
-
-                if (alpha > 0f) allInvisible = false;
-            }
-
-            yield return null;
-        }
+        yield return null;
     }
+}
 
 }

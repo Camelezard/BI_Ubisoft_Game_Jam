@@ -153,7 +153,7 @@ public class Tornado : MonoBehaviour
 
     private void InitLifetime()
     {
-        lifetime = startLifetime + apearDuration;
+        lifetime = startLifetime;
     }
 
     private void InitApparition()
@@ -254,7 +254,7 @@ public class Tornado : MonoBehaviour
 
     public void AddVelocity(Vector3 force)
     {
-        velocity += force;
+        if (isapparing) velocity += force;
 
         if (velocity.magnitude > tornadoMaxSpeed)
             velocity = velocity.normalized * tornadoMaxSpeed;
