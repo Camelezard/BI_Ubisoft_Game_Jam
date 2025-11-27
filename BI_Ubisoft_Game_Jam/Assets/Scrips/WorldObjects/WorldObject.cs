@@ -12,6 +12,7 @@ public class WorldObject : MonoBehaviour
     [SerializeField] protected float m_HealtPoints = 20;
 
     [SerializeField] private Text _HP_Field;
+    [SerializeField] private Slider _HPSLIDER;
     public bool isDestroyed { get; protected set; } = false;
 
     public virtual void Start()
@@ -22,11 +23,18 @@ public class WorldObject : MonoBehaviour
     {
         m_HealtPoints = m_SpawnHealtPoints;
         UpdateUi();
+
+        if (_HPSLIDER) _HPSLIDER.value = 0;
+        //_HPSLIDER.transform.LookAt(Camera.main.transform);
+
+
     }
 
     void UpdateUi()
     {
         if (_HP_Field) _HP_Field.text = Mathf.Ceil(m_HealtPoints).ToString();
+        if (_HPSLIDER) _HPSLIDER.value = 1 - m_HealtPoints / m_SpawnHealtPoints;
+
     }
 
     public virtual void TakeDamage(float amount)
