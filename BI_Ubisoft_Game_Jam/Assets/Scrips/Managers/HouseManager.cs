@@ -36,7 +36,13 @@ public class HouseManager : Singleton<HouseManager>
         int totalCurrent = _InGameHouses.Count + _DestroyHouse.Count;
 
         if (totalCurrent == 0)
-            totalCurrent = 1;
+            
+        {
+            UiManager.Instance.TriggerDefeat();
+            return;
+        }
+
+        
 
         _DestroyPercentage = ((float)_DestroyHouse.Count / (float)totalCurrent) * 100f;
 

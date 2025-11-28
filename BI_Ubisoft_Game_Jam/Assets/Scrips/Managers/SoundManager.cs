@@ -22,14 +22,15 @@ public class SoundManager : SingletonPersistent<SoundManager>
 
     [Header("houses")]
     [SerializeField] public EventReference houseConstruct;
+    [SerializeField] public EventReference houseConstructFail;
     [SerializeField] public EventReference houseDestroy;
     [SerializeField] public EventReference houseTakeDamages;
     [SerializeField] public EventReference houseHeal;
 
     [Header("tornado")]
     [SerializeField] public EventReference torandoBounce;
-    [SerializeField] public EventReference torandoAppear;
-    [SerializeField] public EventReference torandoDisappear;
+    //[SerializeField] public EventReference torandoAppear;
+    //[SerializeField] public EventReference torandoDisappear; 
 
     [Header("mony")]
     [SerializeField] public EventReference spendMomy;
@@ -47,18 +48,19 @@ public class SoundManager : SingletonPersistent<SoundManager>
     [SerializeField] public EventReference shopUpgradeSound;
 
     private EventInstance musicInstance;
-    //private EventInstance ambianceInstance;
 
     protected override void Awake()
     {
         base.Awake();
-        //PlayMusic(winMusic);
-        if (SceneManager.GetActiveScene().buildIndex == 0) ChangeMenuMusic();
-
-        //ambianceInstance = RuntimeManager.CreateInstance(ambiance);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void PlayMusic(EventReference musicEvent)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlaySceneMusic(scene.buildIndex);
+    }
+
+    private void PlaySceneMusic(int sceneIndex)
     {
         if (musicInstance.isValid())
         {
@@ -66,29 +68,17 @@ public class SoundManager : SingletonPersistent<SoundManager>
             musicInstance.release();
         }
 
-        musicInstance = RuntimeManager.CreateInstance(musicEvent);
-       // musicInstance.start();
+        EventReference musicToPlay = MenuMusic;
 
-        print("MM =" +gameObject.GetInstanceID());
-    }
+        if (sceneIndex == 0)
+            musicToPlay = MenuMusic;
+        else if (sceneIndex == 1)
+            musicToPlay = levelMusic;
 
-    public void StopMusic()
-    {
-        if (musicInstance.isValid())
-        {
-            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicInstance.release();
-        }
+        musicInstance = RuntimeManager.CreateInstance(musicToPlay);
+        musicInstance.start();
     }
 
-    public void ChangeMenuMusic()
-    {
-        PlayMusic(MenuMusic);
-    }
-    public void ChangeLevelMusic()
-    {
-        PlayMusic(levelMusic);
-    }
     public void ChangeWinMusic()
     {
         PlayMusic(winMusic);
@@ -98,8 +88,29 @@ public class SoundManager : SingletonPersistent<SoundManager>
     {
         PlayMusic(loseMusic);
     }
-    void OnDestroy()
+    public void playMenuMusic()
     {
-        StopMusic();
+        PlayMusic(MenuMusic);
+    }
+
+    private void PlayMusic(EventReference musicEvent)
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        musicInstance.start();
+    }
+
+    private void OnDestroy()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

@@ -254,13 +254,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6684391885181349956}
-        m_TargetAssemblyTypeName: ShopButton, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 8324030755650712881}
+        m_TargetAssemblyTypeName: HouseShopButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6684391885181349956}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -326,11 +338,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -319553418
-      Data2: 1079202999
-      Data3: 30748812
-      Data4: 1389782957
-    Path: event:/SFX/UI/money_spend
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
