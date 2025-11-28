@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18729be60081c444a977e5c2ae14ce89, type: 3}
+  m_Name: MediumHouse_lv2
+  m_EditorClassIdentifier: 
+  price: 600
+  icon: {fileID: 21300000, guid: d821f52c34c889441bb3fa19dea7a5ae, type: 3}
+  itemName: Medium Structure
+  itemDescription: "PV : 150                                  + 150 monnaies apr\xE8s
+    phase de combat"
+  housePrefab: {fileID: -6241411342096151726, guid: 7f23401487a25ee4f98442c1a0ca656b, type: 3}

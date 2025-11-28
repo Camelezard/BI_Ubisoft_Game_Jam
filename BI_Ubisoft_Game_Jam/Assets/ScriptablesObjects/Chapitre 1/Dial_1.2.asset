@@ -16,12 +16,13 @@ MonoBehaviour:
   rightCharacter: 0
   dialogList:
   - characterSide: 1
-    dialog: "Ahh, il est assez perceverant ton defendeur. Mais ne vous inqu\xEAtez
-      pas, je vais revenir avec plus de force."
+    dialog: "Ahh, your Defender is quite persistent. But don\u2019t worry, I\u2019ll
+      be back with even greater strength."
   - characterSide: 0
-    dialog: "Bien jou\xE9, on a gagn\xE9 le combat mais pas la guerre. Il faut se
-      pr\xE9parer en construisant plus de structures."
+    dialog: "Ahh, your Defender is quite persistent. But don\u2019t worry, I\u2019ll
+      be back with even greater strength.\n\nWell done! We won the battle, but not
+      the war. We need to prepare by building more structures."
   - characterSide: 0
-    dialog: "Plus on a de structures plus on gagne de l'argent, et avec l'argent
-      on pourra acheter plus de structures et des am\xE9liorations du canon."
+    dialog: "The more structures we have, the more money we earn. And with that money,
+      we\u2019ll be able to buy even more structures and upgrades for the cannon."
   description: "R\xE9ponse de Seth face au premier combat"

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd2296ecb685e55428b500a09a2d82fa, type: 3}
-  m_Name: Dial_4.1
+  m_Name: Dial_2.2
   m_EditorClassIdentifier: 
   leftCharacter: 1
   rightCharacter: 2
   dialogList:
   - characterSide: 0
-    dialog: "Les am\xE9liorations du canon changent apr\xE8s chaque combat, et de
-      nouvelles se rajoutent !"
+    dialog: "Le shop des am\xE9liorations changent apr\xE8s chaque combat, et de
+      nouvelles se rajoutent, h\xE9site pas \xE0 les check !"
   description: "Osiris explique les am\xE9liorations du shop\n"
