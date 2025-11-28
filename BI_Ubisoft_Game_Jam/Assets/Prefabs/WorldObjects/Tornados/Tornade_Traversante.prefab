@@ -65,6 +65,7 @@ MonoBehaviour:
   obstructView: 0
   target: {x: 0, y: 0, z: 0}
   playerDetectionRadius: 2
+  apearDuration: 1
   direction: {x: 0, y: 0, z: 0}
   _MeshCollider: {fileID: 0}
 --- !u!64 &1073194208220770048
