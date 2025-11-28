@@ -112,6 +112,7 @@ public class UiManager : Singleton<UiManager>
 
         if (pState)
         {
+
             _PausePanel.SetActive(true);
             _ActifPanel = _PausePanel;
         }
@@ -211,7 +212,7 @@ public class UiManager : Singleton<UiManager>
     {
         ShowDefeat();
         Time.timeScale = 0;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeDefeatMusic();
@@ -226,7 +227,7 @@ public class UiManager : Singleton<UiManager>
     {
         ShowWin();
         Time.timeScale = 0;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeWinMusic();
