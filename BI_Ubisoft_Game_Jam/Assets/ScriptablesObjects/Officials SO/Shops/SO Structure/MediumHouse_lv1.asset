@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MediumHouse_lv1
   m_EditorClassIdentifier: 
   price: 450
-  icon: {fileID: 21300000, guid: d821f52c34c889441bb3fa19dea7a5ae, type: 3}
+  icon: {fileID: 21300000, guid: ad75fd70b2821a447819674c449796a9, type: 3}
   itemName: Medium Structure
   itemDescription: "PV : 150                                  + 150 monnaies apr\xE8s
     phase de combat"

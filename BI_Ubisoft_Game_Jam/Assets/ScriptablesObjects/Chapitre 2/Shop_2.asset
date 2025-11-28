@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b958783344a5c564fb64c96597227cf2, type: 2}
   playerUpgradesList:
   - {fileID: 11400000, guid: f913d4cd80fb17344a39bb1f1ec8f8c5, type: 2}
-  - {fileID: 11400000, guid: f913d4cd80fb17344a39bb1f1ec8f8c5, type: 2}
+  - {fileID: 11400000, guid: f1bf4931b2618d849a07946d623721a1, type: 2}
