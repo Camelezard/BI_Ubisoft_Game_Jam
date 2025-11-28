@@ -98,6 +98,8 @@ public class ShopManager : Singleton<ShopManager>
         if (_CurentBuildingCost <= _Curency)
         {
             _Curency -= _CurentBuildingCost;
+
+            FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.spendMomy);
             OnMonnyChange.Invoke();
             return true;
         }

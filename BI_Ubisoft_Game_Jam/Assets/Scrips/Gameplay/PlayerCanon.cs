@@ -42,6 +42,9 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneAspirateInput.canceled += ctx => OnAspirateButtonCanceled();
         
         _initialSpeed = _maxRotationSpeed;
+
+        eventInstance = RuntimeManager.CreateInstance(SoundManager.Instance.playerWind);
+
     }
     
     void Update()
@@ -78,7 +81,6 @@ public class PlayerCanon : Singleton<PlayerCanon>
 
         //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.playerWind);   //  FMOD
 
-        eventInstance = RuntimeManager.CreateInstance(SoundManager.Instance.playerWind);
          eventInstance.start();
     }
     

@@ -70,6 +70,9 @@ public class UiManager : Singleton<UiManager>
 
         if (_ActifPanel == null) _ActifPanel = _MenuPanel;
         _ActifPanel.SetActive(true);
+        SoundManager.Instance.ChangeMenuMusic();
+
+        //
     }
 
     private void ChangePannel(GameObject pNewPanel, bool pRememberPanel = true)
@@ -191,6 +194,7 @@ public class UiManager : Singleton<UiManager>
     public void ReturnToMenu()
     {
         LoadGameLevel(0);
+        //SoundManager.Instance.StopMusic();
         SoundManager.Instance.ChangeMenuMusic();
         //SoundManager.chan
         ShowMenu();
@@ -257,53 +261,55 @@ public class UiManager : Singleton<UiManager>
         ShowMenu();
     }
 
-public IEnumerator FadeInObstructionImages()
-{
-    bool allVisible = false;
-    while (!allVisible)
+    public IEnumerator FadeInObstructionImages()
     {
-        allVisible = true;
-
-        foreach (Image img in warningImages)
+        bool allVisible = false;
+        while (!allVisible)
         {
-            float alpha = img.color.a;
-            alpha += Time.deltaTime * fadeSpeed;
-            alpha = Mathf.Clamp01(alpha);
-            img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+            allVisible = true;
 
-            if (alpha < 0.99f) allVisible = false; 
+            foreach (Image img in warningImages)
+            {
+                float alpha = img.color.a;
+                alpha += Time.deltaTime * fadeSpeed;
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+
+                if (alpha < 0.99f) allVisible = false;
+            }
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOutAfterObstructionDelay()
+    {
+        float timer = 0f;
+        while (timer < disappearDelay)
+        {
+            timer += Time.deltaTime;
+            yield return null;
         }
 
-        yield return null;
-    }
-}
-
-public IEnumerator FadeOutAfterObstructionDelay()
-{
-    float timer = 0f;
-    while (timer < disappearDelay)
-    {
-        timer += Time.deltaTime;
-        yield return null;
-    }
-
-    bool allInvisible = false;
-    while (!allInvisible)
-    {
-        allInvisible = true;
-
-        foreach (Image img in warningImages)
+        bool allInvisible = false;
+        while (!allInvisible)
         {
-            float alpha = img.color.a;
-            alpha -= Time.deltaTime * fadeSpeed;
-            alpha = Mathf.Clamp01(alpha);
-            img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+            allInvisible = true;
 
-            if (alpha > 0.01f) allInvisible = false; 
+            foreach (Image img in warningImages)
+            {
+                float alpha = img.color.a;
+                alpha -= Time.deltaTime * fadeSpeed;
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+
+                if (alpha > 0.01f) allInvisible = false;
+            }
+
+            yield return null;
         }
-
-        yield return null;
     }
-}
+
+
 
 }

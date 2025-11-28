@@ -225,7 +225,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638998795912690134
+  lastModified: 638998809309444597
   FileSizes: []
   Exists: 1
 --- !u!114 &-4951678197066914087
@@ -270,7 +270,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638998795912882233
+  lastModified: 638998809920111880
   FileSizes: []
   Exists: 1
 --- !u!114 &-1697821129700929265
@@ -423,7 +423,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 306545090815606343}
   cacheVersion: 131857
-  cacheTime: 638998795912882233
+  cacheTime: 638998809920111880
   SerializableEventsDict:
   - key: event:/MUSIC/Music_Level
     index: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638998795912513791
+  lastModified: 638998809309213906
   FileSizes:
   - Name: 
     Value: 1858
@@ -551,7 +551,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638998795912503779
+  lastModified: 638998809309203876
   FileSizes: []
   Exists: 1
 --- !u!114 &2925792150695994148

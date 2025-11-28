@@ -9,16 +9,44 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 747087636460257228}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2727044414177916281}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnButtonPressed
       objectReference: {fileID: 0}
     - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerShopButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FMODUnity.StudioEventEmitter, FMODUnity
+      objectReference: {fileID: 0}
+    - target: {fileID: 666975010675172849, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1393152172004157596, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       propertyPath: m_Name
@@ -136,6 +164,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1393152172004157596, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
       insertIndex: -1
       addedObject: {fileID: 747087636460257228}
+    - targetCorrespondingSourceObject: {fileID: 4423364187271046973, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2727044414177916281}
   m_SourcePrefab: {fileID: 100100000, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
 --- !u!114 &295658497600265530 stripped
 MonoBehaviour:
@@ -153,7 +184,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8152357649338646983, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
   m_PrefabInstance: {fileID: 6770776633053036361}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6959278804126505076}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -182,3 +213,39 @@ MonoBehaviour:
   _InitialPrice: 100
   itemName: 
   itemDesc: 
+--- !u!1 &6959278804126505076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4423364187271046973, guid: 117dd3469b39b84469fe4fd7d47a5b66, type: 3}
+  m_PrefabInstance: {fileID: 6770776633053036361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2727044414177916281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959278804126505076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1226047306
+      Data2: 1327094421
+      Data3: 865481363
+      Data4: 1010986746
+    Path: event:/SFX/UI/upgrade_buy
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

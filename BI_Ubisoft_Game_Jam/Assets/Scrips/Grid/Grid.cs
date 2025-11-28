@@ -205,12 +205,12 @@ public class Grid : Singleton<Grid>
             houseToPlace.transform.SetParent(_HouseCOntainer.transform);
 
                 HouseManager.Instance.AddHouseInList(houseToPlace);
-                PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
+                PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y, !pForceConstruct);
             }
         }
     
 
-    public bool PlaceHouse(House _House, int x, int y)
+    public bool PlaceHouse(House _House, int x, int y, bool pConstructionSound = true)
     {
         if (!IsCellFree(x, y)) return false;
 
@@ -225,7 +225,7 @@ public class Grid : Singleton<Grid>
         _Grid[x, y].content = _House;
 
         _HousePeview = null;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
+        if (pConstructionSound) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
 
         return true;
     }

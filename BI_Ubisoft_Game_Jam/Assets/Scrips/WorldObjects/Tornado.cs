@@ -330,6 +330,12 @@ public class Tornado : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(UiManager.Instance.FadeOutAfterObstructionDelay());
     }
+    void OnDestroy()
+    {
+        int count = TornadoWaveManager.instance.childCount --;
 
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ambienceIntensity", count);
+
+    }
 
 }
