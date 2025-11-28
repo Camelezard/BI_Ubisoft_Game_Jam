@@ -47,7 +47,7 @@ public class Tornado : MonoBehaviour
 
     void Start()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoAppear);
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoAppear);
 
         InitComponents();
         InitTarget();
@@ -195,8 +195,12 @@ public class Tornado : MonoBehaviour
         lifetime -= Time.deltaTime;
         if (lifetime <= 0)
         {
+            int count = TornadoWaveManager.instance.childCount--;
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ambienceIntensity", count);
+
             Destroy(gameObject);
-            FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoDisappear);
+            //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoDisappear);
 
         }
     }
@@ -329,13 +333,6 @@ public class Tornado : MonoBehaviour
             StopCoroutine(fadeCoroutine);
 
         fadeCoroutine = StartCoroutine(UiManager.Instance.FadeOutAfterObstructionDelay());
-    }
-    void OnDestroy()
-    {
-        int count = TornadoWaveManager.instance.childCount --;
-
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ambienceIntensity", count);
-
     }
 
 }

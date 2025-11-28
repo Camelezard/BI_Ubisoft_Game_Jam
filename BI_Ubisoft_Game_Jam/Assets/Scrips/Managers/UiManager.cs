@@ -70,7 +70,7 @@ public class UiManager : Singleton<UiManager>
 
         if (_ActifPanel == null) _ActifPanel = _MenuPanel;
         _ActifPanel.SetActive(true);
-        SoundManager.Instance.ChangeMenuMusic();
+        //SoundManager.Instance.ChangeMenuMusic();
 
         //
     }
@@ -79,7 +79,7 @@ public class UiManager : Singleton<UiManager>
     {
         if (_ActifPanel != pNewPanel)
         {
-            _ActifPanel.SetActive(false);
+            //_ActifPanel?.SetActive(false);
             if (pRememberPanel) _PreviusPanel.Add(_ActifPanel);
 
             _ActifPanel = pNewPanel;
@@ -155,7 +155,10 @@ public class UiManager : Singleton<UiManager>
 
     public void ShowDefeat()
     {
-        //SceneManager.LoadScene(2);
+        if (_PanelDefeat == null)
+        {
+            return;
+        }
 
         ChangePannel(_PanelDefeat);
         //print("Show Defeat");
@@ -193,11 +196,9 @@ public class UiManager : Singleton<UiManager>
     //Load levels
     public void ReturnToMenu()
     {
+        SoundManager.Instance.playMenuMusic();
+
         LoadGameLevel(0);
-        //SoundManager.Instance.StopMusic();
-        SoundManager.Instance.ChangeMenuMusic();
-        //SoundManager.chan
-        ShowMenu();
     }
 
     public void Win()
@@ -231,7 +232,7 @@ public class UiManager : Singleton<UiManager>
         HideCurrnetPanel();
         SetPause(false);
         SceneManager.LoadScene(pLevelIndex);
-        SoundManager.Instance.ChangeLevelMusic();
+        SoundManager.Instance.ChangeDefeatMusic();
         ShowGameUi();
     }
 
@@ -252,7 +253,7 @@ public class UiManager : Singleton<UiManager>
         Time.timeScale = 1;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SoundManager.Instance.ChangeLevelMusic();
+        SoundManager.Instance.ChangeDefeatMusic();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

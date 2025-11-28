@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GoldLevel.unity
     guid: 1fe3de66fafcb8242926bde5e6e7e4e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Defeat.unity
     guid: f7ae54dc6dc7ec347b38dc8ee2c49969
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Win.unity
     guid: 084000b39703cea439c0444b81fd7206
   - enabled: 0
