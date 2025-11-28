@@ -33,6 +33,8 @@ public class UiManager : Singleton<UiManager>
 
     private bool _isGamePaused = false;
 
+    public bool allowDialogues = true;
+
     protected virtual void Start()
     {
         CheckShowPanel();
@@ -200,6 +202,8 @@ public class UiManager : Singleton<UiManager>
         SoundManager.Instance.playMenuMusic();
 
         LoadGameLevel(0);
+
+        //DialogManager.instance.gameObject.SetActive(true);
     }
 
     public void Win()
@@ -217,10 +221,13 @@ public class UiManager : Singleton<UiManager>
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeDefeatMusic();
 
+        //_GameUi.SetActive(false);
+        //DialogManager.instance.gameObject.SetActive(false);
 
-        //_GameUi.SetActive(true);
+        //TornadoWaveManager.instance.StopAllCoroutines();
+        //DialogManager.instance.StopAllCoroutines();
 
-        
+        allowDialogues = false;
     }
 
     public void Victory()
@@ -231,6 +238,9 @@ public class UiManager : Singleton<UiManager>
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeWinMusic();
+
+        //_GameUi.SetActive(false);
+        allowDialogues = false;
     }
 
     public void LoadGameLevel(int pLevelIndex)
@@ -240,6 +250,10 @@ public class UiManager : Singleton<UiManager>
         SceneManager.LoadScene(pLevelIndex);
         SoundManager.Instance.ChangeDefeatMusic();
         ShowGameUi();
+
+        if (_GameUi) _GameUi.SetActive(true);
+
+        allowDialogues = true;
     }
 
     public void TriggerDefeat()
@@ -247,6 +261,8 @@ public class UiManager : Singleton<UiManager>
         OnDefeat?.Invoke();
         Debug.Log("TriggerDefeat");
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+
+        if (_GameUi) _GameUi.SetActive(false);
     }
 
     private void OnUiDefeat()
@@ -316,19 +332,23 @@ public class UiManager : Singleton<UiManager>
             yield return null;
         }
     }
-private Coroutine fadeCoroutine;
+    private Coroutine fadeCoroutine;
 
-public void StartFadeInObstruction()
-{
-    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-    fadeCoroutine = StartCoroutine(FadeInObstructionImages());
-}
+    public void StartFadeInObstruction()
+    {
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeInObstructionImages());
+    }
 
-public void StartFadeOutObstruction()
-{
-    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-    fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
-}
+    public void StartFadeOutObstruction()
+    {
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
+    }
 
+    public void TornadoDestroy()
+    {
+        StartFadeOutObstruction();
+    }
 
 }
