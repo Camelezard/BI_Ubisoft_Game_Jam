@@ -200,6 +200,7 @@ public class Tornado : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ambienceIntensity", count);
 
             Destroy(gameObject);
+            if (obstructView) UiManager.Instance.TornadoDestroy();
             //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.torandoDisappear);
 
         }

@@ -152,9 +152,9 @@ public class TornadoWaveManager : MonoBehaviour
 
             lElapsedTime += Time.deltaTime;
             yield return null;
-        }
+        }        
 
-        OnWaveEnd?.Invoke();
+        if (UiManager.Instance.allowDialogues) OnWaveEnd?.Invoke();
     }
 
     // private IEnumerator LaunchWave(TornadoData pWave)
