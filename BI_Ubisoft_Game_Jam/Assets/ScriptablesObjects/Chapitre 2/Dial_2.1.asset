@@ -16,5 +16,5 @@ MonoBehaviour:
   rightCharacter: 0
   dialogList:
   - characterSide: 1
-    dialog: "Je suis de retour, pr\xE9pare toi \xE0 l'attaque"
+    dialog: "I\u2019m back. Prepare yourself for the attack!"
   description: Seth est de retour

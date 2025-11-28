@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
   m_Name: SpeedCanon_lv2
   m_EditorClassIdentifier: 
-  price: 80
+  price: 90
   icon: {fileID: 21300000, guid: 6dc0c68b1cf484f439ee9dd4c2757745, type: 3}
-  itemName: Speed Boost
-  itemDescription: speed boost +30%
+  itemName: Movement Speed
+  itemDescription: Cannon movement speed +25%
   upgradeType: 0
   coeffValue: 1.25

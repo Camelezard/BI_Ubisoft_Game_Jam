@@ -545,7 +545,7 @@ MonoBehaviour:
   m_HealtPoints: 20
   _HP_Field: {fileID: 5472599976560595834}
   _HPSLIDER: {fileID: 5663310445250395377}
-  corp: {fileID: 0}
+  corp: {fileID: 5469991498950977368}
   ruine: {fileID: 6909263830304761960}
   UI_object: {fileID: 6690286076029745368}
   _DestroyFallAmont: 5
@@ -776,5 +776,10 @@ PrefabInstance:
 --- !u!4 &1315866583852931905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1586466910244158461, guid: 4f509f7eed6bc97439156301f316b43b, type: 3}
+  m_PrefabInstance: {fileID: 308116763929731260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5469991498950977368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5742079461994448868, guid: 4f509f7eed6bc97439156301f316b43b, type: 3}
   m_PrefabInstance: {fileID: 308116763929731260}
   m_PrefabAsset: {fileID: 0}

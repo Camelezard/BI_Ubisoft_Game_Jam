@@ -19,4 +19,4 @@ MonoBehaviour:
   spawnInterval: 0.5
   waveDuration: 0
   startSlider: 1
-  sliderDuration: 20
+  sliderDuration: 23

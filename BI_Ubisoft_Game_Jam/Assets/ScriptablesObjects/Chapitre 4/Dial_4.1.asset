@@ -16,6 +16,6 @@ MonoBehaviour:
   rightCharacter: 2
   dialogList:
   - characterSide: 0
-    dialog: "You are very brave, dear Defender. I\u2019m offering you a new free
-      upgrade for the Aspiration Wind in the shop."
+    dialog: "You\u2019re brave, Defender. I\u2019m giving you a free Aspiration Wind
+      upgrade in the shop. Right-click to pull tornadoes toward you."
   description: 
