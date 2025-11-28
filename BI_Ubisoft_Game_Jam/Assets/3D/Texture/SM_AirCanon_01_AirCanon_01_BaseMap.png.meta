@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:BI_Ubisoft_Game_Jam/Assets/3D/Texture/SM_AirCanon_01_AirCanon_01_BaseMap.png.meta
 guid: 3801b2db20149124fb33b6a9f05ea14f
+========
+guid: 211ab24cf23384a40b4e348ec04fd42e
+>>>>>>>> 5841c7eb03a1d8ec48250c2c283b12a5ce8220b6:BI_Ubisoft_Game_Jam/Assets/2D/Bannier/SPR_Main_Banniere.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
