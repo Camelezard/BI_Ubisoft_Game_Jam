@@ -2672,6 +2672,10 @@ PrefabInstance:
       propertyPath: _MaxPercentageOfDestruction
       value: 95
       objectReference: {fileID: 0}
+    - target: {fileID: 7107424829828248303, guid: b7f9691f39128584d815a275a497dab4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7219999612065260763, guid: b7f9691f39128584d815a275a497dab4, type: 3}
       propertyPath: _sourceObject
       value: 
