@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Speed Boost
   itemDescription: speed boost +20%
   upgradeType: 0
-  coeffValue: 1.2
+  coeffValue: 1.15
