@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 0
   icon: {fileID: 21300000, guid: 9d9b8e5ddc37f1f43bf34228e9a3d08c, type: 3}
-  itemName: Aspirate Wind
-  itemDescription: Aspirate tornados with right click
+  itemName: Aspiration Wind
+  itemDescription: Right-click to pull tornadoes toward you.
   upgradeType: 5
   coeffValue: 1

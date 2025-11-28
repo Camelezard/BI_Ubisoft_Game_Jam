@@ -16,8 +16,8 @@ MonoBehaviour:
   rightCharacter: 0
   dialogList:
   - characterSide: 0
-    dialog: "Seth\u2019s waves are getting tougher and tougher. I\u2019ll help you
-      by summoning healing tornadoes. Push them toward the structures to repair them."
+    dialog: "Seth\u2019s waves are growing stronger. I\u2019ll summon healing tornadoes,
+      push them toward the structures to repair them."
   - characterSide: 1
     dialog: "Do you really think that\u2019s going to stop me?"
   description: 

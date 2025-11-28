@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128310309a9ad749b011eff4520c900, type: 3}
   m_Name: SpeedRotationCanon_lv1
   m_EditorClassIdentifier: 
-  price: 30
+  price: 40
   icon: {fileID: 21300000, guid: 56307e0a8d0b2b6448dbf9f977e997fd, type: 3}
-  itemName: Rotation speed
-  itemDescription: rotation speed +20%
+  itemName: Rotation Speed
+  itemDescription: Cannon rotation speed +25%
   upgradeType: 1
   coeffValue: 1.25
