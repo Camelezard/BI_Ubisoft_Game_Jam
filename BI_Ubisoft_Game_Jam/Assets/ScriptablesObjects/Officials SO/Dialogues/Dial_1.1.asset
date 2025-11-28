@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Dial_1.1
   m_EditorClassIdentifier: 
   leftCharacter: 1
-  rightCharacter: 2
+  rightCharacter: 0
   dialogList:
   - characterSide: 0
-    dialog: Salut, je suis Osiris le Dieu de la vie, je t'invoque parce que le Dieu
-      Seth va nous attaquer avec les tornades.
+    dialog: "Salut le defendeur, je suis Osiris le Dieu de la vie, je t'invoque parce
+      que le Dieu de l'orage Seth s'en prend \xE0 notre village."
   - characterSide: 0
-    dialog: Tu es la seule espoire pour sauver notre village.
+    dialog: Tu es le dernier espoir pour nous sauver.
+  - characterSide: 1
+    dialog: "Haha, toi et ton defendeur vous allez pas m'arr\xEAter. Je vais invoquer
+      toute la puissance des tornades."
+  - characterSide: 0
+    dialog: "Vite d\xE9place le canon \xE0 souffle avec A et D. Et souffle avec le
+      clique gauche. Change la trajectoire des tornades pour qu'elles ne d\xE9truisent
+      pas le village."
   description: Premier dialogue d'introduction. Osiris parle au joueur pour expliquer
     le contexte
