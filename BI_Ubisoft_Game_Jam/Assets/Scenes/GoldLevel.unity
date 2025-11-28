@@ -945,7 +945,7 @@ PrefabInstance:
     - target: {fileID: 146229794060880209, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1841369523}
     - target: {fileID: 146229794060880209, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1545,7 +1545,7 @@ PrefabInstance:
     - target: {fileID: 2368482577905221367, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1841369523}
     - target: {fileID: 2368482577905221367, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1556,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368482577905221367, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowMenu
+      value: ReturnToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2368482577905221367, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1653,6 +1653,14 @@ PrefabInstance:
     - target: {fileID: 2466404415855913138, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_Name
       value: Button (Restart)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471661862051694795, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471661862051694795, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2480747718843617271, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2856,6 +2864,9 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 265025699}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3265424657040936658, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1841369523}
     - targetCorrespondingSourceObject: {fileID: 3956819589287782430, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1457982000}
@@ -3133,7 +3144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: houseConstructFail.Path
-      value: event:/SFX/ENVIRO/house_broken
+      value: event:/SFX/UI/invalid_house_placement
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: torandoAppear.Guid.Data1
@@ -3185,19 +3196,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: houseConstructFail.Guid.Data1
-      value: 1834386435
+      value: 1013078771
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: houseConstructFail.Guid.Data2
-      value: 1261681831
+      value: 1184093545
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: houseConstructFail.Guid.Data3
-      value: -423170122
+      value: -1296492884
       objectReference: {fileID: 0}
     - target: {fileID: 1376251618053445588, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: houseConstructFail.Guid.Data4
-      value: 1794361122
+      value: -173494992
       objectReference: {fileID: 0}
     - target: {fileID: 4660572032065333678, guid: 9daa9c0724e2db5479aa10c95c66046c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3472,6 +3483,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1841369520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265424657040936658, guid: bc048991a61723445b5c7db736e97b0e, type: 3}
+  m_PrefabInstance: {fileID: 1457981996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1841369523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841369520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1028084090
+      Data2: 1268229186
+      Data3: 1814614427
+      Data4: 148345280
+    Path: event:/SFX/UI/clic
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

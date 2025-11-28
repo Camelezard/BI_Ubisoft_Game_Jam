@@ -215,6 +215,11 @@ public class UiManager : Singleton<UiManager>
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeDefeatMusic();
+
+
+        //_GameUi.SetActive(true);
+
+        
     }
 
     public void Victory()
