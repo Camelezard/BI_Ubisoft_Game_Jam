@@ -251,6 +251,8 @@ public class UiManager : Singleton<UiManager>
         SoundManager.Instance.ChangeDefeatMusic();
         ShowGameUi();
 
+        if (_GameUi) _GameUi.SetActive(true);
+
         allowDialogues = true;
     }
 
@@ -259,6 +261,8 @@ public class UiManager : Singleton<UiManager>
         OnDefeat?.Invoke();
         Debug.Log("TriggerDefeat");
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+
+        if (_GameUi) _GameUi.SetActive(false);
     }
 
     private void OnUiDefeat()
@@ -328,19 +332,23 @@ public class UiManager : Singleton<UiManager>
             yield return null;
         }
     }
-private Coroutine fadeCoroutine;
+    private Coroutine fadeCoroutine;
 
-public void StartFadeInObstruction()
-{
-    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-    fadeCoroutine = StartCoroutine(FadeInObstructionImages());
-}
+    public void StartFadeInObstruction()
+    {
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeInObstructionImages());
+    }
 
-public void StartFadeOutObstruction()
-{
-    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-    fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
-}
+    public void StartFadeOutObstruction()
+    {
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
+    }
 
+    public void TornadoDestroy()
+    {
+        StartFadeOutObstruction();
+    }
 
 }

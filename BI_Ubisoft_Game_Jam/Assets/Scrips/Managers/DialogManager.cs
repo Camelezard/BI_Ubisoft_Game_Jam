@@ -296,9 +296,10 @@ public class DialogManager : MonoBehaviour
 
     private void OnDialogForward(InputAction.CallbackContext pCtx)
     {
-        if (UiManager.Instance.allowDialogues)
+        if (!UiManager.Instance.allowDialogues)
         {
             Debug.LogError("not allow to start dialogue");
+            return;
         }
 
         if (_currentDialogSO == null || _coroutineDialogText == null) return;
