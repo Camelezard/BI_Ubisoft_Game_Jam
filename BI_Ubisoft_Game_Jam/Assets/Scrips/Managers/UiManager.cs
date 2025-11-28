@@ -112,6 +112,7 @@ public class UiManager : Singleton<UiManager>
 
         if (pState)
         {
+
             _PausePanel.SetActive(true);
             _ActifPanel = _PausePanel;
         }
@@ -211,17 +212,22 @@ public class UiManager : Singleton<UiManager>
     {
         ShowDefeat();
         Time.timeScale = 0;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winSond);
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeDefeatMusic();
+
+
+        //_GameUi.SetActive(true);
+
+        
     }
 
     public void Victory()
     {
         ShowWin();
         Time.timeScale = 0;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.loseSond);
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeWinMusic();
@@ -310,7 +316,19 @@ public class UiManager : Singleton<UiManager>
             yield return null;
         }
     }
+private Coroutine fadeCoroutine;
 
+public void StartFadeInObstruction()
+{
+    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+    fadeCoroutine = StartCoroutine(FadeInObstructionImages());
+}
+
+public void StartFadeOutObstruction()
+{
+    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+    fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
+}
 
 
 }

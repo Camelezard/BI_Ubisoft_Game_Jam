@@ -258,8 +258,8 @@ public class Tornado : MonoBehaviour
 
     public void AddVelocity(Vector3 force)
     {
-        if (isapparing) velocity += force;
-
+        if (!isapparing) velocity += force;
+        
         if (velocity.magnitude > tornadoMaxSpeed)
             velocity = velocity.normalized * tornadoMaxSpeed;
     }
@@ -318,21 +318,13 @@ public class Tornado : MonoBehaviour
     private void OnPlayerClose()
     {
         playerInside = true;
-
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
-        fadeCoroutine = StartCoroutine(UiManager.Instance.FadeInObstructionImages());
+        UiManager.Instance.StartFadeInObstruction();
     }
 
     private void OnPlayerFar()
     {
         playerInside = false;
-
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
-        fadeCoroutine = StartCoroutine(UiManager.Instance.FadeOutAfterObstructionDelay());
+        UiManager.Instance.StartFadeOutObstruction();
     }
 
 }

@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Wind Zone Length
   itemDescription: wind zone length +20%
   upgradeType: 2
-  coeffValue: 1.2
+  coeffValue: 1.07

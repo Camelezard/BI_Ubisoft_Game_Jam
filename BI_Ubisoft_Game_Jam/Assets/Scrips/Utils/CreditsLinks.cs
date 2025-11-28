@@ -7,7 +7,7 @@ public class CreditsLinks : MonoBehaviour
     private const string _JoachimLink = "https://www.linkedin.com/in/joachim-legrand2/";
     private const string _RalifLink = "https://www.linkedin.com/in/ralif-tazutdinov/";
     private const string _RaphaelLink = "https://www.linkedin.com/in/rapha%C3%ABl-leray-7b71132aa/";
-    private const string _ReauldLink = "https://www.linkedin.com/in/rapha%C3%ABl-leray-7b71132aa/";
+    private const string _ReauldLink = "https://www.linkedin.com/in/renaud-gaillardon-b15887261/";
     
     public void OpenLink(string url)
     {

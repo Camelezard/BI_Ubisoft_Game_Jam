@@ -22,6 +22,7 @@ public class SoundManager : SingletonPersistent<SoundManager>
 
     [Header("houses")]
     [SerializeField] public EventReference houseConstruct;
+    [SerializeField] public EventReference houseConstructFail;
     [SerializeField] public EventReference houseDestroy;
     [SerializeField] public EventReference houseTakeDamages;
     [SerializeField] public EventReference houseHeal;

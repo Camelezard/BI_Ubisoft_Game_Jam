@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Large House
   itemDescription: "PV : 200                                  + 200 monnaies apr\xE8s
     phase de com"
-  housePrefab: {fileID: 2546092113185964622, guid: 03ac658da54422a4fab1bf0c972592cf, type: 3}
+  housePrefab: {fileID: 2546092113185964622, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}

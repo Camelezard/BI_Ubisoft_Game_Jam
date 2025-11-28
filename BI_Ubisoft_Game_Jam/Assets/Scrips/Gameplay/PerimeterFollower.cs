@@ -120,7 +120,7 @@ public class PerimeterFollower : MonoBehaviour
             _IsMooving = true;
         }
 
-        if (_velocity == 0)
+        if (_velocity == 0 || Time.timeScale == 0)
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             _IsMooving = false;
