@@ -39,7 +39,7 @@ public class HouseShopButton : MonoBehaviour
     {
         _Price = pPrice;
         
-        priceText.text = $"{_Price} $";
+        priceText.text = $"{_Price}";
     }
     
     public void OnHover()

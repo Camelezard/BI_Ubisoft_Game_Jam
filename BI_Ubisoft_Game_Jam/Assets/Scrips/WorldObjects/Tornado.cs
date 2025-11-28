@@ -258,8 +258,8 @@ public class Tornado : MonoBehaviour
 
     public void AddVelocity(Vector3 force)
     {
-        if (isapparing) velocity += force;
-
+        if (!isapparing) velocity += force;
+        
         if (velocity.magnitude > tornadoMaxSpeed)
             velocity = velocity.normalized * tornadoMaxSpeed;
     }
