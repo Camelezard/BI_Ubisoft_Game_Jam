@@ -557,6 +557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2540202853904088238, guid: 96c2ded1985ae4c4893e7782ac245859, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 308541dcc9667fd49be1cd13855b9147, type: 2}
     - target: {fileID: 919132149155446097, guid: 96c2ded1985ae4c4893e7782ac245859, type: 3}
       propertyPath: m_Name
       value: SM_AirCanon_01
