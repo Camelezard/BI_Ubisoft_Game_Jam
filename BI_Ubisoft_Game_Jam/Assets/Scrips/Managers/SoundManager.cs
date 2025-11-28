@@ -3,7 +3,7 @@ using UnityEngine;
 using FMOD.Studio;
 using UnityEngine.SceneManagement;
 
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : SingletonPersistent<SoundManager>
 {
     //public EventReference fmodEmitter = new EventReference();
 
@@ -22,33 +22,45 @@ public class SoundManager : Singleton<SoundManager>
 
     [Header("houses")]
     [SerializeField] public EventReference houseConstruct;
+    [SerializeField] public EventReference houseConstructFail;
     [SerializeField] public EventReference houseDestroy;
     [SerializeField] public EventReference houseTakeDamages;
     [SerializeField] public EventReference houseHeal;
 
     [Header("tornado")]
     [SerializeField] public EventReference torandoBounce;
-    [SerializeField] public EventReference torandoAppear;
-    [SerializeField] public EventReference torandoDisappear;
+    //[SerializeField] public EventReference torandoAppear;
+    //[SerializeField] public EventReference torandoDisappear; 
 
     [Header("mony")]
-    [SerializeField] public EventReference loseMony;
+    [SerializeField] public EventReference spendMomy;
     [SerializeField] public EventReference reciveMony;
+
+
+    [Header("Gods")]
+    [SerializeField] public EventReference lSethDialogue;
+    [SerializeField] public EventReference lOsirisDialogue;
 
     [Header("other")]
     [SerializeField] public EventReference loseSond;
     [SerializeField] public EventReference winSond;
+    [SerializeField] public EventReference ambiance;
+    [SerializeField] public EventReference shopUpgradeSound;
 
     private EventInstance musicInstance;
 
     protected override void Awake()
     {
         base.Awake();
-        PlayMusic(winMusic);
-        if (SceneManager.GetActiveScene().buildIndex == 0) ChangeMenuMusic();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void PlayMusic(EventReference musicEvent)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlaySceneMusic(scene.buildIndex);
+    }
+
+    private void PlaySceneMusic(int sceneIndex)
     {
         if (musicInstance.isValid())
         {
@@ -56,18 +68,17 @@ public class SoundManager : Singleton<SoundManager>
             musicInstance.release();
         }
 
-        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        EventReference musicToPlay = MenuMusic;
+
+        if (sceneIndex == 0)
+            musicToPlay = MenuMusic;
+        else if (sceneIndex == 1)
+            musicToPlay = levelMusic;
+
+        musicInstance = RuntimeManager.CreateInstance(musicToPlay);
         musicInstance.start();
     }
 
-    public void ChangeMenuMusic()
-    {
-        PlayMusic(MenuMusic);
-    }
-    public void ChangeLevelMusic()
-    {
-        PlayMusic(levelMusic);
-    }
     public void ChangeWinMusic()
     {
         PlayMusic(winMusic);
@@ -77,13 +88,29 @@ public class SoundManager : Singleton<SoundManager>
     {
         PlayMusic(loseMusic);
     }
+    public void playMenuMusic()
+    {
+        PlayMusic(MenuMusic);
+    }
 
-    public void StopMusic()
+    private void PlayMusic(EventReference musicEvent)
     {
         if (musicInstance.isValid())
         {
             musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             musicInstance.release();
         }
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        musicInstance.start();
+    }
+
+    private void OnDestroy()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

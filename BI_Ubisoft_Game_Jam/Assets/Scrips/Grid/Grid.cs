@@ -91,7 +91,7 @@ public class Grid : Singleton<Grid>
             AvortConstruction();
             return;
         }
-        
+
         AvortConstruction();
         _HousePeview = Instantiate(pNewPrefab);
         _IsHouseSelected = true;
@@ -143,13 +143,18 @@ public class Grid : Singleton<Grid>
 
     public bool IsCellFree(int x, int y)
     {
-        if (!IsInsideGrid(x, y)) return false;
+        if (!IsInsideGrid(x, y))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstructFail);
+            return false;
+        }
 
         House lHouse = _Grid[x, y].content;
         if (lHouse == null || lHouse.isDestroyed)
         {
             return true;
         }
+        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstructFail);
         return false;
     }
 
@@ -204,15 +209,19 @@ public class Grid : Singleton<Grid>
             House houseToPlace = pPrefab ? Instantiate(pPrefab) : _HousePeview;
             houseToPlace.transform.SetParent(_HouseCOntainer.transform);
 
-                HouseManager.Instance.AddHouseInList(houseToPlace);
-                PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y);
-            }
+            HouseManager.Instance.AddHouseInList(houseToPlace);
+            PlaceHouse(houseToPlace, pCellPos.x, pCellPos.y, !pForceConstruct);
         }
-    
+    }
 
-    public bool PlaceHouse(House _House, int x, int y)
+
+    public bool PlaceHouse(House _House, int x, int y, bool pConstructionSound = true)
     {
-        if (!IsCellFree(x, y)) return false;
+        if (!IsCellFree(x, y))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstructFail);
+            return false;
+        }
 
         House lPreviusHouse = _Grid[x, y].content;
         if (lPreviusHouse != null)
@@ -225,7 +234,7 @@ public class Grid : Singleton<Grid>
         _Grid[x, y].content = _House;
 
         _HousePeview = null;
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
+        if (pConstructionSound) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.houseConstruct);
 
         return true;
     }

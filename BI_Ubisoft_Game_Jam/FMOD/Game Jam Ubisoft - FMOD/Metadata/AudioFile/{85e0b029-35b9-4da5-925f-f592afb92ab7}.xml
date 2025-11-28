@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{85e0b029-35b9-4da5-925f-f592afb92ab7}">
+		<property name="assetPath">
+			<value>Ambience/AMB_Insects.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>26.832666666666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e364a702-b0a8-4e74-baa2-6f40a0cf17a0}</destination>
+		</relationship>
+	</object>
+</objects>

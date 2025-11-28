@@ -31,6 +31,8 @@ public class TornadoWaveManager : MonoBehaviour
 
     public static event Action OnWaveEnd;
 
+    public int childCount = 0;
+
     //private float _WaveInProgress = false;
 
     #region singleton
@@ -67,6 +69,7 @@ public class TornadoWaveManager : MonoBehaviour
     void Start()
     {
         //StartCoroutine(WaveRoutine());
+        childCount = 0;
     }
 
     void Update()
@@ -238,6 +241,12 @@ public class TornadoWaveManager : MonoBehaviour
                 Quaternion.identity,
                 _TornadoContainer.transform
             );
+
+            childCount = _TornadoContainer.transform.GetComponentsInChildren<Tornado>().Length;
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ambienceIntensity", childCount);
+
+
 
             tornado.direction = direction;
         }
