@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 70
   icon: {fileID: 21300000, guid: 4a0ae9d7112f4c6469fac9e79d7cd5de, type: 3}
-  itemName: Wind Zone Strength
-  itemDescription: wind zone strength +20%
+  itemName: Wind Strength
+  itemDescription: Cannon wind blast strength +10%
   upgradeType: 4
   coeffValue: 1.1

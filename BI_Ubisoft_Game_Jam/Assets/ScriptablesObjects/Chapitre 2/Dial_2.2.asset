@@ -16,6 +16,6 @@ MonoBehaviour:
   rightCharacter: 2
   dialogList:
   - characterSide: 0
-    dialog: "Le shop des am\xE9liorations changent apr\xE8s chaque combat, et de
-      nouvelles se rajoutent, h\xE9site pas \xE0 les check !"
+    dialog: "The level-up shop changes after every battle, and new ones get added.
+      Don\u2019t hesitate to check it out!"
   description: "Osiris explique les am\xE9liorations du shop\n"

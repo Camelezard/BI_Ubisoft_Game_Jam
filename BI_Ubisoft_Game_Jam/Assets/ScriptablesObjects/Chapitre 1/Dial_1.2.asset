@@ -19,10 +19,9 @@ MonoBehaviour:
     dialog: "Ahh, your Defender is quite persistent. But don\u2019t worry, I\u2019ll
       be back with even greater strength."
   - characterSide: 0
-    dialog: "Ahh, your Defender is quite persistent. But don\u2019t worry, I\u2019ll
-      be back with even greater strength.\n\nWell done! We won the battle, but not
-      the war. We need to prepare by building more structures."
+    dialog: Well done! We won the battle, but not the war. We need to prepare by
+      building more structures.
   - characterSide: 0
-    dialog: "The more structures we have, the more money we earn. And with that money,
-      we\u2019ll be able to buy even more structures and upgrades for the cannon."
+    dialog: Structures generate money, which you can use to buy more structures and
+      upgrades.
   description: "R\xE9ponse de Seth face au premier combat"
