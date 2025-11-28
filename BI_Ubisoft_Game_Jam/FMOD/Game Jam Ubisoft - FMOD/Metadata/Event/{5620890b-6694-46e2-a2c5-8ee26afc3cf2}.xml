@@ -40,6 +40,7 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{ef8227bf-180c-41ec-8700-66b8234a3670}</destination>
+			<destination>{faf548da-4bf1-4060-ba67-5b4324557b12}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{9d56ccf3-3690-41c3-844e-8609f427c84d}</destination>
@@ -94,7 +95,11 @@
 			<destination>{1e13316e-8b17-443a-8060-a786a0a0e512}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{113346c4-4b7e-4eaf-9d9f-f06046021a1b}" />
+	<object class="EventAutomatableProperties" id="{113346c4-4b7e-4eaf-9d9f-f06046021a1b}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{0b2a2a0f-90f5-48d0-a9e0-f3536bf78b08}" />
 	<object class="MarkerTrack" id="{dba0e736-d944-4465-9b2d-51b8baa3e4cd}" />
 	<object class="MarkerTrack" id="{e856830a-68ac-4a90-923d-126bcb981ef1}" />
@@ -201,6 +206,11 @@
 	<object class="ParameterProxy" id="{ef8227bf-180c-41ec-8700-66b8234a3670}">
 		<relationship name="preset">
 			<destination>{2f84341b-0b03-4352-ad58-63a5067d1783}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{faf548da-4bf1-4060-ba67-5b4324557b12}">
+		<relationship name="preset">
+			<destination>{3c66fba1-5ae3-428b-af85-bd91bb750d45}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{1504a6bc-873c-48c8-bc3f-e5b3b90a8469}">
@@ -1305,7 +1315,7 @@
 			<value>0</value>
 		</property>
 		<property name="releaseTime">
-			<value>3000</value>
+			<value>500</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>

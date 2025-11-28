@@ -338,11 +338,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1028084090
-      Data2: 1268229186
-      Data3: 1814614427
-      Data4: 148345280
-    Path: event:/SFX/UI/clic
+      Data1: -319553418
+      Data2: 1079202999
+      Data3: 30748812
+      Data4: 1389782957
+    Path: event:/SFX/UI/money_spend
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
