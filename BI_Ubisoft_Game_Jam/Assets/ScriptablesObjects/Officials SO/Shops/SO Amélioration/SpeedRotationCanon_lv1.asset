@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Rotation speed
   itemDescription: rotation speed +20%
   upgradeType: 1
-  coeffValue: 1.2
+  coeffValue: 1.25

@@ -52,7 +52,7 @@ MonoBehaviour:
   tornadoInitialSpeed: 10
   tornadoMaxSpeed: 15
   tornadoDamagePerSec: 10
-  startLifetime: 30
+  startLifetime: 10
   probabilityToFocusHome: 40
   maxDistanceFromCenter: 70
   redirectSpeed: 5

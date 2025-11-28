@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Wind Zone Width
   itemDescription: wind zone width +20%
   upgradeType: 3
-  coeffValue: 1.2
+  coeffValue: 1.25

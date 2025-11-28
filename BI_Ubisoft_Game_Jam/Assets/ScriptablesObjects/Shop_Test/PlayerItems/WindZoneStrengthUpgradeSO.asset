@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: Wind Zone Strength
   itemDescription: wind zone strength +20%
   upgradeType: 4
-  coeffValue: 1.2
+  coeffValue: 2
