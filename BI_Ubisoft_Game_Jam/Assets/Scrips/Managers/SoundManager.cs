@@ -3,7 +3,7 @@ using UnityEngine;
 using FMOD.Studio;
 using UnityEngine.SceneManagement;
 
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : SingletonPersistent<SoundManager>
 {
     //public EventReference fmodEmitter = new EventReference();
 
@@ -32,20 +32,30 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] public EventReference torandoDisappear;
 
     [Header("mony")]
-    [SerializeField] public EventReference loseMony;
+    [SerializeField] public EventReference spendMomy;
     [SerializeField] public EventReference reciveMony;
+
+
+    [Header("Gods")]
+    [SerializeField] public EventReference lSethDialogue;
+    [SerializeField] public EventReference lOsirisDialogue;
 
     [Header("other")]
     [SerializeField] public EventReference loseSond;
     [SerializeField] public EventReference winSond;
+    [SerializeField] public EventReference ambiance;
+    [SerializeField] public EventReference shopUpgradeSound;
 
     private EventInstance musicInstance;
+    //private EventInstance ambianceInstance;
 
     protected override void Awake()
     {
         base.Awake();
-        PlayMusic(winMusic);
+        //PlayMusic(winMusic);
         if (SceneManager.GetActiveScene().buildIndex == 0) ChangeMenuMusic();
+
+        //ambianceInstance = RuntimeManager.CreateInstance(ambiance);
     }
 
     private void PlayMusic(EventReference musicEvent)
@@ -57,7 +67,18 @@ public class SoundManager : Singleton<SoundManager>
         }
 
         musicInstance = RuntimeManager.CreateInstance(musicEvent);
-        musicInstance.start();
+       // musicInstance.start();
+
+        print("MM =" +gameObject.GetInstanceID());
+    }
+
+    public void StopMusic()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.release();
+        }
     }
 
     public void ChangeMenuMusic()
@@ -77,13 +98,8 @@ public class SoundManager : Singleton<SoundManager>
     {
         PlayMusic(loseMusic);
     }
-
-    public void StopMusic()
+    void OnDestroy()
     {
-        if (musicInstance.isValid())
-        {
-            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicInstance.release();
-        }
+        StopMusic();
     }
 }

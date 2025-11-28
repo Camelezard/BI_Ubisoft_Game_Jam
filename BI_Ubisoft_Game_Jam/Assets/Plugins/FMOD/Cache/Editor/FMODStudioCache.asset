@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9221934541289546889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/money_spend
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/money_spend
+  Guid:
+    Data1: -319553418
+    Data2: 1079202999
+    Data3: 30748812
+    Data4: 1389782957
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 902
+--- !u!114 &-7235672588274286907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/invalid_house_placement
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/invalid_house_placement
+  Guid:
+    Data1: 1013078771
+    Data2: 1184093545
+    Data3: -1296492884
+    Data4: -173494992
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1165
+--- !u!114 &-6840090676872315412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/upgrade_buy
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/upgrade_buy
+  Guid:
+    Data1: -1226047306
+    Data2: 1327094421
+    Data3: 865481363
+    Data4: 1010986746
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2669
 --- !u!114 &-6355868600192848901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +156,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-5710649207692135707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/anubis_voiceline
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/anubis_voiceline
+  Guid:
+    Data1: 1862321792
+    Data2: 1144583965
+    Data3: -468716915
+    Data4: -2014480172
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &-5709271525973285214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,9 +225,36 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638998146459901999
+  lastModified: 638998809309444597
   FileSizes: []
   Exists: 1
+--- !u!114 &-4951678197066914087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/money_earn
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/money_earn
+  Guid:
+    Data1: 1507834058
+    Data2: 1213732509
+    Data3: 894643903
+    Data4: 1859852855
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2549
 --- !u!114 &-2887022602211062950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,9 +270,36 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638998146459917027
+  lastModified: 638998809920111880
   FileSizes: []
   Exists: 1
+--- !u!114 &-1697821129700929265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/TORNADO/healing_tornado
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/TORNADO/healing_tornado
+  Guid:
+    Data1: 482514518
+    Data2: 1132155920
+    Data3: -1440883302
+    Data4: 2063265258
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1569
 --- !u!114 &-1671741909735813150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +326,31 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 705
+  Length: 5811
+--- !u!114 &-1214759755467858004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambience_tornado/ambienceIntensity
+  m_EditorClassIdentifier: 
+  Name: ambienceIntensity
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 1060149730
+    data2: 1369326676
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-98338772179700662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,14 +406,24 @@ MonoBehaviour:
   - {fileID: 5546351883987726145}
   - {fileID: 5009400640186211201}
   - {fileID: -1671741909735813150}
+  - {fileID: -1697821129700929265}
+  - {fileID: 9195709242780491647}
+  - {fileID: -9221934541289546889}
+  - {fileID: -5710649207692135707}
+  - {fileID: 4922528595737528219}
+  - {fileID: -6840090676872315412}
+  - {fileID: 2338479694909451983}
+  - {fileID: -4951678197066914087}
+  - {fileID: -7235672588274286907}
   EditorParameters:
   - {fileID: -6355868600192848901}
+  - {fileID: 8824496661056562592}
   MasterBanks:
   - {fileID: 2572604544158816083}
   StringsBanks:
   - {fileID: 306545090815606343}
   cacheVersion: 131857
-  cacheTime: 638998146459917027
+  cacheTime: 638998809920111880
   SerializableEventsDict:
   - key: event:/MUSIC/Music_Level
     index: 0
@@ -247,6 +443,24 @@ MonoBehaviour:
     index: 7
   - key: event:/MUSIC/Jingle_Win
     index: 8
+  - key: event:/SFX/TORNADO/healing_tornado
+    index: 9
+  - key: event:/SFX/PLAYER/player_movement
+    index: 10
+  - key: event:/SFX/UI/money_spend
+    index: 11
+  - key: event:/SFX/UI/anubis_voiceline
+    index: 12
+  - key: event:/SFX/UI/osiris_voiceline
+    index: 13
+  - key: event:/SFX/UI/upgrade_buy
+    index: 14
+  - key: event:/SFX/AMBIENCE/ambience_tornado
+    index: 15
+  - key: event:/SFX/UI/money_earn
+    index: 16
+  - key: event:/SFX/UI/invalid_house_placement
+    index: 17
 --- !u!114 &140490033101358676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,11 +483,11 @@ MonoBehaviour:
   - {fileID: -2887022602211062950}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 918
+  Length: 8910
 --- !u!114 &306545090815606343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,11 +503,39 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638998146459775465
+  lastModified: 638998809309213906
   FileSizes:
   - Name: 
-    Value: 1346
+    Value: 1858
   Exists: 1
+--- !u!114 &2338479694909451983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/AMBIENCE/ambience_tornado
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/AMBIENCE/ambience_tornado
+  Guid:
+    Data1: 128416452
+    Data2: 1238795353
+    Data3: -1023036529
+    Data4: -1055103899
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1214759755467858004}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 31872
 --- !u!114 &2572604544158816083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +551,7 @@ MonoBehaviour:
   Path: FMOD/Game Jam Ubisoft - FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638998146459765437
+  lastModified: 638998809309203876
   FileSizes: []
   Exists: 1
 --- !u!114 &2925792150695994148
@@ -339,6 +581,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1684
+--- !u!114 &4922528595737528219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/osiris_voiceline
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI/osiris_voiceline
+  Guid:
+    Data1: -1914874720
+    Data2: 1174689818
+    Data3: 2030716328
+    Data4: 1978325031
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4900
 --- !u!114 &5009400640186211201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +634,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 705
+  Length: 5811
 --- !u!114 &5546351883987726145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +661,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 372
+  Length: 2280
 --- !u!114 &6317501415388983217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,3 +689,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1085
+--- !u!114 &8824496661056562592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambienceIntensity
+  m_EditorClassIdentifier: 
+  Name: ambienceIntensity
+  StudioPath: parameter:/ambienceIntensity
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 1060149730
+    data2: 1369326676
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &9195709242780491647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/PLAYER/player_movement
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/PLAYER/player_movement
+  Guid:
+    Data1: -1381403561
+    Data2: 1226236411
+    Data3: 1177427093
+    Data4: -1381246262
+  Banks:
+  - {fileID: -2887022602211062950}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9536

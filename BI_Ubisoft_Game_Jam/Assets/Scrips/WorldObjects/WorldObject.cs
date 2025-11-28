@@ -12,7 +12,7 @@ public class WorldObject : MonoBehaviour
     [SerializeField] protected float m_HealtPoints = 20;
 
     [SerializeField] private Text _HP_Field;
-    [SerializeField] private Slider _HPSLIDER;
+    [SerializeField] public Slider _HPSLIDER;
     public bool isDestroyed { get; protected set; } = false;
 
     public virtual void Start()
@@ -25,7 +25,6 @@ public class WorldObject : MonoBehaviour
         UpdateUi();
 
         if (_HPSLIDER) _HPSLIDER.value = 0;
-        //_HPSLIDER.transform.LookAt(Camera.main.transform);
 
 
     }

@@ -70,6 +70,9 @@ public class UiManager : Singleton<UiManager>
 
         if (_ActifPanel == null) _ActifPanel = _MenuPanel;
         _ActifPanel.SetActive(true);
+        SoundManager.Instance.ChangeMenuMusic();
+
+        //
     }
 
     private void ChangePannel(GameObject pNewPanel, bool pRememberPanel = true)
@@ -191,6 +194,7 @@ public class UiManager : Singleton<UiManager>
     public void ReturnToMenu()
     {
         LoadGameLevel(0);
+        //SoundManager.Instance.StopMusic();
         SoundManager.Instance.ChangeMenuMusic();
         //SoundManager.chan
         ShowMenu();
@@ -268,9 +272,10 @@ public class UiManager : Singleton<UiManager>
             {
                 float alpha = img.color.a;
                 alpha += Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 
-                if (alpha < 1f) allVisible = false;
+                if (alpha < 0.99f) allVisible = false;
             }
 
             yield return null;
@@ -295,13 +300,16 @@ public class UiManager : Singleton<UiManager>
             {
                 float alpha = img.color.a;
                 alpha -= Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 
-                if (alpha > 0f) allInvisible = false;
+                if (alpha > 0.01f) allInvisible = false;
             }
 
             yield return null;
         }
     }
+
+
 
 }
