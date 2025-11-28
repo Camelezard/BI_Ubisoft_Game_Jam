@@ -33,6 +33,8 @@ public class UiManager : Singleton<UiManager>
 
     private bool _isGamePaused = false;
 
+    public bool allowDialogues = true;
+
     protected virtual void Start()
     {
         CheckShowPanel();
@@ -200,6 +202,8 @@ public class UiManager : Singleton<UiManager>
         SoundManager.Instance.playMenuMusic();
 
         LoadGameLevel(0);
+
+        //DialogManager.instance.gameObject.SetActive(true);
     }
 
     public void Win()
@@ -217,10 +221,13 @@ public class UiManager : Singleton<UiManager>
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeDefeatMusic();
 
+        //_GameUi.SetActive(false);
+        //DialogManager.instance.gameObject.SetActive(false);
 
-        //_GameUi.SetActive(true);
+        //TornadoWaveManager.instance.StopAllCoroutines();
+        //DialogManager.instance.StopAllCoroutines();
 
-        
+        allowDialogues = false;
     }
 
     public void Victory()
@@ -231,6 +238,9 @@ public class UiManager : Singleton<UiManager>
         FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.winMusic);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);
         SoundManager.Instance.ChangeWinMusic();
+
+        //_GameUi.SetActive(false);
+        allowDialogues = false;
     }
 
     public void LoadGameLevel(int pLevelIndex)
@@ -240,6 +250,8 @@ public class UiManager : Singleton<UiManager>
         SceneManager.LoadScene(pLevelIndex);
         SoundManager.Instance.ChangeDefeatMusic();
         ShowGameUi();
+
+        allowDialogues = true;
     }
 
     public void TriggerDefeat()

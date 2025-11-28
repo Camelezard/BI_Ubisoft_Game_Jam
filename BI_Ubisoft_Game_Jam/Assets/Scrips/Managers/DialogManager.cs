@@ -3,6 +3,7 @@ using System.Collections;
 using FMOD.Studio;
 using FMODUnity;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -106,7 +107,11 @@ public class DialogManager : MonoBehaviour
         ManageCharacterObjects();
 
         EraseCoroutine(_coroutineDialogUI);
+
+
         _coroutineDialogUI = StartCoroutine(DialogUIAppear());
+
+
 
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PhaseSwitch", 0);   //  FMOD
 
@@ -122,6 +127,12 @@ public class DialogManager : MonoBehaviour
     private IEnumerator DialogUIAppear()
     {
         float lElapsedTime = 0f;
+
+        while (!UiManager.Instance.allowDialogues)
+        {
+            Debug.LogError("not allow to start dialogue");
+            yield break;
+        }
 
         ResizeCharacterSprites();
 
@@ -153,6 +164,12 @@ public class DialogManager : MonoBehaviour
     {
         float lElapsedTime = 0f;
 
+        while (!UiManager.Instance.allowDialogues)
+        {
+            Debug.LogError("not allow to start dialogue");
+            yield break;
+        }
+
         while (lElapsedTime < _dialogUIAppearTime)
         {
             lElapsedTime += Time.unscaledDeltaTime;
@@ -171,6 +188,8 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerator DialogTextAppear()
     {
+
+
         if (_dialogTextSpeed <= 0f)
         {
             Debug.LogError("Dialog Text Speed is zero");
@@ -227,6 +246,8 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerator CharacterTalkVisualCoroutine(bool pLunchSoonInstance = true)
     {
+
+
         float lElapsedTime = 0f;
         int lDialogIndex = _dialogIndex < 0 ? 0 : _dialogIndex;
         Image lIncreasingSprite = _currentDialogSO.dialogList[lDialogIndex].characterSide == CharacterSide.leftCharacter ? _leftCharacterSprite : _rightCharacterSprite;
@@ -275,6 +296,11 @@ public class DialogManager : MonoBehaviour
 
     private void OnDialogForward(InputAction.CallbackContext pCtx)
     {
+        if (UiManager.Instance.allowDialogues)
+        {
+            Debug.LogError("not allow to start dialogue");
+        }
+
         if (_currentDialogSO == null || _coroutineDialogText == null) return;
         EraseCoroutine(_coroutineDialogText);
         if (!_currentDialogOver)
