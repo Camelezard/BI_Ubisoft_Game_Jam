@@ -287,12 +287,20 @@ PrefabInstance:
       value: event:/SFX/UI/clic
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: playerMoove.Path
+      value: event:/SFX/PLAYER/player_movement
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: takeDamages.Path
       value: event:/SFX/ENVIRO/house_taking_damage
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseDestroy.Path
       value: event:/SFX/ENVIRO/house_broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lSethDialogue.Path
+      value: event:/SFX/UI/anubis_voiceline
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: torandoAppear.Path
@@ -419,6 +427,10 @@ PrefabInstance:
       value: 148345280
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lOsirisDialogue.Path
+      value: event:/SFX/UI/osiris_voiceline
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: loseMusic.Guid.Data1
       value: -382677455
       objectReference: {fileID: 0}
@@ -491,6 +503,22 @@ PrefabInstance:
       value: event:/SFX/UI/clic
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: playerMoove.Guid.Data1
+      value: -1381403561
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: playerMoove.Guid.Data2
+      value: 1226236411
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: playerMoove.Guid.Data3
+      value: 1177427093
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: playerMoove.Guid.Data4
+      value: -1381246262
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: takeDamages.Guid.Data1
       value: 1797598200
       objectReference: {fileID: 0}
@@ -521,6 +549,22 @@ PrefabInstance:
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseDestroy.Guid.Data4
       value: 1794361122
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lSethDialogue.Guid.Data1
+      value: 1862321792
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lSethDialogue.Guid.Data2
+      value: 1144583965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lSethDialogue.Guid.Data3
+      value: -468716915
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lSethDialogue.Guid.Data4
+      value: -2014480172
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: torandoAppear.Guid.Data1
@@ -569,6 +613,22 @@ PrefabInstance:
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseConstruct.Guid.Data4
       value: 438054343
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lOsirisDialogue.Guid.Data1
+      value: -1914874720
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lOsirisDialogue.Guid.Data2
+      value: 1174689818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lOsirisDialogue.Guid.Data3
+      value: 2030716328
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
+      propertyPath: lOsirisDialogue.Guid.Data4
+      value: 1978325031
       objectReference: {fileID: 0}
     - target: {fileID: 5343693061240118186, guid: 442b1296d3affea43aa841d322199477, type: 3}
       propertyPath: houseTakeDamages.Guid.Data1

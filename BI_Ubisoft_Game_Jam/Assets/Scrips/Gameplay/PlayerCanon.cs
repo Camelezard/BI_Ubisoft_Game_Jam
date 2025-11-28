@@ -1,7 +1,8 @@
 using FMOD;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
+using FMOD.Studio;
 
 public class PlayerCanon : Singleton<PlayerCanon>
 {
@@ -23,6 +24,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     private InputAction _windZoneAspirateInput;
     private const string WIND_ZONE_ASPIRATE_ACTION = "WindZoneAspirate";
+
+    private EventInstance eventInstance;
     
     private void Start()
     {
@@ -39,6 +42,9 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneAspirateInput.canceled += ctx => OnAspirateButtonCanceled();
         
         _initialSpeed = _maxRotationSpeed;
+
+        eventInstance = RuntimeManager.CreateInstance(SoundManager.Instance.playerWind);
+
     }
     
     void Update()
@@ -73,12 +79,15 @@ public class PlayerCanon : Singleton<PlayerCanon>
         if(!_flowManager.IsPlaying || Time.timeScale == 0f) return;
         _windZone.SetActive(true);
 
-        FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.playerWind);   //  FMOD
+        //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.playerWind);   //  FMOD
+
+         eventInstance.start();
     }
     
     private void DisableWindZone()
     {
         _windZone.SetActive(false);
+        eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
     
     public void SetRotationSpeed(float pCoeff)
