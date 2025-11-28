@@ -16,6 +16,6 @@ MonoBehaviour:
   - {fileID: 2739991279759806935, guid: 99906551c00551541a66916daf55ff63, type: 3}
   spawnInWalls: 0
   spawnInterval: 0.5
-  waveDuration: 10
+  waveDuration: 0
   startSlider: 1
   sliderDuration: 30
