@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1337112652538352724, guid: 9d2515659f0fb6a40bd558ffb712b72f, type: 3}
       propertyPath: m_Name
-      value: Tornade_Heal_Stalker
+      value: Tornade_Heal_Stalker_40s
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225276611716365150, guid: 9d2515659f0fb6a40bd558ffb712b72f, type: 3}
+      propertyPath: tornadoDamagePerSec
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6335836103136658240, guid: 9d2515659f0fb6a40bd558ffb712b72f, type: 3}
       propertyPath: m_LocalPosition.x
