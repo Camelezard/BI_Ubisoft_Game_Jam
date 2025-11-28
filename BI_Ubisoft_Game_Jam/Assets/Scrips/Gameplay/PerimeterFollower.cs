@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Transform))]
 public class PerimeterFollower : MonoBehaviour
 {
-    public enum SourceMode { RectangleFromPlane, Waypoints}
+    public enum SourceMode { RectangleFromPlane, Waypoints }
 
     [Header("Source")]
     [SerializeField]
@@ -21,9 +23,10 @@ public class PerimeterFollower : MonoBehaviour
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _speedIncreasePerSecond = 5f;
     [SerializeField] private float _speedDecreasePerSecond = 5f;
-    
+    EventInstance eventInstance;
+
     private float _initialSpeed;
-    
+
     private List<Vector3> _pathPoints = new List<Vector3>();
     private float[] _segmentLengths;
     private float _totalLength;
@@ -32,10 +35,11 @@ public class PerimeterFollower : MonoBehaviour
     private float _velocity = 0f;
 
     private InputAction _move;
+    private bool _IsMooving = true;
     private const string MOVE = "Move";
-    
+
     #region singleton
-    
+
     private static PerimeterFollower _Instance;
     public static PerimeterFollower instance
     {
@@ -63,13 +67,16 @@ public class PerimeterFollower : MonoBehaviour
         }
         _initialSpeed = _maxSpeed;
     }
-    
+
     #endregion
-    
+
     private void Start()
     {
         _move = InputManager.instance.GetInputAction(MOVE);
         RebuildPath();
+
+        eventInstance = RuntimeManager.CreateInstance(SoundManager.Instance.playerMoove);
+
     }
 
     private void Update()
@@ -77,28 +84,49 @@ public class PerimeterFollower : MonoBehaviour
         if (_pathPoints == null || _pathPoints.Count < 2) return;
 
         float lInput = -_move.ReadValue<float>();
-        
-        if(lInput != 0f)
+
+        if (lInput != 0f)
         {
             _velocity += lInput * _speedIncreasePerSecond;
-            _velocity = Mathf.Clamp(_velocity, -_maxSpeed, _maxSpeed);   
+            _velocity = Mathf.Clamp(_velocity, -_maxSpeed, _maxSpeed);
+
+
         }
         else
         {
             _velocity = _velocity > 0f ? Mathf.Max(_velocity - _speedDecreasePerSecond * Time.deltaTime, 0f) :
                 Mathf.Min(_velocity + _speedDecreasePerSecond * Time.deltaTime, 0f);
+
+
         }
-        
+
         _currentDistance += _velocity * Time.deltaTime;
-        
+
         if (_totalLength > 0f)
         {
             _currentDistance = Mathf.Repeat(_currentDistance, _totalLength);
         }
-    
+
         transform.SetPositionAndRotation(GetPointAtDistance(_currentDistance), GetRotationToFieldCenter());
+
+        CheckMoovement();
     }
-    
+
+    private void CheckMoovement()
+    {
+        if (!_IsMooving)
+        {
+            eventInstance.start();
+            _IsMooving = true;
+        }
+
+        if (_velocity == 0)
+        {
+            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            _IsMooving = false;
+        }
+    }
+
     private void RebuildPath()
     {
         _pathPoints.Clear();
@@ -126,7 +154,7 @@ public class PerimeterFollower : MonoBehaviour
             _segmentLengths = null;
             return;
         }
-        
+
         _segmentLengths = new float[lCount];
         _totalLength = 0f;
         for (int i = 0; i < lCount; i++)
@@ -138,14 +166,14 @@ public class PerimeterFollower : MonoBehaviour
             _totalLength += lLength;
         }
     }
-    
+
     private Vector3 GetPointAtDistance(float pDistance)
     {
         if (_pathPoints.Count == 0) return transform.position;
         if (_pathPoints.Count == 1) return _pathPoints[0];
-        
+
         pDistance = Mathf.Repeat(pDistance, _totalLength);
-        
+
         float lDistanceCount = 0f;
         float lSegmentPercent;
         Vector3 lSegmentStart, lSegmentEnd;
@@ -167,7 +195,7 @@ public class PerimeterFollower : MonoBehaviour
     private Quaternion GetRotation(float pDistance)
     {
         if (_pathPoints.Count < 2) return Quaternion.identity;
-        
+
         pDistance = Mathf.Repeat(pDistance, _totalLength);
         float lDistanceCount = 0f;
         Vector3 lSegmentStart, lSegmentEnd;
@@ -184,7 +212,7 @@ public class PerimeterFollower : MonoBehaviour
         return Quaternion.LookRotation(-Vector3.Cross(_pathPoints[1] - _pathPoints[0], Vector3.up), Vector3.up);
     }
     #endregion
-    
+
     private Quaternion GetRotationToFieldCenter()
     {
         return Quaternion.LookRotation(Vector3.ProjectOnPlane(_sourceObject.transform.position - transform.position, Vector3.up), Vector3.up);
@@ -227,13 +255,13 @@ public class PerimeterFollower : MonoBehaviour
     }
 
     #endregion
-    
+
     public void SetSpeed(float pCoeff)
     {
         // _maxSpeed *= lCoeff;
         _maxSpeed += _initialSpeed * (pCoeff - 1f);
     }
-    
+
     #region Editor Gizmos
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
@@ -271,7 +299,7 @@ public class PerimeterFollower : MonoBehaviour
             Vector3 lStart = _pathPoints[i];
             Vector3 lEnd = _pathPoints[(i + 1) % _pathPoints.Count];
             Gizmos.DrawLine(lStart, lEnd);
-            
+
             // arrow
             Vector3 lMiddle = (lStart + lEnd) * 0.5f;
             Vector3 lDirection = (lEnd - lStart).normalized;

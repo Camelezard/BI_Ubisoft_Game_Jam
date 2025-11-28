@@ -70,13 +70,16 @@ public class UiManager : Singleton<UiManager>
 
         if (_ActifPanel == null) _ActifPanel = _MenuPanel;
         _ActifPanel.SetActive(true);
+        //SoundManager.Instance.ChangeMenuMusic();
+
+        //
     }
 
     private void ChangePannel(GameObject pNewPanel, bool pRememberPanel = true)
     {
         if (_ActifPanel != pNewPanel)
         {
-            _ActifPanel.SetActive(false);
+            //_ActifPanel?.SetActive(false);
             if (pRememberPanel) _PreviusPanel.Add(_ActifPanel);
 
             _ActifPanel = pNewPanel;
@@ -152,7 +155,10 @@ public class UiManager : Singleton<UiManager>
 
     public void ShowDefeat()
     {
-        //SceneManager.LoadScene(2);
+        if (_PanelDefeat == null)
+        {
+            return;
+        }
 
         ChangePannel(_PanelDefeat);
         //print("Show Defeat");
@@ -190,10 +196,9 @@ public class UiManager : Singleton<UiManager>
     //Load levels
     public void ReturnToMenu()
     {
+        SoundManager.Instance.playMenuMusic();
+
         LoadGameLevel(0);
-        SoundManager.Instance.ChangeMenuMusic();
-        //SoundManager.chan
-        ShowMenu();
     }
 
     public void Win()
@@ -227,7 +232,7 @@ public class UiManager : Singleton<UiManager>
         HideCurrnetPanel();
         SetPause(false);
         SceneManager.LoadScene(pLevelIndex);
-        SoundManager.Instance.ChangeLevelMusic();
+        SoundManager.Instance.ChangeDefeatMusic();
         ShowGameUi();
     }
 
@@ -248,7 +253,7 @@ public class UiManager : Singleton<UiManager>
         Time.timeScale = 1;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SoundManager.Instance.ChangeLevelMusic();
+        SoundManager.Instance.ChangeDefeatMusic();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -268,9 +273,10 @@ public class UiManager : Singleton<UiManager>
             {
                 float alpha = img.color.a;
                 alpha += Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 
-                if (alpha < 1f) allVisible = false;
+                if (alpha < 0.99f) allVisible = false;
             }
 
             yield return null;
@@ -295,13 +301,28 @@ public class UiManager : Singleton<UiManager>
             {
                 float alpha = img.color.a;
                 alpha -= Time.deltaTime * fadeSpeed;
-                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(alpha));
+                alpha = Mathf.Clamp01(alpha);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 
-                if (alpha > 0f) allInvisible = false;
+                if (alpha > 0.01f) allInvisible = false;
             }
 
             yield return null;
         }
     }
+private Coroutine fadeCoroutine;
+
+public void StartFadeInObstruction()
+{
+    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+    fadeCoroutine = StartCoroutine(FadeInObstructionImages());
+}
+
+public void StartFadeOutObstruction()
+{
+    if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+    fadeCoroutine = StartCoroutine(FadeOutAfterObstructionDelay());
+}
+
 
 }
