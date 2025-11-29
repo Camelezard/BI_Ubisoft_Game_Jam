@@ -37,6 +37,7 @@ public class TornadoWaveManager : MonoBehaviour
 
     #region singleton
 
+
     private static TornadoWaveManager _Instance;
     public static TornadoWaveManager instance
     {

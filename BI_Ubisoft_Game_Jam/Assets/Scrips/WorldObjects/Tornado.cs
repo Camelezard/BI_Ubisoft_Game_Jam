@@ -97,41 +97,96 @@ public class Tornado : MonoBehaviour
 
     private void InitTarget()
     {
+        // Défauts
+        Vector3 fallbackTarget = Vector3.one * 10f;
+
+        // Vérification HouseManager
+        if (HouseManager.Instance == null)
+        {
+            Debug.LogWarning("InitTarget: HouseManager.Instance is NULL. Using fallback target.");
+            target = fallbackTarget;
+            return;
+        }
 
         House lRandHouse = HouseManager.Instance.RandomHouse();
-        //        print($"rand hous = {lRandHouse}");
-        if (ChoosToFocusHome())
+
+        if (ChoosToFocusHome() && lRandHouse != null)
         {
-            Vector2 lRandPosInGrid = new Vector2(lRandHouse.gameObject.transform.position.x, lRandHouse.gameObject.transform.position.z);
-            target = new Vector3(lRandPosInGrid.x, 0, lRandPosInGrid.y);
+            Vector3 housePos = lRandHouse.gameObject.transform.position;
+            target = new Vector3(housePos.x, 0f, housePos.z);
         }
         else
         {
-            target = Grid.Instance.GetRandom3DPosInFreeCells();
+            // Try Grid first
+            if (Grid.Instance != null)
+            {
+                try
+                {
+                    target = Grid.Instance.GetRandom3DPosInFreeCells();
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"InitTarget: Grid.Instance.GetRandom3DPosInFreeCells() failed: {ex.Message}");
+                    target = fallbackTarget;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("InitTarget: Grid.Instance is NULL. Using fallback target.");
+                target = fallbackTarget;
+            }
         }
 
-        if (target == null)
+        // Extra safety: never leave target uninitialized
+        if (target == Vector3.zero)
         {
-            Debug.LogWarning($"RandomHouseTargetFail");
-            target = Vector3.one;
+            Debug.LogWarning("InitTarget: computed target is Vector3.zero, using fallback.");
+            target = fallbackTarget;
         }
-
     }
 
     private void InitSpawnPosition()
     {
+        // Vérification OutOfWallSpawnPosition
         if (!spawnInWalls)
         {
-            transform.position = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
+            if (OutOfWallSpawnPosition.Instance != null)
+            {
+                transform.position = OutOfWallSpawnPosition.Instance.RndomPosOnCircle();
+            }
+            else
+            {
+                Debug.LogWarning("InitSpawnPosition: OutOfWallSpawnPosition.Instance is NULL. Using Grid or fallback.");
+                // fallback to Grid
+                if (Grid.Instance != null)
+                {
+                    Vector2 pos = Grid.Instance.GetRandomPosInFreeCells();
+                    transform.position = new Vector3(pos.x, 0f, pos.y);
+                }
+                else
+                {
+                    Debug.LogWarning("InitSpawnPosition: Grid.Instance is also NULL. Using origin.");
+                    transform.position = Vector3.zero;
+                }
+            }
         }
         else
         {
-            Vector2 lRandPos = Grid.Instance.GetRandomPosInFreeCells();
+            if (Grid.Instance != null)
+            {
+                Vector2 lRandPos = Grid.Instance.GetRandomPosInFreeCells();
+                transform.position = new Vector3(lRandPos.x, 0, lRandPos.y);
 
-            transform.position = new Vector3(lRandPos.x, 0, lRandPos.y);
-
-            canPassAWall = false;
-            tryToEnterWall = false;
+                canPassAWall = false;
+                tryToEnterWall = false;
+            }
+            else
+            {
+                Debug.LogWarning("InitSpawnPosition (spawnInWalls): Grid.Instance is NULL. Using origin.");
+                transform.position = Vector3.zero;
+                canPassAWall = false;
+                tryToEnterWall = false;
+            }
         }
     }
 
@@ -260,7 +315,7 @@ public class Tornado : MonoBehaviour
     public void AddVelocity(Vector3 force)
     {
         if (!isapparing) velocity += force;
-        
+
         if (velocity.magnitude > tornadoMaxSpeed)
             velocity = velocity.normalized * tornadoMaxSpeed;
     }

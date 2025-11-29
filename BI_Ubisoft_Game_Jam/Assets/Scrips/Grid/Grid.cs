@@ -28,10 +28,15 @@ public class Grid : Singleton<Grid>
 
     private Cell[,] _Grid;
 
-    private void OnValidate()
-    {
-        GenerateGrid();
-    }
+
+protected override void Awake()
+{
+    base.Awake(); // Assure que Singleton<T> s'initialise correctement
+    GenerateGrid();
+}
+
+// Méthode de sécurité dans le singleton
+
 
     void Start()
     {
