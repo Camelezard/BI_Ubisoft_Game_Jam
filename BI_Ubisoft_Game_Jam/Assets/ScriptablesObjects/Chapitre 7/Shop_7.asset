@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b554391b66fbb1a45a08e59372a098a5, type: 3}
+  m_Name: Shop_7
+  m_EditorClassIdentifier: 
+  houseList:
+  - {fileID: 11400000, guid: f5ecd839feebb9e4f85bf7c4caac85a7, type: 2}
+  - {fileID: 11400000, guid: f58942dfaa6ae2449981f24f531a53f1, type: 2}
+  - {fileID: 11400000, guid: 1ba0cd705f7de5d4e8c62033c4d6f796, type: 2}
+  playerUpgradesList:
+  - {fileID: 11400000, guid: 455cd04a96cd5ea47b8dfc56d017e63e, type: 2}
+  - {fileID: 11400000, guid: 03ed3685399b62341b3587a40312d87f, type: 2}
+  - {fileID: 11400000, guid: 5e52d300a290b7e498405e06c11ca209, type: 2}

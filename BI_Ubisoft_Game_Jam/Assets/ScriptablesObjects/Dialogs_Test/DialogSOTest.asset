@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2296ecb685e55428b500a09a2d82fa, type: 3}
+  m_Name: DialogSOTest
+  m_EditorClassIdentifier: 
+  leftCharacter: 1
+  rightCharacter: 0
+  dialogList:
+  - characterSide: 0
+    dialog: Oh non feur quoicoubeh hihihihi pouet pouet bruit de barre de fer qui
+      tombe goofy cartoon sounds that's all folks !
+  - characterSide: 1
+    dialog: thiofgjktr reti gjeroih jer er jrtoi eri er ierj iotrhj eroi  eri jergi
+      jee  erjoregj eroi j ergi jergio j er jergoizejpzkg  epggkergprkg k
+  - characterSide: 0
+    dialog: ' erij reiog j ergize poize  ezfvbnujren iougo ien ozi ,reo  ezpgkreigo
+      j,reog in zegi njrtoi erng ozrg n,oz,  o noeig ,eog inzrg o'
+  - characterSide: 1
+    dialog: 'zorigj, pzoer , zepog k,rpogh erk,gop erhntriohn trohiler rogi j,ergpom
+      re,gpi zegin ,rtihgoenrgoire rh jtohiet,h io zeg nzori gnroi  rgn oiregn reigo '
+  - characterSide: 1
+    dialog: grtfodkezlzgreht ethtiob j,er v' tgnrtuhib ngerbyuerbg vhb rbef yurebguyg
+      rezgb rueigb eriugbreiugbreguregheruighreugihrtguirehgiuregh
