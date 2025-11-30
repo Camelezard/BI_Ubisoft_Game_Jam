@@ -5,10 +5,11 @@ using UnityEngine.UI;
 public class HouseShopButton : MonoBehaviour
 {
     [SerializeField] private House _TargetPrefab;
-    [SerializeField] protected Image _buttonSprite;
+    [SerializeField] public Image _buttonSprite;
     [SerializeField] private Text priceText;
     [SerializeField] private int _InitialPrice;
     private int _Price;
+    public int Price{get => _Price;}
 
     [HideInInspector] public string itemName, itemDesc;
 
