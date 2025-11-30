@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WindZone : MonoBehaviour
+public class PlayerWindZone : MonoBehaviour
 {
     [SerializeField] private LayerMask _tornadoLayer;
     [SerializeField] private Transform _coneTip;
@@ -18,8 +18,8 @@ public class WindZone : MonoBehaviour
     
     #region singleton
     
-    private static WindZone _Instance;
-    public static WindZone instance
+    private static PlayerWindZone _Instance;
+    public static PlayerWindZone instance
     {
         get
         {

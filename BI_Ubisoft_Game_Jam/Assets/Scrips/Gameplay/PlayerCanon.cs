@@ -13,7 +13,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     
     private float _initialSpeed;
     
-    private WindZone _windZoneScript;
+    private PlayerWindZone _windZoneScript;
     
     public Transform testobject;
     
@@ -27,6 +27,9 @@ public class PlayerCanon : Singleton<PlayerCanon>
 
     private EventInstance eventInstance;
     
+    private Material _windZoneMaterial;
+    private const string NOISE_SPEED = "_NoiseSpeed";
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -36,7 +39,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _windZoneInput.canceled += ctx => DisableWindZone();
         _flowManager = FlowManager.instance;
         
-        _windZoneScript = WindZone.instance;
+        _windZoneScript = PlayerWindZone.instance;
         _windZoneAspirateInput = InputManager.instance.GetInputAction(WIND_ZONE_ASPIRATE_ACTION);
         _windZoneAspirateInput.performed += ctx => OnAspirateButtonPerformed();
         _windZoneAspirateInput.canceled += ctx => OnAspirateButtonCanceled();
@@ -44,7 +47,8 @@ public class PlayerCanon : Singleton<PlayerCanon>
         _initialSpeed = _maxRotationSpeed;
 
         eventInstance = RuntimeManager.CreateInstance(SoundManager.Instance.playerWind);
-
+    
+        _windZoneMaterial = _windZone.transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial;
     }
     
     void Update()
@@ -78,6 +82,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     {
         if(!_flowManager.IsPlaying || Time.timeScale == 0f) return;
         _windZone.SetActive(true);
+        _windZoneMaterial.SetFloat(NOISE_SPEED, 1f);
 
         //FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.playerWind);   //  FMOD
 
@@ -102,6 +107,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
         {
             EnableWindZone();
             _windZoneScript._aspirate = true;
+            _windZoneMaterial.SetFloat(NOISE_SPEED, -1f);
         }
         else _windZoneScript._aspirate = false;
     }
@@ -110,6 +116,7 @@ public class PlayerCanon : Singleton<PlayerCanon>
     {
         if(!_windZoneInput.inProgress) DisableWindZone();
         _windZoneScript._aspirate = false;
+        _windZoneMaterial.SetFloat(NOISE_SPEED, 1f);
     }
     
     private void OnDestroy()
