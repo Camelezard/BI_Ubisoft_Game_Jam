@@ -33,14 +33,17 @@ public class House : WorldObject
 
         ShowDestroyAspect();
         
+        
         UI_object.SetActive(false);
     }
 
     private void ShowDestroyAspect()
     {
-        if (corp) corp.transform.position += Vector3.down * _DestroyFallAmont;
+        if (corp) corp.SetActive(false);
 
-        if (ruine) ruine.SetActive(false);
+        if (ruine) ruine.SetActive(true);
+
+        
 
         isDestroyed = true;
     }
