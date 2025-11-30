@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1511656474152058026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7250356893308999054}
+  - component: {fileID: 8583269488582042042}
+  m_Layer: 0
+  m_Name: GoldEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7250356893308999054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511656474152058026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7294407132982804873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8583269488582042042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511656474152058026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0211e22a60eee47408af67a93f366773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldDisplayPrefab: {fileID: 2651708333889283842, guid: 62c3962e18b8223459586ba748b5c8a4, type: 3}
 --- !u!1 &5174459580104177802
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +77,7 @@ Transform:
   m_Children:
   - {fileID: 5184979001167044575}
   - {fileID: 4432912113035399163}
+  - {fileID: 7250356893308999054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7280885477926780743
@@ -91,14 +137,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventList:
-  - eventObject: {fileID: 11400000, guid: 09a2a635f44eb58409d5d7d823bf5eb4, type: 2}
+  - eventObject: {fileID: 11400000, guid: 5ef213288327ae541b86fc4e9ec52f24, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 5a38a3b652d40ae4bbcb4c7176815659, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 192bc5fcb18e1f048b8631c7a8119ff6, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: fa9d966eeb76689429d28c7b8033570b, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: 4524b8ab2256dab47b3ace1292c3c497, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: a5be0de5d94ac7148b6bd5e46cd43151, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: f2f83304e8b93a943b5ea2278d2ea091, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 9bb4f7778a06b3c428f85b69647e3a6a, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: bad0b92f73dc6324190ac3702fdfada3, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 3a7b657c63ce11242b1b5f5f8adfdf07, type: 2}
     timeBeforeNextEvent: 1
-  - eventObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextEvent: 5
-  - eventObject: {fileID: 11400000, guid: d70a5477056255842b5a8e46ba9ffb44, type: 2}
-    timeBeforeNextEvent: 1
-  - eventObject: {fileID: 11400000, guid: 40f2ecb4b4c29444386402b8d033df0b, type: 2}
-    timeBeforeNextEvent: 5
+  - eventObject: {fileID: 11400000, guid: ef46a7516d1cf194bb2766b6318445d4, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: bfc7c3f95debdd6418d151434ad8da8b, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: f37e29496e5229047ae8fb1a337666d2, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: e038a0e2d49274a4395982771384f134, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 8b9b6c823798de64685f593edc968350, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: ace89f707c455454880bc15d0ce6550b, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 766ad947531b211449c0e442d0242773, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: 5117e4593c2fd234ea51a96c152c090b, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: abf0a7a8afbeb9a47a6b190008ac2f04, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 9fef956e161908e4999ad386db911f27, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 841fc7cad48b0da42bc53aa50070f809, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: daf7f5297b654a64b8a9ccaaf8cf3bea, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: ac19503256e9ac24d81688065468ca65, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 95eb9d0f57a10e545b58335d92403c3d, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 1960742907615a8499e389a229c3d1be, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 9a76be15dfbf7d34c8d897e2faef7d3a, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 7f0e2997d64645443ac837a71079cfc4, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 0b71bd79a05bf264db79ac944ee3e0a5, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: 13a6b0c707726d149ac31872bd621da2, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 2e3ce02b21cf0ca429455c46c050f530, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 2efd18b64901c9e44bc53bb7f71654f3, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: a3ed1d90d0c1f6b4fbb623217c14c54a, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 3053b07f0b2f70f4e928bb5d139b347a, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 23b14fc6912a42d4c9cf2e5a70d1d33c, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: 297e4fd7424823e46b81f8905894c46d, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: e9ccc4a0d421cd64e9fa5cba1c01cb49, type: 2}
+    timeBeforeNextEvent: 0.1
+  - eventObject: {fileID: 11400000, guid: 5f4669892779664498577aec5bb36cbf, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 2b1e6b6d505c1454ca998ce1d58cdb09, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: 2f05a8ef3547f784ebcf2390153cbde6, type: 2}
+    timeBeforeNextEvent: 11
+  - eventObject: {fileID: 11400000, guid: ca7a15d39b080194db9a33d4e385d06a, type: 2}
+    timeBeforeNextEvent: 12
+  - eventObject: {fileID: 11400000, guid: a2444bd6a885a7042b254d251f923e0f, type: 2}
+    timeBeforeNextEvent: 0.1
   _launchFlowOnStart: 1
   _firstEventIndex: 0
 --- !u!1 &8798270924855188660
@@ -146,16 +266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TornadoContainer: {fileID: 0}
-  waves:
-  - waveName: Wave 1
-    tornadoSerializedObject: {fileID: 11400000, guid: 01118df17dd12624d8bd0944dc66dbb1, type: 2}
-    waveDuration: 2
-  - waveName: Wave 2
-    tornadoSerializedObject: {fileID: 11400000, guid: 01118df17dd12624d8bd0944dc66dbb1, type: 2}
-    waveDuration: 5
-  - waveName: Wave 3
-    tornadoSerializedObject: {fileID: 11400000, guid: 01118df17dd12624d8bd0944dc66dbb1, type: 2}
-    waveDuration: 7
+  waves: []
   loopWaves: 0
   targetCenter: {fileID: 0}
   spawnAreaSize: 80
+  childCount: 0

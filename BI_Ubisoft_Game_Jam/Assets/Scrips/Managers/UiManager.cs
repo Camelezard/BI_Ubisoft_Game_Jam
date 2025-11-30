@@ -9,6 +9,9 @@ public class UiManager : Singleton<UiManager>
 {
     public static event Action OnVictory;
     public static event Action OnDefeat;
+    
+    [SerializeField] private Transform _canvas;
+    public Transform Canvas{get => _canvas;}
 
     [Header("Panels")]
     [SerializeField] private GameObject _PanelContainer;
@@ -32,7 +35,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private float disappearDelay = 1f;
 
     private bool _isGamePaused = false;
-
+    
     public bool allowDialogues = true;
 
     protected virtual void Start()

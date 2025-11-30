@@ -30,6 +30,7 @@ public class FlowManager : MonoBehaviour
                         SHOP_SO = "ShopSO";
 
     public static event Action<ShopSO> OnShopLoad;
+    public static event Action OnGoldGain;
 
     #region singleton
 
@@ -147,7 +148,9 @@ public class FlowManager : MonoBehaviour
     private void ManageShop(bool pActive = false)
     {
         ShopManager.Instance.gameObject.SetActive(pActive);
-
+        
+        bool lGainedMoney = false;
+        
         if (pActive)
         {
             House lHouseScript;
@@ -155,7 +158,16 @@ public class FlowManager : MonoBehaviour
             foreach (House lHouse in HouseManager.Instance._InGameHouses)
             {
                 lHouseScript = lHouse.GetComponent<House>();
-                if (!lHouseScript.isDestroyed) ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+                if (!lHouseScript.isDestroyed)
+                {
+                    ShopManager.Instance.AddCurrency(lHouseScript.goldGainOnWaveEnd);
+                    lGainedMoney = true;
+                }
+            }
+            
+            if(lGainedMoney)
+            {
+                OnGoldGain?.Invoke();
             }
         }
     }
