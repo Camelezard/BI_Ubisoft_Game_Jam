@@ -13,16 +13,16 @@ public static class PlayerUpgradeManager
                 PlayerCanon.Instance.SetRotationSpeed(pUpgrade.coeffValue);
                 break;
             case PlayerUpgrades.WindZoneLength :
-                WindZone.instance.SetLength(pUpgrade.coeffValue);
+                PlayerWindZone.instance.SetLength(pUpgrade.coeffValue);
                 break;
             case PlayerUpgrades.WindZoneWidth :
-                WindZone.instance.SetWidth(pUpgrade.coeffValue);
+                PlayerWindZone.instance.SetWidth(pUpgrade.coeffValue);
                 break;
             case PlayerUpgrades.WindZoneStrength :
-                WindZone.instance.SetStrength(pUpgrade.coeffValue);
+                PlayerWindZone.instance.SetStrength(pUpgrade.coeffValue);
                 break;
             case PlayerUpgrades.AspirateOnRightClick :
-                WindZone.instance._canAspirate = true;
+                PlayerWindZone.instance._canAspirate = true;
                 break;
             default:
                 break;
