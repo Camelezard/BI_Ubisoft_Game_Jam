@@ -9,16 +9,16 @@ public class HouseShopButton : MonoBehaviour
     [SerializeField] private Text priceText;
     [SerializeField] private int _InitialPrice;
     private int _Price;
-    
+
     [HideInInspector] public string itemName, itemDesc;
-    
+
     public static event Action<string, string, int> OnItemHover;
     public static event Action OnItemHoverEnd;
 
-    void Start()
-    {
-        ChangePriceCost(_InitialPrice);
-    }
+    // void Start()
+    // {
+    //     ChangePriceCost(_InitialPrice);
+    // }
 
     public virtual void OnButtonPressed()
     {
