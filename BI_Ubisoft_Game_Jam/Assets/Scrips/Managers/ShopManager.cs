@@ -13,10 +13,12 @@ public class ShopManager : Singleton<ShopManager>
     [SerializeField] private List<GameObject> _ShopSection;
     [SerializeField] private GameObject _ActifSection = null;
     
+    private List<HouseShopButton> _allButtonsList = new(){};
+    
     public static Action OnMonnyChange;
     [SerializeField] private int _StartCurency = 700;
     [SerializeField] private Text _CurencyText;
-    private int _Curency = 700;
+    private int _currency = 700;
     private int _CurentBuildingCost = 0;
     
     [SerializeField] private ShopSO _testShopSO;
@@ -32,6 +34,8 @@ public class ShopManager : Singleton<ShopManager>
         
         OnMonnyChange.Invoke();
         
+        OnMonnyChange += UpdateItemsAvailability;
+        
         // LoadShopSO(_testShopSO);
         
         
@@ -40,6 +44,7 @@ public class ShopManager : Singleton<ShopManager>
     
     private void LoadShopSO(ShopSO pShopSO)
     {
+        _allButtonsList.Clear();
         int lCount = _houseItemContainer.childCount;
         for (int i = lCount - 1; i >= 0; i--)
         {
@@ -62,6 +67,7 @@ public class ShopManager : Singleton<ShopManager>
             lHouseButton.itemName = pShopSO.houseList[i].itemName;
             lHouseButton.itemDesc = pShopSO.houseList[i].itemDescription;
             lHouseButton.ChangePriceCost(pShopSO.houseList[i].price);
+            _allButtonsList.Add(lHouseButton);
         }
         
         lCount = pShopSO.playerUpgradesList.Count;
@@ -74,17 +80,18 @@ public class ShopManager : Singleton<ShopManager>
             lPlayerButton.itemName = pShopSO.playerUpgradesList[i].itemName;
             lPlayerButton.itemDesc = pShopSO.playerUpgradesList[i].itemDescription;
             lPlayerButton.ChangePriceCost(pShopSO.playerUpgradesList[i].price);
+            _allButtonsList.Add(lPlayerButton);
         }
     }
 
     private void _InitStartCurnecy()
     {
-        _Curency = _StartCurency;
+        _currency = _StartCurency;
     }
 
     public bool CheckMonny(int pMonnyCost)
     {
-        if (pMonnyCost <= _Curency)
+        if (pMonnyCost <= _currency)
         {
             _CurentBuildingCost = pMonnyCost;
             return true;
@@ -95,9 +102,9 @@ public class ShopManager : Singleton<ShopManager>
 
     public bool Buy()
     {
-        if (_CurentBuildingCost <= _Curency)
+        if (_CurentBuildingCost <= _currency)
         {
-            _Curency -= _CurentBuildingCost;
+            _currency -= _CurentBuildingCost;
 
             FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.spendMomy);
             OnMonnyChange.Invoke();
@@ -108,9 +115,9 @@ public class ShopManager : Singleton<ShopManager>
     
     public bool Buy(int pCost)
     {
-        if(pCost <= _Curency)
+        if(pCost <= _currency)
         {
-            _Curency -= pCost;
+            _currency -= pCost;
             OnMonnyChange.Invoke();
             return true;
         }
@@ -119,13 +126,24 @@ public class ShopManager : Singleton<ShopManager>
     
     private void UpdateMonyUi()
     {
-        _CurencyText.text = $"{_Curency}";
+        _CurencyText.text = $"{_currency}";
     }
     
     public void AddCurrency(int pAmount)
     {
-        _Curency += pAmount;
+        _currency += pAmount;
         OnMonnyChange?.Invoke();
+    }
+    
+    private void UpdateItemsAvailability()
+    {
+        int lCount = _allButtonsList.Count;
+        HouseShopButton lButton;
+        for (int i = 0; i < lCount; i++)
+        {
+            lButton = _allButtonsList[i];
+            if(lButton.Price > _currency) lButton._buttonSprite.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void ChangeSection(GameObject pSection )
@@ -138,5 +156,6 @@ public class ShopManager : Singleton<ShopManager>
     private void OnDestroy()
     {
         FlowManager.OnShopLoad -= LoadShopSO;
+        OnMonnyChange -= UpdateItemsAvailability;
     }
 }

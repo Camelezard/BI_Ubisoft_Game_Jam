@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18729be60081c444a977e5c2ae14ce89, type: 3}
   m_Name: LargeHouse_lv2
   m_EditorClassIdentifier: 
-  price: 700
+  price: 650
   icon: {fileID: 21300000, guid: d9f641988946a254f8d4d18529099229, type: 3}
-  itemName: Large House
-  itemDescription: "PV : 200                                  + 200 monnaies apr\xE8s
-    phase de com"
+  itemName: Pyramid
+  itemDescription: 'HP : 200                                  +150 coins after the
+    combat phasephase de com'
   housePrefab: {fileID: 2546092113185964622, guid: 2aa93d890bd98594f8630f603aa5e133, type: 3}
