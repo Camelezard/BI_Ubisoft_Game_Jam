@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1073194208220770048}
   - component: {fileID: 5603592075457957063}
   m_Layer: 8
-  m_Name: Tornade_Heal
+  m_Name: Tornade_Heal_10s
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17f842128027aa40a939cd0e2af609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoInitialSpeed: 15
-  tornadoMaxSpeed: 25
-  tornadoDamagePerSec: 30
-  startLifetime: 30
+  tornadoInitialSpeed: 20
+  tornadoMaxSpeed: 40
+  tornadoDamagePerSec: 70
+  startLifetime: 10
   probabilityToFocusHome: 100
   maxDistanceFromCenter: 50
   redirectSpeed: 1

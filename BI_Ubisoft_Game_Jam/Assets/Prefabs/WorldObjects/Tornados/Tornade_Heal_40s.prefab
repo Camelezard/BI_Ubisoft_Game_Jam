@@ -13,8 +13,12 @@ PrefabInstance:
       value: Tornade_Heal_40s
       objectReference: {fileID: 0}
     - target: {fileID: 4225276611716365150, guid: 1993538f6811e8d45825b2c04559b7a2, type: 3}
+      propertyPath: startLifetime
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225276611716365150, guid: 1993538f6811e8d45825b2c04559b7a2, type: 3}
       propertyPath: tornadoDamagePerSec
-      value: 30
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6335836103136658240, guid: 1993538f6811e8d45825b2c04559b7a2, type: 3}
       propertyPath: m_LocalPosition.x

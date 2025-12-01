@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Comb_1.2
   m_EditorClassIdentifier: 
   tornadoPrefabs:
-  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
-  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
-  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+  - {fileID: 6860470980151900355, guid: 1e6081809e97ede41b72528a3ed40228, type: 3}
+  - {fileID: 6860470980151900355, guid: 1e6081809e97ede41b72528a3ed40228, type: 3}
+  - {fileID: 6860470980151900355, guid: 1e6081809e97ede41b72528a3ed40228, type: 3}
   spawnInWalls: 0
   spawnInterval: 0.5
   waveDuration: 0

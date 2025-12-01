@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tornadoPrefabs:
   - {fileID: 2739991279759806935, guid: 99906551c00551541a66916daf55ff63, type: 3}
+  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
+  - {fileID: 4225276611716365150, guid: 2ab9a0b36dbd53b4aafa90cabaf5ffdb, type: 3}
   spawnInWalls: 0
-  spawnInterval: 0.5
+  spawnInterval: 2
   waveDuration: 0
   startSlider: 1
-  sliderDuration: 34
+  sliderDuration: 36
