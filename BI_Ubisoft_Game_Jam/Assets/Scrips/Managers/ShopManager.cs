@@ -13,6 +13,9 @@ public class ShopManager : Singleton<ShopManager>
     [SerializeField] private List<GameObject> _ShopSection;
     [SerializeField] private GameObject _ActifSection = null;
     
+    [SerializeField] private Button _buildButton;
+    [SerializeField] private Button _playerUpgradesButton;
+    
     private List<HouseShopButton> _allButtonsList = new(){};
     
     public static Action OnMonnyChange;
@@ -38,7 +41,7 @@ public class ShopManager : Singleton<ShopManager>
         
         // LoadShopSO(_testShopSO);
         
-        
+        _buildButton.interactable = false;
         gameObject.SetActive(false);
     }
     
@@ -151,6 +154,17 @@ public class ShopManager : Singleton<ShopManager>
         _ActifSection.SetActive(false);
         _ActifSection = pSection;
         _ActifSection.SetActive(true);
+        
+        if(_buildButton.interactable)
+        {
+            _buildButton.interactable = false;
+            _playerUpgradesButton.interactable = true;
+        }
+        else
+        {
+            _buildButton.interactable = true;
+            _playerUpgradesButton.interactable = false;
+        }
     }
     
     private void OnDestroy()
