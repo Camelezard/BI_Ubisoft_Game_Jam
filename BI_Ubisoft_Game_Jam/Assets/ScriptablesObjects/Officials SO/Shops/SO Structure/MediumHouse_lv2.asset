@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ad75fd70b2821a447819674c449796a9, type: 3}
   itemName: Temple
   itemDescription: 'HP : 150                                  +120 coins after the
-    combat phasephase de com'
+    combat phase'
   housePrefab: {fileID: -6241411342096151726, guid: 7f23401487a25ee4f98442c1a0ca656b, type: 3}
