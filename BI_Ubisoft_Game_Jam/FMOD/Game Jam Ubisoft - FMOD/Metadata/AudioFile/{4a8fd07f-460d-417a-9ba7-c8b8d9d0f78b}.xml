@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4a8fd07f-460d-417a-9ba7-c8b8d9d0f78b}">
+		<property name="assetPath">
+			<value>money_earn-004.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.079437499999999994</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e364a702-b0a8-4e74-baa2-6f40a0cf17a0}</destination>
+		</relationship>
+	</object>
+</objects>
