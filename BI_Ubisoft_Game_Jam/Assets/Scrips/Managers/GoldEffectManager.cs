@@ -17,18 +17,18 @@ public class GoldEffectManager : MonoBehaviour
     {
         DestroyExistingDisplays();
         
-        bool lGainedMoney = false;
+        // bool lGainedMoney = false;
         
         foreach (House lHouse in HouseManager.Instance._InGameHouses)
         {
             if (!lHouse.isDestroyed)
             {
                 CreateDisplay(lHouse);
-                lGainedMoney = true;
+                // lGainedMoney = true;
             }      
         }
         
-        if(lGainedMoney) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.reciveMony);
+        // if(lGainedMoney) FMODUnity.RuntimeManager.PlayOneShot(SoundManager.Instance.reciveMony);
     }
     
     private void CreateDisplay(House pHouse)
